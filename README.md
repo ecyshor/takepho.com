@@ -11,6 +11,10 @@ Takeout Photo is a desktop app that turns your Google Takeout export into a priv
 - `favicon.svg` — the Takeout Photo logo: a white takeout box with a photo (sun + mountains) on its front, on a rounded indigo→violet gradient tile. It is the same file as the app's `common/frontend/public/favicon.svg` in [ecyshor/takepho](https://github.com/ecyshor/takepho). The site uses it as the favicon, the header brand icon, and the hero logo on the home page.
 - `apple-touch-icon.png` — 180×180 px raster version of the logo, used as the Apple touch icon for iOS home-screen bookmarks.
 
+## Analytics
+
+Every page loads the [analiza.dev](https://analiza.dev) tracker (`<script defer src="https://cdn.jsdelivr.net/gh/ecyshor/analiza@main/tracker/analiza.min.js" tenant="…">` in `<head>`) with the same tenant as nicu.dev; `takepho.com` must be registered as a domain of that tenant in the analiza admin, otherwise the API rejects the events. It sets no cookies; what it records is described in `privacy.html` → "This website". Add the same tag to any new page.
+
 ## Preview locally
 
 From the repository root:
