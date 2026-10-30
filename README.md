@@ -6,6 +6,11 @@ This is the static website for Takeout Photo, hosted at [takepho.com](https://ta
 
 Takeout Photo is a desktop app that turns your Google Takeout export into a private, browsable photo timeline of your life. Trips are detected automatically, places are named, the best shots are picked for you, and routes are drawn on a map. Everything runs on your own computer — your photos are never uploaded to our servers.
 
+## Site assets
+
+- `favicon.svg` — the Takeout Photo logo: a white takeout box with a photo (sun + mountains) on its front, on a rounded indigo→violet gradient tile. It is the same file as the app's `common/frontend/public/favicon.svg` in [ecyshor/takepho](https://github.com/ecyshor/takepho). The site uses it as the favicon, the header brand icon, and the hero logo on the home page.
+- `apple-touch-icon.png` — 180×180 px raster version of the logo, used as the Apple touch icon for iOS home-screen bookmarks.
+
 ## Preview locally
 
 From the repository root:

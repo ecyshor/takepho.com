@@ -3,11 +3,11 @@
   --bg-secondary: #252525;
   --text-color: #e0e0e0;
   --text-muted: #8a8a8a;
-  --accent-color: #ff6b35;
-  --accent-light: #ff8c5a;
+  --accent-color: #6c7bff;
+  --accent-light: #8593ff;
   --border-color: #333;
-  --link-color: #ff6b35;
-  --link-hover: #ff8c5a;
+  --link-color: #8593ff;
+  --link-hover: #a3afff;
   --code-bg: #2d2d2d;
   --code-border: #444;
 }
@@ -21,6 +21,10 @@
     --border-color: #ddd;
     --code-bg: #eee;
     --code-border: #ccc;
+    --accent-color: #5664f0;
+    --accent-light: #6c7bff;
+    --link-color: #4550cf;
+    --link-hover: #3942a6;
   }
 }
 
@@ -54,8 +58,9 @@ main {
   width: 100%;
 }
 
-header {
-  padding: 24px 0;
+header.container {
+  padding-top: 16px;
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--border-color);
   margin-bottom: 48px;
 }
@@ -69,6 +74,23 @@ header a {
 
 header a:hover {
   color: var(--accent-color);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.brand img {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: block;
 }
 
 footer {
@@ -159,6 +181,15 @@ a:hover {
 .hero {
   text-align: center;
   padding: 48px 0;
+}
+
+.hero-logo {
+  width: 96px;
+  height: 96px;
+  border-radius: 22px;
+  margin: 0 auto 24px;
+  display: block;
+  box-shadow: 0 12px 32px rgba(108,123,255,.35);
 }
 
 .hero h1 {
