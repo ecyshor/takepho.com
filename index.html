@@ -4,17 +4,136 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#6c7bff">
-  <meta name="description" content="Takeout Photo turns your Google Takeout export into a private, browsable photo timeline with automatic trip detection, place naming, and AI curation — all on your own computer.">
-  <title>Takeout Photo — Get your Google data out and actually use it</title>
-  
-  <meta property="og:title" content="Takeout Photo — Get your Google data out and actually use it">
-  <meta property="og:description" content="Takeout Photo turns your Google Takeout export into a private, browsable photo timeline with automatic trip detection, place naming, and AI curation — all on your own computer.">
+  <meta name="description" content="Takeout Photo reads your Google Photos Takeout locally: browse it as a timeline, see your photos on your Strava routes, or move it to Proton Photos — all on your own computer.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>Takeout Photo — Google Photos Takeout timeline, Strava photo map &amp; Proton Photos import</title>
+  <link rel="canonical" href="https://takepho.com/">
+
+  <meta property="og:title" content="Takeout Photo — Google Photos Takeout timeline, Strava photo map & Proton Photos import">
+  <meta property="og:description" content="Takeout Photo reads your Google Photos Takeout locally: browse it as a timeline, see your photos on your Strava routes, or move it to Proton Photos — all on your own computer.">
   <meta property="og:type" content="website">
-  
+  <meta property="og:url" content="https://takepho.com/">
+  <meta property="og:site_name" content="Takeout Photo">
+  <meta property="og:image" content="https://takepho.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Takeout Photo — your Google Photos Takeout as a timeline, on your Strava routes, or moved to Proton Photos">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Takeout Photo — Google Photos Takeout timeline, Strava photo map & Proton Photos import">
+  <meta name="twitter:description" content="Takeout Photo reads your Google Photos Takeout locally: browse it as a timeline, see your photos on your Strava routes, or move it to Proton Photos — all on your own computer.">
+  <meta name="twitter:image" content="https://takepho.com/og-image.png">
+
   <link rel="stylesheet" href="/style.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <script defer src="https://cdn.jsdelivr.net/gh/ecyshor/analiza@main/tracker/analiza.min.js" tenant="0acee168-10d7-474c-9c07-6922e1d99310"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://takepho.com/#organization",
+      "name": "Takeout Photo",
+      "url": "https://takepho.com/",
+      "logo": "https://takepho.com/apple-touch-icon.png",
+      "email": "hello@takepho.com",
+      "sameAs": [
+        "https://github.com/ecyshor/takepho"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://takepho.com/#website",
+      "name": "Takeout Photo",
+      "url": "https://takepho.com/",
+      "description": "Takeout Photo reads your Google Photos Takeout locally: browse it as a timeline, see your photos on your Strava routes, or move it to Proton Photos — all on your own computer."
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://takepho.com/#app",
+      "name": "Takeout Photo",
+      "url": "https://takepho.com/",
+      "description": "A self-hosted app that reads your Google Takeout export on your own computer: a private photo timeline with trips, places and maps, plus apps to see your Google Photos on your Strava activities and to move them to Proton Photos. Everything is processed locally; photos are never uploaded to our servers.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Linux, macOS, Windows (Docker)",
+      "featureList": [
+        "Reads Google Takeout archives (.zip and .tgz) in place without unpacking them, from a local folder, a Google Drive link, or read-only Google sign-in",
+        "Reads the Google Photos JSON sidecar files, so capture dates, GPS locations and descriptions are right",
+        "Photo timeline with automatic detection of home, moves, day trips and holidays",
+        "Names towns and countries from GPS coordinates by reverse geocoding",
+        "Draws routes on maps from open street data, using Google Location History (Timeline) when present",
+        "On-device AI curation that groups near-duplicates and picks the best shots",
+        "Merges scheduled Takeout exports without duplicates",
+        "Matches Google Photos to Strava activities by capture time, placing each photo along the GPS track",
+        "Syncs the Google Photos part of a Takeout to Proton Photos in full original quality, keeping albums and writing metadata into the files"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://takepho.com/index.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is it a web app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — it runs on your own computer. A desktop app for macOS and Windows is planned. Your photos never leave your machine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it need my Google password?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — sign-in happens on Google's own page, and you can revoke access any time at myaccount.google.com/permissions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about the Google Photos API?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Google no longer lets apps read a whole Photos library, so Google Takeout is the way to get all your photos with their metadata. Takeout exports include everything you need."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are the dates wrong after unzipping a Google Takeout?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The file's own timestamp is often the export date; the real capture date and GPS live in the .json sidecar next to each photo. Takeout Photo reads those sidecars, so dates and places are right. See browsing a Takeout as a timeline."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I see my Google Photos on my Strava activities?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — the Strava app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track (\"km 12.3 · 10:42\"). See photos on your Strava activities."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I move my Google Photos to Proton Photos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The sync app moves the Google Photos part of your Takeout into Proton Photos in full original quality, keeping albums (or making trip albums) and writing dates, GPS and descriptions from the JSON sidecars into the files first. See moving Google Photos to Proton Photos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I add someone else's Takeout, like my partner's?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — other people's Takeouts can be added, so their photos attach to the trips you shared."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header class="container">
@@ -27,7 +146,7 @@
       <section class="hero">
         <img class="hero-logo" src="/favicon.svg" alt="Takeout Photo logo" width="96" height="96">
         <h1>Get your Google data out — and actually use it.</h1>
-        <p class="subtitle">Takeout Photo turns your Google Takeout export into a private, browsable photo timeline of your life: trips detected automatically, places named, the best shots picked for you, routes drawn on a map.</p>
+        <p class="subtitle">Takeout Photo turns your Google Photos Takeout into a private timeline of your life — trips detected, places named, the best shots picked — and can put your photos on your Strava activities or move them to Proton Photos with albums and dates intact. All on your own computer.</p>
         <span class="status-badge">In development — coming soon</span>
         <div class="hero-actions">
           <a href="mailto:hello@takepho.com?subject=Takeout%20Photo%20early%20access" class="btn">Ask for early access</a>
@@ -52,6 +171,28 @@
           <div class="step">
             <h3><span class="step-number">3</span> Browse your timeline</h3>
             <p>Browse your timeline: home periods, day trips and holidays, each with a map and an AI-curated preview. Everything stays on your computer.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Use cases -->
+      <section class="section">
+        <div class="section-header">
+          <h2>What you can do with your Google Photos Takeout</h2>
+          <p>Three things Takeout Photo does with the export you already have — everything stays on your own computer.</p>
+        </div>
+        <div class="features">
+          <div class="feature">
+            <h3><a href="/google-photos-takeout/">Browse it as a timeline</a></h3>
+            <p>Read the .zip/.tgz archives in place and browse your photos as trips and places on a map, with the real dates and GPS from the JSON sidecars.</p>
+          </div>
+          <div class="feature">
+            <h3><a href="/google-photos-strava/">See photos on your Strava activities</a></h3>
+            <p>Match your Google Photos to each Strava activity by capture time and see every photo placed along the GPS track.</p>
+          </div>
+          <div class="feature">
+            <h3><a href="/google-photos-to-proton-photos/">Move it to Proton Photos</a></h3>
+            <p>Import the Google Photos part of your Takeout into Proton Photos in original quality, keeping albums and writing dates and locations into the files.</p>
           </div>
         </div>
       </section>
@@ -115,6 +256,22 @@
           <summary>What about the Google Photos API?</summary>
           <p class="faq-answer">Google no longer lets apps read a whole Photos library, so Google Takeout is the way to get all your photos with their metadata. Takeout exports include everything you need.</p>
         </details>
+        <details class="faq-item">
+          <summary>Why are the dates wrong after unzipping a Google Takeout?</summary>
+          <p class="faq-answer">The file's own timestamp is often the export date; the real capture date and GPS live in the .json sidecar next to each photo. Takeout Photo reads those sidecars, so dates and places are right. See <a href="/google-photos-takeout/">browsing a Takeout as a timeline</a>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I see my Google Photos on my Strava activities?</summary>
+          <p class="faq-answer">Yes — the Strava app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track ("km 12.3 · 10:42"). See <a href="/google-photos-strava/">photos on your Strava activities</a>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I move my Google Photos to Proton Photos?</summary>
+          <p class="faq-answer">The sync app moves the Google Photos part of your Takeout into Proton Photos in full original quality, keeping albums (or making trip albums) and writing dates, GPS and descriptions from the JSON sidecars into the files first. See <a href="/google-photos-to-proton-photos/">moving Google Photos to Proton Photos</a>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I add someone else's Takeout, like my partner's?</summary>
+          <p class="faq-answer">Yes — other people's Takeouts can be added, so their photos attach to the trips you shared.</p>
+        </details>
       </section>
     </div>
   </main>
@@ -123,13 +280,16 @@
     <div class="footer-content">
       <div>&copy; 2026 Takeout Photo</div>
       <div class="footer-links">
+        <a href="/google-photos-takeout/">Takeout viewer</a>
+        <a href="/google-photos-strava/">Photos on Strava</a>
+        <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
         <a href="mailto:hello@takepho.com">hello@takepho.com</a>
       </div>
     </div>
     <div class="footer-notice">
-      Google, Google Photos, Google Drive and Google Takeout are trademarks of Google LLC. Takeout Photo is not affiliated with or endorsed by Google.
+      Google, Google Photos, Google Drive and Google Takeout are trademarks of Google LLC. Strava is a trademark of Strava, Inc. Proton and Proton Photos are trademarks of Proton AG. Takeout Photo is not affiliated with or endorsed by Google, Strava or Proton.
     </div>
   </footer>
 </body>

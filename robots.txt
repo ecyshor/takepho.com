@@ -1,0 +1,58 @@
+User-agent: *
+Allow: /
+Disallow: /demo/data/
+
+# AI search / assistant crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+Disallow: /demo/data/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /demo/data/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /demo/data/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /demo/data/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /demo/data/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /demo/data/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /demo/data/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /demo/data/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /demo/data/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /demo/data/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /demo/data/
+
+User-agent: CCBot
+Allow: /
+Disallow: /demo/data/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /demo/data/
+
+Sitemap: https://takepho.com/sitemap.xml

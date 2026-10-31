@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6c7bff">
+  <meta name="description" content="Match your Google Photos from a Takeout export to your Strava activities by capture time and see every photo placed along the GPS track — on your own computer.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>See your Google Photos on your Strava activities | Takeout Photo</title>
+  <link rel="canonical" href="https://takepho.com/google-photos-strava/">
+
+  <meta property="og:title" content="See your Google Photos on your Strava activities | Takeout Photo">
+  <meta property="og:description" content="Match your Google Photos from a Takeout export to your Strava activities by capture time and see every photo placed along the GPS track — on your own computer.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://takepho.com/google-photos-strava/">
+  <meta property="og:site_name" content="Takeout Photo">
+  <meta property="og:image" content="https://takepho.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Takeout Photo — your Google Photos Takeout as a timeline, on your Strava routes, or moved to Proton Photos">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="See your Google Photos on your Strava activities | Takeout Photo">
+  <meta name="twitter:description" content="Match your Google Photos from a Takeout export to your Strava activities by capture time and see every photo placed along the GPS track — on your own computer.">
+  <meta name="twitter:image" content="https://takepho.com/og-image.png">
+
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script defer src="https://cdn.jsdelivr.net/gh/ecyshor/analiza@main/tracker/analiza.min.js" tenant="0acee168-10d7-474c-9c07-6922e1d99310"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://takepho.com/google-photos-strava/#page",
+      "url": "https://takepho.com/google-photos-strava/",
+      "name": "See your Google Photos on your Strava activities | Takeout Photo",
+      "description": "Match your Google Photos from a Takeout export to your Strava activities by capture time and see every photo placed along the GPS track — on your own computer.",
+      "isPartOf": {
+        "@id": "https://takepho.com/#website"
+      },
+      "about": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Strava",
+          "url": "https://www.strava.com/"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Google Photos",
+          "url": "https://photos.google.com/"
+        }
+      ],
+      "mentions": [
+        {
+          "@type": "Thing",
+          "name": "Google Takeout",
+          "url": "https://takeout.google.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "Strava API",
+          "url": "https://developers.strava.com/"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://takepho.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "See your Google Photos on your Strava activities",
+          "item": "https://takepho.com/google-photos-strava/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://takepho.com/google-photos-strava/index.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need to create my own Strava API application?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Strava requires every app to use its own free API application; the Takeout Photo app includes a step-by-step guide for creating one and authorizing it via OAuth."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are my photos matched to a Strava activity?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By capture time. Each Google Photo taken while the activity was recorded is placed along the activity's GPS track at the point matching its time — for example \"km 12.3 · 10:42\"."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it upload my photos to Strava?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The app works locally and read-only: it shows the photos you already uploaded to Strava as well, and hides duplicates of the same photos from your Takeout so nothing appears twice."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which activities can have photos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Any activity with a GPS track and a time range — the map colours routes by sport and you can filter by sport, year, country, or only activities with photos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my Strava data kept private?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Activities are read over the Strava API with read-only access, everything is processed on your own computer, and your photos are never uploaded to our servers or to Strava by the app."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="container">
+    <a href="/" class="brand"><img src="/favicon.svg" alt="" width="32" height="32"> <span>Takeout Photo</span></a>
+  </header>
+
+  <main>
+    <div class="container">
+      <article>
+        <section class="hero">
+          <h1>See your Google Photos on your Strava activities</h1>
+          <p class="subtitle">Your photos live in Google Photos and your routes live in Strava, and nothing connects the two. Takeout Photo's Strava app links them on your own computer: it reads your Google Photos from a Takeout export, syncs your activities from Strava over the official Strava API, and matches each photo to an activity by capture time — placing it along the GPS track.</p>
+          <span class="status-badge">In development — early access by email</span>
+          <div class="hero-actions">
+            <a href="mailto:hello@takepho.com?subject=Takeout%20Photo%20early%20access" class="btn">Ask for early access</a>
+            <a href="/demo/" class="btn btn-secondary">Try the demo</a>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Why photos and routes end up in two places</h2>
+          <p>You take photos with your phone, so they end up in Google Photos. You record your runs, rides and hikes with Strava, so the routes end up there. Strava shows the photos <em>you uploaded to Strava</em>, but the rest of your camera roll — the photos from your Google Photos library — stay invisible on the activity. Takeout Photo closes that gap locally, without uploading anything anywhere.</p>
+        </section>
+
+        <section class="section">
+          <h2>How the matching works</h2>
+          <p>The Strava app connects to your Strava account over the Strava API using OAuth. You create your own free Strava API application (the app includes a step-by-step guide) and authorize Takeout Photo, which then syncs your activities. For each activity, your Google Photos from the Takeout are matched by capture time: every photo taken during the activity is placed at the point along the GPS track where it was taken, shown as "km 12.3 · 10:42".</p>
+          <p>Because the capture time comes from the Takeout JSON sidecars (not the file timestamp), the match is based on when the photo was really taken.</p>
+        </section>
+
+        <section class="section">
+          <h2>What you get</h2>
+          <ul>
+            <li><strong>A map of all your routes</strong>, coloured by sport, with a heatmap mode.</li>
+            <li><strong>Filters</strong> by sport, year, country, and "with photos".</li>
+            <li><strong>Activity pages</strong> with the route, the best photos for that activity, and a photo strip.</li>
+            <li><strong>Stats per year</strong>, and start/end place names for each activity.</li>
+            <li><strong>Photos you already uploaded to Strava</strong> are shown too; duplicates of your Takeout photos are hidden so nothing appears twice.</li>
+            <li><strong>A link back to Strava</strong> on each activity, plus an optional Strava embed.</li>
+            <li>Activities are linked to the <strong>trips in the Photos app</strong>, so a weekend ride and the holiday around it connect.</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2>How to connect your Strava account</h2>
+          <ol>
+            <li>Export your Google Photos with <a href="https://takeout.google.com">Google Takeout</a> (see <a href="/google-photos-takeout/">how to export and browse a Takeout</a>).</li>
+            <li>Point Takeout Photo at the archives.</li>
+            <li>Create your own free Strava API application — a step-by-step guide is built into the app.</li>
+            <li>Authorize Takeout Photo to read your Strava activities via OAuth and start the sync.</li>
+          </ol>
+        </section>
+
+        <section class="section">
+          <h2>Privacy</h2>
+          <p>Everything is processed locally on your computer; your photos are never uploaded to our servers. The app uses your Strava data read-only — it reads activities and their GPS tracks, and does not modify your Strava account. See the <a href="/privacy.html">privacy policy</a>.</p>
+        </section>
+
+        <section class="section faq">
+          <div class="section-header">
+            <h2>Frequently asked questions</h2>
+          </div>
+          <details class="faq-item">
+            <summary>Do I need to create my own Strava API application?</summary>
+            <p class="faq-answer">Yes. Strava requires every app to use its own free API application; the Takeout Photo app includes a step-by-step guide for creating one and authorizing it via OAuth.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How are my photos matched to a Strava activity?</summary>
+            <p class="faq-answer">By capture time. Each Google Photo taken while the activity was recorded is placed along the activity's GPS track at the point matching its time — for example "km 12.3 · 10:42".</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does it upload my photos to Strava?</summary>
+            <p class="faq-answer">No. The app works locally and read-only: it shows the photos you already uploaded to Strava as well, and hides duplicates of the same photos from your Takeout so nothing appears twice.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Which activities can have photos?</summary>
+            <p class="faq-answer">Any activity with a GPS track and a time range — the map colours routes by sport and you can filter by sport, year, country, or only activities with photos.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Is my Strava data kept private?</summary>
+            <p class="faq-answer">Yes. Activities are read over the Strava API with read-only access, everything is processed on your own computer, and your photos are never uploaded to our servers or to Strava by the app.</p>
+          </details>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Also works with your Takeout</h2>
+          </div>
+          <ul>
+            <li><a href="/google-photos-takeout/">Google Photos Takeout viewer</a> — browse the export itself as a timeline of trips and places.</li>
+            <li><a href="/google-photos-to-proton-photos/">Move your Google Photos to Proton Photos</a> — keep albums and metadata when you leave Google.</li>
+            <li><a href="/">Takeout Photo home</a> — the photo timeline app.</li>
+          </ul>
+          <div class="hero-actions">
+            <a href="mailto:hello@takepho.com?subject=Takeout%20Photo%20early%20access" class="btn">Ask for early access</a>
+            <a href="/demo/" class="btn btn-secondary">Try the demo</a>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="container">
+    <div class="footer-content">
+      <div>&copy; 2026 Takeout Photo</div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/google-photos-takeout/">Takeout viewer</a>
+        <a href="/google-photos-strava/">Photos on Strava</a>
+        <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="mailto:hello@takepho.com">hello@takepho.com</a>
+      </div>
+    </div>
+    <div class="footer-notice">
+      Google, Google Photos, Google Drive and Google Takeout are trademarks of Google LLC. Strava is a trademark of Strava, Inc. Proton and Proton Photos are trademarks of Proton AG. Takeout Photo is not affiliated with or endorsed by Google, Strava or Proton.
+    </div>
+  </footer>
+</body>
+</html>

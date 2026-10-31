@@ -1,0 +1,202 @@
+# Takeout Photo — full site content (llms-full.txt)
+> Plain-markdown version of https://takepho.com/ and its three guides, so LLM assistants can read the site without HTML. Source of truth: the HTML pages.
+
+---
+
+> Source: https://takepho.com/
+
+# Get your Google data out — and actually use it.
+Takeout Photo turns your Google Photos Takeout into a private timeline of your life — trips detected, places named, the best shots picked — and can put your photos on your Strava activities or move them to Proton Photos with albums and dates intact. All on your own computer.
+In development — coming soon  Ask for early access [Try the demo](https://takepho.com/demo/)
+## How it works
+
+### 1 Export with Google Takeout
+Export your Google Photos with Google Takeout to your computer or Google Drive. This gives you a complete archive of your photos and metadata.
+
+### 2 Point Takeout Photo at the archives
+Point Takeout Photo at the archives — a folder on disk, a Drive link, or sign in with Google and pick the archive files. The app reads them directly.
+
+### 3 Browse your timeline
+Browse your timeline: home periods, day trips and holidays, each with a map and an AI-curated preview. Everything stays on your computer.
+
+## What you can do with your Google Photos Takeout
+Three things Takeout Photo does with the export you already have — everything stays on your own computer.
+
+### Browse it as a timeline
+Read the .zip/.tgz archives in place and browse your photos as trips and places on a map, with the real dates and GPS from the JSON sidecars.
+
+### See photos on your Strava activities
+Match your Google Photos to each Strava activity by capture time and see every photo placed along the GPS track.
+
+### Move it to Proton Photos
+Import the Google Photos part of your Takeout into Proton Photos in original quality, keeping albums and writing dates and locations into the files.
+
+## Features
+
+### Automatic trips
+Detects where you live, when you moved, and every trip away — so you can browse your life by journey, not just by date.
+
+### Places named
+Towns and countries are identified from your photos' GPS coordinates. No manual tagging needed.
+
+### AI curation
+Groups near-duplicates and picks the best photos, on your own machine. Your memories, curated without the cloud.
+
+### Maps and routes
+See the path you took on each trip. Routes are drawn on an interactive map using open street data.
+
+### Works with huge libraries
+Reads the archives in place and handles hundreds of GB — no need to unpack them first.
+
+### New exports merge in
+Scheduled Takeout exports are picked up and merged automatically, without duplicating photos you already have.
+
+## Private by design
+Everything is processed locally on your computer; your photos are never uploaded to our servers. Google access is read-only and limited to the files you pick.
+[Read the full privacy policy](https://takepho.com/privacy.html)
+
+## Frequently asked questions
+**Is it a web app?** No — it runs on your own computer. A desktop app for macOS and Windows is planned. Your photos never leave your machine.
+**Does it need my Google password?** No — sign-in happens on Google's own page, and you can revoke access any time at [myaccount.google.com/permissions](https://myaccount.google.com/permissions).
+**What about the Google Photos API?** Google no longer lets apps read a whole Photos library, so Google Takeout is the way to get all your photos with their metadata. Takeout exports include everything you need.
+**Why are the dates wrong after unzipping a Google Takeout?** The file's own timestamp is often the export date; the real capture date and GPS live in the .json sidecar next to each photo. Takeout Photo reads those sidecars, so dates and places are right. See [browsing a Takeout as a timeline](https://takepho.com/google-photos-takeout/).
+**Can I see my Google Photos on my Strava activities?** Yes — the Strava app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track ("km 12.3 · 10:42"). See [photos on your Strava activities](https://takepho.com/google-photos-strava/).
+**How do I move my Google Photos to Proton Photos?** The sync app moves the Google Photos part of your Takeout into Proton Photos in full original quality, keeping albums (or making trip albums) and writing dates, GPS and descriptions from the JSON sidecars into the files first. See [moving Google Photos to Proton Photos](https://takepho.com/google-photos-to-proton-photos/).
+**Can I add someone else's Takeout, like my partner's?** Yes — other people's Takeouts can be added, so their photos attach to the trips you shared.
+
+---
+
+> Source: https://takepho.com/google-photos-takeout/
+
+# Google Photos Takeout viewer — browse your export as a timeline
+A Google Photos Takeout is the set of .zip or .tgz archives you download from takeout.google.com: year folders and album folders full of photos and videos, plus a small .json file next to each photo that holds the real capture date, GPS location and description. Takeout Photo is a self-hosted viewer that reads those archives in place — without unzipping — and turns them into a private timeline of trips, places and maps on your own computer.
+In development — early access by email  Ask for early access [Try the demo](https://takepho.com/demo/)
+## What is inside a Google Photos Takeout?
+When you export Google Photos with [Google Takeout](https://takeout.google.com), Google splits the export into one or more archive files — `.zip` or `.tgz` — chosen by the file size you pick (for example 50 GB per file). Inside the archives you get a `Takeout/Google Photos/` folder with one folder per year, your album folders, and your photos and videos.
+Next to almost every photo there is also a small JSON sidecar file with the same name plus `.json`. That sidecar is where Google stores the metadata that matters: the real capture time (`photoTakenTime`), the GPS coordinates (`geoData`), the description you wrote, people in the photo, and more. Takeout Photo builds an inventory of what is in your export — which products, which archives, what sizes — so you can see what you have before you open anything.
+
+## Why do dates look wrong when you just unzip a Takeout?
+If you unzip a Takeout and sort the photos by file date, many of them look wrong — often showing the day you made the export, not the day the photo was taken. The file's own timestamp is unreliable; the truth is in the `.json` sidecar next to the photo. If a tool ignores the sidecars, every date, place and description is lost or wrong.
+Takeout Photo reads the JSON sidecars, so dates and locations are right: each photo shows when it was actually taken and where, and towns and countries are named from the GPS coordinates by reverse geocoding.
+
+## How Takeout Photo reads your Takeout in place
+You never have to unpack the archives. Point Takeout Photo at a local folder, a Google Drive link, or sign in with Google and pick the archive files in Google's picker — access is read-only and limited to the files you choose. The app reads the `.zip` and `.tgz` files directly, so libraries of hundreds of GB work without filling your disk twice.
+If you schedule regular Takeout exports, new archives are picked up and merged automatically without duplicating photos you already have.
+
+## Trips, places and maps
+The Photos app detects where you live and when you moved, plus day trips and holidays, so you can browse your life by journey instead of by raw date. When your export includes Google Location History (Timeline), trips are detected from it and real routes are drawn on the map — flights shown as arcs — using open street data.
+AI curation runs on your own machine: it groups near-duplicates and picks the best shots for each trip. You can also add other people's Takeouts — for example your partner's — so their photos attach to the trips you shared.
+
+## How to export Google Photos with Google Takeout
+
+1. Go to [takeout.google.com](https://takeout.google.com) and sign in with your Google account. 
+2. Deselect everything, then select only **Google Photos**. 
+3. Click "Next step", choose the delivery method (a download link by email, or directly to your Google Drive), the file type (`.zip` or `.tgz`) and the maximum file size. 
+4. Click "Create export" and wait for Google's email — large libraries can take hours or days. 
+5. Download the archives, or copy the Drive link, and point Takeout Photo at them.    
+## Private by design
+Everything is processed locally on your computer; your photos are never uploaded to our servers. Google access is read-only and only ever touches the files you pick. See the [privacy policy](https://takepho.com/privacy.html).
+
+## Frequently asked questions
+**What exactly is a Google Photos Takeout?** It is the archive Google gives you at takeout.google.com: one or more .zip or .tgz files containing your Google Photos (photos, videos, album folders, year folders) plus a JSON sidecar file next to each photo with its real capture date, GPS location and description.
+**Do I have to unzip the Takeout archives first?** No. Takeout Photo reads .zip and .tgz archives in place, from a local folder, a Google Drive link, or by signing in with Google and picking the files. You can keep the export exactly as Google delivered it.
+**Why are the photo dates wrong after unzipping a Takeout?** Because the file's own timestamp is often the export date, not the capture date. The real capture time and GPS coordinates live in the .json sidecar next to each photo, and Takeout Photo reads those, so dates and places come out right.
+**Can it handle a very large photo library?** Yes — archives are read in place without unpacking, so libraries of hundreds of GB are handled without needing the same space again on disk.
+**What happens when a new scheduled Takeout export arrives?** New archives are picked up and merged into what you already have, without duplicating photos.
+**Is anything uploaded to a server?** No. Everything is processed locally on your computer and your photos are never uploaded to our servers. Google sign-in, if you use it, is read-only and limited to the files you pick.
+
+## Also works with your Takeout
+
+- [See your Google Photos on your Strava activities](https://takepho.com/google-photos-strava/) — photos matched to each activity along the GPS track. 
+- [Move your Google Photos to Proton Photos](https://takepho.com/google-photos-to-proton-photos/) — albums and metadata kept, full original quality. 
+- [Takeout Photo home](https://takepho.com/) — the photo timeline app.   Ask for early access [Try the demo](https://takepho.com/demo/)
+
+---
+
+> Source: https://takepho.com/google-photos-strava/
+
+# See your Google Photos on your Strava activities
+Your photos live in Google Photos and your routes live in Strava, and nothing connects the two. Takeout Photo's Strava app links them on your own computer: it reads your Google Photos from a Takeout export, syncs your activities from Strava over the official Strava API, and matches each photo to an activity by capture time — placing it along the GPS track.
+In development — early access by email  Ask for early access [Try the demo](https://takepho.com/demo/)
+## Why photos and routes end up in two places
+You take photos with your phone, so they end up in Google Photos. You record your runs, rides and hikes with Strava, so the routes end up there. Strava shows the photos *you uploaded to Strava*, but the rest of your camera roll — the photos from your Google Photos library — stay invisible on the activity. Takeout Photo closes that gap locally, without uploading anything anywhere.
+
+## How the matching works
+The Strava app connects to your Strava account over the Strava API using OAuth. You create your own free Strava API application (the app includes a step-by-step guide) and authorize Takeout Photo, which then syncs your activities. For each activity, your Google Photos from the Takeout are matched by capture time: every photo taken during the activity is placed at the point along the GPS track where it was taken, shown as "km 12.3 · 10:42".
+Because the capture time comes from the Takeout JSON sidecars (not the file timestamp), the match is based on when the photo was really taken.
+
+## What you get
+
+- **A map of all your routes**, coloured by sport, with a heatmap mode. 
+- **Filters** by sport, year, country, and "with photos". 
+- **Activity pages** with the route, the best photos for that activity, and a photo strip. 
+- **Stats per year**, and start/end place names for each activity. 
+- **Photos you already uploaded to Strava** are shown too; duplicates of your Takeout photos are hidden so nothing appears twice. 
+- **A link back to Strava** on each activity, plus an optional Strava embed. 
+- Activities are linked to the **trips in the Photos app**, so a weekend ride and the holiday around it connect.    
+## How to connect your Strava account
+
+1. Export your Google Photos with [Google Takeout](https://takeout.google.com) (see [how to export and browse a Takeout](https://takepho.com/google-photos-takeout/)). 
+2. Point Takeout Photo at the archives. 
+3. Create your own free Strava API application — a step-by-step guide is built into the app. 
+4. Authorize Takeout Photo to read your Strava activities via OAuth and start the sync.    
+## Privacy
+Everything is processed locally on your computer; your photos are never uploaded to our servers. The app uses your Strava data read-only — it reads activities and their GPS tracks, and does not modify your Strava account. See the [privacy policy](https://takepho.com/privacy.html).
+
+## Frequently asked questions
+**Do I need to create my own Strava API application?** Yes. Strava requires every app to use its own free API application; the Takeout Photo app includes a step-by-step guide for creating one and authorizing it via OAuth.
+**How are my photos matched to a Strava activity?** By capture time. Each Google Photo taken while the activity was recorded is placed along the activity's GPS track at the point matching its time — for example "km 12.3 · 10:42".
+**Does it upload my photos to Strava?** No. The app works locally and read-only: it shows the photos you already uploaded to Strava as well, and hides duplicates of the same photos from your Takeout so nothing appears twice.
+**Which activities can have photos?** Any activity with a GPS track and a time range — the map colours routes by sport and you can filter by sport, year, country, or only activities with photos.
+**Is my Strava data kept private?** Yes. Activities are read over the Strava API with read-only access, everything is processed on your own computer, and your photos are never uploaded to our servers or to Strava by the app.
+
+## Also works with your Takeout
+
+- [Google Photos Takeout viewer](https://takepho.com/google-photos-takeout/) — browse the export itself as a timeline of trips and places. 
+- [Move your Google Photos to Proton Photos](https://takepho.com/google-photos-to-proton-photos/) — keep albums and metadata when you leave Google. 
+- [Takeout Photo home](https://takepho.com/) — the photo timeline app.   Ask for early access [Try the demo](https://takepho.com/demo/)
+
+---
+
+> Source: https://takepho.com/google-photos-to-proton-photos/
+
+# Move your Google Photos to Proton Photos — with albums and metadata
+Uploading a plain Google Takeout to Proton Photos loses the album structure and often the dates and locations, because that metadata lives in the JSON sidecars next to each photo, not in the files themselves. Takeout Photo's sync app moves the Google Photos part of your Takeout into Proton Photos (Proton Drive) in full original quality — writing the capture date, GPS location, description, favourites and people from the sidecars losslessly into the files first — using Proton's official open-source Drive CLI.
+In development — early access by email  Ask for early access [Try the demo](https://takepho.com/demo/)
+## Why a plain Takeout upload loses dates, places and albums
+In a Google Photos Takeout, the photo files themselves often carry the export date as their timestamp, and the real capture date, GPS coordinates, description, favourites and people are stored in the `.json` sidecar next to each photo. If you upload the archive as-is, Proton Photos sees the wrong dates and places, and the Google album structure does not become Proton albums. Takeout Photo reads the sidecars and fixes the files before uploading, so Proton shows the correct dates and places.
+
+## Two ways to organise the import
+
+- **"As in the Takeout"** — your Google Photos albums become Proton albums, and everything not in an album goes to the Photos timeline. 
+- **"Trip albums"** — one Proton album per detected trip, containing that trip's photos and videos.  Before anything is uploaded, the app writes the capture date, GPS location, description, favourite flag and people from the Takeout JSON sidecars into the files, losslessly. Everything is uploaded in full original quality.
+
+## How the upload works
+Uploads go through Proton's official open-source [Proton Drive CLI](https://github.com/ProtonDriveApps/sdk/tree/main/cli), which runs on Linux, macOS and Windows. The app installs it for you with checksum verification, and you sign in to Proton in your browser. Re-runs are safe: files that are already in Proton are skipped, and nothing in your Proton account is ever deleted.
+
+## Windows alternative: the import folder
+On Windows you can instead use an import folder for the Proton Drive Windows app: Photos → Import → "Import a folder". Note that with this route a photo that belongs to several albums lands in only one album. The Proton Drive Mac app has no Photos import, so on macOS the sync uses the CLI.
+
+## Step by step
+
+1. Export Google Photos with [Google Takeout](https://takeout.google.com) (see [how to export a Takeout](https://takepho.com/google-photos-takeout/)). 
+2. Point Takeout Photo at the archives — a local folder, a Drive link, or sign in with Google and pick the files (read-only). 
+3. In the sync app, choose the layout: "as in the Takeout" or "trip albums". 
+4. Let the app install the Proton Drive CLI (checksum-verified) and sign in to Proton in your browser. 
+5. Run the sync. You can re-run it any time; what is already in Proton is skipped and nothing is deleted.    
+## What is never synced
+Other people's Takeouts (for example your partner's) are never synced to your Proton account. Everything is processed locally on your computer first; the only destination of the upload is your own Proton Photos. Your photos are never uploaded to our servers. See the [privacy policy](https://takepho.com/privacy.html).
+
+## Frequently asked questions
+**Does it upload in original quality?** Yes — the Google Photos part of your Takeout is moved to Proton Photos in full original quality, not a compressed copy.
+**Do my Google Photos albums survive the move?** Yes. With the "as in the Takeout" layout, Google Photos albums become Proton albums and the rest goes to the Photos timeline. Alternatively, the "trip albums" layout creates one album per detected trip.
+**What happens to dates, GPS and descriptions?** Before upload, the capture date, GPS location, description, favourite flag and people from the Takeout JSON sidecars are written losslessly into the files, so Proton Photos shows the correct dates and places.
+**Is it safe to run the sync again?** Yes. Re-runs skip what is already in Proton, and nothing in your Proton account is ever deleted.
+**Do I need the Proton Drive desktop app?** Not necessarily — the app uploads with Proton's official open-source Proton Drive CLI on Linux, macOS and Windows. On Windows there is also the import-folder route via the Proton Drive app; the Proton Drive Mac app has no Photos import, so macOS uses the CLI.
+**Are other people's Takeouts synced to my Proton account?** No. Other people's Takeouts are never synced to your Proton account — only your own Google Photos part of your Takeout is moved.
+
+## Also works with your Takeout
+
+- [Google Photos Takeout viewer](https://takepho.com/google-photos-takeout/) — browse the export itself as a timeline of trips and places. 
+- [See your Google Photos on your Strava activities](https://takepho.com/google-photos-strava/) — photos matched to each activity along the GPS track. 
+- [Takeout Photo home](https://takepho.com/) — the photo timeline app.   Ask for early access [Try the demo](https://takepho.com/demo/)

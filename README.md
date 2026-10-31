@@ -11,6 +11,32 @@ Takeout Photo is a desktop app that turns your Google Takeout export into a priv
 - `favicon.svg` — the Takeout Photo logo: a white takeout box with a photo (sun + mountains) on its front, on a rounded indigo→violet gradient tile. It is the same file as the app's `common/frontend/public/favicon.svg` in [ecyshor/takepho](https://github.com/ecyshor/takepho). The site uses it as the favicon, the header brand icon, and the hero logo on the home page.
 - `apple-touch-icon.png` — 180×180 px raster version of the logo, used as the Apple touch icon for iOS home-screen bookmarks.
 - `demo/` — the static, read-only demo of the app (takepho.com/demo, linked from the hero's "Try the demo" button): the app's frontend built in demo mode plus a JSON/image snapshot of its API for the made-up sample library (photos from Wikimedia Commons, credited in the app). Generated, do not edit by hand — rebuild it from the app repo with `scripts/run_python.sh scripts/build_demo.py --out ../takepho.com/demo` (it replaces the folder's contents).
+- `og-image.png` — 1200×630 social/OG image (logo + "Takeout Photo" + tagline on the indigo→violet gradient), referenced by the `og:image` / `twitter:image` tags on every page.
+
+## Pages
+
+- `index.html` — home: hero, how it works, the three use cases (links to the guides below), features, FAQ.
+- `google-photos-takeout/index.html` — guide/landing page for "google photos takeout" (Takeout viewer: what a Takeout contains, JSON sidecars, in-place reading, trips/places/maps, how to export).
+- `google-photos-strava/index.html` — guide/landing page for "google photos strava" (photos matched to Strava activities along the GPS track).
+- `google-photos-to-proton-photos/index.html` — guide/landing page for "google photos proton import" (moving the Takeout to Proton Photos with albums and metadata).
+- `privacy.html`, `terms.html`, `404.html` — legal pages (404 is `noindex`).
+
+## Crawl / SEO / AI-search files (repo root)
+
+- `robots.txt` — allows all crawlers (including the AI ones: GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot/-User/-SearchBot, anthropic-ai, PerplexityBot/-User, Google-Extended, Applebot-Extended, CCBot, Bingbot), disallows only `/demo/data/`, points at the sitemap.
+- `sitemap.xml` — all public pages with `<lastmod>`.
+- `llms.txt` — llmstxt.org-format summary of the product with links to the pages, status, privacy, contact, source repo.
+- `llms-full.txt` — plain-markdown content of the home page and the three guide pages, for LLM consumption without HTML.
+- `og-image.png` — see above.
+
+## SEO / AI search (GEO) checklist for new pages
+
+When adding a page (outside `demo/`), also:
+
+1. Add it to `sitemap.xml`, to `llms.txt` (and regenerate/append its content in `llms-full.txt`), and to the footer links of every page.
+2. In `<head>`: canonical URL, `robots` meta, `og:title`/`og:description`/`og:type`/`og:url`/`og:site_name`/`og:image` (+ width/height/alt), `twitter:card` + title/description/image, and a JSON-LD block (`WebPage` + `BreadcrumbList` + `FAQPage` mirroring the visible FAQ; on the home page an `@graph` with `Organization`/`WebSite`/`SoftwareApplication`/`FAQPage`).
+3. Add the analiza.dev tracker `<script>` tag (same tenant), the stylesheet and the favicons.
+4. Exactly one `<h1>` per page, answer-first summary paragraph under it, FAQ in `<details class="faq-item">`.
 
 ## Analytics
 
