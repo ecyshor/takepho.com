@@ -4,7 +4,17 @@ This is the static website for Takeout Photo, hosted at [takepho.com](https://ta
 
 ## What is Takeout Photo?
 
-Takeout Photo is a desktop app that turns your Google Takeout export into a private, browsable photo timeline of your life. Trips are detected automatically, places are named, the best shots are picked for you, and routes are drawn on a map. Everything runs on your own computer — your photos are never uploaded to our servers.
+Takeout Photo is a desktop app for Mac (Apple silicon, macOS 12 or later) that turns your Google Takeout export into a private, browsable photo timeline of your life. Trips are detected automatically, places are named, the best shots are picked for you, and routes are drawn on a map. Everything runs on your own computer — your photos are never uploaded to our servers. The app is free to download and explore; importing your own Takeout needs a plan (Lifetime one-time or Yearly subscription, sold via Stripe Managed Payments with Link as merchant of record — see the Pricing section on the home page).
+
+## Release assets and appcast (this repo doubles as the app's release host)
+
+The app's release CI (in the private app repo) publishes every `v*` release here, to this public repo's **GitHub Releases**, and commits the update feed:
+
+- `TakeoutPhoto-macos-arm64.dmg` — constant-name DMG, so `https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg` always points at the latest release (the site's "Download for Mac" button).
+- `TakeoutPhoto-<version>-macos-arm64.zip` — the Sparkle update archive (EdDSA-signed).
+- `appcast.xml` — at the repo root, served at `https://takepho.com/appcast.xml`; it is the Sparkle `SUFeedURL` baked into the app. **Committed by the app's release CI — do not hand-edit it.**
+
+Release notes are the GitHub release pages (`https://github.com/ecyshor/takepho.com/releases`).
 
 ## Site assets
 
@@ -15,17 +25,17 @@ Takeout Photo is a desktop app that turns your Google Takeout export into a priv
 
 ## Pages
 
-- `index.html` — home: hero, how it works, the three use cases (links to the guides below), features, FAQ.
-- `google-photos-takeout/index.html` — guide/landing page for "google photos takeout" (Takeout viewer: what a Takeout contains, JSON sidecars, in-place reading, trips/places/maps, how to export).
+- `index.html` — home: hero with the "Download for Mac" button (stable release link) + "Try the demo", how it works, pricing (Lifetime / Yearly plan cards, regional prices table, how to buy, merchant-of-record note), the three use cases (links to the guides below), features, updates (Developer ID signing, notarization, Sparkle self-update), FAQ. JSON-LD `@graph` with Organization/WebSite/SoftwareApplication (macOS, `downloadUrl`, two `Offer`s) and a FAQPage mirroring the visible FAQ.
+- `google-photos-takeout/index.html` — guide/landing page for "google photos takeout" (Takeout viewer: what a Takeout contains, JSON sidecars, in-place reading, trips/places/maps, how to export); hero CTA links the Mac download and the pricing.
 - `google-photos-strava/index.html` — guide/landing page for "google photos strava" (photos matched to Strava activities along the GPS track).
 - `google-photos-to-proton-photos/index.html` — guide/landing page for "google photos proton import" (moving the Takeout to Proton Photos with albums and metadata).
-- `privacy.html`, `terms.html`, `404.html` — legal pages (404 is `noindex`).
+- `privacy.html`, `terms.html`, `404.html` — legal pages (404 is `noindex`). Privacy has an "Account and purchases (account.takepho.com)" section (data stored, purposes/legal bases, retention, processors, rights, account deletion); terms has the licence terms (personal licence per account, 2 Macs, Lifetime/Yearly, Link/Stripe as seller of record at checkout).
 
 ## Crawl / SEO / AI-search files (repo root)
 
 - `robots.txt` — allows all crawlers (including the AI ones: GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot/-User/-SearchBot, anthropic-ai, PerplexityBot/-User, Google-Extended, Applebot-Extended, CCBot, Bingbot), disallows only `/demo/data/`, points at the sitemap.
 - `sitemap.xml` — all public pages with `<lastmod>`.
-- `llms.txt` — llmstxt.org-format summary of the product with links to the pages, status, privacy, contact, source repo.
+- `llms.txt` — llmstxt.org-format summary of the product with the Mac download link, pricing (plans, regional prices, merchant of record), links to the pages, status, privacy, contact, and the releases repo.
 - `llms-full.txt` — plain-markdown content of the home page and the three guide pages, for LLM consumption without HTML.
 - `og-image.png` — see above.
 

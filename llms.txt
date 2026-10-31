@@ -1,30 +1,43 @@
 # Takeout Photo
 
-> Takeout Photo is a self-hosted app that runs on your own computer (Docker today; a desktop app for macOS and Windows is planned) and reads your Google Takeout export in place — .zip and .tgz archives, without unpacking them. It turns your Google Photos into a private timeline of trips, places and maps, matches your photos to your Strava activities along the GPS track, or moves them to Proton Photos with albums and metadata intact. Everything is processed locally; your photos are never uploaded to our servers.
+> Takeout Photo is a desktop app for Mac (Apple silicon, macOS 12 or later) that runs on your own computer and reads your Google Takeout export in place — .zip and .tgz archives, without unpacking them. It turns your Google Photos into a private timeline of trips, places and maps, matches your photos to your Strava activities along the GPS track, or moves them to Proton Photos with albums and metadata intact. Everything is processed locally; your photos are never uploaded to our servers.
+
+## Download
+
+- [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) — the latest release as a .dmg: Apple silicon (arm64) only, macOS 12 (Monterey) or later, signed with an Apple Developer ID and notarized. The app updates itself (Sparkle; "Check for Updates…" menu, automatic checks can be turned off in Settings → Updates). [Release notes](https://github.com/ecyshor/takepho.com/releases).
+- Free to download and explore — the sample library in the app or the [read-only demo](https://takepho.com/demo/). Importing your own Takeout needs a plan (see Pricing).
+
+## Pricing
+
+- **Lifetime licence** — one-time USD 25: import your Takeout manually; importing a newer export rebuilds the library with your edits (hidden photos, trip names/notes, homes, people) kept; all app updates included.
+- **Yearly subscription** — same price per year: everything in Lifetime + automatic processing (folder watcher imports new exports as they land, incremental imports of newer exports without rebuild, contributors such as a partner's Takeout). The first paid year includes the Lifetime licence — if you cancel, you keep it.
+- Prices include taxes; the currency is picked from your country at checkout: USD 25 (US and rest of the world), EUR 20 (Europe), GBP 20 (UK), CHF 20 (Switzerland and Liechtenstein). No photo limits, no tiers; updates are free for everyone.
+- Sign in with Google or Apple at account.takepho.com (from the app: Settings → Account); one account covers 2 Macs. The app works offline on a signed entitlement, refreshed about weekly (internet at least once a month).
+- Payments are handled by Stripe Managed Payments with Link (a Stripe company) as merchant of record: Link sells the plan, charges your card, collects and remits VAT/sales tax, sends the receipt, and appears on your statement as LINK.COM* ("Sold through Link"); manage or cancel the subscription in Link's portal (the app's "Manage subscription" button).
 
 ## What you can do with your Google Photos Takeout
 
 - [Google Photos Takeout viewer — browse your export as a timeline](https://takepho.com/google-photos-takeout/): read the .zip/.tgz archives in place, get the real capture dates and GPS from the JSON sidecar files, and browse trips, places and routes on a map.
 - [See your Google Photos on your Strava activities](https://takepho.com/google-photos-strava/): sync activities over the Strava API and match your Takeout photos to each activity by capture time, placed along the GPS track ("km 12.3 · 10:42").
 - [Move your Google Photos to Proton Photos](https://takepho.com/google-photos-to-proton-photos/): import the Google Photos part of your Takeout into Proton Photos (Proton Drive) in full original quality — albums or trip albums, with capture date, GPS, description, favourite and people written losslessly into the files from the Takeout JSON sidecars, uploaded via Proton's official open-source Drive CLI.
-- [Home](https://takepho.com/): product overview, how it works, FAQ.
+- [Home](https://takepho.com/): download, pricing, how it works, FAQ.
 - [Read-only demo](https://takepho.com/demo/): try the app in your browser with a sample library.
 
 ## Status
 
-In development — early access by email (hello@takepho.com). A live read-only demo is at https://takepho.com/demo/.
+The macOS app (Apple silicon) is downloadable now — see Download above; a Windows version is planned. A live read-only demo is at https://takepho.com/demo/.
 
 ## Privacy
 
-Everything is processed locally on your computer; your photos are never uploaded to our servers. If you sign in with Google, access is read-only and limited to the files you pick. Full policy: https://takepho.com/privacy.html
+Everything is processed locally on your computer; your photos are never uploaded to our servers. If you sign in with Google, access is read-only and limited to the files you pick. The account service (account.takepho.com, hosted on Hetzner in Germany) stores only your sign-in identity, your Stripe purchase records (no card data) and your registered Macs (device id, Mac name, last seen); it is backed up nightly (14 days). Full policy: https://takepho.com/privacy.html
 
 ## Contact
 
 - hello@takepho.com
 
-## Source code
+## Releases and site source
 
-- https://github.com/ecyshor/takepho
+- https://github.com/ecyshor/takepho.com — app releases (DMG + Sparkle update zip + appcast.xml) and the source of this website
 
 ## Full content for LLMs
 

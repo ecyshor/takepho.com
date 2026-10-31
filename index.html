@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#6c7bff">
-  <meta name="description" content="Takeout Photo reads your Google Photos Takeout locally: browse it as a timeline, see your photos on your Strava routes, or move it to Proton Photos — all on your own computer.">
+  <meta name="description" content="Takeout Photo for Mac reads your Google Photos Takeout locally: a private timeline of trips and places, your photos on your Strava routes, or moved to Proton Photos — all on your own computer. Free to download; importing your own Takeout needs a plan.">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <title>Takeout Photo — Google Photos Takeout timeline, Strava photo map &amp; Proton Photos import</title>
+  <title>Takeout Photo for Mac — Google Photos Takeout timeline, Strava photo map &amp; Proton Photos import</title>
   <link rel="canonical" href="https://takepho.com/">
 
-  <meta property="og:title" content="Takeout Photo — Google Photos Takeout timeline, Strava photo map & Proton Photos import">
-  <meta property="og:description" content="Takeout Photo reads your Google Photos Takeout locally: browse it as a timeline, see your photos on your Strava routes, or move it to Proton Photos — all on your own computer.">
+  <meta property="og:title" content="Takeout Photo for Mac — Google Photos Takeout timeline, Strava photo map & Proton Photos import">
+  <meta property="og:description" content="Takeout Photo for Mac reads your Google Photos Takeout locally: a private timeline of trips and places, your photos on your Strava routes, or moved to Proton Photos — all on your own computer. Free to download; importing your own Takeout needs a plan.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://takepho.com/">
   <meta property="og:site_name" content="Takeout Photo">
@@ -19,8 +19,8 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Takeout Photo — your Google Photos Takeout as a timeline, on your Strava routes, or moved to Proton Photos">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Takeout Photo — Google Photos Takeout timeline, Strava photo map & Proton Photos import">
-  <meta name="twitter:description" content="Takeout Photo reads your Google Photos Takeout locally: browse it as a timeline, see your photos on your Strava routes, or move it to Proton Photos — all on your own computer.">
+  <meta name="twitter:title" content="Takeout Photo for Mac — Google Photos Takeout timeline, Strava photo map & Proton Photos import">
+  <meta name="twitter:description" content="Takeout Photo for Mac reads your Google Photos Takeout locally: a private timeline of trips and places, your photos on your Strava routes, or moved to Proton Photos — all on your own computer. Free to download; importing your own Takeout needs a plan.">
   <meta name="twitter:image" content="https://takepho.com/og-image.png">
 
   <link rel="stylesheet" href="/style.css">
@@ -54,9 +54,26 @@
       "@id": "https://takepho.com/#app",
       "name": "Takeout Photo",
       "url": "https://takepho.com/",
-      "description": "A self-hosted app that reads your Google Takeout export on your own computer: a private photo timeline with trips, places and maps, plus apps to see your Google Photos on your Strava activities and to move them to Proton Photos. Everything is processed locally; photos are never uploaded to our servers.",
+      "description": "A desktop app for Mac (Apple silicon, macOS 12 or later) that reads your Google Takeout export on your own computer: a private photo timeline with trips, places and maps, plus apps to see your Google Photos on your Strava activities and to move them to Proton Photos. Everything is processed locally; photos are never uploaded to our servers.",
       "applicationCategory": "MultimediaApplication",
-      "operatingSystem": "Linux, macOS, Windows (Docker)",
+      "operatingSystem": "macOS 12+ (Apple silicon)",
+      "downloadUrl": "https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Lifetime licence",
+          "price": "25.00",
+          "priceCurrency": "USD",
+          "description": "One-time payment, taxes included. Regional prices: EUR 20 in Europe, GBP 20 in the UK, CHF 20 in Switzerland and Liechtenstein — the currency is picked from your country at checkout."
+        },
+        {
+          "@type": "Offer",
+          "name": "Automatic processing (yearly subscription)",
+          "price": "25.00",
+          "priceCurrency": "USD",
+          "description": "Same price per year, taxes included, with the same regional prices as the Lifetime licence (EUR 20 / GBP 20 / CHF 20). The first paid year includes the Lifetime licence."
+        }
+      ],
       "featureList": [
         "Reads Google Takeout archives (.zip and .tgz) in place without unpacking them, from a local folder, a Google Drive link, or read-only Google sign-in",
         "Reads the Google Photos JSON sidecar files, so capture dates, GPS locations and descriptions are right",
@@ -78,7 +95,31 @@
           "name": "Is it a web app?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No — it runs on your own computer. A desktop app for macOS and Windows is planned. Your photos never leave your machine."
+            "text": "No — it's a desktop app for Mac. A Windows version is planned. Your photos never leave your machine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Macs does it run on?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Apple silicon (arm64) Macs running macOS 12 (Monterey) or later. The app is signed with an Apple Developer ID and notarized by Apple."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need an account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — the app is free to download and explore (the sample library in the app, or the web demo). Importing your own Takeout needs a plan: sign in with Google or Apple at account.takepho.com from the app (Settings → Account). One account covers 2 Macs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The app keeps a signed entitlement on your Mac and refreshes it about weekly, so it needs internet at least once a month."
           }
         },
         {
@@ -126,7 +167,23 @@
           "name": "Can I add someone else's Takeout, like my partner's?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes — other people's Takeouts can be added, so their photos attach to the trips you shared."
+            "text": "Yes — with the yearly plan you can add contributors (other people's Takeouts, e.g. a partner's), so their photos attach to the trips you shared."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens when the yearly plan ends?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You keep the Lifetime licence — the first paid year includes it. Manual imports keep working forever, and importing a newer export still rebuilds your library with your edits kept. The automatic-processing features (folder watcher, incremental imports of newer exports, new contributors) stop while the subscription is inactive; existing contributors stay visible. You can re-subscribe any time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I cancel or get a refund?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cancel any time in Link's subscription portal — the app's \"Manage subscription\" button opens it — and the plan runs to the end of the paid year. Payments and refunds are handled by Link (Stripe's merchant of record): contact us at hello@takepho.com and we'll sort it out."
           }
         }
       ]
@@ -147,11 +204,12 @@
         <img class="hero-logo" src="/favicon.svg" alt="Takeout Photo logo" width="96" height="96">
         <h1>Get your Google data out — and actually use it.</h1>
         <p class="subtitle">Takeout Photo turns your Google Photos Takeout into a private timeline of your life — trips detected, places named, the best shots picked — and can put your photos on your Strava activities or move them to Proton Photos with albums and dates intact. All on your own computer.</p>
-        <span class="status-badge">In development — coming soon</span>
+        <span class="status-badge">Mac app — Apple silicon, macOS 12 or later</span>
         <div class="hero-actions">
-          <a href="mailto:hello@takepho.com?subject=Takeout%20Photo%20early%20access" class="btn">Ask for early access</a>
+          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download for Mac</a>
           <a href="/demo/" class="btn btn-secondary">Try the demo</a>
         </div>
+        <p class="hero-note">Free to download and explore — importing your own Takeout needs a plan (<a href="#pricing">pricing</a>). Requires macOS 12 (Monterey) or later on an Apple silicon (arm64) Mac. Signed with an Apple Developer ID and notarized by Apple. <a href="https://github.com/ecyshor/takepho.com/releases">Release notes on GitHub</a>.</p>
       </section>
 
       <!-- How it works -->
@@ -173,6 +231,54 @@
             <p>Browse your timeline: home periods, day trips and holidays, each with a map and an AI-curated preview. Everything stays on your computer.</p>
           </div>
         </div>
+      </section>
+
+      <!-- Pricing -->
+      <section class="section" id="pricing">
+        <div class="section-header">
+          <h2>Pricing</h2>
+          <p>Free to download and explore — the sample library in the app and the demo work without an account. Importing your own Takeout needs a plan. No photo limits, no tiers; updates are free for everyone.</p>
+        </div>
+        <div class="plans">
+          <div class="plan">
+            <h3>Lifetime</h3>
+            <p class="plan-price">USD 25 <span class="plan-price-note">one-time</span></p>
+            <ul>
+              <li>Import your Takeout manually — from a folder on disk, a Google Drive link, or read-only Google sign-in.</li>
+              <li>Importing a newer Takeout export rebuilds the library from it, and your edits — hidden photos, trip names and notes, homes, people — are kept.</li>
+              <li>All app updates included.</li>
+            </ul>
+          </div>
+          <div class="plan plan-featured">
+            <h3>Yearly</h3>
+            <p class="plan-price">USD 25 <span class="plan-price-note">per year</span></p>
+            <ul>
+              <li>Everything in Lifetime.</li>
+              <li>Automatic processing: the folder watcher imports new exports as they land, newer exports import incrementally (no rebuild), and you can add contributors — other people's Takeouts, e.g. a partner's.</li>
+              <li>The first paid year includes the Lifetime licence: if you cancel, you keep it.</li>
+            </ul>
+          </div>
+        </div>
+        <table class="price-table">
+          <caption>Prices include taxes. The currency is picked from your country at checkout.</caption>
+          <thead>
+            <tr><th scope="col">Where you are</th><th scope="col">Lifetime (one-time)</th><th scope="col">Yearly (per year)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>United States and rest of the world</td><td>USD 25</td><td>USD 25</td></tr>
+            <tr><td>Europe</td><td>EUR 20</td><td>EUR 20</td></tr>
+            <tr><td>United Kingdom</td><td>GBP 20</td><td>GBP 20</td></tr>
+            <tr><td>Switzerland and Liechtenstein</td><td>CHF 20</td><td>CHF 20</td></tr>
+          </tbody>
+        </table>
+        <p>One account covers <strong>2 Macs</strong> — remove one in the app (Settings → Account) to move the plan to another Mac.</p>
+        <h3>How to buy</h3>
+        <ol>
+          <li>Download the app and open it — you can explore the sample library for free.</li>
+          <li>Go to Settings → Account and sign in with Google or Apple (account.takepho.com).</li>
+          <li>Choose a plan and pay at checkout.</li>
+        </ol>
+        <p>Payments are processed with <strong>Stripe Managed Payments</strong>, where <strong>Link (a Stripe company) is the merchant of record</strong>: Link sells you the plan, charges your card, collects and remits VAT/sales tax, sends the receipt, and appears on your card statement as <code>LINK.COM*</code>. Purchases show as "Sold through Link" and Link's terms of sale apply at checkout. You can manage or cancel the subscription any time in <a href="https://link.com">Link's customer portal</a> — the app's "Manage subscription" button opens it.</p>
       </section>
 
       <!-- Use cases -->
@@ -225,8 +331,16 @@
           </div>
           <div class="feature">
             <h3>New exports merge in</h3>
-            <p>Scheduled Takeout exports are picked up and merged automatically, without duplicating photos you already have.</p>
+            <p>With the yearly plan, scheduled Takeout exports are picked up and merged automatically — incrementally, without duplicating photos you already have. With Lifetime you re-import a newer export manually and your edits are kept.</p>
           </div>
+        </div>
+      </section>
+
+      <!-- Updates -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Updates</h2>
+          <p>Every release is signed with an Apple Developer ID and notarized by Apple. The app updates itself: use "Check for Updates…" in the app menu, or let it check automatically — you can turn automatic checks off in Settings → Updates. Updates are free for everyone, no plan needed. <a href="https://github.com/ecyshor/takepho.com/releases">Release notes on GitHub</a>.</p>
         </div>
       </section>
 
@@ -246,7 +360,19 @@
         </div>
         <details class="faq-item">
           <summary>Is it a web app?</summary>
-          <p class="faq-answer">No — it runs on your own computer. A desktop app for macOS and Windows is planned. Your photos never leave your machine.</p>
+          <p class="faq-answer">No — it's a desktop app for Mac. A Windows version is planned. Your photos never leave your machine.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Which Macs does it run on?</summary>
+          <p class="faq-answer">Apple silicon (arm64) Macs running macOS 12 (Monterey) or later. The app is signed with an Apple Developer ID and notarized by Apple.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need an account?</summary>
+          <p class="faq-answer">No — the app is free to download and explore (the sample library in the app, or the <a href="/demo/">web demo</a>). Importing your own Takeout needs a plan: sign in with Google or Apple at account.takepho.com from the app (Settings → Account). One account covers 2 Macs.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does it work offline?</summary>
+          <p class="faq-answer">Yes. The app keeps a signed entitlement on your Mac and refreshes it about weekly, so it needs internet at least once a month.</p>
         </details>
         <details class="faq-item">
           <summary>Does it need my Google password?</summary>
@@ -270,7 +396,15 @@
         </details>
         <details class="faq-item">
           <summary>Can I add someone else's Takeout, like my partner's?</summary>
-          <p class="faq-answer">Yes — other people's Takeouts can be added, so their photos attach to the trips you shared.</p>
+          <p class="faq-answer">Yes — with the yearly plan you can add contributors (other people's Takeouts, e.g. a partner's), so their photos attach to the trips you shared.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What happens when the yearly plan ends?</summary>
+          <p class="faq-answer">You keep the Lifetime licence — the first paid year includes it. Manual imports keep working forever, and importing a newer export still rebuilds your library with your edits kept. The automatic-processing features (folder watcher, incremental imports of newer exports, new contributors) stop while the subscription is inactive; existing contributors stay visible. You can re-subscribe any time.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I cancel or get a refund?</summary>
+          <p class="faq-answer">Cancel any time in Link's subscription portal — the app's "Manage subscription" button opens it — and the plan runs to the end of the paid year. Payments and refunds are handled by Link (Stripe's merchant of record): <a href="mailto:hello@takepho.com">contact us</a> and we'll sort it out.</p>
         </details>
       </section>
     </div>
@@ -280,6 +414,7 @@
     <div class="footer-content">
       <div>&copy; 2026 Takeout Photo</div>
       <div class="footer-links">
+        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download for Mac</a>
         <a href="/google-photos-takeout/">Takeout viewer</a>
         <a href="/google-photos-strava/">Photos on Strava</a>
         <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>
