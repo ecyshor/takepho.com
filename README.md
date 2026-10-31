@@ -10,6 +10,7 @@ Takeout Photo is a desktop app that turns your Google Takeout export into a priv
 
 - `favicon.svg` — the Takeout Photo logo: a white takeout box with a photo (sun + mountains) on its front, on a rounded indigo→violet gradient tile. It is the same file as the app's `common/frontend/public/favicon.svg` in [ecyshor/takepho](https://github.com/ecyshor/takepho). The site uses it as the favicon, the header brand icon, and the hero logo on the home page.
 - `apple-touch-icon.png` — 180×180 px raster version of the logo, used as the Apple touch icon for iOS home-screen bookmarks.
+- `demo/` — the static, read-only demo of the app (takepho.com/demo, linked from the hero's "Try the demo" button): the app's frontend built in demo mode plus a JSON/image snapshot of its API for the made-up sample library (photos from Wikimedia Commons, credited in the app). Generated, do not edit by hand — rebuild it from the app repo with `scripts/run_python.sh scripts/build_demo.py --out ../takepho.com/demo` (it replaces the folder's contents).
 
 ## Analytics
 

@@ -183,6 +183,13 @@ a:hover {
   padding: 48px 0;
 }
 
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
 .hero-logo {
   width: 96px;
   height: 96px;
