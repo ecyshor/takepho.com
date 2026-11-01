@@ -46,7 +46,7 @@ body:
       options:
         - Takeout import / ingestion
         - Photos timeline, trips, map
-        - Activities (Strava, Komoot, ...)
+        - Activities (Strava, Komoot, Garmin Connect)
         - Sign-in, account or licence / purchase
         - Download, install or auto-update
         - Other

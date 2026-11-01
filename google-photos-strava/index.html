@@ -5,23 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#F6F7FB" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#12152A" media="(prefers-color-scheme: dark)">
-  <meta name="description" content="Match your Google Photos from a Takeout export to your Strava activities by capture time and see every photo placed along the GPS track, on your own computer.">
+  <meta name="description" content="Match your Google Photos from a Takeout export to your Strava, Komoot or Garmin Connect activities by capture time and see every photo placed along the GPS track, on your own computer.">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <title>See your Google Photos on your Strava activities | Takeout Photo</title>
+  <title>See your Google Photos on your Strava, Komoot or Garmin activities | Takeout Photo</title>
   <link rel="canonical" href="https://takepho.com/google-photos-strava/">
 
-  <meta property="og:title" content="See your Google Photos on your Strava activities | Takeout Photo">
-  <meta property="og:description" content="Match your Google Photos from a Takeout export to your Strava activities by capture time and see every photo placed along the GPS track, on your own computer.">
+  <meta property="og:title" content="See your Google Photos on your Strava, Komoot or Garmin activities | Takeout Photo">
+  <meta property="og:description" content="Match your Google Photos from a Takeout export to your Strava, Komoot or Garmin Connect activities by capture time and see every photo placed along the GPS track, on your own computer.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://takepho.com/google-photos-strava/">
   <meta property="og:site_name" content="Takeout Photo">
   <meta property="og:image" content="https://takepho.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Takeout Photo: your Google Photos Takeout as a timeline, on your Strava routes, or moved to Proton Photos">
+  <meta property="og:image:alt" content="Takeout Photo: your Google Photos Takeout as a timeline, on your Strava, Komoot or Garmin routes, or moved to Proton Photos">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="See your Google Photos on your Strava activities | Takeout Photo">
-  <meta name="twitter:description" content="Match your Google Photos from a Takeout export to your Strava activities by capture time and see every photo placed along the GPS track, on your own computer.">
+  <meta name="twitter:title" content="See your Google Photos on your Strava, Komoot or Garmin activities | Takeout Photo">
+  <meta name="twitter:description" content="Match your Google Photos from a Takeout export to your Strava, Komoot or Garmin Connect activities by capture time and see every photo placed along the GPS track, on your own computer.">
   <meta name="twitter:image" content="https://takepho.com/og-image.png">
 
   <link rel="stylesheet" href="/style.css">
@@ -36,8 +36,8 @@
       "@type": "WebPage",
       "@id": "https://takepho.com/google-photos-strava/#page",
       "url": "https://takepho.com/google-photos-strava/",
-      "name": "See your Google Photos on your Strava activities | Takeout Photo",
-      "description": "Match your Google Photos from a Takeout export to your Strava activities by capture time and see every photo placed along the GPS track, on your own computer.",
+      "name": "See your Google Photos on your Strava, Komoot or Garmin activities | Takeout Photo",
+      "description": "Match your Google Photos from a Takeout export to your Strava, Komoot or Garmin Connect activities by capture time and see every photo placed along the GPS track, on your own computer.",
       "isPartOf": {
         "@id": "https://takepho.com/#website"
       },
@@ -46,6 +46,16 @@
           "@type": "SoftwareApplication",
           "name": "Strava",
           "url": "https://www.strava.com/"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Komoot",
+          "url": "https://www.komoot.com/"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Garmin Connect",
+          "url": "https://connect.garmin.com/"
         },
         {
           "@type": "SoftwareApplication",
@@ -78,7 +88,7 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "See your Google Photos on your Strava activities",
+          "name": "See your Google Photos on your Strava, Komoot or Garmin activities",
           "item": "https://takepho.com/google-photos-strava/"
         }
       ]
@@ -92,23 +102,31 @@
           "name": "Do I need to create my own Strava API application?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Strava requires every app to use its own free API application; the Takeout Photo app includes a step-by-step guide for creating one and authorizing it via OAuth."
+            "text": "Yes, for Strava. Strava requires every app to use its own free API application; the Takeout Photo app includes a step-by-step guide for creating one and authorizing it via OAuth. Komoot and Garmin Connect do not need this: you just sign in with your own login."
           }
         },
         {
           "@type": "Question",
-          "name": "How are my photos matched to a Strava activity?",
+          "name": "Does it work with Komoot or Garmin Connect too?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "By capture time. Each Google Photo taken while the activity was recorded is placed along the activity's GPS track at the point matching its time (for example \"km 12.3 · 10:42\")."
+            "text": "Yes. The Activities app also syncs your Komoot activities (sign in with your Komoot login) and your Garmin Connect activities (email and password, plus an MFA code if you have multi-factor authentication enabled), over their unofficial APIs. Matching works the same way, and activities from all providers are shown together and de-duplicated."
           }
         },
         {
           "@type": "Question",
-          "name": "Does it upload my photos to Strava?",
+          "name": "How are my photos matched to an activity?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. The app works locally and read-only: it shows the photos you already uploaded to Strava as well, and hides duplicates of the same photos from your Takeout so nothing appears twice."
+            "text": "By capture time. Each Google Photo taken while the activity was recorded — on Strava, Komoot or Garmin Connect — is placed along the activity's GPS track at the point matching its time (for example \"km 12.3 · 10:42\")."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it upload my photos to Strava, Komoot or Garmin Connect?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The app works locally and never uploads your photos to any of them: for Strava it shows the photos you already uploaded to Strava as well, and hides duplicates of the same photos from your Takeout so nothing appears twice."
           }
         },
         {
@@ -121,10 +139,10 @@
         },
         {
           "@type": "Question",
-          "name": "Is my Strava data kept private?",
+          "name": "Is my activity data kept private?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Activities are read over the Strava API with read-only access, everything is processed on your own computer, and your photos are never uploaded to our servers or to Strava by the app."
+            "text": "Yes. Strava activities are read over the official Strava API with read-only access; Komoot and Garmin Connect are contacted directly from your computer with your own login (unofficial APIs), and their credentials and tokens stay on your device. Everything is processed on your own computer, and your photos are never uploaded to our servers or to the activity providers by the app."
           }
         }
       ]
@@ -150,7 +168,7 @@
       <article>
         <section class="hero">
           <h1>See your Google Photos on your Strava activities</h1>
-          <p class="subtitle">Your photos live in Google Photos and your routes live in Strava, and nothing connects the two. Takeout Photo's Strava app links them on your own computer: it reads your Google Photos from a Takeout export, syncs your activities from Strava over the official Strava API, and matches each photo to an activity by capture time, placing it along the GPS track.</p>
+          <p class="subtitle">Your photos live in Google Photos and your routes live in Strava, and nothing connects the two. Takeout Photo's Activities app links them on your own computer: it reads your Google Photos from a Takeout export, syncs your activities from Strava (official API, OAuth), Komoot or Garmin Connect (your own login), and matches each photo to an activity by capture time, placing it along the GPS track.</p>
           <span class="status-badge">Mac app: Apple silicon, macOS 12 or later</span>
           <div class="hero-actions">
             <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download for Mac</a>
@@ -161,13 +179,18 @@
 
         <section class="section">
           <h2>Why photos and routes end up in two places</h2>
-          <p>You take photos with your phone, so they end up in Google Photos. You record your runs, rides and hikes with Strava, so the routes end up there. Strava shows the photos <em>you uploaded to Strava</em>, but the rest of your camera roll (the photos from your Google Photos library) stays invisible on the activity. Takeout Photo closes that gap locally, without uploading anything anywhere.</p>
+          <p>You take photos with your phone, so they end up in Google Photos. You record your runs, rides and hikes with Strava, Komoot or Garmin Connect, so the routes end up there. Your activity app shows the photos <em>you uploaded to it</em> (Strava shows the ones you uploaded to Strava), but the rest of your camera roll (the photos from your Google Photos library) stays invisible on the activity. Takeout Photo closes that gap locally, without uploading anything anywhere.</p>
         </section>
 
         <section class="section">
           <h2>How the matching works</h2>
-          <p>The Strava app connects to your Strava account over the Strava API using OAuth. You create your own free Strava API application (the app includes a step-by-step guide) and authorize Takeout Photo, which then syncs your activities. For each activity, your Google Photos from the Takeout are matched by capture time: every photo taken during the activity is placed at the point along the GPS track where it was taken, shown as "km 12.3 · 10:42".</p>
+          <p>The Activities app connects to your account: with Strava it uses the official Strava API and OAuth — you create your own free Strava API application (the app includes a step-by-step guide) and authorize Takeout Photo; with Komoot or Garmin Connect you sign in with your own login (Komoot login; Garmin Connect email and password, plus an MFA code if you have one enabled) over their unofficial APIs. The app then syncs your activities from every connected provider; activities that appear in more than one service are de-duplicated. For each activity, your Google Photos from the Takeout are matched by capture time: every photo taken during the activity is placed at the point along the GPS track where it was taken, shown as "km 12.3 · 10:42".</p>
           <p>Because the capture time comes from the Takeout JSON sidecars (not the file timestamp), the match is based on when the photo was really taken.</p>
+        </section>
+
+        <section class="section">
+          <h2>Komoot and Garmin Connect work the same way</h2>
+          <p>The Activities app is not Strava-only. Sign in with your Komoot login, or with your Garmin Connect email and password (plus an MFA code if you have multi-factor authentication enabled), and your Komoot or Garmin Connect activities sync exactly like Strava ones: matched to your Takeout photos by capture time and placed along the GPS track (GPS photos by distance to the track, photos without GPS interpolated between their neighbours), shown together with your Strava activities on one map of all your routes, in one activities list, with stats and a heatmap, and de-duplicated when the same activity appears in more than one service. Komoot and Garmin Connect use unofficial APIs; Takeout Photo is not affiliated with or endorsed by Komoot or Garmin.</p>
         </section>
 
         <section class="section">
@@ -178,24 +201,30 @@
             <li><strong>Activity pages</strong> with the route, the best photos for that activity, and a photo strip.</li>
             <li><strong>Stats per year</strong>, and start/end place names for each activity.</li>
             <li><strong>Photos you already uploaded to Strava</strong> are shown too; duplicates of your Takeout photos are hidden so nothing appears twice.</li>
-            <li><strong>A link back to Strava</strong> on each activity, plus an optional Strava embed.</li>
+            <li><strong>A link back to the activity</strong> on its provider (Strava, Komoot or Garmin Connect), plus an optional embed where the provider offers one.</li>
             <li>Activities are linked to the <strong>trips in the Photos app</strong>, so a weekend ride and the holiday around it connect.</li>
           </ul>
         </section>
 
         <section class="section">
-          <h2>How to connect your Strava account</h2>
+          <h2>How to connect your activity accounts</h2>
           <ol>
             <li>Export your Google Photos with <a href="https://takeout.google.com">Google Takeout</a> (see <a href="/google-photos-takeout/">how to export and browse a Takeout</a>).</li>
             <li><a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download the Mac app</a> (Apple silicon, macOS 12 or later) and point it at the archives; free to explore the sample library; importing your own Takeout needs a plan (<a href="/">pricing</a>).</li>
-            <li>Create your own free Strava API application. A step-by-step guide is built into the app.</li>
-            <li>Authorize Takeout Photo to read your Strava activities via OAuth and start the sync.</li>
+            <li>Connect a provider in the Activities app:
+              <ul>
+                <li><strong>Strava:</strong> create your own free Strava API application (a step-by-step guide is built into the app) and authorize Takeout Photo to read your activities via OAuth.</li>
+                <li><strong>Komoot:</strong> sign in with your Komoot login.</li>
+                <li><strong>Garmin Connect:</strong> sign in with your Garmin email and password, and enter the MFA code if you have multi-factor authentication enabled.</li>
+              </ul>
+            </li>
+            <li>Start the sync.</li>
           </ol>
         </section>
 
         <section class="section">
           <h2>Privacy</h2>
-          <p>Everything is processed locally on your computer; your photos are never uploaded to our servers. The app uses your Strava data read-only: it reads activities and their GPS tracks, and does not modify your Strava account. See the <a href="/privacy.html">privacy policy</a>.</p>
+          <p>Everything is processed locally on your computer; your photos are never uploaded to our servers. For Strava the app reads activities and GPS tracks over the official API, read-only, and does not modify your Strava account. For Komoot and Garmin Connect the app talks directly from your computer to Komoot / Garmin with your own login (unofficial APIs); your credentials and tokens are sent only to Komoot / Garmin and stored only on your device — we never receive them. See the <a href="/privacy.html">privacy policy</a>.</p>
         </section>
 
         <section class="section faq">
@@ -204,23 +233,27 @@
           </div>
           <details class="faq-item">
             <summary>Do I need to create my own Strava API application?</summary>
-            <p class="faq-answer">Yes. Strava requires every app to use its own free API application; the Takeout Photo app includes a step-by-step guide for creating one and authorizing it via OAuth.</p>
+            <p class="faq-answer">Yes, for Strava. Strava requires every app to use its own free API application; the Takeout Photo app includes a step-by-step guide for creating one and authorizing it via OAuth. Komoot and Garmin Connect do not need this: you just sign in with your own login.</p>
           </details>
           <details class="faq-item">
-            <summary>How are my photos matched to a Strava activity?</summary>
-            <p class="faq-answer">By capture time. Each Google Photo taken while the activity was recorded is placed along the activity's GPS track at the point matching its time (for example "km 12.3 · 10:42").</p>
+            <summary>Does it work with Komoot or Garmin Connect too?</summary>
+            <p class="faq-answer">Yes. The Activities app also syncs your Komoot activities (sign in with your Komoot login) and your Garmin Connect activities (email and password, plus an MFA code if you have multi-factor authentication enabled), over their unofficial APIs. Matching works the same way, and activities from all providers are shown together and de-duplicated.</p>
           </details>
           <details class="faq-item">
-            <summary>Does it upload my photos to Strava?</summary>
-            <p class="faq-answer">No. The app works locally and read-only: it shows the photos you already uploaded to Strava as well, and hides duplicates of the same photos from your Takeout so nothing appears twice.</p>
+            <summary>How are my photos matched to an activity?</summary>
+            <p class="faq-answer">By capture time. Each Google Photo taken while the activity was recorded — on Strava, Komoot or Garmin Connect — is placed along the activity's GPS track at the point matching its time (for example "km 12.3 · 10:42").</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does it upload my photos to Strava, Komoot or Garmin Connect?</summary>
+            <p class="faq-answer">No. The app works locally and never uploads your photos to any of them: for Strava it shows the photos you already uploaded to Strava as well, and hides duplicates of the same photos from your Takeout so nothing appears twice.</p>
           </details>
           <details class="faq-item">
             <summary>Which activities can have photos?</summary>
             <p class="faq-answer">Any activity with a GPS track and a time range. The map colours routes by sport and you can filter by sport, year, country, or only activities with photos.</p>
           </details>
           <details class="faq-item">
-            <summary>Is my Strava data kept private?</summary>
-            <p class="faq-answer">Yes. Activities are read over the Strava API with read-only access, everything is processed on your own computer, and your photos are never uploaded to our servers or to Strava by the app.</p>
+            <summary>Is my activity data kept private?</summary>
+            <p class="faq-answer">Yes. Strava activities are read over the official Strava API with read-only access; Komoot and Garmin Connect are contacted directly from your computer with your own login (unofficial APIs), and their credentials and tokens stay on your device. Everything is processed on your own computer, and your photos are never uploaded to our servers or to the activity providers by the app.</p>
           </details>
         </section>
 
@@ -250,7 +283,7 @@
         <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download for Mac</a>
         <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">Download for Windows</a>
         <a href="/google-photos-takeout/">Takeout viewer</a>
-        <a href="/google-photos-strava/">Photos on Strava</a>
+        <a href="/google-photos-strava/">Photos on Strava, Komoot or Garmin</a>
         <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>
         <a href="/self-host/">Self-host (beta)</a>
         <a href="/privacy.html">Privacy</a>
@@ -259,7 +292,7 @@
       </div>
     </div>
     <div class="footer-notice">
-      Google, Google Photos, Google Drive and Google Takeout are trademarks of Google LLC. Strava is a trademark of Strava, Inc. Proton and Proton Photos are trademarks of Proton AG. Takeout Photo is not affiliated with or endorsed by Google, Strava or Proton.
+      Google, Google Photos, Google Drive and Google Takeout are trademarks of Google LLC. Strava is a trademark of Strava, Inc. Komoot is a trademark of komoot GmbH. Garmin and Garmin Connect are trademarks of Garmin Ltd. Proton and Proton Photos are trademarks of Proton AG. Takeout Photo is not affiliated with or endorsed by Google, Strava, Komoot, Garmin or Proton.
     </div>
   </footer>
 </body>

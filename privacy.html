@@ -18,7 +18,7 @@
   <meta property="og:image" content="https://takepho.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Takeout Photo: your Google Photos Takeout as a timeline, on your Strava routes, or moved to Proton Photos">
+  <meta property="og:image:alt" content="Takeout Photo: your Google Photos Takeout as a timeline, on your Strava, Komoot or Garmin routes, or moved to Proton Photos">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Privacy Policy: Takeout Photo">
   <meta name="twitter:description" content="Takeout Photo Privacy Policy. Effective date: 31 October 2026. We do not receive, store, or sell your photos, metadata, location data or Google account data. The account service stores only your sign-in identity, purchase records and registered Macs.">
@@ -55,6 +55,7 @@
         <section class="section">
           <h2>Data the app processes locally</h2>
           <p>The app processes your Google Takeout archives (photos, videos, and their metadata such as dates and GPS coordinates), optional Google Maps Timeline / location-history files you add, and the results it derives (trips, places, thumbnails, AI curation scores). This data is stored only in the app's data folder on your computer; you can delete it any time by deleting that folder or using the app's reset function.</p>
+          <p>The Activities app also reads your activities and GPS tracks from Strava (official API, OAuth with your own API application, read-only), Komoot and Garmin Connect (see "Third-party services the app contacts" below). Those activities and tracks are stored only in the app's data folder on your computer as well.</p>
         </section>
 
         <section class="section">
@@ -92,6 +93,8 @@
           <p>The app contacts the following third-party services:</p>
           <ul>
             <li><strong>Google:</strong> sign-in, and downloading the archives you picked or shared a Drive link to.</li>
+            <li><strong>Strava:</strong> the Activities app reads your activities and GPS tracks over the official Strava API, with OAuth using your own free API application, read-only. No photos are sent to Strava.</li>
+            <li><strong>Komoot and Garmin Connect:</strong> the Activities app talks directly from your computer to Komoot / Garmin with your own login (Komoot login; Garmin Connect email and password, plus an MFA code if you have multi-factor authentication enabled) over their unofficial APIs. Your Komoot / Garmin credentials and tokens are sent only to Komoot / Garmin and are stored only on your device; we never receive them. These integrations use unofficial APIs, and Takeout Photo is not affiliated with or endorsed by Komoot or Garmin.</li>
             <li><strong>account.takepho.com</strong> (our account service, hosted on Hetzner in Germany): sign-in with Google or Apple, buying a plan, and refreshing the signed entitlement about once a week. No photos are sent.</li>
             <li><strong>Stripe / Link checkout</strong>: buying a plan opens Stripe's Managed Payments checkout in your browser (Link is the merchant of record); the card details go to Stripe/Link only.</li>
             <li><strong>takepho.com/appcast.xml and GitHub release downloads</strong>: the app's update feed (Sparkle) and the update files themselves, hosted on this website and GitHub.</li>
@@ -135,7 +138,7 @@
         <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download for Mac</a>
         <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">Download for Windows</a>
         <a href="/google-photos-takeout/">Takeout viewer</a>
-        <a href="/google-photos-strava/">Photos on Strava</a>
+        <a href="/google-photos-strava/">Photos on Strava, Komoot or Garmin</a>
         <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>
         <a href="/self-host/">Self-host (beta)</a>
         <a href="/privacy.html">Privacy</a>
@@ -144,7 +147,7 @@
       </div>
     </div>
     <div class="footer-notice">
-      Google, Google Photos, Google Drive and Google Takeout are trademarks of Google LLC. Strava is a trademark of Strava, Inc. Proton and Proton Photos are trademarks of Proton AG. Takeout Photo is not affiliated with or endorsed by Google, Strava or Proton.
+      Google, Google Photos, Google Drive and Google Takeout are trademarks of Google LLC. Strava is a trademark of Strava, Inc. Komoot is a trademark of komoot GmbH. Garmin and Garmin Connect are trademarks of Garmin Ltd. Proton and Proton Photos are trademarks of Proton AG. Takeout Photo is not affiliated with or endorsed by Google, Strava, Komoot, Garmin or Proton.
     </div>
   </footer>
 </body>

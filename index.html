@@ -5,23 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#F6F7FB" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#12152A" media="(prefers-color-scheme: dark)">
-  <meta name="description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava activities, or a move to Proton Photos. Free to download; importing your own Takeout needs a plan.">
+  <meta name="description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos. Free to download; importing your own Takeout needs a plan.">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <title>Takeout Photo: turn your Google Takeout into apps for photos, Strava and Proton Photos</title>
+  <title>Takeout Photo: turn your Google Takeout into apps for photos, activities and Proton Photos</title>
   <link rel="canonical" href="https://takepho.com/">
 
-  <meta property="og:title" content="Takeout Photo: turn your Google Takeout into apps for photos, Strava and Proton Photos">
-  <meta property="og:description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava activities, or a move to Proton Photos. Free to download; importing your own Takeout needs a plan.">
+  <meta property="og:title" content="Takeout Photo: turn your Google Takeout into apps for photos, activities and Proton Photos">
+  <meta property="og:description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos. Free to download; importing your own Takeout needs a plan.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://takepho.com/">
   <meta property="og:site_name" content="Takeout Photo">
   <meta property="og:image" content="https://takepho.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Takeout Photo: your Google Takeout as a timeline, on your Strava routes, or moved to Proton Photos">
+  <meta property="og:image:alt" content="Takeout Photo: your Google Takeout as a timeline, on your Strava, Komoot or Garmin routes, or moved to Proton Photos">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Takeout Photo: turn your Google Takeout into apps for photos, Strava and Proton Photos">
-  <meta name="twitter:description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava activities, or a move to Proton Photos. Free to download; importing your own Takeout needs a plan.">
+  <meta name="twitter:title" content="Takeout Photo: turn your Google Takeout into apps for photos, activities and Proton Photos">
+  <meta name="twitter:description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos. Free to download; importing your own Takeout needs a plan.">
   <meta name="twitter:image" content="https://takepho.com/og-image.png">
 
   <link rel="stylesheet" href="/style.css">
@@ -48,14 +48,14 @@
       "@id": "https://takepho.com/#website",
       "name": "Takeout Photo",
       "url": "https://takepho.com/",
-      "description": "Takeout Photo reads your Google Photos Takeout locally on your Mac or Windows: browse it as a timeline, see your photos on your Strava routes, or move it to Proton Photos. There is also a Docker image for a NAS."
+      "description": "Takeout Photo reads your Google Photos Takeout locally on your Mac or Windows: browse it as a timeline, see your photos on your Strava, Komoot or Garmin routes, or move it to Proton Photos. There is also a Docker image for a NAS."
     },
     {
       "@type": "SoftwareApplication",
       "@id": "https://takepho.com/#app",
       "name": "Takeout Photo",
       "url": "https://takepho.com/",
-      "description": "A desktop app for Mac and Windows, plus a Docker image for a NAS, that reads your Google Takeout on your own computer: a private photo timeline with trips, places and maps, plus apps that put your photos on your Strava activities and move them to Proton Photos. Everything is processed locally; photos are never uploaded to our servers.",
+      "description": "A desktop app for Mac and Windows, plus a Docker image for a NAS, that reads your Google Takeout on your own computer: a private photo timeline with trips, places and maps, plus apps that put your photos on your Strava, Komoot or Garmin Connect activities and move them to Proton Photos. Everything is processed locally; photos are never uploaded to our servers.",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "macOS 12+ (Apple silicon), Windows 10/11 (64-bit), Docker (NAS)",
       "downloadUrl": "https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg",
@@ -81,7 +81,7 @@
         "Reads the JSON sidecar files for real capture dates, GPS and descriptions; handles libraries of hundreds of GB",
         "Newer exports merge in: incrementally on the yearly plan, rebuild with edits kept on Lifetime",
         "Photos timeline app: trips, places and routes on a map, with on-device AI curation",
-        "Strava app: photos matched to activities by capture time and placed along the GPS track",
+        "Activities app: photos matched to your Strava, Komoot or Garmin Connect activities by capture time and placed along the GPS track",
         "Proton Photos sync app: full original quality with albums and sidecar metadata written into the files",
         "Runs on macOS, Windows, or as a Docker container on a NAS; photos are never uploaded"
       ]
@@ -148,10 +148,10 @@
         },
         {
           "@type": "Question",
-          "name": "Can I see my Google Photos on my Strava activities?",
+          "name": "Can I see my Google Photos on my Strava, Komoot or Garmin activities?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The Strava app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track (\"km 12.3 · 10:42\"). See photos on your Strava activities."
+            "text": "Yes. The Activities app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track (\"km 12.3 · 10:42\"). It works with Strava, Komoot and Garmin Connect. See photos on your Strava activities."
           }
         },
         {
@@ -217,7 +217,7 @@
       <!-- Hero -->
       <section class="hero">
         <h1>Your Google Takeout, turned into apps you can use.</h1>
-        <p class="lead">Request a Google Photos export with Google Takeout, let Takeout Photo process the archives on your own computer, and open the apps your data supports: a photo timeline, your photos on Strava activities, or a move to Proton Photos.</p>
+        <p class="lead">Request a Google Photos export with Google Takeout, let Takeout Photo process the archives on your own computer, and open the apps your data supports: a photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos.</p>
         <div class="hero-actions">
           <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download for Mac</a>
           <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip" class="btn btn-secondary">Download for Windows</a>
@@ -276,7 +276,7 @@
             </svg>
             <ul class="flow-apps">
               <li><span class="app-dot" style="--hue:var(--app-photos)"></span> Photos timeline</li>
-              <li><span class="app-dot" style="--hue:var(--app-strava)"></span> Strava</li>
+              <li><span class="app-dot" style="--hue:var(--app-strava)"></span> Activities</li>
               <li><span class="app-dot" style="--hue:var(--app-sync)"></span> Proton Photos sync</li>
             </ul>
           </div>
@@ -312,10 +312,10 @@
 
         <div class="app-panel app-strava">
           <div>
-            <h3><span class="app-dot"></span> Strava</h3>
-            <p class="app-desc">See your Google Photos on your Strava activities.</p>
+            <h3><span class="app-dot"></span> Activities</h3>
+            <p class="app-desc">See your Google Photos on your Strava, Komoot and Garmin Connect activities.</p>
             <ul>
-              <li>Syncs your activities over the official Strava API with OAuth (your own free API app)</li>
+              <li>Syncs activities from Strava (official API, OAuth with your own free API app), Komoot and Garmin Connect (your own login); activities from all three are de-duplicated</li>
               <li>Matches each photo to an activity by capture time and places it along the GPS track ("km 12.3 · 10:42")</li>
               <li>A map of all your routes, coloured by sport, with filters for sport, year, country and photos</li>
               <li>Activity pages with the route, the best photos and a photo strip; stats per year</li>
@@ -325,7 +325,7 @@
             <p><a href="/google-photos-strava/">More about photos on your Strava activities</a></p>
           </div>
           <figure class="app-shot">
-            <img src="/img/apps/strava.webp" alt="Takeout Photo Strava app: the Lisbon riverside run with its GPS route on a map and the five matched photos" width="2400" height="1560" loading="lazy">
+            <img src="/img/apps/strava.webp" alt="Takeout Photo Activities app: the Lisbon riverside run with its GPS route on a map and the five matched photos" width="2400" height="1560" loading="lazy">
           </figure>
         </div>
 
@@ -476,8 +476,8 @@
           <p class="faq-answer">The file's own timestamp is often the export date; the real capture date and GPS live in the .json sidecar next to each photo. Takeout Photo reads those sidecars, so dates and places are right. See <a href="/google-photos-takeout/">browsing a Takeout as a timeline</a>.</p>
         </details>
         <details class="faq-item">
-          <summary>Can I see my Google Photos on my Strava activities?</summary>
-          <p class="faq-answer">Yes. The Strava app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track ("km 12.3 · 10:42"). See <a href="/google-photos-strava/">photos on your Strava activities</a>.</p>
+          <summary>Can I see my Google Photos on my Strava, Komoot or Garmin activities?</summary>
+          <p class="faq-answer">Yes. The Activities app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track ("km 12.3 · 10:42"). See <a href="/google-photos-strava/">photos on your Strava activities</a> — Komoot and Garmin Connect work the same way.</p>
         </details>
         <details class="faq-item">
           <summary>How do I move my Google Photos to Proton Photos?</summary>
@@ -510,7 +510,7 @@
         <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download for Mac</a>
         <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">Download for Windows</a>
         <a href="/google-photos-takeout/">Takeout viewer</a>
-        <a href="/google-photos-strava/">Photos on Strava</a>
+        <a href="/google-photos-strava/">Photos on Strava, Komoot or Garmin</a>
         <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>
         <a href="/self-host/">Self-host (beta)</a>
         <a href="privacy.html">Privacy</a>
@@ -519,7 +519,7 @@
       </div>
     </div>
     <div class="footer-notice">
-      Google, Google Photos, Google Drive and Google Takeout are trademarks of Google LLC. Strava is a trademark of Strava, Inc. Proton and Proton Photos are trademarks of Proton AG. Takeout Photo is not affiliated with or endorsed by Google, Strava or Proton.
+      Google, Google Photos, Google Drive and Google Takeout are trademarks of Google LLC. Strava is a trademark of Strava, Inc. Komoot is a trademark of komoot GmbH. Garmin and Garmin Connect are trademarks of Garmin Ltd. Proton and Proton Photos are trademarks of Proton AG. Takeout Photo is not affiliated with or endorsed by Google, Strava, Komoot, Garmin or Proton.
     </div>
   </footer>
 </body>

@@ -1,6 +1,6 @@
 # Takeout Photo
 
-> Takeout Photo is a desktop app for Mac and Windows that runs on your own computer and reads your Google Takeout export in place (.zip and .tgz archives, without unpacking them). It turns your Google Photos into a private timeline of trips, places and maps, matches your photos to your Strava activities along the GPS track, or moves them to Proton Photos with albums and metadata intact. A Docker image for a NAS (beta) runs it on your home network. Everything is processed locally; your photos are never uploaded to our servers.
+> Takeout Photo is a desktop app for Mac and Windows that runs on your own computer and reads your Google Takeout export in place (.zip and .tgz archives, without unpacking them). It turns your Google Photos into a private timeline of trips, places and maps, matches your photos to your Strava, Komoot or Garmin Connect activities along the GPS track, or moves them to Proton Photos with albums and metadata intact. A Docker image for a NAS (beta) runs it on your home network. Everything is processed locally; your photos are never uploaded to our servers.
 
 ## Download
 
@@ -11,7 +11,7 @@
 
 ## Self-hosting on a NAS (beta)
 
-- Run the same app and the same three apps (Photos timeline, Strava, Proton Photos sync) on your NAS or home server with Docker Compose, in your browser on your network: [Run Takeout Photo on a NAS with Docker Compose](https://takepho.com/self-host/).
+- Run the same app and the same three apps (Photos timeline, Activities, Proton Photos sync) on your NAS or home server with Docker Compose, in your browser on your network: [Run Takeout Photo on a NAS with Docker Compose](https://takepho.com/self-host/).
 - Image: `ghcr.io/ecyshor/takepho:latest` (amd64 and arm64); optional CUDA image `ghcr.io/ecyshor/takepho-cuda:latest` for an NVIDIA GPU. Requires Docker Engine with Compose v2.24+, an x86-64 or 64-bit ARM CPU and 4 GB RAM free for the container (8 GB recommended for big libraries).
 - Same plans and prices as the desktop app (see Pricing); the NAS counts as one of your account's 2 computers, and it needs internet at least once a month to refresh the licence.
 - Security: the app has no login of its own; keep it on your home network or behind a VPN or an authenticated reverse proxy, and never forward the port to the internet.
@@ -20,7 +20,7 @@
 
 1. Request your Takeout at [takeout.google.com](https://takeout.google.com): your export arrives as one or more archive files (takeout-001.zip, ...).
 2. Takeout Photo processes it on your computer: it reads .zip/.tgz archives in place without unpacking, from a folder, a Google Drive link, or read-only Google sign-in; it reads the JSON sidecars for the real dates, GPS and descriptions; it handles libraries of hundreds of GB; newer exports merge in (incrementally on the yearly plan, rebuild with edits kept on Lifetime). Your photos are never uploaded.
-3. Open your apps: the Photos timeline, Strava (photos on activities), Proton Photos sync. Each app appears for the data your export contains.
+3. Open your apps: the Photos timeline, Activities (photos on Strava, Komoot and Garmin Connect activities), Proton Photos sync. Each app appears for the data your export contains.
 
 ## Pricing
 
@@ -32,7 +32,7 @@
 ## What you can do with your Google Photos Takeout
 
 - [Google Photos Takeout viewer: browse your export as a timeline](https://takepho.com/google-photos-takeout/): read the .zip/.tgz archives in place, get the real capture dates and GPS from the JSON sidecar files, and browse trips, places and routes on a map.
-- [See your Google Photos on your Strava activities](https://takepho.com/google-photos-strava/): sync activities over the Strava API and match your Takeout photos to each activity by capture time, placed along the GPS track ("km 12.3 · 10:42").
+- [See your Google Photos on your Strava activities](https://takepho.com/google-photos-strava/): sync activities from Strava (official API, OAuth), Komoot or Garmin Connect (your own login) and match your Takeout photos to each activity by capture time, placed along the GPS track ("km 12.3 · 10:42").
 - [Move your Google Photos to Proton Photos](https://takepho.com/google-photos-to-proton-photos/): import the Google Photos part of your Takeout into Proton Photos (Proton Drive) in full original quality, with albums or trip albums, and capture date, GPS, description, favourite and people written losslessly into the files from the Takeout JSON sidecars, uploaded via Proton's official open-source Drive CLI.
 - Coming next: more sync destinations beyond Proton Photos, and support for Google Drive and Google Docs files from your Takeout (today only the Google Photos part is used).
 - [Home](https://takepho.com/): download, how it works, apps, platforms, pricing, FAQ.
