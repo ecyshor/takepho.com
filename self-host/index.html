@@ -128,6 +128,7 @@ volumes:
           <p>Then start it and open the app:</p>
           <pre><code>docker compose up -d
 # open http://&lt;nas-address&gt;:8080 in your browser</code></pre>
+          <p>The examples above use <code>:latest</code>, which always points at the newest release. Every release also ships a pinned tag — for example <code>ghcr.io/ecyshor/takepho:1.0.0</code> (and <code>ghcr.io/ecyshor/takepho-cuda:1.0.0</code> for the NVIDIA GPU image) — use a pinned tag in <code>image:</code> if you prefer to stay on a known version.</p>
         </section>
 
         <section class="section">
@@ -181,7 +182,7 @@ volumes:
       <div class="footer-links">
         <a href="/">Home</a>
         <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download for Mac</a>
-        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">Download for Windows</a>
+        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe">Download for Windows</a>
         <a href="/google-photos-takeout/">Takeout viewer</a>
         <a href="/google-photos-strava/">Photos on Strava, Komoot or Garmin</a>
         <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>

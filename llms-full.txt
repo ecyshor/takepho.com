@@ -8,9 +8,9 @@
 # Your Google Takeout, turned into apps you can use.
 Request a Google Photos export with Google Takeout, let Takeout Photo process the archives on your own computer, and open the apps your data supports: a photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos.
 
-[Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip) [Try the demo](https://takepho.com/demo/)
+[Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) (or the [portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip)) [Try the demo](https://takepho.com/demo/)
 
-Free to download. The Mac app is signed with an Apple Developer ID and notarized by Apple. The app also runs on a NAS with Docker (beta, see [self-hosting](https://takepho.com/self-host/)).
+Free to download. The Mac app is signed with an Apple Developer ID and notarized by Apple. The Windows app isn't code-signed yet: on the first launch Windows shows "Windows protected your PC" — click "More info", then "Run anyway". It doesn't update itself automatically yet (coming soon); new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases). The app also runs on a NAS with Docker (beta, see [self-hosting](https://takepho.com/self-host/)).
 
 ## From archive to apps
 
@@ -79,7 +79,7 @@ Move the Google Photos part of your Takeout to Proton Photos.
 The desktop app runs on your Mac or Windows. On a home server or NAS, run the Docker image with Docker Compose and open it in your browser on your network.
 
 - **Mac**: Apple silicon Mac with macOS 12 (Monterey) or later. Signed with an Apple Developer ID and notarized by Apple. [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg)
-- **Windows**: Windows 10 or 11, 64-bit. [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip)
+- **Windows**: Windows 10 or 11, 64-bit. [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) (or the [portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip)). Not code-signed yet, so the first launch shows "Windows protected your PC" — click "More info", then "Run anyway"; no automatic updates on Windows yet (coming soon), new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases).
 - **NAS (beta)**: a Docker container on your home server or NAS, started with Docker Compose. Open it in the browser on your network. Same plans as the desktop app. [Self-hosting guide](https://takepho.com/self-host/)
 
 ## Pricing
@@ -107,11 +107,12 @@ Everything is processed on your computer; your photos are never uploaded to our 
 [Read the full privacy policy](https://takepho.com/privacy.html)
 
 ## Updates
-The Mac app updates itself: use "Check for Updates…" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Updates are free for everyone, no plan needed. [Release notes on GitHub](https://github.com/ecyshor/takepho.com/releases).
+The Mac app updates itself: use "Check for Updates…" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). The Windows app doesn't update itself automatically yet (coming soon) — download new versions from the [releases page](https://github.com/ecyshor/takepho.com/releases). Updates are free for everyone, no plan needed. [Release notes on GitHub](https://github.com/ecyshor/takepho.com/releases).
 
 ## Frequently asked questions
 **Is it a web app?** No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos never leave your computer.
 **Which computers does it run on?** Mac: Apple silicon (arm64), macOS 12 (Monterey) or later; signed with an Apple Developer ID and notarized by Apple. Windows: Windows 10 or 11, 64-bit.
+**Why does Windows show "Windows protected your PC" when I open the app?** The Windows app isn't code-signed yet, so on the first launch Windows shows that warning. Click "More info", then "Run anyway" — the app is safe to run. New Windows versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases); automatic updates on Windows are coming soon.
 **Do I need an account?** No. The app is free to download and explore (the sample library in the app, or the [web demo](https://takepho.com/demo/)). Importing your own Takeout needs a plan: sign in with Google or Apple from the app (Settings → Account). One account covers 2 computers.
 **Does it work offline?** Yes. The app keeps a signed entitlement on your computer and refreshes it about weekly, so it needs internet at least once a month.
 **Does it need my Google password?** No. Sign-in happens on Google's own page, and you can revoke access any time at [myaccount.google.com/permissions](https://myaccount.google.com/permissions).
@@ -130,8 +131,8 @@ The Mac app updates itself: use "Check for Updates…" in the app menu, or let i
 > Source: https://takepho.com/google-photos-takeout/
 
 # Google Photos Takeout viewer: browse your export as a timeline
-A Google Photos Takeout is the set of .zip or .tgz archives you download from takeout.google.com: year folders and album folders full of photos and videos, plus a small .json file next to each photo that holds the real capture date, GPS location and description. Takeout Photo is a Mac app that reads those archives in place (without unzipping) and turns them into a private timeline of trips, places and maps on your own computer.
-Mac app: Apple silicon, macOS 12 or later  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Try the demo](https://takepho.com/demo/). Free to download and explore; importing your own Takeout needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year, [pricing](https://takepho.com/#pricing))
+A Google Photos Takeout is the set of .zip or .tgz archives you download from takeout.google.com: year folders and album folders full of photos and videos, plus a small .json file next to each photo that holds the real capture date, GPS location and description. Takeout Photo is a desktop app for Mac and Windows that reads those archives in place (without unzipping) and turns them into a private timeline of trips, places and maps on your own computer.
+Desktop app for Mac and Windows  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) [Try the demo](https://takepho.com/demo/). Free to download and explore; importing your own Takeout needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year, [pricing](https://takepho.com/#pricing))
 
 ## What is inside a Google Photos Takeout?
 When you export Google Photos with [Google Takeout](https://takeout.google.com), Google splits the export into one or more archive files (`.zip` or `.tgz`) chosen by the file size you pick (for example 50 GB per file). Inside the archives you get a `Takeout/Google Photos/` folder with one folder per year, your album folders, and your photos and videos.
@@ -142,7 +143,7 @@ If you unzip a Takeout and sort the photos by file date, many of them look wrong
 Takeout Photo reads the JSON sidecars, so dates and locations are right: each photo shows when it was taken and where, and towns and countries are named from the GPS coordinates by reverse geocoding.
 
 ## How Takeout Photo reads your Takeout in place
-You never have to unpack the archives. Download the [Mac app](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) (Apple silicon, macOS 12 or later) and point it at a local folder, a Google Drive link, or sign in with Google and pick the archive files in Google's picker; access is read-only and limited to the files you choose. The app reads the `.zip` and `.tgz` files directly, so libraries of hundreds of GB work without filling your disk twice. It's free to download and explore the sample library; importing your own Takeout needs a plan. See [pricing on the home page](https://takepho.com/#pricing).
+You never have to unpack the archives. Download the [app](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) (Mac: Apple silicon, macOS 12 or later; Windows: 10 or 11, 64-bit) and point it at a local folder, a Google Drive link, or sign in with Google and pick the archive files in Google's picker; access is read-only and limited to the files you choose. The app reads the `.zip` and `.tgz` files directly, so libraries of hundreds of GB work without filling your disk twice. It's free to download and explore the sample library; importing your own Takeout needs a plan. See [pricing on the home page](https://takepho.com/#pricing).
 If you schedule regular Takeout exports, new archives are picked up and merged automatically with the yearly plan (incrementally, without duplicating photos you already have). With the Lifetime plan you re-import a newer export manually, and your edits (hidden photos, trip names and notes, homes, people) are kept.
 
 ## Trips, places and maps
@@ -155,7 +156,7 @@ AI curation runs on your own machine: it groups near-duplicates and picks the be
 2. Deselect everything, then select only **Google Photos**. 
 3. Click "Next step", choose the delivery method (a download link by email, or directly to your Google Drive), the file type (`.zip` or `.tgz`) and the maximum file size. 
 4. Click "Create export" and wait for Google's email; large libraries can take hours or days. 
-5. Download the archives, or copy the Drive link, and point the Mac app at them.    
+5. Download the archives, or copy the Drive link, and point the app at them.    
 ## Private by design
 Everything is processed locally on your computer; your photos are never uploaded to our servers. Google access is read-only and only ever touches the files you pick. See the [privacy policy](https://takepho.com/privacy.html).
 
@@ -171,7 +172,7 @@ Everything is processed locally on your computer; your photos are never uploaded
 
 - [See your Google Photos on your Strava activities](https://takepho.com/google-photos-strava/): photos matched to each activity along the GPS track. 
 - [Move your Google Photos to Proton Photos](https://takepho.com/google-photos-to-proton-photos/): albums and metadata kept, full original quality. 
-- [Takeout Photo home](https://takepho.com/): the photo timeline app.   [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Try the demo](https://takepho.com/demo/)
+- [Takeout Photo home](https://takepho.com/): the photo timeline app.   [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) [Try the demo](https://takepho.com/demo/)
 
 ---
 
@@ -179,7 +180,7 @@ Everything is processed locally on your computer; your photos are never uploaded
 
 # See your Google Photos on your Strava activities
 Your photos live in Google Photos and your routes live in Strava, and nothing connects the two. Takeout Photo's Activities app links them on your own computer: it reads your Google Photos from a Takeout export, syncs your activities from Strava (official API, OAuth), Komoot or Garmin Connect (your own login), and matches each photo to an activity by capture time, placing it along the GPS track.
-Mac app: Apple silicon, macOS 12 or later  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Try the demo](https://takepho.com/demo/). Free to download and explore; importing your own Takeout needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year, [pricing](https://takepho.com/#pricing))
+Desktop app for Mac and Windows  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) [Try the demo](https://takepho.com/demo/). Free to download and explore; importing your own Takeout needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year, [pricing](https://takepho.com/#pricing))
 
 ## Why photos and routes end up in two places
 You take photos with your phone, so they end up in Google Photos. You record your runs, rides and hikes with Strava, Komoot or Garmin Connect, so the routes end up there. Your activity app shows the photos *you uploaded to it* (Strava shows the ones you uploaded to Strava), but the rest of your camera roll (the photos from your Google Photos library) stays invisible on the activity. Takeout Photo closes that gap locally, without uploading anything anywhere.
@@ -203,7 +204,7 @@ The Activities app is not Strava-only. Sign in with your Komoot login, or with y
 ## How to connect your activity accounts
 
 1. Export your Google Photos with [Google Takeout](https://takeout.google.com) (see [how to export and browse a Takeout](https://takepho.com/google-photos-takeout/)). 
-2. [Download the Mac app](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) (Apple silicon, macOS 12 or later) and point it at the archives; free to explore the sample library; importing your own Takeout needs a plan ([pricing](https://takepho.com/#pricing)). 
+2. [Download the app](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) (Mac: Apple silicon, macOS 12 or later; Windows: 10 or 11, 64-bit) and point it at the archives; free to explore the sample library; importing your own Takeout needs a plan ([pricing](https://takepho.com/#pricing)). 
 3. Connect a provider in the Activities app: **Strava** — create your own free Strava API application (a step-by-step guide is built into the app) and authorize Takeout Photo to read your activities via OAuth; **Komoot** — sign in with your Komoot login; **Garmin Connect** — sign in with your Garmin email and password, and enter the MFA code if you have multi-factor authentication enabled. 
 4. Start the sync.    
 ## Privacy
@@ -221,7 +222,7 @@ Everything is processed locally on your computer; your photos are never uploaded
 
 - [Google Photos Takeout viewer](https://takepho.com/google-photos-takeout/): browse the export itself as a timeline of trips and places. 
 - [Move your Google Photos to Proton Photos](https://takepho.com/google-photos-to-proton-photos/): keep albums and metadata when you leave Google. 
-- [Takeout Photo home](https://takepho.com/): the photo timeline app.   [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Try the demo](https://takepho.com/demo/)
+- [Takeout Photo home](https://takepho.com/): the photo timeline app.   [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) [Try the demo](https://takepho.com/demo/)
 
 ---
 
@@ -229,7 +230,7 @@ Everything is processed locally on your computer; your photos are never uploaded
 
 # Move your Google Photos to Proton Photos: with albums and metadata
 Uploading a plain Google Takeout to Proton Photos loses the album structure and often the dates and locations, because that metadata lives in the JSON sidecars next to each photo, not in the files themselves. Takeout Photo's sync app moves the Google Photos part of your Takeout into Proton Photos (Proton Drive) in full original quality (writing the capture date, GPS location, description, favourites and people from the sidecars losslessly into the files first) using Proton's official open-source Drive CLI.
-Mac app: Apple silicon, macOS 12 or later  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Try the demo](https://takepho.com/demo/). Free to download and explore; importing your own Takeout needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year, [pricing](https://takepho.com/#pricing))
+Desktop app for Mac and Windows  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) [Try the demo](https://takepho.com/demo/). Free to download and explore; importing your own Takeout needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year, [pricing](https://takepho.com/#pricing))
 
 ## Why a plain Takeout upload loses dates, places and albums
 In a Google Photos Takeout, the photo files themselves often carry the export date as their timestamp, and the real capture date, GPS coordinates, description, favourites and people are stored in the `.json` sidecar next to each photo. If you upload the archive as-is, Proton Photos sees the wrong dates and places, and the Google album structure does not become Proton albums. Takeout Photo reads the sidecars and fixes the files before uploading, so Proton shows the correct dates and places.
@@ -248,7 +249,7 @@ On Windows you can instead use an import folder for the Proton Drive Windows app
 ## Step by step
 
 1. Export Google Photos with [Google Takeout](https://takeout.google.com) (see [how to export a Takeout](https://takepho.com/google-photos-takeout/)). 
-2. [Download the Mac app](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) (Apple silicon, macOS 12 or later) and point it at the archives: a local folder, a Drive link, or sign in with Google and pick the files (read-only). Free to explore the sample library; importing your own Takeout needs a plan ([pricing](https://takepho.com/#pricing)). 
+2. [Download the app](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) (Mac: Apple silicon, macOS 12 or later; Windows: 10 or 11, 64-bit) and point it at the archives: a local folder, a Drive link, or sign in with Google and pick the files (read-only). Free to explore the sample library; importing your own Takeout needs a plan ([pricing](https://takepho.com/#pricing)). 
 3. In the sync app, choose the layout: "as in the Takeout" or "trip albums". 
 4. Let the app install the Proton Drive CLI (checksum-verified) and sign in to Proton in your browser. 
 5. Run the sync. You can re-run it any time; what is already in Proton is skipped and nothing is deleted.    
@@ -267,7 +268,7 @@ Other people's Takeouts (for example your partner's) are never synced to your Pr
 
 - [Google Photos Takeout viewer](https://takepho.com/google-photos-takeout/): browse the export itself as a timeline of trips and places. 
 - [See your Google Photos on your Strava activities](https://takepho.com/google-photos-strava/): photos matched to each activity along the GPS track. 
-- [Takeout Photo home](https://takepho.com/): the photo timeline app.   [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Try the demo](https://takepho.com/demo/)
+- [Takeout Photo home](https://takepho.com/): the photo timeline app.   [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) [Try the demo](https://takepho.com/demo/)
 
 ---
 
@@ -308,7 +309,7 @@ volumes:
   timeline-models: {}
 ```
 
-Then `docker compose up -d` and open `http://<nas-address>:8080` in your browser.
+Then `docker compose up -d` and open `http://<nas-address>:8080` in your browser. The example uses `:latest`, which always points at the newest release; every release also has a pinned tag, e.g. `ghcr.io/ecyshor/takepho:1.0.0` and `ghcr.io/ecyshor/takepho-cuda:1.0.0`.
 
 ## Folders
 - `/data`: the library database, thumbnails and indexes. Back this up.

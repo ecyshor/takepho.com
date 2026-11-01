@@ -5,14 +5,14 @@
 ## Download
 
 - [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg): the latest release as a .dmg. Apple silicon (arm64) only, macOS 12 (Monterey) or later, signed with an Apple Developer ID and notarized. The app updates itself (Sparkle; "Check for Updates…" menu, automatic checks can be turned off in Settings → Updates). [Release notes](https://github.com/ecyshor/takepho.com/releases).
-- [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip): the latest release as a .zip. Windows 10 or 11, 64-bit.
+- [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe): the latest release as an installer (.exe); a portable [TakeoutPhoto-windows-x64.zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip) is also available. Windows 10 or 11, 64-bit. The Windows app isn't code-signed yet, so the first launch shows "Windows protected your PC" — click "More info", then "Run anyway". It doesn't update itself automatically yet (coming soon); new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases).
 - Free to download and explore: the sample library in the app or the [read-only demo](https://takepho.com/demo/). Importing your own Takeout needs a plan (see Pricing).
 - Self-host on a NAS (beta): run the Docker image with Docker Compose on your home server or NAS and open it in the browser on your network. See [Self-hosting](https://takepho.com/self-host/).
 
 ## Self-hosting on a NAS (beta)
 
 - Run the same app and the same three apps (Photos timeline, Activities, Proton Photos sync) on your NAS or home server with Docker Compose, in your browser on your network: [Run Takeout Photo on a NAS with Docker Compose](https://takepho.com/self-host/).
-- Image: `ghcr.io/ecyshor/takepho:latest` (amd64 and arm64); optional CUDA image `ghcr.io/ecyshor/takepho-cuda:latest` for an NVIDIA GPU. Requires Docker Engine with Compose v2.24+, an x86-64 or 64-bit ARM CPU and 4 GB RAM free for the container (8 GB recommended for big libraries).
+- Image: `ghcr.io/ecyshor/takepho:latest` (amd64 and arm64); optional CUDA image `ghcr.io/ecyshor/takepho-cuda:latest` for an NVIDIA GPU. `:latest` always points at the newest release; every release also has a pinned tag, e.g. `ghcr.io/ecyshor/takepho:1.0.0` and `ghcr.io/ecyshor/takepho-cuda:1.0.0`. Requires Docker Engine with Compose v2.24+, an x86-64 or 64-bit ARM CPU and 4 GB RAM free for the container (8 GB recommended for big libraries).
 - Same plans and prices as the desktop app (see Pricing); the NAS counts as one of your account's 2 computers, and it needs internet at least once a month to refresh the licence.
 - Security: the app has no login of its own; keep it on your home network or behind a VPN or an authenticated reverse proxy, and never forward the port to the internet.
 
@@ -53,7 +53,7 @@ Everything is processed locally on your computer; your photos are never uploaded
 
 ## Releases and site source
 
-- https://github.com/ecyshor/takepho.com: app releases (Mac DMG, Windows zip, Sparkle update zip + appcast.xml) and the source of this website
+- https://github.com/ecyshor/takepho.com: app releases (Mac DMG, Windows installer .exe + portable zip, Sparkle update zip + appcast.xml) and the source of this website
 
 ## Full content for LLMs
 

@@ -58,7 +58,10 @@
       "description": "A desktop app for Mac and Windows, plus a Docker image for a NAS, that reads your Google Takeout on your own computer: a private photo timeline with trips, places and maps, plus apps that put your photos on your Strava, Komoot or Garmin Connect activities and move them to Proton Photos. Everything is processed locally; photos are never uploaded to our servers.",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "macOS 12+ (Apple silicon), Windows 10/11 (64-bit), Docker (NAS)",
-      "downloadUrl": "https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg",
+      "downloadUrl": [
+        "https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg",
+        "https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe"
+      ],
       "offers": [
         {
           "@type": "Offer",
@@ -104,6 +107,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Mac: Apple silicon (arm64), macOS 12 (Monterey) or later; signed with an Apple Developer ID and notarized by Apple. Windows: Windows 10 or 11, 64-bit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does Windows show \"Windows protected your PC\" when I open the app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Windows app is not code-signed yet, so on the first launch Windows shows that warning. Click \"More info\", then \"Run anyway\" — the app is safe to run. New Windows versions are on the releases page; automatic updates on Windows are coming soon."
           }
         },
         {
@@ -228,9 +239,14 @@
         <p class="lead">Request a Google Photos export with Google Takeout, let Takeout Photo process the archives on your own computer, and open the apps your data supports: a photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos.</p>
         <div class="hero-actions">
           <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download for Mac</a>
-          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip" class="btn btn-secondary">Download for Windows</a>
+          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary">Download for Windows</a>
+          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip" class="text-link">Windows portable zip</a>
           <a href="/demo/" class="text-link">Try the demo</a>
         </div>
+        <details class="dl-note">
+          <summary>First launch on Windows shows &ldquo;Windows protected your PC&rdquo;?</summary>
+          <p>The Windows app isn&rsquo;t code-signed yet, so Windows shows that warning on the first launch &mdash; click &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;. The Windows app doesn&rsquo;t update itself automatically yet (coming soon); new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>.</p>
+        </details>
         <p class="hero-note">Free to download. The Mac app is signed with an Apple Developer ID and notarized by Apple. The app also runs on a NAS with Docker (beta, see <a href="/self-host/">self-hosting</a>).</p>
       </section>
 
@@ -380,8 +396,9 @@
           </div>
           <div class="platform">
             <h3>Windows</h3>
-            <p>Windows 10 or 11, 64-bit.</p>
-            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip" class="btn btn-secondary">Download for Windows</a>
+            <p>Windows 10 or 11, 64-bit. The app isn&rsquo;t code-signed yet, so the first launch shows &ldquo;Windows protected your PC&rdquo; &mdash; click &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;. Automatic updates on Windows are coming soon; new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>.</p>
+            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary">Download for Windows</a>
+            <p class="platform-note">or <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">download the portable zip</a></p>
           </div>
           <div class="platform">
             <h3>NAS <span class="beta-tag">beta</span></h3>
@@ -446,7 +463,7 @@
       <section class="section" id="updates">
         <div class="section-header">
           <h2>Updates</h2>
-          <p>The Mac app updates itself: use "Check for Updates…" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Updates are free for everyone, no plan needed. <a href="https://github.com/ecyshor/takepho.com/releases">Release notes on GitHub</a>.</p>
+          <p>The Mac app updates itself: use "Check for Updates…" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). The Windows app doesn't update itself automatically yet (coming soon) — download new versions from the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>. Updates are free for everyone, no plan needed. <a href="https://github.com/ecyshor/takepho.com/releases">Release notes on GitHub</a>.</p>
         </div>
       </section>
 
@@ -462,6 +479,10 @@
         <details class="faq-item">
           <summary>Which computers does it run on?</summary>
           <p class="faq-answer">Mac: Apple silicon (arm64), macOS 12 (Monterey) or later; signed with an Apple Developer ID and notarized by Apple. Windows: Windows 10 or 11, 64-bit.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why does Windows show "Windows protected your PC" when I open the app?</summary>
+          <p class="faq-answer">The Windows app isn't code-signed yet, so on the first launch Windows shows that warning. Click "More info", then "Run anyway" — the app is safe to run. New Windows versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>; automatic updates on Windows are coming soon.</p>
         </details>
         <details class="faq-item">
           <summary>Do I need an account?</summary>
@@ -520,7 +541,7 @@
       <div>&copy; 2026 Takeout Photo</div>
       <div class="footer-links">
         <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download for Mac</a>
-        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">Download for Windows</a>
+        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe">Download for Windows</a>
         <a href="/google-photos-takeout/">Takeout viewer</a>
         <a href="/google-photos-strava/">Photos on Strava, Komoot or Garmin</a>
         <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>
