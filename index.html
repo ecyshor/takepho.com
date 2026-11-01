@@ -72,7 +72,7 @@
           "name": "Automatic processing (yearly subscription)",
           "price": "25.00",
           "priceCurrency": "USD",
-          "description": "Same price per year, taxes included, with the same regional prices as the Lifetime licence (EUR 20 / GBP 20 / CHF 20). The first paid year includes the Lifetime licence."
+          "description": "Taxes included, with the same regional prices as the Lifetime licence (EUR 20 / GBP 20 / CHF 20). The first year is billed at the full price; every renewal after that is automatically 50% off (USD 25 first year, then USD 12.50 per year; EUR 20 → EUR 10; GBP 20 → GBP 10; CHF 20 → CHF 10), until cancelled. The first paid year includes the Lifetime licence."
         }
       ],
       "featureList": [
@@ -184,6 +184,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "You keep the Lifetime licence (the first paid year includes it). Manual imports keep working forever, and importing a newer export still rebuilds your library with your edits kept. The automatic-processing features (folder watcher, incremental imports of newer exports, new contributors) stop while the subscription is inactive; existing contributors stay visible. You can re-subscribe any time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the yearly price go up?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — it goes down. The first year is billed at the full price (e.g. USD 25), and every renewal after that is automatically 50% off (USD 12.50 per year; EUR 20 → EUR 10, GBP 20 → GBP 10, CHF 20 → CHF 10). Nothing for you to do; it renews at half price until you cancel."
           }
         },
         {
@@ -401,7 +409,7 @@
           </div>
           <div class="plan plan-featured">
             <h3>Yearly</h3>
-            <p class="plan-price">USD 25 <span class="plan-price-note">per year</span></p>
+            <p class="plan-price">USD 25 <span class="plan-price-note">first year, then USD 12.50/year (50% off renewals, automatic)</span></p>
             <ul>
               <li>Everything in Lifetime.</li>
               <li>Automatic processing: the folder watcher imports new exports as they land, newer exports import incrementally (no rebuild), and you can add contributors (other people's Takeouts, e.g. a partner's).</li>
@@ -410,15 +418,15 @@
           </div>
         </div>
         <table class="price-table">
-          <caption>Prices include taxes. The currency is picked from your country at checkout.</caption>
+          <caption>Prices include taxes. The currency is picked from your country at checkout. The Yearly plan is billed at the full price for the first year, then every renewal is automatically 50% off.</caption>
           <thead>
-            <tr><th scope="col">Where you are</th><th scope="col">Lifetime (one-time)</th><th scope="col">Yearly (per year)</th></tr>
+            <tr><th scope="col">Where you are</th><th scope="col">Lifetime (one-time)</th><th scope="col">Yearly (first year, then half price)</th></tr>
           </thead>
           <tbody>
-            <tr><td>United States and rest of the world</td><td>USD 25</td><td>USD 25</td></tr>
-            <tr><td>Europe</td><td>EUR 20</td><td>EUR 20</td></tr>
-            <tr><td>United Kingdom</td><td>GBP 20</td><td>GBP 20</td></tr>
-            <tr><td>Switzerland and Liechtenstein</td><td>CHF 20</td><td>CHF 20</td></tr>
+            <tr><td>United States and rest of the world</td><td>USD 25</td><td>USD 25, then USD 12.50/year</td></tr>
+            <tr><td>Europe</td><td>EUR 20</td><td>EUR 20, then EUR 10/year</td></tr>
+            <tr><td>United Kingdom</td><td>GBP 20</td><td>GBP 20, then GBP 10/year</td></tr>
+            <tr><td>Switzerland and Liechtenstein</td><td>CHF 20</td><td>CHF 20, then CHF 10/year</td></tr>
           </tbody>
         </table>
         <p>One account covers <strong>2 computers</strong>. Remove one in the app (Settings → Account) to move the plan to another computer.</p>
@@ -494,6 +502,10 @@
         <details class="faq-item">
           <summary>What happens when the yearly plan ends?</summary>
           <p class="faq-answer">You keep the Lifetime licence (the first paid year includes it). Manual imports keep working forever, and importing a newer export still rebuilds your library with your edits kept. The automatic-processing features (folder watcher, incremental imports of newer exports, new contributors) stop while the subscription is inactive; existing contributors stay visible. You can re-subscribe any time.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does the yearly price go up?</summary>
+          <p class="faq-answer">No — it goes down. The first year is billed at the full price (e.g. USD 25), and every renewal after that is automatically 50% off (USD 12.50 per year; EUR 20 → EUR 10, GBP 20 → GBP 10, CHF 20 → CHF 10). Nothing for you to do; it renews at half price until you cancel.</p>
         </details>
         <details class="faq-item">
           <summary>How do I cancel or get a refund?</summary>

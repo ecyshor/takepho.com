@@ -25,8 +25,8 @@
 ## Pricing
 
 - **Lifetime licence**: one-time USD 25. Import your Takeout manually; importing a newer export rebuilds the library with your edits (hidden photos, trip names/notes, homes, people) kept; all app updates included.
-- **Yearly subscription**: same price per year. Everything in Lifetime plus automatic processing (folder watcher imports new exports as they land, incremental imports of newer exports without rebuild, contributors such as a partner's Takeout). The first paid year includes the Lifetime licence: if you cancel, you keep it.
-- Prices include taxes; the currency is picked from your country at checkout: USD 25 (United States and rest of the world), EUR 20 (Europe), GBP 20 (United Kingdom), CHF 20 (Switzerland and Liechtenstein).
+- **Yearly subscription**: USD 25 for the first year, then every renewal is automatically 50% off (USD 12.50 per year). Everything in Lifetime plus automatic processing (folder watcher imports new exports as they land, incremental imports of newer exports without rebuild, contributors such as a partner's Takeout). The first paid year includes the Lifetime licence: if you cancel, you keep it.
+- Prices include taxes; the currency is picked from your country at checkout: USD 25 (United States and rest of the world), EUR 20 (Europe), GBP 20 (United Kingdom), CHF 20 (Switzerland and Liechtenstein) — these are the first-year prices, and yearly renewals after the first year are half price (USD 12.50, EUR 10, GBP 10, CHF 10).
 - Buy inside the app: Settings → Account, sign in with Google or Apple, choose a plan and pay. Prices include taxes; cancel any time from the app's "Manage subscription" button. One account covers 2 computers. The app works offline on a signed entitlement, refreshed about weekly (internet at least once a month).
 
 ## What you can do with your Google Photos Takeout

@@ -90,12 +90,13 @@ Free to download and explore: the sample library in the app and the demo work wi
 - Importing a newer Takeout export rebuilds the library from it, and your edits (hidden photos, trip names and notes, homes, people) are kept.
 - All app updates included.
 
-### Yearly: USD 25 per year
+### Yearly: USD 25 the first year, then USD 12.50 per year
 - Everything in Lifetime.
 - Automatic processing: the folder watcher imports new exports as they land, newer exports import incrementally (no rebuild), and you can add contributors (other people's Takeouts, e.g. a partner's).
 - The first paid year includes the Lifetime licence: if you cancel, you keep it.
+- The first year is billed at the full price; every renewal after that is automatically 50% off (USD 25 → USD 12.50 per year), until you cancel.
 
-Prices include taxes. The currency is picked from your country at checkout: USD 25 (United States and rest of the world), EUR 20 (Europe), GBP 20 (United Kingdom), CHF 20 (Switzerland and Liechtenstein).
+Prices include taxes. The currency is picked from your country at checkout: USD 25 (United States and rest of the world), EUR 20 (Europe), GBP 20 (United Kingdom), CHF 20 (Switzerland and Liechtenstein). These are the first-year prices; yearly renewals after the first year are half price: USD 12.50, EUR 10, GBP 10, CHF 10.
 
 One account covers **2 computers**. Remove one in the app (Settings → Account) to move the plan to another computer.
 
@@ -121,6 +122,7 @@ The Mac app updates itself: use "Check for Updates…" in the app menu, or let i
 **Does it work with Google Drive or Docs from my Takeout?** Not yet. Today it uses the Google Photos part of your Takeout, plus Location History where your export has it. Support for Google Drive and Google Docs files is coming, and the sync app will add more destinations beyond Proton Photos.
 **Can I add someone else's Takeout, like my partner's?** Yes. With the yearly plan you can add contributors (other people's Takeouts, e.g. a partner's), so their photos attach to the trips you shared.
 **What happens when the yearly plan ends?** You keep the Lifetime licence (the first paid year includes it). Manual imports keep working forever, and importing a newer export still rebuilds your library with your edits kept. The automatic-processing features (folder watcher, incremental imports of newer exports, new contributors) stop while the subscription is inactive; existing contributors stay visible. You can re-subscribe any time.
+**Does the yearly price go up?** No — it goes down. The first year is billed at the full price (e.g. USD 25), and every renewal after that is automatically 50% off (USD 12.50 per year; EUR 20 → EUR 10, GBP 20 → GBP 10, CHF 20 → CHF 10). Nothing for you to do; it renews at half price until you cancel.
 **How do I cancel or get a refund?** Cancel any time from the app's "Manage subscription" button; the plan runs to the end of the paid year. For a refund, email hello@takepho.com and we will sort it out.
 
 ---
@@ -129,7 +131,7 @@ The Mac app updates itself: use "Check for Updates…" in the app menu, or let i
 
 # Google Photos Takeout viewer: browse your export as a timeline
 A Google Photos Takeout is the set of .zip or .tgz archives you download from takeout.google.com: year folders and album folders full of photos and videos, plus a small .json file next to each photo that holds the real capture date, GPS location and description. Takeout Photo is a Mac app that reads those archives in place (without unzipping) and turns them into a private timeline of trips, places and maps on your own computer.
-Mac app: Apple silicon, macOS 12 or later  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Try the demo](https://takepho.com/demo/). Free to download and explore; importing your own Takeout needs a plan (USD 25 one-time or per year, [pricing](https://takepho.com/#pricing))
+Mac app: Apple silicon, macOS 12 or later  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Try the demo](https://takepho.com/demo/). Free to download and explore; importing your own Takeout needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year, [pricing](https://takepho.com/#pricing))
 
 ## What is inside a Google Photos Takeout?
 When you export Google Photos with [Google Takeout](https://takeout.google.com), Google splits the export into one or more archive files (`.zip` or `.tgz`) chosen by the file size you pick (for example 50 GB per file). Inside the archives you get a `Takeout/Google Photos/` folder with one folder per year, your album folders, and your photos and videos.
@@ -177,7 +179,7 @@ Everything is processed locally on your computer; your photos are never uploaded
 
 # See your Google Photos on your Strava activities
 Your photos live in Google Photos and your routes live in Strava, and nothing connects the two. Takeout Photo's Activities app links them on your own computer: it reads your Google Photos from a Takeout export, syncs your activities from Strava (official API, OAuth), Komoot or Garmin Connect (your own login), and matches each photo to an activity by capture time, placing it along the GPS track.
-Mac app: Apple silicon, macOS 12 or later  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Try the demo](https://takepho.com/demo/). Free to download and explore; importing your own Takeout needs a plan (USD 25 one-time or per year, [pricing](https://takepho.com/#pricing))
+Mac app: Apple silicon, macOS 12 or later  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Try the demo](https://takepho.com/demo/). Free to download and explore; importing your own Takeout needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year, [pricing](https://takepho.com/#pricing))
 
 ## Why photos and routes end up in two places
 You take photos with your phone, so they end up in Google Photos. You record your runs, rides and hikes with Strava, Komoot or Garmin Connect, so the routes end up there. Your activity app shows the photos *you uploaded to it* (Strava shows the ones you uploaded to Strava), but the rest of your camera roll (the photos from your Google Photos library) stays invisible on the activity. Takeout Photo closes that gap locally, without uploading anything anywhere.
@@ -227,7 +229,7 @@ Everything is processed locally on your computer; your photos are never uploaded
 
 # Move your Google Photos to Proton Photos: with albums and metadata
 Uploading a plain Google Takeout to Proton Photos loses the album structure and often the dates and locations, because that metadata lives in the JSON sidecars next to each photo, not in the files themselves. Takeout Photo's sync app moves the Google Photos part of your Takeout into Proton Photos (Proton Drive) in full original quality (writing the capture date, GPS location, description, favourites and people from the sidecars losslessly into the files first) using Proton's official open-source Drive CLI.
-Mac app: Apple silicon, macOS 12 or later  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Try the demo](https://takepho.com/demo/). Free to download and explore; importing your own Takeout needs a plan (USD 25 one-time or per year, [pricing](https://takepho.com/#pricing))
+Mac app: Apple silicon, macOS 12 or later  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Try the demo](https://takepho.com/demo/). Free to download and explore; importing your own Takeout needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year, [pricing](https://takepho.com/#pricing))
 
 ## Why a plain Takeout upload loses dates, places and albums
 In a Google Photos Takeout, the photo files themselves often carry the export date as their timestamp, and the real capture date, GPS coordinates, description, favourites and people are stored in the `.json` sidecar next to each photo. If you upload the archive as-is, Proton Photos sees the wrong dates and places, and the Google album structure does not become Proton albums. Takeout Photo reads the sidecars and fixes the files before uploading, so Proton shows the correct dates and places.
