@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Try the demo
+    url: https://takepho.com/demo/
+    about: Explore the app with sample data before reporting an issue.

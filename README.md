@@ -31,6 +31,10 @@ Release notes are the GitHub release pages (`https://github.com/ecyshor/takepho.
 - `google-photos-to-proton-photos/index.html` — guide/landing page for "google photos proton import" (moving the Takeout to Proton Photos with albums and metadata).
 - `privacy.html`, `terms.html`, `404.html` — legal pages (404 is `noindex`). Privacy has an "Account and purchases (account.takepho.com)" section (data stored, purposes/legal bases, retention, processors, rights, account deletion); terms has the licence terms (personal licence per account, 2 Macs, Lifetime/Yearly, Link/Stripe as seller of record at checkout).
 
+## Support issues
+
+The app's in-app **Support** link opens `https://github.com/ecyshor/takepho.com/issues/new`. `.github/ISSUE_TEMPLATE/support.yml` is the only issue form (blank issues are disabled in `config.yml`): it requires where the app runs (Mac app / web demo / other), the app version, the affected area, what happened, steps to reproduce and the expected result, and asks for logs (`~/Library/Logs/TakeoutPhoto/desktop.log`) and screenshots, with a reminder to redact personal data since the repo is public. Issues get the `question` label.
+
 ## Crawl / SEO / AI-search files (repo root)
 
 - `robots.txt` — allows all crawlers (including the AI ones: GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot/-User/-SearchBot, anthropic-ai, PerplexityBot/-User, Google-Extended, Applebot-Extended, CCBot, Bingbot), disallows only `/demo/data/`, points at the sitemap.

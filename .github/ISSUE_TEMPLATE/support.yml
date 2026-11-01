@@ -1,0 +1,101 @@
+name: Support request
+description: Something isn't working in Takeout Photo, or you need help using it.
+title: "[Support]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reaching out! Please fill in every required field so we can reproduce the problem.
+        **This repository is public** — don't paste personal data (email addresses, licence keys, photo file names or locations you'd rather keep private). Redact them from logs before attaching.
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Where are you running Takeout Photo?
+      options:
+        - Mac desktop app
+        - Web demo (takepho.com/demo)
+        - Other (describe below)
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: App version
+      description: In Finder → Applications, select **Takeout Photo** and press **⌘I** (Get Info) — the version is under "General". Write "demo" for the web demo.
+      placeholder: e.g. 1.4.2
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: macOS version and Mac model
+      description: Apple menu → **About This Mac**.
+      placeholder: e.g. macOS 15.1, MacBook Air M2
+    validations:
+      required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part of the app is affected?
+      multiple: true
+      options:
+        - Takeout import / ingestion
+        - Photos timeline, trips, map
+        - Activities (Strava, Komoot, ...)
+        - Sign-in, account or licence / purchase
+        - Download, install or auto-update
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the issue, including any error message shown on screen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the Import page
+        2. Choose the Takeout folder ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs and debug artifacts
+      description: |
+        If relevant, attach the desktop log: in Finder press **⇧⌘G**, go to `~/Library/Logs/TakeoutPhoto/`, and drag `desktop.log` into this box (or paste its last lines).
+        Screenshots, screen recordings and, for import problems, the size and number of your Takeout archives are also helpful. Redact personal data first.
+      placeholder: Drag files here or paste log lines.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues and this hasn't been reported yet.
+          required: true
+        - label: I removed personal data from everything I attached.
+          required: true
