@@ -1,5 +1,25 @@
 <?xml version='1.0' encoding='utf-8'?>
-<rss xmlns:sparkle="https://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><item><title>Takeout Photo 0.1.0</title><pubDate>Sun, 01 Nov 2026 08:38:48 GMT</pubDate><description>Takeout Photo 0.1.0
+<rss xmlns:sparkle="https://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><item><title>Takeout Photo 1.0.0</title><pubDate>Sun, 01 Nov 2026 21:06:34 GMT</pubDate><description>Takeout Photo 1.0.0
+
+First cross-platform release: Takeout Photo now runs on **Windows** as well as macOS, and the Docker images carry release tags.
+
+- **macOS (Apple Silicon)**: `TakeoutPhoto-macos-arm64.dmg`. Signed and notarized, with automatic updates.
+- **Windows (x64)**: `TakeoutPhoto-windows-x64-setup.exe` installer, or the portable `TakeoutPhoto-windows-x64.zip`.
+  The Windows build is not code-signed yet, so on first run Windows shows "Windows protected your PC". Click **More info → Run anyway**.
+  Windows has no automatic updates yet. Download new versions from this releases page.
+- **Docker**: `ghcr.io/ecyshor/takepho:1.0.0` (multi-arch, amd64 + arm64) and `ghcr.io/ecyshor/takepho-cuda:1.0.0` (NVIDIA GPU, amd64).
+  See https://takepho.com/self-host for NAS / home-server setup.
+
+- Self-hosting on a NAS or home server with a single container (`compose.nas.yaml`), with native ARM images for ARM NAS boards and Raspberry Pi 4/5
+- Plans and licensing in every edition. The built-in sample data stays free to try. Server installs can sign in from any browser.
+- Activities: Garmin Connect alongside Strava and Komoot, plus fixes to sport mapping, elapsed time and cross-provider duplicates
+- Sync (Google Photos → Proton Photos): date suggestions, bulk date fixing for files without a capture date, failure previews and reverting a sync
+- Persistent app logs with secrets redacted, downloadable for support (Settings → Logs &amp; support)
+- More reliable HEIC decoding (libheif)
+- Maps fixed on phones: the trips and activities maps no longer go blank in the mobile layout
+- Open-source license notices in every build ("Open-source licenses" in the top navigation)
+- Try it without installing: https://takepho.com/demo
+</description><enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.0.0/TakeoutPhoto-1.0.0-macos-arm64.zip" length="287320950" type="application/octet-stream" sparkle:version="1000000000007" sparkle:shortVersionString="1.0.0" sparkle:minimumSystemVersion="12.0" sparkle:edSignature="7Dw1pigJ3vxXf94CsYGtcrG9zbN2OrMZfIHCqsCA8DEAvaiqft+IEvMQ0Zl5R1lSpS6IQlM74RM70lH4AfX3CA==" /></item><item><title>Takeout Photo 0.1.0</title><pubDate>Sun, 01 Nov 2026 08:38:48 GMT</pubDate><description>Takeout Photo 0.1.0
 
 First release of Takeout Photo for Mac (Apple silicon, macOS 12 or later).
 
