@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /demo/data/
 
-# AI search / assistant crawlers — explicitly allowed
+# AI search / assistant crawlers: explicitly allowed
 User-agent: GPTBot
 Allow: /
 Disallow: /demo/data/

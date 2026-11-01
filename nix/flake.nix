@@ -7,7 +7,23 @@
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in {
       devShells = forAllSystems (system:
-        let pkgs = import nixpkgs { inherit system; };
-        in { default = pkgs.mkShell { buildInputs = with pkgs; [ python3 ]; }; });
+        let
+          pkgs = import nixpkgs { inherit system; };
+          playwrightBrowsers = pkgs.playwright-driver.browsers;
+        in {
+          default = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              python3
+              python3Packages.playwright
+              python3Packages.pillow
+              curl
+              playwright-driver.browsers
+            ];
+            shellHook = ''
+              export PLAYWRIGHT_BROWSERS_PATH=${playwrightBrowsers}
+              export PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=true
+            '';
+          };
+        });
     };
 }

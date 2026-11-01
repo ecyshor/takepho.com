@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#6c7bff">
-  <meta name="description" content="Match your Google Photos from a Takeout export to your Strava activities by capture time and see every photo placed along the GPS track — on your own computer.">
+  <meta name="theme-color" content="#F6F7FB" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12152A" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="Match your Google Photos from a Takeout export to your Strava activities by capture time and see every photo placed along the GPS track, on your own computer.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <title>See your Google Photos on your Strava activities | Takeout Photo</title>
   <link rel="canonical" href="https://takepho.com/google-photos-strava/">
 
   <meta property="og:title" content="See your Google Photos on your Strava activities | Takeout Photo">
-  <meta property="og:description" content="Match your Google Photos from a Takeout export to your Strava activities by capture time and see every photo placed along the GPS track — on your own computer.">
+  <meta property="og:description" content="Match your Google Photos from a Takeout export to your Strava activities by capture time and see every photo placed along the GPS track, on your own computer.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://takepho.com/google-photos-strava/">
   <meta property="og:site_name" content="Takeout Photo">
   <meta property="og:image" content="https://takepho.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Takeout Photo — your Google Photos Takeout as a timeline, on your Strava routes, or moved to Proton Photos">
+  <meta property="og:image:alt" content="Takeout Photo: your Google Photos Takeout as a timeline, on your Strava routes, or moved to Proton Photos">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="See your Google Photos on your Strava activities | Takeout Photo">
-  <meta name="twitter:description" content="Match your Google Photos from a Takeout export to your Strava activities by capture time and see every photo placed along the GPS track — on your own computer.">
+  <meta name="twitter:description" content="Match your Google Photos from a Takeout export to your Strava activities by capture time and see every photo placed along the GPS track, on your own computer.">
   <meta name="twitter:image" content="https://takepho.com/og-image.png">
 
   <link rel="stylesheet" href="/style.css">
@@ -36,7 +37,7 @@
       "@id": "https://takepho.com/google-photos-strava/#page",
       "url": "https://takepho.com/google-photos-strava/",
       "name": "See your Google Photos on your Strava activities | Takeout Photo",
-      "description": "Match your Google Photos from a Takeout export to your Strava activities by capture time and see every photo placed along the GPS track — on your own computer.",
+      "description": "Match your Google Photos from a Takeout export to your Strava activities by capture time and see every photo placed along the GPS track, on your own computer.",
       "isPartOf": {
         "@id": "https://takepho.com/#website"
       },
@@ -99,7 +100,7 @@
           "name": "How are my photos matched to a Strava activity?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "By capture time. Each Google Photo taken while the activity was recorded is placed along the activity's GPS track at the point matching its time — for example \"km 12.3 · 10:42\"."
+            "text": "By capture time. Each Google Photo taken while the activity was recorded is placed along the activity's GPS track at the point matching its time (for example \"km 12.3 · 10:42\")."
           }
         },
         {
@@ -115,7 +116,7 @@
           "name": "Which activities can have photos?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Any activity with a GPS track and a time range — the map colours routes by sport and you can filter by sport, year, country, or only activities with photos."
+            "text": "Any activity with a GPS track and a time range. The map colours routes by sport and you can filter by sport, year, country, or only activities with photos."
           }
         },
         {
@@ -135,6 +136,13 @@
 <body>
   <header class="container">
     <a href="/" class="brand"><img src="/favicon.svg" alt="" width="32" height="32"> <span>Takeout Photo</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#apps">Apps</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/self-host/">Self-host</a>
+      <a href="/#faq">FAQ</a>
+      <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download</a>
+    </nav>
   </header>
 
   <main>
@@ -142,18 +150,18 @@
       <article>
         <section class="hero">
           <h1>See your Google Photos on your Strava activities</h1>
-          <p class="subtitle">Your photos live in Google Photos and your routes live in Strava, and nothing connects the two. Takeout Photo's Strava app links them on your own computer: it reads your Google Photos from a Takeout export, syncs your activities from Strava over the official Strava API, and matches each photo to an activity by capture time — placing it along the GPS track.</p>
-          <span class="status-badge">Mac app — Apple silicon, macOS 12 or later</span>
+          <p class="subtitle">Your photos live in Google Photos and your routes live in Strava, and nothing connects the two. Takeout Photo's Strava app links them on your own computer: it reads your Google Photos from a Takeout export, syncs your activities from Strava over the official Strava API, and matches each photo to an activity by capture time, placing it along the GPS track.</p>
+          <span class="status-badge">Mac app: Apple silicon, macOS 12 or later</span>
           <div class="hero-actions">
             <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download for Mac</a>
             <a href="/demo/" class="btn btn-secondary">Try the demo</a>
           </div>
-          <p class="hero-note">Free to download and explore — importing your own Takeout needs a plan (USD 25 one-time or per year; <a href="/">pricing</a>).</p>
+          <p class="hero-note">Free to download and explore. Importing your own Takeout needs a plan (USD 25 one-time or per year; <a href="/">pricing</a>).</p>
         </section>
 
         <section class="section">
           <h2>Why photos and routes end up in two places</h2>
-          <p>You take photos with your phone, so they end up in Google Photos. You record your runs, rides and hikes with Strava, so the routes end up there. Strava shows the photos <em>you uploaded to Strava</em>, but the rest of your camera roll — the photos from your Google Photos library — stay invisible on the activity. Takeout Photo closes that gap locally, without uploading anything anywhere.</p>
+          <p>You take photos with your phone, so they end up in Google Photos. You record your runs, rides and hikes with Strava, so the routes end up there. Strava shows the photos <em>you uploaded to Strava</em>, but the rest of your camera roll (the photos from your Google Photos library) stays invisible on the activity. Takeout Photo closes that gap locally, without uploading anything anywhere.</p>
         </section>
 
         <section class="section">
@@ -179,15 +187,15 @@
           <h2>How to connect your Strava account</h2>
           <ol>
             <li>Export your Google Photos with <a href="https://takeout.google.com">Google Takeout</a> (see <a href="/google-photos-takeout/">how to export and browse a Takeout</a>).</li>
-            <li><a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download the Mac app</a> (Apple silicon, macOS 12 or later) and point it at the archives — free to explore the sample library; importing your own Takeout needs a plan (<a href="/">pricing</a>).</li>
-            <li>Create your own free Strava API application — a step-by-step guide is built into the app.</li>
+            <li><a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download the Mac app</a> (Apple silicon, macOS 12 or later) and point it at the archives; free to explore the sample library; importing your own Takeout needs a plan (<a href="/">pricing</a>).</li>
+            <li>Create your own free Strava API application. A step-by-step guide is built into the app.</li>
             <li>Authorize Takeout Photo to read your Strava activities via OAuth and start the sync.</li>
           </ol>
         </section>
 
         <section class="section">
           <h2>Privacy</h2>
-          <p>Everything is processed locally on your computer; your photos are never uploaded to our servers. The app uses your Strava data read-only — it reads activities and their GPS tracks, and does not modify your Strava account. See the <a href="/privacy.html">privacy policy</a>.</p>
+          <p>Everything is processed locally on your computer; your photos are never uploaded to our servers. The app uses your Strava data read-only: it reads activities and their GPS tracks, and does not modify your Strava account. See the <a href="/privacy.html">privacy policy</a>.</p>
         </section>
 
         <section class="section faq">
@@ -200,7 +208,7 @@
           </details>
           <details class="faq-item">
             <summary>How are my photos matched to a Strava activity?</summary>
-            <p class="faq-answer">By capture time. Each Google Photo taken while the activity was recorded is placed along the activity's GPS track at the point matching its time — for example "km 12.3 · 10:42".</p>
+            <p class="faq-answer">By capture time. Each Google Photo taken while the activity was recorded is placed along the activity's GPS track at the point matching its time (for example "km 12.3 · 10:42").</p>
           </details>
           <details class="faq-item">
             <summary>Does it upload my photos to Strava?</summary>
@@ -208,7 +216,7 @@
           </details>
           <details class="faq-item">
             <summary>Which activities can have photos?</summary>
-            <p class="faq-answer">Any activity with a GPS track and a time range — the map colours routes by sport and you can filter by sport, year, country, or only activities with photos.</p>
+            <p class="faq-answer">Any activity with a GPS track and a time range. The map colours routes by sport and you can filter by sport, year, country, or only activities with photos.</p>
           </details>
           <details class="faq-item">
             <summary>Is my Strava data kept private?</summary>
@@ -221,9 +229,9 @@
             <h2>Also works with your Takeout</h2>
           </div>
           <ul>
-            <li><a href="/google-photos-takeout/">Google Photos Takeout viewer</a> — browse the export itself as a timeline of trips and places.</li>
-            <li><a href="/google-photos-to-proton-photos/">Move your Google Photos to Proton Photos</a> — keep albums and metadata when you leave Google.</li>
-            <li><a href="/">Takeout Photo home</a> — the photo timeline app.</li>
+            <li><a href="/google-photos-takeout/">Google Photos Takeout viewer</a>: browse the export itself as a timeline of trips and places.</li>
+            <li><a href="/google-photos-to-proton-photos/">Move your Google Photos to Proton Photos</a>: keep albums and metadata when you leave Google.</li>
+            <li><a href="/">Takeout Photo home</a>: the photo timeline app.</li>
           </ul>
           <div class="hero-actions">
             <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download for Mac</a>
@@ -240,9 +248,11 @@
       <div class="footer-links">
         <a href="/">Home</a>
         <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download for Mac</a>
+        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">Download for Windows</a>
         <a href="/google-photos-takeout/">Takeout viewer</a>
         <a href="/google-photos-strava/">Photos on Strava</a>
         <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>
+        <a href="/self-host/">Self-host (beta)</a>
         <a href="/privacy.html">Privacy</a>
         <a href="/terms.html">Terms</a>
         <a href="mailto:hello@takepho.com">hello@takepho.com</a>

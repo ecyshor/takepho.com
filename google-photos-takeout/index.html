@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#6c7bff">
+  <meta name="theme-color" content="#F6F7FB" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12152A" media="(prefers-color-scheme: dark)">
   <meta name="description" content="Browse your Google Photos Takeout on your own computer: the .zip/.tgz archives are read in place, the real dates and GPS come from the JSON sidecars, and trips and places land on a map.">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <title>Google Photos Takeout viewer — browse your export as a timeline | Takeout Photo</title>
+  <title>Google Photos Takeout viewer: browse your export as a timeline | Takeout Photo</title>
   <link rel="canonical" href="https://takepho.com/google-photos-takeout/">
 
-  <meta property="og:title" content="Google Photos Takeout viewer — browse your export as a timeline | Takeout Photo">
+  <meta property="og:title" content="Google Photos Takeout viewer: browse your export as a timeline | Takeout Photo">
   <meta property="og:description" content="Browse your Google Photos Takeout on your own computer: the .zip/.tgz archives are read in place, the real dates and GPS come from the JSON sidecars, and trips and places land on a map.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://takepho.com/google-photos-takeout/">
@@ -17,9 +18,9 @@
   <meta property="og:image" content="https://takepho.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Takeout Photo — your Google Photos Takeout as a timeline, on your Strava routes, or moved to Proton Photos">
+  <meta property="og:image:alt" content="Takeout Photo: your Google Photos Takeout as a timeline, on your Strava routes, or moved to Proton Photos">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Google Photos Takeout viewer — browse your export as a timeline | Takeout Photo">
+  <meta name="twitter:title" content="Google Photos Takeout viewer: browse your export as a timeline | Takeout Photo">
   <meta name="twitter:description" content="Browse your Google Photos Takeout on your own computer: the .zip/.tgz archives are read in place, the real dates and GPS come from the JSON sidecars, and trips and places land on a map.">
   <meta name="twitter:image" content="https://takepho.com/og-image.png">
 
@@ -35,7 +36,7 @@
       "@type": "WebPage",
       "@id": "https://takepho.com/google-photos-takeout/#page",
       "url": "https://takepho.com/google-photos-takeout/",
-      "name": "Google Photos Takeout viewer — browse your export as a timeline | Takeout Photo",
+      "name": "Google Photos Takeout viewer: browse your export as a timeline | Takeout Photo",
       "description": "Browse your Google Photos Takeout on your own computer: the .zip/.tgz archives are read in place, the real dates and GPS come from the JSON sidecars, and trips and places land on a map.",
       "isPartOf": {
         "@id": "https://takepho.com/#website"
@@ -72,7 +73,7 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Google Photos Takeout viewer — browse your export as a timeline",
+          "name": "Google Photos Takeout viewer: browse your export as a timeline",
           "item": "https://takepho.com/google-photos-takeout/"
         }
       ]
@@ -110,7 +111,7 @@
           "name": "Can it handle a very large photo library?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes — archives are read in place without unpacking, so libraries of hundreds of GB are handled without needing the same space again on disk."
+            "text": "Yes: archives are read in place without unpacking, so libraries of hundreds of GB are handled without needing the same space again on disk."
           }
         },
         {
@@ -118,7 +119,7 @@
           "name": "What happens when a new scheduled Takeout export arrives?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "With the yearly plan, new archives are picked up and merged automatically — incrementally, without duplicating photos. With the Lifetime plan you re-import a newer export manually: the library is rebuilt from it and your edits (hidden photos, trip names and notes, homes, people) are kept."
+            "text": "With the yearly plan, new archives are picked up and merged automatically (incrementally, without duplicating photos). With the Lifetime plan you re-import a newer export manually: the library is rebuilt from it and your edits (hidden photos, trip names and notes, homes, people) are kept."
           }
         },
         {
@@ -138,44 +139,51 @@
 <body>
   <header class="container">
     <a href="/" class="brand"><img src="/favicon.svg" alt="" width="32" height="32"> <span>Takeout Photo</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#apps">Apps</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/self-host/">Self-host</a>
+      <a href="/#faq">FAQ</a>
+      <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download</a>
+    </nav>
   </header>
 
   <main>
     <div class="container">
       <article>
         <section class="hero">
-          <h1>Google Photos Takeout viewer — browse your export as a timeline</h1>
-          <p class="subtitle">A Google Photos Takeout is the set of .zip or .tgz archives you download from takeout.google.com: year folders and album folders full of photos and videos, plus a small .json file next to each photo that holds the real capture date, GPS location and description. Takeout Photo is a Mac app that reads those archives in place — without unzipping — and turns them into a private timeline of trips, places and maps on your own computer.</p>
-          <span class="status-badge">Mac app — Apple silicon, macOS 12 or later</span>
+          <h1>Google Photos Takeout viewer: browse your export as a timeline</h1>
+          <p class="subtitle">A Google Photos Takeout is the set of .zip or .tgz archives you download from takeout.google.com: year folders and album folders full of photos and videos, plus a small .json file next to each photo that holds the real capture date, GPS location and description. Takeout Photo is a Mac app that reads those archives in place (without unzipping) and turns them into a private timeline of trips, places and maps on your own computer.</p>
+          <span class="status-badge">Mac app: Apple silicon, macOS 12 or later</span>
           <div class="hero-actions">
             <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download for Mac</a>
             <a href="/demo/" class="btn btn-secondary">Try the demo</a>
           </div>
-          <p class="hero-note">Free to download and explore — importing your own Takeout needs a plan (USD 25 one-time or per year; <a href="/">pricing</a>).</p>
+          <p class="hero-note">Free to download and explore. Importing your own Takeout needs a plan (USD 25 one-time or per year; <a href="/">pricing</a>).</p>
         </section>
 
         <section class="section">
           <h2>What is inside a Google Photos Takeout?</h2>
-          <p>When you export Google Photos with <a href="https://takeout.google.com">Google Takeout</a>, Google splits the export into one or more archive files — <code>.zip</code> or <code>.tgz</code> — chosen by the file size you pick (for example 50&nbsp;GB per file). Inside the archives you get a <code>Takeout/Google Photos/</code> folder with one folder per year, your album folders, and your photos and videos.</p>
-          <p>Next to almost every photo there is also a small JSON sidecar file with the same name plus <code>.json</code>. That sidecar is where Google stores the metadata that matters: the real capture time (<code>photoTakenTime</code>), the GPS coordinates (<code>geoData</code>), the description you wrote, people in the photo, and more. Takeout Photo builds an inventory of what is in your export — which products, which archives, what sizes — so you can see what you have before you open anything.</p>
+          <p>When you export Google Photos with <a href="https://takeout.google.com">Google Takeout</a>, Google splits the export into one or more archive files (<code>.zip</code> or <code>.tgz</code>) chosen by the file size you pick (for example 50&nbsp;GB per file). Inside the archives you get a <code>Takeout/Google Photos/</code> folder with one folder per year, your album folders, and your photos and videos.</p>
+          <p>Next to almost every photo there is also a small JSON sidecar file with the same name plus <code>.json</code>. That sidecar is where Google stores the metadata that matters: the real capture time (<code>photoTakenTime</code>), the GPS coordinates (<code>geoData</code>), the description you wrote, people in the photo, and more. Takeout Photo builds an inventory of what is in your export (which products, which archives, what sizes) so you can see what you have before you open anything.</p>
         </section>
 
         <section class="section">
           <h2>Why do dates look wrong when you just unzip a Takeout?</h2>
-          <p>If you unzip a Takeout and sort the photos by file date, many of them look wrong — often showing the day you made the export, not the day the photo was taken. The file's own timestamp is unreliable; the truth is in the <code>.json</code> sidecar next to the photo. If a tool ignores the sidecars, every date, place and description is lost or wrong.</p>
-          <p>Takeout Photo reads the JSON sidecars, so dates and locations are right: each photo shows when it was actually taken and where, and towns and countries are named from the GPS coordinates by reverse geocoding.</p>
+          <p>If you unzip a Takeout and sort the photos by file date, many of them look wrong, often showing the day you made the export, not the day the photo was taken. The file's own timestamp is unreliable; the truth is in the <code>.json</code> sidecar next to the photo. If a tool ignores the sidecars, every date, place and description is lost or wrong.</p>
+          <p>Takeout Photo reads the JSON sidecars, so dates and locations are right: each photo shows when it was taken and where, and towns and countries are named from the GPS coordinates by reverse geocoding.</p>
         </section>
 
         <section class="section">
           <h2>How Takeout Photo reads your Takeout in place</h2>
-          <p>You never have to unpack the archives. Download the <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Mac app</a> (Apple silicon, macOS 12 or later) and point it at a local folder, a Google Drive link, or sign in with Google and pick the archive files in Google's picker — access is read-only and limited to the files you choose. The app reads the <code>.zip</code> and <code>.tgz</code> files directly, so libraries of hundreds of GB work without filling your disk twice. It's free to download and explore the sample library; importing your own Takeout needs a plan — <a href="/">pricing on the home page</a>.</p>
-          <p>If you schedule regular Takeout exports, new archives are picked up and merged automatically with the yearly plan — incrementally, without duplicating photos you already have. With the Lifetime plan you re-import a newer export manually, and your edits (hidden photos, trip names and notes, homes, people) are kept.</p>
+          <p>You never have to unpack the archives. Download the <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Mac app</a> (Apple silicon, macOS 12 or later) and point it at a local folder, a Google Drive link, or sign in with Google and pick the archive files in Google's picker; access is read-only and limited to the files you choose. The app reads the <code>.zip</code> and <code>.tgz</code> files directly, so libraries of hundreds of GB work without filling your disk twice. It's free to download and explore the sample library; importing your own Takeout needs a plan. See <a href="/">pricing on the home page</a>.</p>
+          <p>If you schedule regular Takeout exports, new archives are picked up and merged automatically with the yearly plan (incrementally, without duplicating photos you already have). With the Lifetime plan you re-import a newer export manually, and your edits (hidden photos, trip names and notes, homes, people) are kept.</p>
         </section>
 
         <section class="section">
           <h2>Trips, places and maps</h2>
-          <p>The Photos app detects where you live and when you moved, plus day trips and holidays, so you can browse your life by journey instead of by raw date. When your export includes Google Location History (Timeline), trips are detected from it and real routes are drawn on the map — flights shown as arcs — using open street data.</p>
-          <p>AI curation runs on your own machine: it groups near-duplicates and picks the best shots for each trip. You can also add other people's Takeouts — for example your partner's — so their photos attach to the trips you shared.</p>
+          <p>The Photos app detects where you live and when you moved, plus day trips and holidays, so you can browse your life by trip instead of by raw date. When your export includes Google Location History (Timeline), trips are detected from it and real routes are drawn on the map (flights shown as arcs) using open street data.</p>
+          <p>AI curation runs on your own machine: it groups near-duplicates and picks the best shots for each trip. You can also add other people's Takeouts (for example your partner's) so their photos attach to the trips you shared.</p>
         </section>
 
         <section class="section">
@@ -184,7 +192,7 @@
             <li>Go to <a href="https://takeout.google.com">takeout.google.com</a> and sign in with your Google account.</li>
             <li>Deselect everything, then select only <strong>Google Photos</strong>.</li>
             <li>Click "Next step", choose the delivery method (a download link by email, or directly to your Google Drive), the file type (<code>.zip</code> or <code>.tgz</code>) and the maximum file size.</li>
-            <li>Click "Create export" and wait for Google's email — large libraries can take hours or days.</li>
+            <li>Click "Create export" and wait for Google's email; large libraries can take hours or days.</li>
             <li>Download the archives, or copy the Drive link, and point Takeout Photo at them.</li>
           </ol>
         </section>
@@ -212,11 +220,11 @@
           </details>
           <details class="faq-item">
             <summary>Can it handle a very large photo library?</summary>
-            <p class="faq-answer">Yes — archives are read in place without unpacking, so libraries of hundreds of GB are handled without needing the same space again on disk.</p>
+            <p class="faq-answer">Yes: archives are read in place without unpacking, so libraries of hundreds of GB are handled without needing the same space again on disk.</p>
           </details>
           <details class="faq-item">
             <summary>What happens when a new scheduled Takeout export arrives?</summary>
-            <p class="faq-answer">With the yearly plan, new archives are picked up and merged automatically — incrementally, without duplicating photos. With the Lifetime plan you re-import a newer export manually: the library is rebuilt from it and your edits (hidden photos, trip names and notes, homes, people) are kept.</p>
+            <p class="faq-answer">With the yearly plan, new archives are picked up and merged automatically (incrementally, without duplicating photos). With the Lifetime plan you re-import a newer export manually: the library is rebuilt from it and your edits (hidden photos, trip names and notes, homes, people) are kept.</p>
           </details>
           <details class="faq-item">
             <summary>Is anything uploaded to a server?</summary>
@@ -229,9 +237,9 @@
             <h2>Also works with your Takeout</h2>
           </div>
           <ul>
-            <li><a href="/google-photos-strava/">See your Google Photos on your Strava activities</a> — photos matched to each activity along the GPS track.</li>
-            <li><a href="/google-photos-to-proton-photos/">Move your Google Photos to Proton Photos</a> — albums and metadata kept, full original quality.</li>
-            <li><a href="/">Takeout Photo home</a> — the photo timeline app.</li>
+            <li><a href="/google-photos-strava/">See your Google Photos on your Strava activities</a>: photos matched to each activity along the GPS track.</li>
+            <li><a href="/google-photos-to-proton-photos/">Move your Google Photos to Proton Photos</a>: albums and metadata kept, full original quality.</li>
+            <li><a href="/">Takeout Photo home</a>: the photo timeline app.</li>
           </ul>
           <div class="hero-actions">
             <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download for Mac</a>
@@ -248,9 +256,11 @@
       <div class="footer-links">
         <a href="/">Home</a>
         <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download for Mac</a>
+        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">Download for Windows</a>
         <a href="/google-photos-takeout/">Takeout viewer</a>
         <a href="/google-photos-strava/">Photos on Strava</a>
         <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>
+        <a href="/self-host/">Self-host (beta)</a>
         <a href="/privacy.html">Privacy</a>
         <a href="/terms.html">Terms</a>
         <a href="mailto:hello@takepho.com">hello@takepho.com</a>

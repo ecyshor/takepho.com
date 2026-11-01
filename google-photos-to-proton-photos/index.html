@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#6c7bff">
+  <meta name="theme-color" content="#F6F7FB" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12152A" media="(prefers-color-scheme: dark)">
   <meta name="description" content="Move the Google Photos part of your Takeout into Proton Photos in full original quality: albums or trip albums, with dates, GPS and descriptions written into the files from the Takeout JSON sidecars.">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <title>Move Google Photos to Proton Photos — with albums and metadata | Takeout Photo</title>
+  <title>Move Google Photos to Proton Photos: with albums and metadata | Takeout Photo</title>
   <link rel="canonical" href="https://takepho.com/google-photos-to-proton-photos/">
 
-  <meta property="og:title" content="Move Google Photos to Proton Photos — with albums and metadata | Takeout Photo">
+  <meta property="og:title" content="Move Google Photos to Proton Photos: with albums and metadata | Takeout Photo">
   <meta property="og:description" content="Move the Google Photos part of your Takeout into Proton Photos in full original quality: albums or trip albums, with dates, GPS and descriptions written into the files from the Takeout JSON sidecars.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://takepho.com/google-photos-to-proton-photos/">
@@ -17,9 +18,9 @@
   <meta property="og:image" content="https://takepho.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Takeout Photo — your Google Photos Takeout as a timeline, on your Strava routes, or moved to Proton Photos">
+  <meta property="og:image:alt" content="Takeout Photo: your Google Photos Takeout as a timeline, on your Strava routes, or moved to Proton Photos">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Move Google Photos to Proton Photos — with albums and metadata | Takeout Photo">
+  <meta name="twitter:title" content="Move Google Photos to Proton Photos: with albums and metadata | Takeout Photo">
   <meta name="twitter:description" content="Move the Google Photos part of your Takeout into Proton Photos in full original quality: albums or trip albums, with dates, GPS and descriptions written into the files from the Takeout JSON sidecars.">
   <meta name="twitter:image" content="https://takepho.com/og-image.png">
 
@@ -35,7 +36,7 @@
       "@type": "WebPage",
       "@id": "https://takepho.com/google-photos-to-proton-photos/#page",
       "url": "https://takepho.com/google-photos-to-proton-photos/",
-      "name": "Move Google Photos to Proton Photos — with albums and metadata | Takeout Photo",
+      "name": "Move Google Photos to Proton Photos: with albums and metadata | Takeout Photo",
       "description": "Move the Google Photos part of your Takeout into Proton Photos in full original quality: albums or trip albums, with dates, GPS and descriptions written into the files from the Takeout JSON sidecars.",
       "isPartOf": {
         "@id": "https://takepho.com/#website"
@@ -82,7 +83,7 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Move Google Photos to Proton Photos — with albums and metadata",
+          "name": "Move Google Photos to Proton Photos: with albums and metadata",
           "item": "https://takepho.com/google-photos-to-proton-photos/"
         }
       ]
@@ -96,7 +97,7 @@
           "name": "Does it upload in original quality?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes — the Google Photos part of your Takeout is moved to Proton Photos in full original quality, not a compressed copy."
+            "text": "Yes: the Google Photos part of your Takeout is moved to Proton Photos in full original quality, not a compressed copy."
           }
         },
         {
@@ -128,7 +129,7 @@
           "name": "Do I need the Proton Drive desktop app?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Not necessarily — the app uploads with Proton's official open-source Proton Drive CLI on Linux, macOS and Windows. On Windows there is also the import-folder route via the Proton Drive app; the Proton Drive Mac app has no Photos import, so macOS uses the CLI."
+            "text": "Not necessarily: the app uploads with Proton's official open-source Proton Drive CLI on Linux, macOS and Windows. On Windows there is also the import-folder route via the Proton Drive app; the Proton Drive Mac app has no Photos import, so macOS uses the CLI."
           }
         },
         {
@@ -136,7 +137,7 @@
           "name": "Are other people's Takeouts synced to my Proton account?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Other people's Takeouts are never synced to your Proton account — only your own Google Photos part of your Takeout is moved."
+            "text": "No. Other people's Takeouts are never synced to your Proton account. Only your own Google Photos part of your Takeout is moved."
           }
         }
       ]
@@ -148,20 +149,27 @@
 <body>
   <header class="container">
     <a href="/" class="brand"><img src="/favicon.svg" alt="" width="32" height="32"> <span>Takeout Photo</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#apps">Apps</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/self-host/">Self-host</a>
+      <a href="/#faq">FAQ</a>
+      <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download</a>
+    </nav>
   </header>
 
   <main>
     <div class="container">
       <article>
         <section class="hero">
-          <h1>Move your Google Photos to Proton Photos — with albums and metadata</h1>
-          <p class="subtitle">Uploading a plain Google Takeout to Proton Photos loses the album structure and often the dates and locations, because that metadata lives in the JSON sidecars next to each photo, not in the files themselves. Takeout Photo's sync app moves the Google Photos part of your Takeout into Proton Photos (Proton Drive) in full original quality — writing the capture date, GPS location, description, favourites and people from the sidecars losslessly into the files first — using Proton's official open-source Drive CLI.</p>
-          <span class="status-badge">Mac app — Apple silicon, macOS 12 or later</span>
+          <h1>Move your Google Photos to Proton Photos: with albums and metadata</h1>
+          <p class="subtitle">Uploading a plain Google Takeout to Proton Photos loses the album structure and often the dates and locations, because that metadata lives in the JSON sidecars next to each photo, not in the files themselves. Takeout Photo's sync app moves the Google Photos part of your Takeout into Proton Photos (Proton Drive) in full original quality (writing the capture date, GPS location, description, favourites and people from the sidecars losslessly into the files first) using Proton's official open-source Drive CLI.</p>
+          <span class="status-badge">Mac app: Apple silicon, macOS 12 or later</span>
           <div class="hero-actions">
             <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download for Mac</a>
             <a href="/demo/" class="btn btn-secondary">Try the demo</a>
           </div>
-          <p class="hero-note">Free to download and explore — importing your own Takeout needs a plan (USD 25 one-time or per year; <a href="/">pricing</a>).</p>
+          <p class="hero-note">Free to download and explore. Importing your own Takeout needs a plan (USD 25 one-time or per year; <a href="/">pricing</a>).</p>
         </section>
 
         <section class="section">
@@ -172,8 +180,8 @@
         <section class="section">
           <h2>Two ways to organise the import</h2>
           <ul>
-            <li><strong>"As in the Takeout"</strong> — your Google Photos albums become Proton albums, and everything not in an album goes to the Photos timeline.</li>
-            <li><strong>"Trip albums"</strong> — one Proton album per detected trip, containing that trip's photos and videos.</li>
+            <li><strong>"As in the Takeout"</strong>: your Google Photos albums become Proton albums, and everything not in an album goes to the Photos timeline.</li>
+            <li><strong>"Trip albums"</strong>: one Proton album per detected trip, containing that trip's photos and videos.</li>
           </ul>
           <p>Before anything is uploaded, the app writes the capture date, GPS location, description, favourite flag and people from the Takeout JSON sidecars into the files, losslessly. Everything is uploaded in full original quality.</p>
         </section>
@@ -192,7 +200,7 @@
           <h2>Step by step</h2>
           <ol>
             <li>Export Google Photos with <a href="https://takeout.google.com">Google Takeout</a> (see <a href="/google-photos-takeout/">how to export a Takeout</a>).</li>
-            <li><a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download the Mac app</a> (Apple silicon, macOS 12 or later) and point it at the archives — a local folder, a Drive link, or sign in with Google and pick the files (read-only). Free to explore the sample library; importing your own Takeout needs a plan (<a href="/">pricing</a>).</li>
+            <li><a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download the Mac app</a> (Apple silicon, macOS 12 or later) and point it at the archives: a local folder, a Drive link, or sign in with Google and pick the files (read-only). Free to explore the sample library; importing your own Takeout needs a plan (<a href="/">pricing</a>).</li>
             <li>In the sync app, choose the layout: "as in the Takeout" or "trip albums".</li>
             <li>Let the app install the Proton Drive CLI (checksum-verified) and sign in to Proton in your browser.</li>
             <li>Run the sync. You can re-run it any time; what is already in Proton is skipped and nothing is deleted.</li>
@@ -210,7 +218,7 @@
           </div>
           <details class="faq-item">
             <summary>Does it upload in original quality?</summary>
-            <p class="faq-answer">Yes — the Google Photos part of your Takeout is moved to Proton Photos in full original quality, not a compressed copy.</p>
+            <p class="faq-answer">Yes: the Google Photos part of your Takeout is moved to Proton Photos in full original quality, not a compressed copy.</p>
           </details>
           <details class="faq-item">
             <summary>Do my Google Photos albums survive the move?</summary>
@@ -226,11 +234,11 @@
           </details>
           <details class="faq-item">
             <summary>Do I need the Proton Drive desktop app?</summary>
-            <p class="faq-answer">Not necessarily — the app uploads with Proton's official open-source Proton Drive CLI on Linux, macOS and Windows. On Windows there is also the import-folder route via the Proton Drive app; the Proton Drive Mac app has no Photos import, so macOS uses the CLI.</p>
+            <p class="faq-answer">Not necessarily: the app uploads with Proton's official open-source Proton Drive CLI on Linux, macOS and Windows. On Windows there is also the import-folder route via the Proton Drive app; the Proton Drive Mac app has no Photos import, so macOS uses the CLI.</p>
           </details>
           <details class="faq-item">
             <summary>Are other people's Takeouts synced to my Proton account?</summary>
-            <p class="faq-answer">No. Other people's Takeouts are never synced to your Proton account — only your own Google Photos part of your Takeout is moved.</p>
+            <p class="faq-answer">No. Other people's Takeouts are never synced to your Proton account. Only your own Google Photos part of your Takeout is moved.</p>
           </details>
         </section>
 
@@ -239,9 +247,9 @@
             <h2>Also works with your Takeout</h2>
           </div>
           <ul>
-            <li><a href="/google-photos-takeout/">Google Photos Takeout viewer</a> — browse the export itself as a timeline of trips and places.</li>
-            <li><a href="/google-photos-strava/">See your Google Photos on your Strava activities</a> — photos matched to each activity along the GPS track.</li>
-            <li><a href="/">Takeout Photo home</a> — the photo timeline app.</li>
+            <li><a href="/google-photos-takeout/">Google Photos Takeout viewer</a>: browse the export itself as a timeline of trips and places.</li>
+            <li><a href="/google-photos-strava/">See your Google Photos on your Strava activities</a>: photos matched to each activity along the GPS track.</li>
+            <li><a href="/">Takeout Photo home</a>: the photo timeline app.</li>
           </ul>
           <div class="hero-actions">
             <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download for Mac</a>
@@ -258,9 +266,11 @@
       <div class="footer-links">
         <a href="/">Home</a>
         <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download for Mac</a>
+        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">Download for Windows</a>
         <a href="/google-photos-takeout/">Takeout viewer</a>
         <a href="/google-photos-strava/">Photos on Strava</a>
         <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>
+        <a href="/self-host/">Self-host (beta)</a>
         <a href="/privacy.html">Privacy</a>
         <a href="/terms.html">Terms</a>
         <a href="mailto:hello@takepho.com">hello@takepho.com</a>
