@@ -34,6 +34,7 @@
 - [Google Photos Takeout viewer: browse your export as a timeline](https://takepho.com/google-photos-takeout/): read the .zip/.tgz archives in place, get the real capture dates and GPS from the JSON sidecar files, and browse trips, places and routes on a map.
 - [See your Google Photos on your Strava activities](https://takepho.com/google-photos-strava/): sync activities over the Strava API and match your Takeout photos to each activity by capture time, placed along the GPS track ("km 12.3 · 10:42").
 - [Move your Google Photos to Proton Photos](https://takepho.com/google-photos-to-proton-photos/): import the Google Photos part of your Takeout into Proton Photos (Proton Drive) in full original quality, with albums or trip albums, and capture date, GPS, description, favourite and people written losslessly into the files from the Takeout JSON sidecars, uploaded via Proton's official open-source Drive CLI.
+- Coming next: more sync destinations beyond Proton Photos, and support for Google Drive and Google Docs files from your Takeout (today only the Google Photos part is used).
 - [Home](https://takepho.com/): download, how it works, apps, platforms, pricing, FAQ.
 - [Read-only demo](https://takepho.com/demo/): try the app in your browser with a sample library.
 - [Self-hosting on a NAS (beta)](https://takepho.com/self-host/): Docker Compose on your home server or NAS.

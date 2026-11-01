@@ -33,7 +33,7 @@ On your computer, not in the cloud:
 Each app appears for the data your export contains.
 
 ## The apps your export supports
-Takeout Photo ships three apps. Each one works with the data your Takeout contains, and everything runs on your computer.
+Takeout Photo ships three apps, with more on the way. Each one works with the data your Takeout contains, and everything runs on your computer.
 
 ### Photos timeline
 Browse your whole export as a timeline of trips, places and maps.
@@ -70,6 +70,10 @@ Move the Google Photos part of your Takeout to Proton Photos.
 - Only your own Takeout is synced; other people's Takeouts never go to Proton
 
 [More about moving Google Photos to Proton Photos](https://takepho.com/google-photos-to-proton-photos/)
+
+### Coming next
+- More sync destinations beyond Proton Photos (the first one)
+- Support for more of your Takeout: Google Drive and Google Docs files, not just the Google Photos part
 
 ## Runs where you keep your photos
 The desktop app runs on your Mac or Windows. On a home server or NAS, run the Docker image with Docker Compose and open it in your browser on your network.
@@ -114,6 +118,7 @@ The Mac app updates itself: use "Check for Updates…" in the app menu, or let i
 **Why are the dates wrong after unzipping a Google Takeout?** The file's own timestamp is often the export date; the real capture date and GPS live in the .json sidecar next to each photo. Takeout Photo reads those sidecars, so dates and places are right. See [browsing a Takeout as a timeline](https://takepho.com/google-photos-takeout/).
 **Can I see my Google Photos on my Strava activities?** Yes. The Strava app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track ("km 12.3 · 10:42"). See [photos on your Strava activities](https://takepho.com/google-photos-strava/).
 **How do I move my Google Photos to Proton Photos?** The sync app moves the Google Photos part of your Takeout into Proton Photos in full original quality, keeping albums (or making trip albums) and writing dates, GPS and descriptions from the JSON sidecars into the files first. See [moving Google Photos to Proton Photos](https://takepho.com/google-photos-to-proton-photos/).
+**Does it work with Google Drive or Docs from my Takeout?** Not yet. Today it uses the Google Photos part of your Takeout, plus Location History where your export has it. Support for Google Drive and Google Docs files is coming, and the sync app will add more destinations beyond Proton Photos.
 **Can I add someone else's Takeout, like my partner's?** Yes. With the yearly plan you can add contributors (other people's Takeouts, e.g. a partner's), so their photos attach to the trips you shared.
 **What happens when the yearly plan ends?** You keep the Lifetime licence (the first paid year includes it). Manual imports keep working forever, and importing a newer export still rebuilds your library with your edits kept. The automatic-processing features (folder watcher, incremental imports of newer exports, new contributors) stop while the subscription is inactive; existing contributors stay visible. You can re-subscribe any time.
 **How do I cancel or get a refund?** Cancel any time from the app's "Manage subscription" button; the plan runs to the end of the paid year. For a refund, email hello@takepho.com and we will sort it out.

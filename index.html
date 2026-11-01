@@ -164,6 +164,14 @@
         },
         {
           "@type": "Question",
+          "name": "Does it work with Google Drive or Docs from my Takeout?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not yet. Today it uses the Google Photos part of your Takeout, plus Location History where your export has it. Support for Google Drive and Google Docs files is coming, and the sync app will add more destinations beyond Proton Photos."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Can I add someone else's Takeout, like my partner's?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -280,7 +288,7 @@
       <section class="section" id="apps">
         <div class="section-header">
           <h2>The apps your export supports</h2>
-          <p>Takeout Photo ships three apps. Each one works with the data your Takeout contains, and everything runs on your computer.</p>
+          <p>Takeout Photo ships three apps, with more on the way. Each one works with the data your Takeout contains, and everything runs on your computer.</p>
         </div>
 
         <div class="app-panel app-photos">
@@ -332,12 +340,21 @@
               <li>Re-runs skip what is already in Proton; nothing in your Proton account is ever deleted</li>
               <li>Files without a capture date are flagged with one-click date suggestions</li>
               <li>Only your own Takeout is synced; other people's Takeouts never go to Proton</li>
+              <li><span class="coming-tag">Coming soon</span> Proton Photos is the first destination; more are on the way</li>
             </ul>
             <p><a href="/google-photos-to-proton-photos/">More about moving Google Photos to Proton Photos</a></p>
           </div>
           <figure class="app-shot">
             <img src="/img/apps/sync.webp" alt="Takeout Photo Proton Photos sync app: the albums tab with the synced Proton albums" width="2400" height="1153" loading="lazy">
           </figure>
+        </div>
+
+        <div class="coming-next">
+          <h3>Coming next</h3>
+          <ul>
+            <li>More sync destinations: Proton Photos is the first, others will follow</li>
+            <li>Support for more of your Takeout: Google Drive and Google Docs files, not just the Google Photos part</li>
+          </ul>
         </div>
       </section>
 
@@ -465,6 +482,10 @@
         <details class="faq-item">
           <summary>How do I move my Google Photos to Proton Photos?</summary>
           <p class="faq-answer">The sync app moves the Google Photos part of your Takeout into Proton Photos in full original quality, keeping albums (or making trip albums) and writing dates, GPS and descriptions from the JSON sidecars into the files first. See <a href="/google-photos-to-proton-photos/">moving Google Photos to Proton Photos</a>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does it work with Google Drive or Docs from my Takeout?</summary>
+          <p class="faq-answer">Not yet. Today it uses the Google Photos part of your Takeout, plus Location History where your export has it. Support for Google Drive and Google Docs files is coming, and the sync app will add more destinations beyond Proton Photos.</p>
         </details>
         <details class="faq-item">
           <summary>Can I add someone else's Takeout, like my partner's?</summary>

@@ -513,6 +513,43 @@ a:hover {
   background-color: var(--surface);
 }
 
+.coming-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 1px 9px;
+  margin-right: 8px;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+
+.coming-next {
+  border-top: 1px solid var(--line);
+  padding: 24px 0 4px;
+}
+
+.coming-next h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.coming-next ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.coming-next li {
+  margin-bottom: 6px;
+}
+
+.coming-next li:last-child {
+  margin-bottom: 0;
+}
+
 /* Platforms */
 
 .platforms {
