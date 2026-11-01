@@ -28,7 +28,9 @@ from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
 MAX_BYTES = 250 * 1024
-VIEW_W, VIEW_H = 1600, 1000
+# App screenshots: 1200x780 CSS viewport at 2x device scale (2400x1560 image).
+VIEW_W, VIEW_H = 1200, 780
+DSF = 2
 
 
 def launch_browser(p):
@@ -52,12 +54,27 @@ def launch_browser(p):
             continue
     return p.chromium.launch(args=["--enable-unsafe-swiftshader", "--use-angle=swiftshader"])
 
-# Demo views (hash router inside /demo/): trip detail, Strava activity, sync.
+# Demo views (hash router inside /demo/): trip detail, Strava activity, sync albums.
 APP_VIEWS = [
     ("photos", "/demo/#/trips/40a69116-e60c-4427-92a1-de16f1b994fa"),
     ("strava", "/demo/#/strava/activities/9000000001"),
-    ("sync", "/demo/#/sync"),
+    ("sync", "/demo/#/sync/albums"),
 ]
+
+# Demo chrome (sample-data banner) and warning/error leaf text are hidden before
+# capturing, so the shots show app content only, no banners.
+HIDE_DEMO_CHROME = """() => {
+  document.querySelectorAll('div, aside, header').forEach(el => {
+    const t = (el.textContent || '').trim();
+    if (t.length < 250 && /demo with sample data/i.test(t) && el.querySelector('a')) el.remove();
+  });
+  document.querySelectorAll('*').forEach(el => {
+    if (el.children.length === 0) {
+      const t = el.textContent || '';
+      if (/exiftool not found/i.test(t) && t.length < 200) el.style.visibility = 'hidden';
+    }
+  });
+}"""
 
 
 def free_port() -> int:
@@ -86,14 +103,23 @@ def serve_root(port: int) -> subprocess.Popen:
 
 
 def save_webp(page, path: Path, quality: int = 82) -> None:
-    """Screenshot the page to WebP, re-encoding with Pillow if over MAX_BYTES."""
+    """Screenshot the page to WebP, cropping uniform empty margins and
+    re-encoding with Pillow if over MAX_BYTES."""
     png = page.screenshot(type="png")
     try:
-        from PIL import Image
+        from PIL import Image, ImageChops
     except ImportError:
         page.screenshot(path=str(path), type="webp", quality=quality)
         return
     img = Image.open(io.BytesIO(png)).convert("RGB")
+    # crop uniform empty margins (sampled from the bottom-right corner)
+    bg = img.getpixel((img.width - 1, img.height - 1))
+    bbox = ImageChops.difference(img, Image.new("RGB", img.size, bg)).getbbox()
+    if bbox:
+        pad = 16
+        l, t, r, b = bbox
+        img = img.crop((max(0, l - pad), max(0, t - pad),
+                        min(img.width, r + pad), min(img.height, b + pad)))
     q = quality
     while True:
         buf = io.BytesIO()
@@ -102,7 +128,7 @@ def save_webp(page, path: Path, quality: int = 82) -> None:
             break
         q -= 10
     path.write_bytes(buf.getvalue())
-    print(f"  {path.name}: {path.stat().st_size // 1024} KB (quality {q})")
+    print(f"  {path.name}: {img.width}x{img.height}, {path.stat().st_size // 1024} KB (quality {q})")
 
 
 def capture_apps(out_dir: Path) -> None:
@@ -116,7 +142,7 @@ def capture_apps(out_dir: Path) -> None:
             ctx = browser.new_context(
                 viewport={"width": VIEW_W, "height": VIEW_H},
                 color_scheme="light",
-                device_scale_factor=1,
+                device_scale_factor=DSF,
             )
             page = ctx.new_page()
             errors = []
@@ -132,6 +158,8 @@ def capture_apps(out_dir: Path) -> None:
                     pass
                 # give maps/tiles and lazy thumbnails time to settle
                 page.wait_for_timeout(4000)
+                page.evaluate(HIDE_DEMO_CHROME)
+                page.wait_for_timeout(600)
                 save_webp(page, out_dir / f"{name}.webp")
             if errors:
                 print("console errors:", *errors[:10], sep="\n  ")
@@ -139,6 +167,12 @@ def capture_apps(out_dir: Path) -> None:
     finally:
         server.terminate()
         server.wait(timeout=10)
+
+
+LANDING_PAGES = [
+    ("home", "/"),
+    ("self-host", "/self-host/"),
+]
 
 
 def capture_landing(out_dir: Path) -> None:
@@ -157,18 +191,27 @@ def capture_landing(out_dir: Path) -> None:
                         device_scale_factor=1,
                     )
                     page = ctx.new_page()
-                    page.goto(base + "/", wait_until="domcontentloaded", timeout=60000)
-                    try:
-                        page.wait_for_load_state("networkidle", timeout=30000)
-                    except Exception:
-                        pass
-                    page.wait_for_timeout(1500)
-                    name = f"home-{width}-{scheme}.png"
-                    page.screenshot(path=str(out_dir / name), full_page=True)
-                    sw = page.evaluate("document.documentElement.scrollWidth")
-                    print(f"  {name}: scrollWidth={sw} (viewport {width})")
-                    if width == 375 and sw > 375:
-                        print(f"  WARNING: horizontal overflow at 375px: {sw}")
+                    for slug, path in LANDING_PAGES:
+                        page.goto(base + path, wait_until="domcontentloaded", timeout=60000)
+                        try:
+                            page.wait_for_load_state("networkidle", timeout=30000)
+                        except Exception:
+                            pass
+                        # scroll through the page so lazy images load, then back to top
+                        page.evaluate(
+                            "async () => {"
+                            "  const h = document.body.scrollHeight;"
+                            "  for (let y = 0; y <= h; y += 700) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 120)); }"
+                            "  window.scrollTo(0, 0);"
+                            "}"
+                        )
+                        page.wait_for_timeout(1500)
+                        name = f"{slug}-{width}-{scheme}.png"
+                        page.screenshot(path=str(out_dir / name), full_page=True)
+                        sw = page.evaluate("document.documentElement.scrollWidth")
+                        print(f"  {name}: scrollWidth={sw} (viewport {width})")
+                        if width <= 375 and sw > width:
+                            print(f"  WARNING: horizontal overflow at {width}px: {sw}")
                     ctx.close()
             browser.close()
     finally:

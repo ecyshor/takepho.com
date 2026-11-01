@@ -21,10 +21,8 @@ Free to download. The Mac app is signed with an Apple Developer ID and notarized
 On your computer, not in the cloud:
 
 - Reads .zip/.tgz archives in place, without unpacking them
-- From a folder, a Google Drive link, or read-only Google sign-in
-- Reads the JSON sidecars for real dates, GPS and descriptions
-- Handles libraries of hundreds of GB
-- Newer exports merge in: incrementally on Yearly, rebuild with edits kept on Lifetime
+- Real dates, GPS and descriptions from the JSON sidecars
+- Handles libraries of hundreds of GB; newer exports merge in
 - Your photos are never uploaded
 
 ### 3. Open your apps
@@ -78,7 +76,7 @@ The desktop app runs on your Mac or Windows. On a home server or NAS, run the Do
 
 - **Mac**: Apple silicon Mac with macOS 12 (Monterey) or later. Signed with an Apple Developer ID and notarized by Apple. [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg)
 - **Windows**: Windows 10 or 11, 64-bit. [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip)
-- **NAS (beta)**: a Docker container on your home server or NAS, started with Docker Compose. Open it in the browser on your network. [Self-hosting guide](https://takepho.com/self-host/)
+- **NAS (beta)**: a Docker container on your home server or NAS, started with Docker Compose. Open it in the browser on your network. Same plans as the desktop app. [Self-hosting guide](https://takepho.com/self-host/)
 
 ## Pricing
 Free to download and explore: the sample library in the app and the demo work without an account. Importing your own Takeout needs a plan. No photo limits, no tiers; updates are free for everyone.
@@ -259,3 +257,61 @@ Other people's Takeouts (for example your partner's) are never synced to your Pr
 - [Google Photos Takeout viewer](https://takepho.com/google-photos-takeout/): browse the export itself as a timeline of trips and places. 
 - [See your Google Photos on your Strava activities](https://takepho.com/google-photos-strava/): photos matched to each activity along the GPS track. 
 - [Takeout Photo home](https://takepho.com/): the photo timeline app.   [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Try the demo](https://takepho.com/demo/)
+
+---
+
+> Source: https://takepho.com/self-host/
+
+# Run Takeout Photo on a NAS with Docker Compose
+Beta: the Docker image is in beta and will be published at `ghcr.io/ecyshor/takepho` (amd64; arm64 later). It gives you the same app, and the same three apps (Photos timeline, Strava, Proton Photos sync), running on your NAS or home server, open in a browser on your network. Your scheduled Takeout exports can land in a folder on the NAS.
+
+## What you get
+The same app as the desktop version, served from your NAS and opened in a browser at `http://<nas-address>:8080`. Everything is processed on the NAS; your photos are never uploaded to our servers.
+
+## Plans and account
+The same [plans and prices as the desktop app](https://takepho.com/#pricing). Sign in from Settings → Account in the browser and choose a plan. The NAS counts as one of your account's 2 computers. It needs internet at least once a month to refresh the licence.
+
+## Requirements
+- Docker Engine with Compose v2.24 or later (Synology Container Manager, Unraid, TrueNAS, or any Linux box).
+- x86-64 (amd64) CPU.
+- 4 GB RAM free for the container; 8 GB recommended for big libraries.
+- Disk for the data folder (thumbnails and indexes, plus about 600 MB for the AI model on first use).
+- Optional: an NVIDIA GPU (driver 580 or later, NVIDIA Container Toolkit) with the image `ghcr.io/ecyshor/takepho-cuda:latest`.
+
+## Quick start
+Save this as `docker-compose.yml` on the NAS:
+
+```yaml
+services:
+  app:
+    image: ghcr.io/ecyshor/takepho:latest
+    restart: unless-stopped
+    ports:
+      - "${TIMELINE_PORT:-8080}:8000"
+    volumes:
+      - ${TIMELINE_DATA:-timeline-data}:/data
+      - ${TIMELINE_MODELS:-timeline-models}:/app/models/clip
+      - ${TAKEOUT_DIR:-./takeout}:/takeout:ro
+volumes:
+  timeline-data: {}
+  timeline-models: {}
+```
+
+Then `docker compose up -d` and open `http://<nas-address>:8080` in your browser.
+
+## Folders
+- `/data`: the library database, thumbnails and indexes. Back this up.
+- `/app/models/clip`: the downloaded AI model. It can be re-downloaded, no backup needed.
+- `/takeout`: your Takeout archives, mounted read-only. On Synology, point `TAKEOUT_DIR` at for example `/volume1/takeout`.
+
+## Security
+The app has no login of its own. Keep it on your home network, or reach it through a VPN (Tailscale, WireGuard) or a reverse proxy with authentication. Never forward the port to the internet.
+
+## Updating and backups
+Update with `docker compose pull && docker compose up -d`. For backups, copy the data volume (`timeline-data`).
+
+## Synology, Unraid, TrueNAS
+In Synology Container Manager, Unraid or TrueNAS, create a Compose project (or stack) from the file above and start it.
+
+## Help
+If something does not work, [open a support issue](https://github.com/ecyshor/takepho.com/issues/new) with where the app runs, the version, what happened and the steps to reproduce.

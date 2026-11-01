@@ -9,6 +9,13 @@
 - Free to download and explore: the sample library in the app or the [read-only demo](https://takepho.com/demo/). Importing your own Takeout needs a plan (see Pricing).
 - Self-host on a NAS (beta): run the Docker image with Docker Compose on your home server or NAS and open it in the browser on your network. See [Self-hosting](https://takepho.com/self-host/).
 
+## Self-hosting on a NAS (beta)
+
+- Run the same app and the same three apps (Photos timeline, Strava, Proton Photos sync) on your NAS or home server with Docker Compose, in your browser on your network: [Run Takeout Photo on a NAS with Docker Compose](https://takepho.com/self-host/).
+- Image: `ghcr.io/ecyshor/takepho:latest` (amd64; arm64 later); optional CUDA image `ghcr.io/ecyshor/takepho-cuda:latest` for an NVIDIA GPU. Requires Docker Engine with Compose v2.24+, an x86-64 CPU and 4 GB RAM free for the container (8 GB recommended for big libraries).
+- Same plans and prices as the desktop app (see Pricing); the NAS counts as one of your account's 2 computers, and it needs internet at least once a month to refresh the licence.
+- Security: the app has no login of its own; keep it on your home network or behind a VPN or an authenticated reverse proxy, and never forward the port to the internet.
+
 ## How it works
 
 1. Request your Takeout at [takeout.google.com](https://takeout.google.com): your export arrives as one or more archive files (takeout-001.zip, ...).

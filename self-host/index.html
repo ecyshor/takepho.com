@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F6F7FB" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12152A" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="Run Takeout Photo on a NAS or home server with Docker Compose (beta): the same app and the same three apps as the desktop version, in your browser on your network. Image: ghcr.io/ecyshor/takepho (amd64).">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>Run Takeout Photo on a NAS with Docker Compose</title>
+  <link rel="canonical" href="https://takepho.com/self-host/">
+
+  <meta property="og:title" content="Run Takeout Photo on a NAS with Docker Compose">
+  <meta property="og:description" content="Run Takeout Photo on a NAS or home server with Docker Compose (beta): the same app and the same three apps as the desktop version, in your browser on your network. Image: ghcr.io/ecyshor/takepho (amd64).">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://takepho.com/self-host/">
+  <meta property="og:site_name" content="Takeout Photo">
+  <meta property="og:image" content="https://takepho.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Takeout Photo: your Google Takeout as a timeline, on your Strava routes, or moved to Proton Photos">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Run Takeout Photo on a NAS with Docker Compose">
+  <meta name="twitter:description" content="Run Takeout Photo on a NAS or home server with Docker Compose (beta): the same app and the same three apps as the desktop version, in your browser on your network. Image: ghcr.io/ecyshor/takepho (amd64).">
+  <meta name="twitter:image" content="https://takepho.com/og-image.png">
+
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script defer src="https://cdn.jsdelivr.net/gh/ecyshor/analiza@main/tracker/analiza.min.js" tenant="0acee168-10d7-474c-9c07-6922e1d99310"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://takepho.com/self-host/#page",
+      "url": "https://takepho.com/self-host/",
+      "name": "Run Takeout Photo on a NAS with Docker Compose",
+      "description": "Run Takeout Photo on a NAS or home server with Docker Compose (beta): the same app and the same three apps as the desktop version, in your browser on your network. Image: ghcr.io/ecyshor/takepho (amd64).",
+      "isPartOf": {
+        "@id": "https://takepho.com/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://takepho.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Run Takeout Photo on a NAS with Docker Compose",
+          "item": "https://takepho.com/self-host/"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="container">
+    <a href="/" class="brand"><img src="/favicon.svg" alt="" width="32" height="32"> <span>Takeout Photo</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#apps">Apps</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/self-host/">Self-host</a>
+      <a href="/#faq">FAQ</a>
+      <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <article>
+        <section class="hero">
+          <h1>Run Takeout Photo on a NAS with Docker Compose</h1>
+          <p class="subtitle">Beta: the Docker image is in beta and will be published at <code>ghcr.io/ecyshor/takepho</code> (amd64; arm64 later). It gives you the same app, and the same three apps, running on your NAS or home server, open in a browser on your network. Your scheduled Takeout exports can land in a folder on the NAS.</p>
+        </section>
+
+        <section class="section">
+          <h2>What you get</h2>
+          <p>The same app as the desktop version: the Photos timeline, Strava (photos on activities) and Proton Photos sync, served from your NAS and opened in a browser at <code>http://&lt;nas-address&gt;:8080</code>. Everything is processed on the NAS; your photos are never uploaded to our servers.</p>
+        </section>
+
+        <section class="section">
+          <h2>Plans and account</h2>
+          <p>The same <a href="/#pricing">plans and prices as the desktop app</a>. Sign in from Settings → Account in the browser and choose a plan. The NAS counts as one of your account's 2 computers. It needs internet at least once a month to refresh the licence.</p>
+        </section>
+
+        <section class="section">
+          <h2>Requirements</h2>
+          <ul>
+            <li>Docker Engine with Compose v2.24 or later (Synology Container Manager, Unraid, TrueNAS, or any Linux box).</li>
+            <li>x86-64 (amd64) CPU.</li>
+            <li>4 GB RAM free for the container; 8 GB recommended for big libraries.</li>
+            <li>Disk for the data folder (thumbnails and indexes, plus about 600 MB for the AI model on first use).</li>
+            <li>Optional: an NVIDIA GPU (driver 580 or later, NVIDIA Container Toolkit) with the image <code>ghcr.io/ecyshor/takepho-cuda:latest</code>.</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2>Quick start</h2>
+          <p>Save this as <code>docker-compose.yml</code> on the NAS:</p>
+          <pre><code>services:
+  app:
+    image: ghcr.io/ecyshor/takepho:latest
+    restart: unless-stopped
+    ports:
+      - "${TIMELINE_PORT:-8080}:8000"
+    volumes:
+      - ${TIMELINE_DATA:-timeline-data}:/data
+      - ${TIMELINE_MODELS:-timeline-models}:/app/models/clip
+      - ${TAKEOUT_DIR:-./takeout}:/takeout:ro
+volumes:
+  timeline-data: {}
+  timeline-models: {}
+</code></pre>
+          <p>Then start it and open the app:</p>
+          <pre><code>docker compose up -d
+# open http://&lt;nas-address&gt;:8080 in your browser</code></pre>
+        </section>
+
+        <section class="section">
+          <h2>Folders</h2>
+          <ul>
+            <li><code>/data</code>: the library database, thumbnails and indexes. Back this up.</li>
+            <li><code>/app/models/clip</code>: the downloaded AI model. It can be re-downloaded, no backup needed.</li>
+            <li><code>/takeout</code>: your Takeout archives, mounted read-only. On Synology, point <code>TAKEOUT_DIR</code> at for example <code>/volume1/takeout</code>.</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2>Security</h2>
+          <p>The app has no login of its own. Keep it on your home network, or reach it through a VPN (Tailscale, WireGuard) or a reverse proxy with authentication. Never forward the port to the internet.</p>
+        </section>
+
+        <section class="section">
+          <h2>Updating and backups</h2>
+          <p>Update with:</p>
+          <pre><code>docker compose pull &amp;&amp; docker compose up -d</code></pre>
+          <p>For backups, copy the data volume (<code>timeline-data</code>).</p>
+        </section>
+
+        <section class="section">
+          <h2>Synology, Unraid, TrueNAS</h2>
+          <p>In Synology Container Manager, Unraid or TrueNAS, create a Compose project (or stack) from the file above and start it.</p>
+        </section>
+
+        <section class="section">
+          <h2>Help</h2>
+          <p>If something does not work, <a href="https://github.com/ecyshor/takepho.com/issues/new">open a support issue</a> with where the app runs, the version, what happened and the steps to reproduce.</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="container">
+    <div class="footer-content">
+      <div>&copy; 2026 Takeout Photo</div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download for Mac</a>
+        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">Download for Windows</a>
+        <a href="/google-photos-takeout/">Takeout viewer</a>
+        <a href="/google-photos-strava/">Photos on Strava</a>
+        <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>
+        <a href="/self-host/">Self-host (beta)</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="mailto:hello@takepho.com">hello@takepho.com</a>
+      </div>
+    </div>
+    <div class="footer-notice">
+      Google, Google Photos, Google Drive and Google Takeout are trademarks of Google LLC. Strava is a trademark of Strava, Inc. Proton and Proton Photos are trademarks of Proton AG. Takeout Photo is not affiliated with or endorsed by Google, Strava or Proton.
+    </div>
+  </footer>
+</body>
+</html>

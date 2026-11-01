@@ -210,7 +210,8 @@ h1 {
   font-weight: 800;
   letter-spacing: -0.02em;
   margin: 0 0 20px 0;
-  max-width: 20ch;
+  max-width: 24ch;
+  text-wrap: balance;
 }
 
 h2 { font-size: 1.7rem; margin: 0 0 16px 0; letter-spacing: -0.01em; }
