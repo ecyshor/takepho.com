@@ -98,7 +98,7 @@ Free to download and explore: the sample library in the app and the demo work wi
 
 Prices include taxes. The currency is picked from your country at checkout: USD 25 (United States and rest of the world), EUR 20 (Europe), GBP 20 (United Kingdom), CHF 20 (Switzerland and Liechtenstein). These are the first-year prices; yearly renewals after the first year are half price: USD 12.50, EUR 10, GBP 10, CHF 10.
 
-One account covers **2 computers**. Remove one in the app (Settings → Account) to move the plan to another computer.
+One account covers **2 devices** (Mac or Windows). Remove one in the app (Settings → Account) to move the plan to another device.
 
 Buy inside the app: open Settings → Account, sign in with Google or Apple, choose a plan and pay. Prices include taxes. Cancel any time from the app's "Manage subscription" button.
 
@@ -113,7 +113,7 @@ The Mac app updates itself: use "Check for Updates…" in the app menu, or let i
 **Is it a web app?** No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos never leave your computer.
 **Which computers does it run on?** Mac: Apple silicon (arm64), macOS 12 (Monterey) or later; signed with an Apple Developer ID and notarized by Apple. Windows: Windows 10 or 11, 64-bit.
 **Why does Windows show "Windows protected your PC" when I open the app?** The Windows app isn't code-signed yet, so on the first launch Windows shows that warning. Click "More info", then "Run anyway" — the app is safe to run. New Windows versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases); automatic updates on Windows are coming soon.
-**Do I need an account?** No. The app is free to download and explore (the sample library in the app, or the [web demo](https://takepho.com/demo/)). Importing your own Takeout needs a plan: sign in with Google or Apple from the app (Settings → Account). One account covers 2 computers.
+**Do I need an account?** No. The app is free to download and explore (the sample library in the app, or the [web demo](https://takepho.com/demo/)). Importing your own Takeout needs a plan: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows).
 **Does it work offline?** Yes. The app keeps a signed entitlement on your computer and refreshes it about weekly, so it needs internet at least once a month.
 **Does it need my Google password?** No. Sign-in happens on Google's own page, and you can revoke access any time at [myaccount.google.com/permissions](https://myaccount.google.com/permissions).
 **What about the Google Photos API?** Google no longer lets apps read a whole Photos library, so Google Takeout is the way to get all your photos with their metadata. Takeout exports include everything you need.
@@ -281,7 +281,7 @@ Beta: the Docker image is public at `ghcr.io/ecyshor/takepho` and runs on x86 (a
 The same app as the desktop version, served from your NAS and opened in a browser at `http://<nas-address>:8080`. Everything is processed on the NAS; your photos are never uploaded to our servers.
 
 ## Plans and account
-The same [plans and prices as the desktop app](https://takepho.com/#pricing). Sign in from Settings → Account in the browser and choose a plan. The NAS counts as one of your account's 2 computers. It needs internet at least once a month to refresh the licence.
+The same [plans and prices as the desktop app](https://takepho.com/#pricing). Sign in from Settings → Account in the browser and choose a plan. The NAS counts as one of your account's 2 devices. It needs internet at least once a month to refresh the licence.
 
 ## Requirements
 - Docker Engine with Compose v2.24 or later (Synology Container Manager, Unraid, TrueNAS, or any Linux box).

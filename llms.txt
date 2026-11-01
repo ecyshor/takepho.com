@@ -13,7 +13,7 @@
 
 - Run the same app and the same three apps (Photos timeline, Activities, Proton Photos sync) on your NAS or home server with Docker Compose, in your browser on your network: [Run Takeout Photo on a NAS with Docker Compose](https://takepho.com/self-host/).
 - Image: `ghcr.io/ecyshor/takepho:latest` (amd64 and arm64); optional CUDA image `ghcr.io/ecyshor/takepho-cuda:latest` for an NVIDIA GPU. `:latest` always points at the newest release; every release also has a pinned tag, e.g. `ghcr.io/ecyshor/takepho:1.0.0` and `ghcr.io/ecyshor/takepho-cuda:1.0.0`. Requires Docker Engine with Compose v2.24+, an x86-64 or 64-bit ARM CPU and 4 GB RAM free for the container (8 GB recommended for big libraries).
-- Same plans and prices as the desktop app (see Pricing); the NAS counts as one of your account's 2 computers, and it needs internet at least once a month to refresh the licence.
+- Same plans and prices as the desktop app (see Pricing); the NAS counts as one of your account's 2 devices, and it needs internet at least once a month to refresh the licence.
 - Security: the app has no login of its own; keep it on your home network or behind a VPN or an authenticated reverse proxy, and never forward the port to the internet.
 
 ## How it works
@@ -27,7 +27,7 @@
 - **Lifetime licence**: one-time USD 25. Import your Takeout manually; importing a newer export rebuilds the library with your edits (hidden photos, trip names/notes, homes, people) kept; all app updates included.
 - **Yearly subscription**: USD 25 for the first year, then every renewal is automatically 50% off (USD 12.50 per year). Everything in Lifetime plus automatic processing (folder watcher imports new exports as they land, incremental imports of newer exports without rebuild, contributors such as a partner's Takeout). The first paid year includes the Lifetime licence: if you cancel, you keep it.
 - Prices include taxes; the currency is picked from your country at checkout: USD 25 (United States and rest of the world), EUR 20 (Europe), GBP 20 (United Kingdom), CHF 20 (Switzerland and Liechtenstein) — these are the first-year prices, and yearly renewals after the first year are half price (USD 12.50, EUR 10, GBP 10, CHF 10).
-- Buy inside the app: Settings → Account, sign in with Google or Apple, choose a plan and pay. Prices include taxes; cancel any time from the app's "Manage subscription" button. One account covers 2 computers. The app works offline on a signed entitlement, refreshed about weekly (internet at least once a month).
+- Buy inside the app: Settings → Account, sign in with Google or Apple, choose a plan and pay. Prices include taxes; cancel any time from the app's "Manage subscription" button. One account covers 2 devices (Mac or Windows). The app works offline on a signed entitlement, refreshed about weekly (internet at least once a month).
 
 ## What you can do with your Google Photos Takeout
 

@@ -22,7 +22,7 @@ Release notes are the GitHub release pages (`https://github.com/ecyshor/takepho.
 
 - `fonts/`: self-hosted woff2 files (Bricolage Grotesque 600-800 and Atkinson Hyperlegible Next 400-700, latin subset), fetched once from the Google Fonts CSS2 API and served from `/fonts/` by `style.css`, so no font CDN is contacted at runtime.
 - `img/apps/`: WebP screenshots of the three apps (Photos timeline, Activities, Proton Photos sync), captured from the bundled demo with `scripts/screenshots.py` (run inside `nix develop ./nix`).
-- `favicon.svg`: the Takeout Photo logo: a white takeout box with a photo (sun + mountains) on its front, on a rounded indigo→violet gradient tile. It is the same file as the app's `common/frontend/public/favicon.svg` in [ecyshor/takepho](https://github.com/ecyshor/takepho). The site uses it as the favicon, the header brand icon, and the hero logo on the home page.
+- `favicon.svg`: the Takeout Photo logo: a white takeout box with a photo (sun + mountains) on its front, on a rounded indigo→violet gradient tile. It is the same file as the app's `common/frontend/public/favicon.svg` in the app's private repository. The site uses it as the favicon, the header brand icon, and the hero logo on the home page.
 - `apple-touch-icon.png`: 180×180 px raster version of the logo, used as the Apple touch icon for iOS home-screen bookmarks.
 - `demo/`: the static, read-only demo of the app (takepho.com/demo, linked from the hero's "Try the demo" button): the app's frontend built in demo mode plus a JSON/image snapshot of its API for the made-up sample library (photos from Wikimedia Commons, credited in the app). Generated, do not edit by hand: rebuild it from the app repo with `scripts/run_python.sh scripts/build_demo.py --out ../takepho.com/demo` (it replaces the folder's contents).
 - `og-image.png`: 1200×630 social/OG image (logo + "Takeout Photo" + tagline on the indigo→violet gradient), referenced by the `og:image` / `twitter:image` tags on every page.
@@ -34,7 +34,7 @@ Release notes are the GitHub release pages (`https://github.com/ecyshor/takepho.
 - `google-photos-strava/index.html`: guide/landing page for "google photos strava" (photos matched to your Strava, Komoot and Garmin Connect activities along the GPS track; the page stays Strava-focused because of the URL, and says Komoot and Garmin Connect work the same way).
 - `google-photos-to-proton-photos/index.html`: guide/landing page for "google photos proton import" (moving the Takeout to Proton Photos with albums and metadata).
 - `self-host/index.html`: NAS self-hosting guide (Docker Compose, beta): requirements, compose file, folders, security, updating. Linked from the header, hero note, platforms section and footers; listed in `sitemap.xml`.
-- `privacy.html`, `terms.html`, `404.html`: legal pages (404 is `noindex`). Privacy has an "Account and purchases (account.takepho.com)" section (data stored, purposes/legal bases, retention, processors, rights, account deletion); terms has the licence terms (personal licence per account, 2 Macs, Lifetime/Yearly, Link/Stripe as seller of record at checkout).
+- `privacy.html`, `terms.html`, `404.html`: legal pages (404 is `noindex`). Privacy has an "Account and purchases (account.takepho.com)" section (data stored, purposes/legal bases, retention, processors, rights, account deletion); terms has the licence terms (personal licence per account, 2 devices (Mac or Windows), Lifetime/Yearly, Link/Stripe as seller of record at checkout).
 
 ## Support issues
 
