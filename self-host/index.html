@@ -117,6 +117,10 @@
       - ${TIMELINE_DATA:-timeline-data}:/data
       - ${TIMELINE_MODELS:-timeline-models}:/app/models/clip
       - ${TAKEOUT_DIR:-./takeout}:/takeout:ro
+    environment:
+      # Require a Google sign-in (recommended, see Security below)
+      AUTH_ENABLED: "true"
+      AUTH_ALLOWED_EMAILS: "you@gmail.com"
 volumes:
   timeline-data: {}
   timeline-models: {}
@@ -137,7 +141,18 @@ volumes:
 
         <section class="section">
           <h2>Security</h2>
-          <p>The app has no login of its own. Keep it on your home network, or reach it through a VPN (Tailscale, WireGuard) or a reverse proxy with authentication. Never forward the port to the internet.</p>
+          <p><strong>Turn on sign-in.</strong> Without it, anyone who can reach the port can open your whole library and the Google and Proton accounts you connected. Sign-in is off by default, so on a NAS turn it on even if the NAS is only on your home network. The quick-start file above already does this.</p>
+          <p>To turn it on, add these two lines under <code>environment:</code> in <code>docker-compose.yml</code>, then run <code>docker compose up -d</code> again:</p>
+          <pre><code>    environment:
+      AUTH_ENABLED: "true"
+      AUTH_ALLOWED_EMAILS: "you@gmail.com,partner@gmail.com"</code></pre>
+          <ul>
+            <li><code>AUTH_ENABLED</code> makes the app ask for a Google sign-in before it opens.</li>
+            <li><code>AUTH_ALLOWED_EMAILS</code> lists the Google accounts that may sign in. You can separate several with commas or allow a whole domain with <code>@example.com</code>. The first account to sign in becomes the owner. If you leave this empty, whoever signs in first claims the instance, so always set it.</li>
+            <li>Optional: <code>AUTH_SESSION_DAYS</code> sets how long a sign-in lasts (default 30 days).</li>
+          </ul>
+          <p>Sign-in works with no Google Cloud setup. It goes through the Takeout Photo sign-in relay, which sends you straight back to a home-network address (a <code>192.168.x.x</code> IP, a <code>.local</code> name or a Tailscale address). For any other address, it first asks you to confirm.</p>
+          <p>Even with sign-in on, don't forward the port to the internet. To reach the app from outside your home, use a VPN (Tailscale, WireGuard) or an HTTPS reverse proxy.</p>
         </section>
 
         <section class="section">
