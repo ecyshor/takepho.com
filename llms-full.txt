@@ -14,7 +14,7 @@ Takeout Photo reads your Google Takeout on your own computer. It has three built
 
 Free to download. Can't install software? [Windows portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip).
 
-Free to download. The Mac app is signed with an Apple Developer ID and notarized by Apple. The Windows app isn't code-signed yet: on the first launch Windows shows "Windows protected your PC" — click "More info", then "Run anyway". The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases). On Windows 1.0.0, install 1.0.1 or later once manually. Self-hosting with Docker is in beta (see [self-hosting](https://takepho.com/self-host/)).
+Free to download. The Mac app is signed with an Apple Developer ID and notarized by Apple. The Windows app isn't code-signed yet: on the first launch Windows shows "Windows protected your PC" — click "More info", then "Run anyway". The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases). On Windows 1.0.0, install 1.0.1 or later once manually. It also runs on a NAS with Docker (see [self-hosting](https://takepho.com/self-host/)).
 
 ## From archive to the built-in apps
 
@@ -85,7 +85,7 @@ The desktop app runs on your Mac or Windows. On a home server or NAS, run the Do
 
 - **Mac**: Apple silicon Mac with macOS 12 (Monterey) or later. Signed with an Apple Developer ID and notarized by Apple. [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg)
 - **Windows**: Windows 10 or 11, 64-bit. [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) (or the [portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip)). Not code-signed yet, so the first launch shows "Windows protected your PC" — click "More info", then "Run anyway". The installed app updates itself automatically (daily check, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases). On Windows 1.0.0, install 1.0.1+ once manually.
-- **NAS (beta)**: a Docker container on your home server or NAS, started with Docker Compose. Open it in the browser on your network. Same plans as the desktop app. [Self-hosting guide](https://takepho.com/self-host/)
+- **NAS**: a Docker container on your home server or NAS, started with Docker Compose. Open it in the browser on your network. Same plans as the desktop app. [Self-hosting guide](https://takepho.com/self-host/)
 
 ## Pricing
 Free to download and explore: the sample library in the app and the demo work without an account. Importing your own Takeout needs a plan. No photo limits, no tiers; updates are free for everyone.
@@ -280,7 +280,7 @@ Other people's Takeouts (for example your partner's) are never synced to your Pr
 > Source: https://takepho.com/self-host/
 
 # Run Takeout Photo on a NAS with Docker Compose
-Beta: the Docker image is public at `ghcr.io/ecyshor/takepho` and runs on x86 (amd64) and 64-bit ARM (arm64) servers. It gives you the same app, and the same three apps (Photos timeline, Activities, Proton Photos sync), running on your NAS or home server, open in a browser on your network. Your scheduled Takeout exports can land in a folder on the NAS.
+The Docker image is public at `ghcr.io/ecyshor/takepho` and runs on x86 (amd64) and 64-bit ARM (arm64) servers. It gives you the same app, and the same three apps (Photos timeline, Activities, Proton Photos sync), running on your NAS or home server, open in a browser on your network. Your scheduled Takeout exports can land in a folder on the NAS.
 
 ## What you get
 The same app as the desktop version, served from your NAS and opened in a browser at `http://<nas-address>:8080`. Everything is processed on the NAS; your photos are never uploaded to our servers.
