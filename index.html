@@ -111,7 +111,7 @@
           "name": "Why does Windows show \"Windows protected your PC\" when I open the app?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The Windows app is not code-signed yet, so on the first launch Windows shows that warning. Click \"More info\", then \"Run anyway\" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip does not — new versions are on the releases page. On Windows 1.0.0, install 1.0.1 or later once manually from the releases page."
+            "text": "The Windows app is not code-signed yet, so on the first launch Windows shows that warning. Click \"More info\", then \"Run anyway\" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip does not — new versions are on the releases page."
           }
         },
         {
@@ -248,7 +248,7 @@
         <p class="hero-note">Free to download &middot; Can&rsquo;t install software? <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">Windows portable zip</a></p>
         <details class="dl-note">
           <summary>Windows: first-launch warning, updates and the portable zip</summary>
-          <p>The Windows app isn&rsquo;t code-signed yet, so Windows shows that warning on the first launch &mdash; click &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;. The installed app updates itself automatically: it checks daily (toggle in Settings &rarr; Updates, plus a &ldquo;Check for updates now&rdquo; button) and installs the update when the app quits. The portable zip doesn&rsquo;t update itself &mdash; new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a> (on Windows 1.0.0, install 1.0.1 or later once manually from there).</p>
+          <p>The Windows app isn&rsquo;t code-signed yet, so Windows shows that warning on the first launch &mdash; click &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;. The installed app updates itself automatically: it checks daily (toggle in Settings &rarr; Updates, plus a &ldquo;Check for updates now&rdquo; button) and installs the update when the app quits. The portable zip doesn&rsquo;t update itself &mdash; new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>.</p>
         </details>
       </section>
 
@@ -284,6 +284,7 @@
               <li>Reads .zip/.tgz archives in place, without unpacking them</li>
               <li>Real dates, GPS and descriptions from the JSON sidecars</li>
               <li>Handles libraries of hundreds of GB; newer exports merge in</li>
+              <li>Interrupted work resumes automatically: if the app is closed, the computer restarts or the app updates mid-import or mid-processing, it picks up where it left off on the next start &mdash; already imported items are skipped, and an import that stopped has a &ldquo;Resume import&rdquo; button</li>
               <li>Your photos are never uploaded</li>
             </ul>
           </div>
@@ -466,7 +467,7 @@
       <section class="section" id="updates">
         <div class="section-header">
           <h2>Updates</h2>
-          <p>Both apps update themselves. Mac: use "Check for Updates…" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a "Check for updates now" button); while the exe isn't code-signed, updates are verified with an EdDSA signature. The portable zip doesn't update itself — download new versions from the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a> (Windows 1.0.0: install 1.0.1+ once manually). Updates are free for everyone, no plan needed. <a href="https://github.com/ecyshor/takepho.com/releases">Release notes on GitHub</a>.</p>
+          <p>Both apps update themselves. Mac: use "Check for Updates…" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a "Check for updates now" button); while the exe isn't code-signed, updates are verified with an EdDSA signature. The portable zip doesn't update itself — download new versions from the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>. Updates are free for everyone, no plan needed. <a href="https://github.com/ecyshor/takepho.com/releases">Release notes on GitHub</a>.</p>
         </div>
       </section>
 
@@ -485,7 +486,7 @@
         </details>
         <details class="faq-item">
           <summary>Why does Windows show "Windows protected your PC" when I open the app?</summary>
-          <p class="faq-answer">The Windows app isn't code-signed yet, so on the first launch Windows shows that warning. Click "More info", then "Run anyway" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>. On Windows 1.0.0, install 1.0.1 or later once manually.</p>
+          <p class="faq-answer">The Windows app isn't code-signed yet, so on the first launch Windows shows that warning. Click "More info", then "Run anyway" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>.</p>
         </details>
         <details class="faq-item">
           <summary>Do I need an account?</summary>
