@@ -7,10 +7,10 @@
   <meta name="theme-color" content="#12152A" media="(prefers-color-scheme: dark)">
   <meta name="description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos. Free to download; importing your own Takeout needs a plan.">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <title>Takeout Photo: turn your Google Takeout into apps for photos, activities and Proton Photos</title>
+  <title>Takeout Photo: turn your Google Takeout into a photo timeline, activity maps and Proton Photos sync</title>
   <link rel="canonical" href="https://takepho.com/">
 
-  <meta property="og:title" content="Takeout Photo: turn your Google Takeout into apps for photos, activities and Proton Photos">
+  <meta property="og:title" content="Takeout Photo: turn your Google Takeout into a photo timeline, activity maps and Proton Photos sync">
   <meta property="og:description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos. Free to download; importing your own Takeout needs a plan.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://takepho.com/">
@@ -20,7 +20,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Takeout Photo: your Google Takeout as a timeline, on your Strava, Komoot or Garmin routes, or moved to Proton Photos">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Takeout Photo: turn your Google Takeout into apps for photos, activities and Proton Photos">
+  <meta name="twitter:title" content="Takeout Photo: turn your Google Takeout into a photo timeline, activity maps and Proton Photos sync">
   <meta name="twitter:description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos. Free to download; importing your own Takeout needs a plan.">
   <meta name="twitter:image" content="https://takepho.com/og-image.png">
 
@@ -52,7 +52,7 @@
       "@id": "https://takepho.com/#app",
       "name": "Takeout Photo",
       "url": "https://takepho.com/",
-      "description": "A desktop app for Mac and Windows, plus a Docker image for a NAS, that reads your Google Takeout on your own computer: a private photo timeline with trips, places and maps, plus apps that put your photos on your Strava, Komoot or Garmin Connect activities and move them to Proton Photos. Everything is processed locally; photos are never uploaded to our servers.",
+      "description": "A desktop app for Mac and Windows, plus a Docker image for a NAS, that reads your Google Takeout on your own computer: a private photo timeline with trips, places and maps, plus built-in apps that put your photos on your Strava, Komoot or Garmin Connect activities and move them to Proton Photos. Everything is processed locally; photos are never uploaded to our servers.",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "macOS 12+ (Apple silicon), Windows 10/11 (64-bit), Docker (NAS)",
       "downloadUrl": [
@@ -80,9 +80,9 @@
         "Reads .zip and .tgz archives in place without unpacking, from a folder, a Google Drive link, or read-only Google sign-in",
         "Reads the JSON sidecar files for real capture dates, GPS and descriptions; handles libraries of hundreds of GB",
         "Newer exports merge in: incrementally on the yearly plan, rebuild with edits kept on Lifetime",
-        "Photos timeline app: trips, places and routes on a map, with on-device AI curation",
-        "Activities app: photos matched to your Strava, Komoot or Garmin Connect activities by capture time and placed along the GPS track",
-        "Proton Photos sync app: full original quality with albums and sidecar metadata written into the files",
+        "Photos timeline: holidays and day trips detected automatically from photo locations and Location History, each trip with places, a route map, best photos and your activities in its day-by-day view; on-device AI curation",
+        "Activities: photos matched to your Strava, Komoot or Garmin Connect activities by capture time and placed along the GPS track; activities also appear inside the trips",
+        "Proton Photos sync: full original quality with albums and sidecar metadata written into the files",
         "Runs on macOS, Windows, or as a Docker container on a NAS; photos are never uploaded"
       ]
     },
@@ -111,7 +111,7 @@
           "name": "Why does Windows show \"Windows protected your PC\" when I open the app?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The Windows app is not code-signed yet, so on the first launch Windows shows that warning. Click \"More info\", then \"Run anyway\" — the app is safe to run. New Windows versions are on the releases page; automatic updates on Windows are coming soon."
+            "text": "The Windows app is not code-signed yet, so on the first launch Windows shows that warning. Click \"More info\", then \"Run anyway\" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip does not — new versions are on the releases page. On Windows 1.0.0, install 1.0.1 or later once manually from the releases page."
           }
         },
         {
@@ -224,6 +224,7 @@
       <a href="#pricing">Pricing</a>
       <a href="/self-host/">Self-host</a>
       <a href="#faq">FAQ</a>
+      <a href="/demo/" class="nav-demo">Live demo</a>
       <a href="#download" class="btn">Download</a>
     </nav>
   </header>
@@ -232,24 +233,28 @@
     <div class="container">
       <!-- Hero -->
       <section class="hero">
-        <h1>Your Google Takeout, turned into apps you can use.</h1>
-        <p class="lead">Request a Google Photos export with Google Takeout, let Takeout Photo process the archives on your own computer, and open the apps your data supports: a photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos.</p>
-        <div class="hero-actions" id="download">
-          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download for Mac</a>
-          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary">Download for Windows</a>
-          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip" class="text-link">Windows portable zip</a>
-          <a href="/demo/" class="text-link">Try the demo</a>
+        <h1>Your Google Takeout as a photo timeline, activity maps and Proton Photos sync.</h1>
+        <p class="lead">Takeout Photo reads your Google Takeout on your own computer. It has three built-in apps: a photo timeline with your holidays and day trips found automatically, your photos on your Strava, Komoot or Garmin activities, and a move to Proton Photos.</p>
+        <div class="hero-demo">
+          <p class="hero-demo-title">Try the demo in your browser</p>
+          <p class="hero-demo-note">Live demo with sample photos &mdash; nothing to download, no account needed.</p>
+          <a href="/demo/" class="btn btn-demo">Open the live demo</a>
         </div>
+        <div class="hero-actions" id="download">
+          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary">Download for Mac</a>
+          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary">Download for Windows</a>
+          <a href="/self-host/" class="btn btn-secondary">Self-host on a NAS (Docker)</a>
+        </div>
+        <p class="hero-note">Free to download &middot; Can&rsquo;t install software? <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">Windows portable zip</a></p>
         <details class="dl-note">
-          <summary>First launch on Windows shows &ldquo;Windows protected your PC&rdquo;?</summary>
-          <p>The Windows app isn&rsquo;t code-signed yet, so Windows shows that warning on the first launch &mdash; click &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;. The Windows app doesn&rsquo;t update itself automatically yet (coming soon); new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>.</p>
+          <summary>Windows: first-launch warning, updates and the portable zip</summary>
+          <p>The Windows app isn&rsquo;t code-signed yet, so Windows shows that warning on the first launch &mdash; click &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;. The installed app updates itself automatically: it checks daily (toggle in Settings &rarr; Updates, plus a &ldquo;Check for updates now&rdquo; button) and installs the update when the app quits. The portable zip doesn&rsquo;t update itself &mdash; new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a> (on Windows 1.0.0, install 1.0.1 or later once manually from there).</p>
         </details>
-        <p class="hero-note">Free to download. The Mac app is signed with an Apple Developer ID and notarized by Apple. The app also runs on a NAS with Docker (beta, see <a href="/self-host/">self-hosting</a>).</p>
       </section>
 
-      <!-- Flow figure: archive -> processing -> apps -->
-      <section class="flow-section" aria-label="From archive to apps">
-        <h2 class="visually-hidden">From archive to apps</h2>
+      <!-- Flow figure: archive -> processing -> built-in apps -->
+      <section class="flow-section" aria-label="From archive to the built-in apps">
+        <h2 class="visually-hidden">From archive to the built-in apps</h2>
         <div class="flow">
           <div class="flow-stage" style="--d:0">
             <h3><span class="flow-num">1</span> Request your Takeout</h3>
@@ -286,7 +291,7 @@
             <svg width="28" height="16" viewBox="0 0 28 16" fill="none"><path d="M2 8h22m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div class="flow-stage" style="--d:2">
-            <h3><span class="flow-num">3</span> Open your apps</h3>
+            <h3><span class="flow-num">3</span> Explore in Takeout Photo</h3>
             <svg class="flow-illo" width="120" height="60" viewBox="0 0 120 60" fill="none" aria-hidden="true">
               <rect x="6" y="8" width="32" height="44" rx="4" stroke-width="2" style="stroke:var(--app-photos)"/>
               <circle cx="22" cy="24" r="5" style="fill:var(--app-photos)"/>
@@ -302,25 +307,26 @@
             </ul>
           </div>
         </div>
-        <p class="flow-caption">Each app appears for the data your export contains.</p>
+        <p class="flow-caption">The built-in apps open for the data your export contains.</p>
       </section>
 
       <!-- Apps showcase -->
       <section class="section" id="apps">
         <div class="section-header">
-          <h2>The apps your export supports</h2>
-          <p>Takeout Photo ships three apps, with more on the way. Each one works with the data your Takeout contains, and everything runs on your computer.</p>
+          <h2>The built-in apps for your export</h2>
+          <p>Takeout Photo comes with three built-in apps, with more on the way. Each one opens for the data your Takeout contains, and everything runs on your computer.</p>
         </div>
 
         <div class="app-panel app-photos">
           <div>
             <h3><span class="app-dot"></span> Photos timeline</h3>
-            <p class="app-desc">Browse your whole export as a timeline of trips, places and maps.</p>
+            <p class="app-desc">Your holidays and day trips, found automatically, so you can relive your memories trip by trip &mdash; each with its places, route map and best photos.</p>
             <ul>
+              <li>Holidays and day trips detected automatically from your photo locations and Location History, plus home and moves</li>
               <li>Real capture dates, GPS and descriptions from the JSON sidecars</li>
-              <li>Home, moves, day trips and holidays detected automatically</li>
               <li>Towns and countries named from the GPS coordinates</li>
               <li>Routes drawn on a map from open street data, using Location History when your export has it</li>
+              <li>Your Strava, Komoot or Garmin activities appear in each trip's day-by-day view, for the full picture of the holiday</li>
               <li>On-device AI curation groups near-duplicates and picks the best shots per trip</li>
               <li>Libraries of hundreds of GB, read in place from the archives</li>
             </ul>
@@ -341,7 +347,7 @@
               <li>A map of all your routes, coloured by sport, with filters for sport, year, country and photos</li>
               <li>Activity pages with the route, the best photos and a photo strip; stats per year</li>
               <li>Photos you already uploaded to Strava are shown too, with duplicates hidden</li>
-              <li>Activities link to the trips in the Photos timeline</li>
+              <li>The link goes both ways: activities appear inside the trips, and each activity links to its trip</li>
             </ul>
             <p><a href="/google-photos-strava/">More about photos on your Strava activities</a></p>
           </div>
@@ -393,13 +399,13 @@
           </div>
           <div class="platform">
             <h3>Windows</h3>
-            <p>Windows 10 or 11, 64-bit. The app isn&rsquo;t code-signed yet, so the first launch shows &ldquo;Windows protected your PC&rdquo; &mdash; click &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;. Automatic updates on Windows are coming soon; new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>.</p>
+            <p>Windows 10 or 11, 64-bit. The app isn&rsquo;t code-signed yet, so the first launch shows &ldquo;Windows protected your PC&rdquo; &mdash; click &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;. The installed app updates itself automatically (daily check, Settings &rarr; Updates; installs when the app quits); the portable zip doesn&rsquo;t &mdash; new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>.</p>
             <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary">Download for Windows</a>
             <p class="platform-note">or <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">download the portable zip</a></p>
           </div>
           <div class="platform">
             <h3>NAS <span class="beta-tag">beta</span></h3>
-            <p>A Docker container on your home server or NAS, started with Docker Compose. Open it in the browser on your network. Same plans as the desktop app.</p>
+            <p>A Docker container on your home server or NAS (beta), started with Docker Compose. Open it in the browser on your network. Same plans as the desktop app.</p>
             <a href="/self-host/" class="text-link">Self-hosting guide</a>
           </div>
         </div>
@@ -460,7 +466,7 @@
       <section class="section" id="updates">
         <div class="section-header">
           <h2>Updates</h2>
-          <p>The Mac app updates itself: use "Check for Updates…" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). The Windows app doesn't update itself automatically yet (coming soon) — download new versions from the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>. Updates are free for everyone, no plan needed. <a href="https://github.com/ecyshor/takepho.com/releases">Release notes on GitHub</a>.</p>
+          <p>Both apps update themselves. Mac: use "Check for Updates…" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a "Check for updates now" button); while the exe isn't code-signed, updates are verified with an EdDSA signature. The portable zip doesn't update itself — download new versions from the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a> (Windows 1.0.0: install 1.0.1+ once manually). Updates are free for everyone, no plan needed. <a href="https://github.com/ecyshor/takepho.com/releases">Release notes on GitHub</a>.</p>
         </div>
       </section>
 
@@ -479,7 +485,7 @@
         </details>
         <details class="faq-item">
           <summary>Why does Windows show "Windows protected your PC" when I open the app?</summary>
-          <p class="faq-answer">The Windows app isn't code-signed yet, so on the first launch Windows shows that warning. Click "More info", then "Run anyway" — the app is safe to run. New Windows versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>; automatic updates on Windows are coming soon.</p>
+          <p class="faq-answer">The Windows app isn't code-signed yet, so on the first launch Windows shows that warning. Click "More info", then "Run anyway" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>. On Windows 1.0.0, install 1.0.1 or later once manually.</p>
         </details>
         <details class="faq-item">
           <summary>Do I need an account?</summary>

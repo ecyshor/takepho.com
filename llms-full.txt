@@ -5,14 +5,18 @@
 
 > Source: https://takepho.com/
 
-# Your Google Takeout, turned into apps you can use.
-Request a Google Photos export with Google Takeout, let Takeout Photo process the archives on your own computer, and open the apps your data supports: a photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos.
+# Your Google Takeout as a photo timeline, activity maps and Proton Photos sync.
+Takeout Photo reads your Google Takeout on your own computer. It has three built-in apps: a photo timeline with your holidays and day trips found automatically, your photos on your Strava, Komoot or Garmin activities, and a move to Proton Photos.
 
-[Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) (or the [portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip)) [Try the demo](https://takepho.com/demo/)
+**Try the demo in your browser** — live demo with sample photos, nothing to download, no account needed: [Open the live demo](https://takepho.com/demo/)
 
-Free to download. The Mac app is signed with an Apple Developer ID and notarized by Apple. The Windows app isn't code-signed yet: on the first launch Windows shows "Windows protected your PC" — click "More info", then "Run anyway". It doesn't update itself automatically yet (coming soon); new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases). The app also runs on a NAS with Docker (beta, see [self-hosting](https://takepho.com/self-host/)).
+[Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) [Self-host on a NAS (Docker)](https://takepho.com/self-host/)
 
-## From archive to apps
+Free to download. Can't install software? [Windows portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip).
+
+Free to download. The Mac app is signed with an Apple Developer ID and notarized by Apple. The Windows app isn't code-signed yet: on the first launch Windows shows "Windows protected your PC" — click "More info", then "Run anyway". The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases). On Windows 1.0.0, install 1.0.1 or later once manually. Self-hosting with Docker is in beta (see [self-hosting](https://takepho.com/self-host/)).
+
+## From archive to the built-in apps
 
 ### 1. Request your Takeout
 [takeout.google.com](https://takeout.google.com) delivers your export as one or more archive files: takeout-001.zip, takeout-002.zip, ...
@@ -25,23 +29,24 @@ On your computer, not in the cloud:
 - Handles libraries of hundreds of GB; newer exports merge in
 - Your photos are never uploaded
 
-### 3. Open your apps
+### 3. Explore in Takeout Photo
 - Photos timeline
 - Activities
 - Proton Photos sync
 
-Each app appears for the data your export contains.
+The built-in apps open for the data your export contains.
 
-## The apps your export supports
-Takeout Photo ships three apps, with more on the way. Each one works with the data your Takeout contains, and everything runs on your computer.
+## The built-in apps for your export
+Takeout Photo comes with three built-in apps, with more on the way. Each one opens for the data your Takeout contains, and everything runs on your computer.
 
 ### Photos timeline
-Browse your whole export as a timeline of trips, places and maps.
+Your holidays and day trips, found automatically, so you can relive your memories trip by trip — each with its places, route map and best photos.
 
+- Holidays and day trips detected automatically from your photo locations and Location History, plus home and moves
 - Real capture dates, GPS and descriptions from the JSON sidecars
-- Home, moves, day trips and holidays detected automatically
 - Towns and countries named from the GPS coordinates
 - Routes drawn on a map from open street data, using Location History when your export has it
+- Your Strava, Komoot or Garmin activities appear in each trip's day-by-day view, for the full picture of the holiday
 - On-device AI curation groups near-duplicates and picks the best shots per trip
 - Libraries of hundreds of GB, read in place from the archives
 
@@ -55,7 +60,7 @@ See your Google Photos on your Strava, Komoot and Garmin Connect activities.
 - A map of all your routes, coloured by sport, with filters for sport, year, country and photos
 - Activity pages with the route, the best photos and a photo strip; stats per year
 - Photos you already uploaded to Strava are shown too, with duplicates hidden
-- Activities link to the trips in the Photos timeline
+- The link goes both ways: activities appear inside the trips, and each activity links to its trip
 
 [More about photos on your Strava activities](https://takepho.com/google-photos-strava/)
 
@@ -79,7 +84,7 @@ Move the Google Photos part of your Takeout to Proton Photos.
 The desktop app runs on your Mac or Windows. On a home server or NAS, run the Docker image with Docker Compose and open it in your browser on your network.
 
 - **Mac**: Apple silicon Mac with macOS 12 (Monterey) or later. Signed with an Apple Developer ID and notarized by Apple. [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg)
-- **Windows**: Windows 10 or 11, 64-bit. [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) (or the [portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip)). Not code-signed yet, so the first launch shows "Windows protected your PC" — click "More info", then "Run anyway"; no automatic updates on Windows yet (coming soon), new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases).
+- **Windows**: Windows 10 or 11, 64-bit. [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) (or the [portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip)). Not code-signed yet, so the first launch shows "Windows protected your PC" — click "More info", then "Run anyway". The installed app updates itself automatically (daily check, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases). On Windows 1.0.0, install 1.0.1+ once manually.
 - **NAS (beta)**: a Docker container on your home server or NAS, started with Docker Compose. Open it in the browser on your network. Same plans as the desktop app. [Self-hosting guide](https://takepho.com/self-host/)
 
 ## Pricing
@@ -107,12 +112,12 @@ Everything is processed on your computer; your photos are never uploaded to our 
 [Read the full privacy policy](https://takepho.com/privacy.html)
 
 ## Updates
-The Mac app updates itself: use "Check for Updates…" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). The Windows app doesn't update itself automatically yet (coming soon) — download new versions from the [releases page](https://github.com/ecyshor/takepho.com/releases). Updates are free for everyone, no plan needed. [Release notes on GitHub](https://github.com/ecyshor/takepho.com/releases).
+Both apps update themselves. Mac: use "Check for Updates…" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a "Check for updates now" button; EdDSA-verified updates). The portable zip doesn't update itself — download new versions from the [releases page](https://github.com/ecyshor/takepho.com/releases). On Windows 1.0.0, install 1.0.1+ once manually. Updates are free for everyone, no plan needed. [Release notes on GitHub](https://github.com/ecyshor/takepho.com/releases).
 
 ## Frequently asked questions
 **Is it a web app?** No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos never leave your computer.
 **Which computers does it run on?** Mac: Apple silicon (arm64), macOS 12 (Monterey) or later; signed with an Apple Developer ID and notarized by Apple. Windows: Windows 10 or 11, 64-bit.
-**Why does Windows show "Windows protected your PC" when I open the app?** The Windows app isn't code-signed yet, so on the first launch Windows shows that warning. Click "More info", then "Run anyway" — the app is safe to run. New Windows versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases); automatic updates on Windows are coming soon.
+**Why does Windows show "Windows protected your PC" when I open the app?** The Windows app isn't code-signed yet, so on the first launch Windows shows that warning. Click "More info", then "Run anyway" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases). On Windows 1.0.0, install 1.0.1 or later once manually.
 **Do I need an account?** No. The app is free to download and explore (the sample library in the app, or the [web demo](https://takepho.com/demo/)). Importing your own Takeout needs a plan: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows).
 **Does it work offline?** Yes. The app keeps a signed entitlement on your computer and refreshes it about weekly, so it needs internet at least once a month.
 **Does it need my Google password?** No. Sign-in happens on Google's own page, and you can revoke access any time at [myaccount.google.com/permissions](https://myaccount.google.com/permissions).

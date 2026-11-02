@@ -5,13 +5,13 @@
 ## Download
 
 - [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg): the latest release as a .dmg. Apple silicon (arm64) only, macOS 12 (Monterey) or later, signed with an Apple Developer ID and notarized. The app updates itself (Sparkle; "Check for Updates…" menu, automatic checks can be turned off in Settings → Updates). [Release notes](https://github.com/ecyshor/takepho.com/releases).
-- [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe): the latest release as an installer (.exe); a portable [TakeoutPhoto-windows-x64.zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip) is also available. Windows 10 or 11, 64-bit. The Windows app isn't code-signed yet, so the first launch shows "Windows protected your PC" — click "More info", then "Run anyway". It doesn't update itself automatically yet (coming soon); new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases).
+- [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe): the latest release as an installer (.exe); a portable [TakeoutPhoto-windows-x64.zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip) is also available. Windows 10 or 11, 64-bit. The Windows app isn't code-signed yet, so the first launch shows "Windows protected your PC" — click "More info", then "Run anyway". The installed app updates itself automatically (checks daily in Settings → Updates and installs when the app quits; updates are EdDSA-verified like the Mac feed), while the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases). On Windows 1.0.0, install 1.0.1 or later once manually.
 - Free to download and explore: the sample library in the app or the [read-only demo](https://takepho.com/demo/). Importing your own Takeout needs a plan (see Pricing).
 - Self-host on a NAS (beta): run the Docker image with Docker Compose on your home server or NAS and open it in the browser on your network. See [Self-hosting](https://takepho.com/self-host/).
 
 ## Self-hosting on a NAS (beta)
 
-- Run the same app and the same three apps (Photos timeline, Activities, Proton Photos sync) on your NAS or home server with Docker Compose, in your browser on your network: [Run Takeout Photo on a NAS with Docker Compose](https://takepho.com/self-host/).
+- Run the same app — with its built-in Photos timeline, Activities and Proton Photos sync — on your NAS or home server with Docker Compose, in your browser on your network: [Run Takeout Photo on a NAS with Docker Compose](https://takepho.com/self-host/).
 - Image: `ghcr.io/ecyshor/takepho:latest` (amd64 and arm64); optional CUDA image `ghcr.io/ecyshor/takepho-cuda:latest` for an NVIDIA GPU. `:latest` always points at the newest release; every release also has a pinned tag, e.g. `ghcr.io/ecyshor/takepho:1.0.0` and `ghcr.io/ecyshor/takepho-cuda:1.0.0`. Requires Docker Engine with Compose v2.24+, an x86-64 or 64-bit ARM CPU and 4 GB RAM free for the container (8 GB recommended for big libraries).
 - Same plans and prices as the desktop app (see Pricing); the NAS counts as one of your account's 2 devices, and it needs internet at least once a month to refresh the licence.
 - Security: the app has no login of its own; keep it on your home network or behind a VPN or an authenticated reverse proxy, and never forward the port to the internet.
@@ -20,7 +20,7 @@
 
 1. Request your Takeout at [takeout.google.com](https://takeout.google.com): your export arrives as one or more archive files (takeout-001.zip, ...).
 2. Takeout Photo processes it on your computer: it reads .zip/.tgz archives in place without unpacking, from a folder, a Google Drive link, or read-only Google sign-in; it reads the JSON sidecars for the real dates, GPS and descriptions; it handles libraries of hundreds of GB; newer exports merge in (incrementally on the yearly plan, rebuild with edits kept on Lifetime). Your photos are never uploaded.
-3. Open your apps: the Photos timeline, Activities (photos on Strava, Komoot and Garmin Connect activities), Proton Photos sync. Each app appears for the data your export contains.
+3. Explore it in Takeout Photo: the built-in Photos timeline, Activities (photos on Strava, Komoot and Garmin Connect activities) and Proton Photos sync. Each one opens for the data your export contains.
 
 ## Pricing
 
@@ -35,7 +35,7 @@
 - [See your Google Photos on your Strava activities](https://takepho.com/google-photos-strava/): sync activities from Strava (official API, OAuth), Komoot or Garmin Connect (your own login) and match your Takeout photos to each activity by capture time, placed along the GPS track ("km 12.3 · 10:42").
 - [Move your Google Photos to Proton Photos](https://takepho.com/google-photos-to-proton-photos/): import the Google Photos part of your Takeout into Proton Photos (Proton Drive) in full original quality, with albums or trip albums, and capture date, GPS, description, favourite and people written losslessly into the files from the Takeout JSON sidecars, uploaded via Proton's official open-source Drive CLI.
 - Coming next: more sync destinations beyond Proton Photos, and support for Google Drive and Google Docs files from your Takeout (today only the Google Photos part is used).
-- [Home](https://takepho.com/): download, how it works, apps, platforms, pricing, FAQ.
+- [Home](https://takepho.com/): download, how it works, features, platforms, pricing, FAQ.
 - [Read-only demo](https://takepho.com/demo/): try the app in your browser with a sample library.
 - [Self-hosting on a NAS (beta)](https://takepho.com/self-host/): Docker Compose on your home server or NAS.
 
