@@ -12,7 +12,7 @@ Takeout Photo reads your Google Takeout on your own computer. It has three built
 
 [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) [Self-host on a NAS (Docker)](https://takepho.com/self-host/)
 
-Free to download. Can't install software? [Windows portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip).
+Free to download — Lite is free for your 5 most recent holidays. Can't install software? [Windows portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip).
 
 Free to download. The Mac app is signed with an Apple Developer ID and notarized by Apple. The Windows app isn't code-signed yet: on the first launch Windows shows "Windows protected your PC" — click "More info", then "Run anyway". The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases). It also runs on a NAS with Docker (see [self-hosting](https://takepho.com/self-host/)).
 
@@ -89,10 +89,19 @@ The desktop app runs on your Mac or Windows. On a home server or NAS, run the Do
 - **NAS**: a Docker container on your home server or NAS, started with Docker Compose. Open it in the browser on your network. Same plans as the desktop app. [Self-hosting guide](https://takepho.com/self-host/)
 
 ## Pricing
-Free to download and explore: the sample library in the app and the demo work without an account. Importing your own Takeout needs a plan. No photo limits, no tiers; updates are free for everyone.
+Free to download and explore: the sample library in the app and the demo work without an account. Lite is free: import your own Takeout manually and browse your 5 most recent holidays in the photo timeline, no account needed. Lifetime and Yearly have no photo limits and unlock everything, including the other apps; updates are free for everyone.
+
+### Lite: free
+- Import your own Takeout manually: a local folder of .tgz/.zip archives, including a newer export later.
+- No automatic imports: when you have a new export, add it to your folder and run Import again.
+- Photo timeline only, read-only (no renaming, curating or hiding trips, no editing homes).
+- Your 5 most recent holidays, plus the home periods and day trips in that span — the app shows "5 of N holidays".
+- No Strava/Komoot/Garmin activity matching, no Proton Photos move.
+- Lifetime or Yearly unlocks the whole library: the rest of the photos are processed in the background, without re-importing.
 
 ### Lifetime: USD 25 one-time
 - Import your Takeout manually: from a folder on disk, a Google Drive link, or read-only Google sign-in.
+- Unlocks your whole library, no photo limits: the rest of your photos are processed in the background, without re-importing.
 - Importing a newer Takeout export rebuilds the library from it, and your edits (hidden photos, trip names and notes, homes, people) are kept.
 - All app updates included.
 
@@ -102,9 +111,9 @@ Free to download and explore: the sample library in the app and the demo work wi
 - The first paid year includes the Lifetime licence: if you cancel, you keep it.
 - The first year is billed at the full price; every renewal after that is automatically 50% off (USD 25 → USD 12.50 per year), until you cancel.
 
-Prices include taxes. The currency is picked from your country at checkout: USD 25 (United States and rest of the world), EUR 20 (Europe), GBP 20 (United Kingdom), CHF 20 (Switzerland and Liechtenstein). These are the first-year prices; yearly renewals after the first year are half price: USD 12.50, EUR 10, GBP 10, CHF 10.
+Lite is free, no account needed. Prices for the paid plans include taxes. The currency is picked from your country at checkout: USD 25 (United States and rest of the world), EUR 20 (Europe), GBP 20 (United Kingdom), CHF 20 (Switzerland and Liechtenstein). These are the first-year prices; yearly renewals after the first year are half price: USD 12.50, EUR 10, GBP 10, CHF 10.
 
-One account covers **2 devices** (Mac or Windows). Remove one in the app (Settings → Account) to move the plan to another device.
+For a paid plan, one account covers **2 devices** (Mac or Windows). Remove one in the app (Settings → Account) to move the plan to another device.
 
 Buy inside the app: open Settings → Account, sign in with Google or Apple, choose a plan and pay. Prices include taxes. Cancel any time from the app's "Manage subscription" button.
 
@@ -119,7 +128,9 @@ Both apps update themselves. Mac: use "Check for Updates…" in the app menu, or
 **Is it a web app?** No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos never leave your computer.
 **Which computers does it run on?** Mac: Apple silicon (arm64), macOS 12 (Monterey) or later; signed with an Apple Developer ID and notarized by Apple. Windows: Windows 10 or 11, 64-bit.
 **Why does Windows show "Windows protected your PC" when I open the app?** The Windows app isn't code-signed yet, so on the first launch Windows shows that warning. Click "More info", then "Run anyway" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases).
-**Do I need an account?** No. The app is free to download and explore (the sample library in the app, or the [web demo](https://takepho.com/demo/)). Importing your own Takeout needs a plan: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows).
+**Do I need to pay?** No, not for Lite: it is free for your 5 most recent holidays (photo timeline only, no account needed). A paid plan (Lifetime or Yearly) unlocks the full library with no photo limits and the other apps (activity matching, Proton Photos move).
+**What is Lite?** Lite is the free plan: no account or licence needed. Import your own Google Takeout manually (a local folder of .tgz/.zip archives, including a newer export later) and get the photo timeline only, read-only, limited to your 5 most recent holidays plus the home periods and day trips in that span (the app shows "5 of N holidays"). Activity matching (Strava/Komoot/Garmin) and the Proton Photos move stay on the paid plans. Buying Lifetime or Yearly unlocks the whole library: the rest of the photos are processed in the background, without re-importing.
+**Do I need an account?** No, not for Lite (see "What is Lite?"). The app is also free to download and explore (the sample library in the app, or the [web demo](https://takepho.com/demo/)). A paid plan needs an account: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows).
 **Does it work offline?** Yes. The app keeps a signed entitlement on your computer and refreshes it about weekly, so it needs internet at least once a month.
 **Does it need my Google password?** No. Sign-in happens on Google's own page, and you can revoke access any time at [myaccount.google.com/permissions](https://myaccount.google.com/permissions).
 **What about the Google Photos API?** Google no longer lets apps read a whole Photos library, so Google Takeout is the way to get all your photos with their metadata. Takeout exports include everything you need.
@@ -138,7 +149,7 @@ Both apps update themselves. Mac: use "Check for Updates…" in the app menu, or
 
 # Google Photos Takeout viewer: browse your export as a timeline
 A Google Photos Takeout is the set of .zip or .tgz archives you download from takeout.google.com: year folders and album folders full of photos and videos, plus a small .json file next to each photo that holds the real capture date, GPS location and description. Takeout Photo is a desktop app for Mac and Windows that reads those archives in place (without unzipping) and turns them into a private timeline of trips, places and maps on your own computer.
-Desktop app for Mac and Windows  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) [Try the demo](https://takepho.com/demo/). Free to download and explore; importing your own Takeout needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year, [pricing](https://takepho.com/#pricing))
+Desktop app for Mac and Windows  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) [Try the demo](https://takepho.com/demo/). Free to download and explore. Lite is free: import your own Takeout manually and browse your 5 most recent holidays; a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year) unlocks the whole library ([pricing](https://takepho.com/#pricing))
 
 ## What is inside a Google Photos Takeout?
 When you export Google Photos with [Google Takeout](https://takeout.google.com), Google splits the export into one or more archive files (`.zip` or `.tgz`) chosen by the file size you pick (for example 50 GB per file). Inside the archives you get a `Takeout/Google Photos/` folder with one folder per year, your album folders, and your photos and videos.
@@ -149,8 +160,8 @@ If you unzip a Takeout and sort the photos by file date, many of them look wrong
 Takeout Photo reads the JSON sidecars, so dates and locations are right: each photo shows when it was taken and where, and towns and countries are named from the GPS coordinates by reverse geocoding.
 
 ## How Takeout Photo reads your Takeout in place
-You never have to unpack the archives. Download the [app](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) (Mac: Apple silicon, macOS 12 or later; Windows: 10 or 11, 64-bit) and point it at a local folder, a Google Drive link, or sign in with Google and pick the archive files in Google's picker; access is read-only and limited to the files you choose. The app reads the `.zip` and `.tgz` files directly, so libraries of hundreds of GB work without filling your disk twice. It's free to download and explore the sample library; importing your own Takeout needs a plan. See [pricing on the home page](https://takepho.com/#pricing).
-If you schedule regular Takeout exports, new archives are picked up and merged automatically with the yearly plan (incrementally, without duplicating photos you already have). With the Lifetime plan you re-import a newer export manually, and your edits (hidden photos, trip names and notes, homes, people) are kept.
+You never have to unpack the archives. Download the [app](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) (Mac: Apple silicon, macOS 12 or later; Windows: 10 or 11, 64-bit) and point it at a local folder, a Google Drive link, or sign in with Google and pick the archive files in Google's picker; access is read-only and limited to the files you choose. The app reads the `.zip` and `.tgz` files directly, so libraries of hundreds of GB work without filling your disk twice. It's free to download and explore the sample library; with Lite (free) you can import your own Takeout from a local folder and see your 5 most recent holidays, and a paid plan unlocks the whole library. See [pricing on the home page](https://takepho.com/#pricing).
+If you schedule regular Takeout exports, new archives are picked up and merged automatically with the yearly plan (incrementally, without duplicating photos you already have). With the Lifetime plan you re-import a newer export manually, and your edits (hidden photos, trip names and notes, homes, people) are kept. With Lite (free) you can also import a newer export manually later — it stays limited to your 5 most recent holidays.
 
 ## Trips, places and maps
 The Photos app detects where you live and when you moved, plus day trips and holidays, so you can browse your life by trip instead of by raw date. When your export includes Google Location History (Timeline), trips are detected from it and real routes are drawn on the map (flights shown as arcs) using open street data.
@@ -171,7 +182,7 @@ Everything is processed locally on your computer; your photos are never uploaded
 **Do I have to unzip the Takeout archives first?** No. Takeout Photo reads .zip and .tgz archives in place, from a local folder, a Google Drive link, or by signing in with Google and picking the files. You can keep the export exactly as Google delivered it.
 **Why are the photo dates wrong after unzipping a Takeout?** Because the file's own timestamp is often the export date, not the capture date. The real capture time and GPS coordinates live in the .json sidecar next to each photo, and Takeout Photo reads those, so dates and places come out right.
 **Can it handle a very large photo library?** Yes: archives are read in place without unpacking, so libraries of hundreds of GB are handled without needing the same space again on disk.
-**What happens when a new scheduled Takeout export arrives?** With the yearly plan, new archives are picked up and merged automatically (incrementally, without duplicating photos). With the Lifetime plan you re-import a newer export manually: the library is rebuilt from it and your edits (hidden photos, trip names and notes, homes, people) are kept.
+**What happens when a new scheduled Takeout export arrives?** With the yearly plan, new archives are picked up and merged automatically (incrementally, without duplicating photos). With the Lifetime plan you re-import a newer export manually: the library is rebuilt from it and your edits (hidden photos, trip names and notes, homes, people) are kept. With Lite (free) you can also import a newer export manually later — it stays limited to your 5 most recent holidays.
 **Is anything uploaded to a server?** No. Everything is processed locally on your computer and your photos are never uploaded to our servers. Google sign-in, if you use it, is read-only and limited to the files you pick.
 
 ## Also works with your Takeout
@@ -186,7 +197,7 @@ Everything is processed locally on your computer; your photos are never uploaded
 
 # See your Google Photos on your Strava activities
 Your photos live in Google Photos and your routes live in Strava, and nothing connects the two. Takeout Photo's Activities app links them on your own computer: it reads your Google Photos from a Takeout export, syncs your activities from Strava (official API, OAuth), Komoot or Garmin Connect (your own login), and matches each photo to an activity by capture time, placing it along the GPS track.
-Desktop app for Mac and Windows  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) [Try the demo](https://takepho.com/demo/). Free to download and explore; importing your own Takeout needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year, [pricing](https://takepho.com/#pricing))
+Desktop app for Mac and Windows  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) [Try the demo](https://takepho.com/demo/). Free to download and explore. The photo timeline is free with Lite (your 5 most recent holidays); matching photos to your Strava, Komoot or Garmin activities needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year, [pricing](https://takepho.com/#pricing))
 
 ## Why photos and routes end up in two places
 You take photos with your phone, so they end up in Google Photos. You record your runs, rides and hikes with Strava, Komoot or Garmin Connect, so the routes end up there. Your activity app shows the photos *you uploaded to it* (Strava shows the ones you uploaded to Strava), but the rest of your camera roll (the photos from your Google Photos library) stays invisible on the activity. Takeout Photo closes that gap locally, without uploading anything anywhere.
@@ -210,7 +221,7 @@ The Activities app is not Strava-only. Sign in with your Komoot login, or with y
 ## How to connect your activity accounts
 
 1. Export your Google Photos with [Google Takeout](https://takeout.google.com) (see [how to export and browse a Takeout](https://takepho.com/google-photos-takeout/)). 
-2. [Download the app](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) (Mac: Apple silicon, macOS 12 or later; Windows: 10 or 11, 64-bit) and point it at the archives; free to explore the sample library; importing your own Takeout needs a plan ([pricing](https://takepho.com/#pricing)). 
+2. [Download the app](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) (Mac: Apple silicon, macOS 12 or later; Windows: 10 or 11, 64-bit) and point it at the archives; free to explore the sample library. Lite (free) imports your own Takeout for the photo timeline; activity matching needs a plan ([pricing](https://takepho.com/#pricing)). 
 3. Connect a provider in the Activities app: **Strava** — create your own free Strava API application (a step-by-step guide is built into the app) and authorize Takeout Photo to read your activities via OAuth; **Komoot** — sign in with your Komoot login; **Garmin Connect** — sign in with your Garmin email and password, and enter the MFA code if you have multi-factor authentication enabled. 
 4. Start the sync.    
 ## Privacy
@@ -236,7 +247,7 @@ Everything is processed locally on your computer; your photos are never uploaded
 
 # Move your Google Photos to Proton Photos: with albums and metadata
 Uploading a plain Google Takeout to Proton Photos loses the album structure and often the dates and locations, because that metadata lives in the JSON sidecars next to each photo, not in the files themselves. Takeout Photo's sync app moves the Google Photos part of your Takeout into Proton Photos (Proton Drive) in full original quality (writing the capture date, GPS location, description, favourites and people from the sidecars losslessly into the files first) using Proton's official open-source Drive CLI.
-Desktop app for Mac and Windows  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) [Try the demo](https://takepho.com/demo/). Free to download and explore; importing your own Takeout needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year, [pricing](https://takepho.com/#pricing))
+Desktop app for Mac and Windows  [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) [Try the demo](https://takepho.com/demo/). Free to download and explore. The photo timeline is free with Lite (your 5 most recent holidays); moving your photos to Proton Photos needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year, [pricing](https://takepho.com/#pricing))
 
 ## Why a plain Takeout upload loses dates, places and albums
 In a Google Photos Takeout, the photo files themselves often carry the export date as their timestamp, and the real capture date, GPS coordinates, description, favourites and people are stored in the `.json` sidecar next to each photo. If you upload the archive as-is, Proton Photos sees the wrong dates and places, and the Google album structure does not become Proton albums. Takeout Photo reads the sidecars and fixes the files before uploading, so Proton shows the correct dates and places.
@@ -255,7 +266,7 @@ On Windows you can instead use an import folder for the Proton Drive Windows app
 ## Step by step
 
 1. Export Google Photos with [Google Takeout](https://takeout.google.com) (see [how to export a Takeout](https://takepho.com/google-photos-takeout/)). 
-2. [Download the app](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) (Mac: Apple silicon, macOS 12 or later; Windows: 10 or 11, 64-bit) and point it at the archives: a local folder, a Drive link, or sign in with Google and pick the files (read-only). Free to explore the sample library; importing your own Takeout needs a plan ([pricing](https://takepho.com/#pricing)). 
+2. [Download the app](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) (Mac: Apple silicon, macOS 12 or later; Windows: 10 or 11, 64-bit) and point it at the archives: with Lite (free) a local folder, with a paid plan also a Drive link or sign in with Google and pick the files (read-only). Free to explore the sample library; the Proton Photos move needs a plan ([pricing](https://takepho.com/#pricing)). 
 3. In the sync app, choose the layout: "as in the Takeout" or "trip albums". 
 4. Let the app install the Proton Drive CLI (checksum-verified) and sign in to Proton in your browser. 
 5. Run the sync. You can re-run it any time; what is already in Proton is skipped and nothing is deleted.    
@@ -287,7 +298,7 @@ The Docker image is public at `ghcr.io/ecyshor/takepho` and runs on x86 (amd64) 
 The same app as the desktop version, served from your NAS and opened in a browser at `http://<nas-address>:8080`. Everything is processed on the NAS; your photos are never uploaded to our servers.
 
 ## Plans and account
-The same [plans and prices as the desktop app](https://takepho.com/#pricing). Sign in from Settings → Account in the browser and choose a plan. The NAS counts as one of your account's 2 devices. It needs internet at least once a month to refresh the licence.
+The same [plans and prices as the desktop app](https://takepho.com/#pricing): Lite is free for your 5 most recent holidays (photo timeline only, no account needed), and Lifetime/Yearly unlock the whole library and all the apps. For a paid plan, sign in from Settings → Account in the browser and choose a plan; the NAS counts as one of your account's 2 devices and needs internet at least once a month to refresh the licence.
 
 ## Requirements
 - Docker Engine with Compose v2.24 or later (Synology Container Manager, Unraid, TrueNAS, or any Linux box).

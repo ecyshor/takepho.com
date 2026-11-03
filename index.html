@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#F6F7FB" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#12152A" media="(prefers-color-scheme: dark)">
-  <meta name="description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos. Free to download; importing your own Takeout needs a plan.">
+  <meta name="description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos. Free to download; Lite is free for your 5 most recent holidays.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <title>Takeout Photo: turn your Google Takeout into a photo timeline, activity maps and Proton Photos sync</title>
   <link rel="canonical" href="https://takepho.com/">
 
   <meta property="og:title" content="Takeout Photo: turn your Google Takeout into a photo timeline, activity maps and Proton Photos sync">
-  <meta property="og:description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos. Free to download; importing your own Takeout needs a plan.">
+  <meta property="og:description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos. Free to download; Lite is free for your 5 most recent holidays.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://takepho.com/">
   <meta property="og:site_name" content="Takeout Photo">
@@ -21,7 +21,7 @@
   <meta property="og:image:alt" content="Takeout Photo: your Google Takeout as a timeline, on your Strava, Komoot or Garmin routes, or moved to Proton Photos">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Takeout Photo: turn your Google Takeout into a photo timeline, activity maps and Proton Photos sync">
-  <meta name="twitter:description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos. Free to download; importing your own Takeout needs a plan.">
+  <meta name="twitter:description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos. Free to download; Lite is free for your 5 most recent holidays.">
   <meta name="twitter:image" content="https://takepho.com/og-image.png">
 
   <link rel="stylesheet" href="/style.css">
@@ -60,6 +60,13 @@
         "https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe"
       ],
       "offers": [
+        {
+          "@type": "Offer",
+          "name": "Lite (free)",
+          "price": "0.00",
+          "priceCurrency": "USD",
+          "description": "Free, no account or licence needed: import your own Google Takeout manually from a local folder of .tgz/.zip archives (including a newer export later). Photo timeline only, read-only, limited to your 5 most recent holidays. Lifetime or Yearly unlocks the whole library and the other apps."
+        },
         {
           "@type": "Offer",
           "name": "Lifetime licence",
@@ -116,10 +123,26 @@
         },
         {
           "@type": "Question",
+          "name": "Do I need to pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, not for Lite: it is free for your 5 most recent holidays (photo timeline only, no account needed). A paid plan (Lifetime or Yearly) unlocks the full library with no photo limits and the other apps (activity matching, Proton Photos move)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Lite?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lite is the free plan: no account or licence needed. Import your own Google Takeout manually (a local folder of .tgz/.zip archives, including a newer export later) and get the photo timeline only, read-only, limited to your 5 most recent holidays plus the home periods and day trips in that span (the app shows \"5 of N holidays\"). Activity matching (Strava/Komoot/Garmin) and the Proton Photos move stay on the paid plans. Buying Lifetime or Yearly unlocks the whole library: the rest of the photos are processed in the background, without re-importing."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Do I need an account?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. The app is free to download and explore (the sample library in the app, or the web demo at takepho.com/demo/). Importing your own Takeout needs a plan: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows)."
+            "text": "No, not for Lite (see \"What is Lite?\"). The app is also free to download and explore (the sample library in the app, or the web demo at takepho.com/demo/). A paid plan needs an account: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows)."
           }
         },
         {
@@ -245,7 +268,7 @@
           <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary">Download for Windows</a>
           <a href="/self-host/" class="btn btn-secondary">Self-host on a NAS (Docker)</a>
         </div>
-        <p class="hero-note">Free to download &middot; Can&rsquo;t install software? <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">Windows portable zip</a></p>
+        <p class="hero-note">Free to download &middot; Lite is free for your 5 most recent holidays &middot; Can&rsquo;t install software? <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">Windows portable zip</a></p>
         <details class="dl-note">
           <summary>Windows: first-launch warning, updates and the portable zip</summary>
           <p>The Windows app isn&rsquo;t code-signed yet, so Windows shows that warning on the first launch &mdash; click &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;. The installed app updates itself automatically: it checks daily (toggle in Settings &rarr; Updates, plus a &ldquo;Check for updates now&rdquo; button) and installs the update when the app quits. The portable zip doesn&rsquo;t update itself &mdash; new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>.</p>
@@ -416,14 +439,26 @@
       <section class="section" id="pricing">
         <div class="section-header">
           <h2>Pricing</h2>
-          <p>Free to download and explore: the sample library in the app and the demo work without an account. Importing your own Takeout needs a plan. No photo limits, no tiers; updates are free for everyone.</p>
+          <p>Free to download and explore: the sample library in the app and the demo work without an account. Lite is free: import your own Takeout manually and browse your 5 most recent holidays in the photo timeline, no account needed. Lifetime and Yearly have no photo limits and unlock everything, including the other apps; updates are free for everyone.</p>
         </div>
         <div class="plans">
+          <div class="plan">
+            <h3>Lite</h3>
+            <p class="plan-price">Free <span class="plan-price-note">no account or licence needed</span></p>
+            <ul>
+              <li>Import your own Takeout manually: a local folder of .tgz/.zip archives, including a newer export later.</li>
+              <li>No automatic imports: when you have a new export, add it to your folder and run Import again.</li>
+              <li>Photo timeline only, read-only (no renaming, curating or hiding trips, no editing homes).</li>
+              <li>Your 5 most recent holidays, plus the home periods and day trips in that span &mdash; the app shows &ldquo;5 of N holidays&rdquo;.</li>
+              <li>No Strava/Komoot/Garmin activity matching, no Proton Photos move.</li>
+            </ul>
+          </div>
           <div class="plan">
             <h3>Lifetime</h3>
             <p class="plan-price">USD 25 <span class="plan-price-note">one-time</span></p>
             <ul>
               <li>Import your Takeout manually: from a folder on disk, a Google Drive link, or read-only Google sign-in.</li>
+              <li>Unlocks your whole library, no photo limits: the rest of your photos are processed in the background, without re-importing.</li>
               <li>Importing a newer Takeout export rebuilds the library from it, and your edits (hidden photos, trip names and notes, homes, people) are kept.</li>
               <li>All app updates included.</li>
             </ul>
@@ -439,18 +474,18 @@
           </div>
         </div>
         <table class="price-table">
-          <caption>Prices include taxes. The currency is picked from your country at checkout. The Yearly plan is billed at the full price for the first year, then every renewal is automatically 50% off.</caption>
+          <caption>Lite is free, no account needed. Prices for the paid plans include taxes; the currency is picked from your country at checkout. The Yearly plan is billed at the full price for the first year, then every renewal is automatically 50% off.</caption>
           <thead>
-            <tr><th scope="col">Where you are</th><th scope="col">Lifetime (one-time)</th><th scope="col">Yearly (first year, then half price)</th></tr>
+            <tr><th scope="col">Where you are</th><th scope="col">Lite</th><th scope="col">Lifetime (one-time)</th><th scope="col">Yearly (first year, then half price)</th></tr>
           </thead>
           <tbody>
-            <tr><td>United States and rest of the world</td><td>USD 25</td><td>USD 25, then USD 12.50/year</td></tr>
-            <tr><td>Europe</td><td>EUR 20</td><td>EUR 20, then EUR 10/year</td></tr>
-            <tr><td>United Kingdom</td><td>GBP 20</td><td>GBP 20, then GBP 10/year</td></tr>
-            <tr><td>Switzerland and Liechtenstein</td><td>CHF 20</td><td>CHF 20, then CHF 10/year</td></tr>
+            <tr><td>United States and rest of the world</td><td>Free</td><td>USD 25</td><td>USD 25, then USD 12.50/year</td></tr>
+            <tr><td>Europe</td><td>Free</td><td>EUR 20</td><td>EUR 20, then EUR 10/year</td></tr>
+            <tr><td>United Kingdom</td><td>Free</td><td>GBP 20</td><td>GBP 20, then GBP 10/year</td></tr>
+            <tr><td>Switzerland and Liechtenstein</td><td>Free</td><td>CHF 20</td><td>CHF 20, then CHF 10/year</td></tr>
           </tbody>
         </table>
-        <p>One account covers <strong>2 devices</strong> (Mac or Windows). Remove one in the app (Settings → Account) to move the plan to another device.</p>
+        <p>For a paid plan, one account covers <strong>2 devices</strong> (Mac or Windows). Remove one in the app (Settings → Account) to move the plan to another device.</p>
         <p>Buy inside the app: open Settings → Account, sign in with Google or Apple, choose a plan and pay. Prices include taxes. Cancel any time from the app's "Manage subscription" button.</p>
       </section>
 
@@ -489,8 +524,16 @@
           <p class="faq-answer">The Windows app isn't code-signed yet, so on the first launch Windows shows that warning. Click "More info", then "Run anyway" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>.</p>
         </details>
         <details class="faq-item">
+          <summary>Do I need to pay?</summary>
+          <p class="faq-answer">No, not for Lite: it is free for your 5 most recent holidays (photo timeline only, no account needed). A paid plan (Lifetime or Yearly) unlocks the full library with no photo limits and the other apps (activity matching, Proton Photos move).</p>
+        </details>
+        <details class="faq-item">
+          <summary>What is Lite?</summary>
+          <p class="faq-answer">Lite is the free plan: no account or licence needed. Import your own Google Takeout manually (a local folder of .tgz/.zip archives, including a newer export later) and get the photo timeline only, read-only, limited to your 5 most recent holidays plus the home periods and day trips in that span (the app shows &ldquo;5 of N holidays&rdquo;). Activity matching (Strava/Komoot/Garmin) and the Proton Photos move stay on the paid plans. Buying Lifetime or Yearly unlocks the whole library: the rest of the photos are processed in the background, without re-importing.</p>
+        </details>
+        <details class="faq-item">
           <summary>Do I need an account?</summary>
-          <p class="faq-answer">No. The app is free to download and explore (the sample library in the app, or the <a href="/demo/">web demo</a>). Importing your own Takeout needs a plan: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows).</p>
+          <p class="faq-answer">No, not for Lite (see &ldquo;What is Lite?&rdquo;). The app is also free to download and explore (the sample library in the app, or the <a href="/demo/">web demo</a>). A paid plan needs an account: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows).</p>
         </details>
         <details class="faq-item">
           <summary>Does it work offline?</summary>
