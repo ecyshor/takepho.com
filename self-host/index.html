@@ -128,7 +128,7 @@ volumes:
           <p>Then start it and open the app:</p>
           <pre><code>docker compose up -d
 # open http://&lt;nas-address&gt;:8080 in your browser</code></pre>
-          <p>The examples above use <code>:latest</code>, which always points at the newest release. Every release also ships a pinned tag — for example <code>ghcr.io/ecyshor/takepho:1.0.0</code> (and <code>ghcr.io/ecyshor/takepho-cuda:1.0.0</code> for the NVIDIA GPU image) — use a pinned tag in <code>image:</code> if you prefer to stay on a known version.</p>
+          <p>The examples above use <code>:latest</code>, which always points at the newest release. Every release also ships a pinned tag — for example <code>ghcr.io/ecyshor/takepho:1.1.1</code> (and <code>ghcr.io/ecyshor/takepho-cuda:1.1.1</code> for the NVIDIA GPU image) — use a pinned tag in <code>image:</code> if you prefer to stay on a known version.</p>
         </section>
 
         <section class="section">
@@ -160,6 +160,7 @@ volumes:
           <h2>Updating and backups</h2>
           <p>Update with:</p>
           <pre><code>docker compose pull &amp;&amp; docker compose up -d</code></pre>
+          <p>Stopping or updating the container mid-import is safe (e.g. <code>docker compose pull &amp;&amp; docker compose up -d</code>) &mdash; the import and processing pick up where they left off when the container starts again.</p>
           <p>For backups, copy the data volume (<code>timeline-data</code>).</p>
         </section>
 

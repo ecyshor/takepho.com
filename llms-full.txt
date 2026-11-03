@@ -14,7 +14,7 @@ Takeout Photo reads your Google Takeout on your own computer. It has three built
 
 Free to download — Lite is free for your 5 most recent holidays. Can't install software? [Windows portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip).
 
-Free to download. The Mac app is signed with an Apple Developer ID and notarized by Apple. The Windows app isn't code-signed yet: on the first launch Windows shows "Windows protected your PC" — click "More info", then "Run anyway". The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases). On Windows 1.0.0, install 1.0.1 or later once manually. It also runs on a NAS with Docker (see [self-hosting](https://takepho.com/self-host/)).
+Free to download. The Mac app is signed with an Apple Developer ID and notarized by Apple. The Windows app isn't code-signed yet: on the first launch Windows shows "Windows protected your PC" — click "More info", then "Run anyway". The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases). It also runs on a NAS with Docker (see [self-hosting](https://takepho.com/self-host/)).
 
 ## From archive to the built-in apps
 
@@ -27,6 +27,7 @@ On your computer, not in the cloud:
 - Reads .zip/.tgz archives in place, without unpacking them
 - Real dates, GPS and descriptions from the JSON sidecars
 - Handles libraries of hundreds of GB; newer exports merge in
+- Interrupted work resumes automatically: if the app is closed, the computer restarts or the app updates mid-import or mid-processing, it picks up where it left off on the next start — already imported items are skipped, and an import that stopped has a "Resume import" button
 - Your photos are never uploaded
 
 ### 3. Explore in Takeout Photo
@@ -84,7 +85,7 @@ Move the Google Photos part of your Takeout to Proton Photos.
 The desktop app runs on your Mac or Windows. On a home server or NAS, run the Docker image with Docker Compose and open it in your browser on your network.
 
 - **Mac**: Apple silicon Mac with macOS 12 (Monterey) or later. Signed with an Apple Developer ID and notarized by Apple. [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg)
-- **Windows**: Windows 10 or 11, 64-bit. [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) (or the [portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip)). Not code-signed yet, so the first launch shows "Windows protected your PC" — click "More info", then "Run anyway". The installed app updates itself automatically (daily check, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases). On Windows 1.0.0, install 1.0.1+ once manually.
+- **Windows**: Windows 10 or 11, 64-bit. [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) (or the [portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip)). Not code-signed yet, so the first launch shows "Windows protected your PC" — click "More info", then "Run anyway". The installed app updates itself automatically (daily check, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases).
 - **NAS**: a Docker container on your home server or NAS, started with Docker Compose. Open it in the browser on your network. Same plans as the desktop app. [Self-hosting guide](https://takepho.com/self-host/)
 
 ## Pricing
@@ -92,6 +93,7 @@ Free to download and explore: the sample library in the app and the demo work wi
 
 ### Lite: free
 - Import your own Takeout manually: a local folder of .tgz/.zip archives, including a newer export later.
+- No automatic imports: when you have a new export, add it to your folder and run Import again.
 - Photo timeline only, read-only (no renaming, curating or hiding trips, no editing homes).
 - Your 5 most recent holidays, plus the home periods and day trips in that span — the app shows "5 of N holidays".
 - No Strava/Komoot/Garmin activity matching, no Proton Photos move.
@@ -120,12 +122,12 @@ Everything is processed on your computer; your photos are never uploaded to our 
 [Read the full privacy policy](https://takepho.com/privacy.html)
 
 ## Updates
-Both apps update themselves. Mac: use "Check for Updates…" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a "Check for updates now" button; EdDSA-verified updates). The portable zip doesn't update itself — download new versions from the [releases page](https://github.com/ecyshor/takepho.com/releases). On Windows 1.0.0, install 1.0.1+ once manually. Updates are free for everyone, no plan needed. [Release notes on GitHub](https://github.com/ecyshor/takepho.com/releases).
+Both apps update themselves. Mac: use "Check for Updates…" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a "Check for updates now" button; EdDSA-verified updates). The portable zip doesn't update itself — download new versions from the [releases page](https://github.com/ecyshor/takepho.com/releases). Updates are free for everyone, no plan needed. [Release notes on GitHub](https://github.com/ecyshor/takepho.com/releases).
 
 ## Frequently asked questions
 **Is it a web app?** No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos never leave your computer.
 **Which computers does it run on?** Mac: Apple silicon (arm64), macOS 12 (Monterey) or later; signed with an Apple Developer ID and notarized by Apple. Windows: Windows 10 or 11, 64-bit.
-**Why does Windows show "Windows protected your PC" when I open the app?** The Windows app isn't code-signed yet, so on the first launch Windows shows that warning. Click "More info", then "Run anyway" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases). On Windows 1.0.0, install 1.0.1 or later once manually.
+**Why does Windows show "Windows protected your PC" when I open the app?** The Windows app isn't code-signed yet, so on the first launch Windows shows that warning. Click "More info", then "Run anyway" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases).
 **Do I need to pay?** No, not for Lite: it is free for your 5 most recent holidays (photo timeline only, no account needed). A paid plan (Lifetime or Yearly) unlocks the full library with no photo limits and the other apps (activity matching, Proton Photos move).
 **What is Lite?** Lite is the free plan: no account or licence needed. Import your own Google Takeout manually (a local folder of .tgz/.zip archives, including a newer export later) and get the photo timeline only, read-only, limited to your 5 most recent holidays plus the home periods and day trips in that span (the app shows "5 of N holidays"). Activity matching (Strava/Komoot/Garmin) and the Proton Photos move stay on the paid plans. Buying Lifetime or Yearly unlocks the whole library: the rest of the photos are processed in the background, without re-importing.
 **Do I need an account?** No, not for Lite (see "What is Lite?"). The app is also free to download and explore (the sample library in the app, or the [web demo](https://takepho.com/demo/)). A paid plan needs an account: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows).
@@ -324,7 +326,7 @@ volumes:
   timeline-models: {}
 ```
 
-Then `docker compose up -d` and open `http://<nas-address>:8080` in your browser. The example uses `:latest`, which always points at the newest release; every release also has a pinned tag, e.g. `ghcr.io/ecyshor/takepho:1.0.0` and `ghcr.io/ecyshor/takepho-cuda:1.0.0`.
+Then `docker compose up -d` and open `http://<nas-address>:8080` in your browser. The example uses `:latest`, which always points at the newest release; every release also has a pinned tag, e.g. `ghcr.io/ecyshor/takepho:1.1.1` and `ghcr.io/ecyshor/takepho-cuda:1.1.1`.
 
 ## Folders
 - `/data`: the library database, thumbnails and indexes. Back this up.
@@ -335,7 +337,7 @@ Then `docker compose up -d` and open `http://<nas-address>:8080` in your browser
 The app has no login of its own. Keep it on your home network, or reach it through a VPN (Tailscale, WireGuard) or a reverse proxy with authentication. Never forward the port to the internet.
 
 ## Updating and backups
-Update with `docker compose pull && docker compose up -d`. For backups, copy the data volume (`timeline-data`).
+Update with `docker compose pull && docker compose up -d`. Stopping or updating the container mid-import is safe (e.g. `docker compose pull && docker compose up -d`) — the import and processing pick up where they left off when the container starts again. For backups, copy the data volume (`timeline-data`).
 
 ## Synology, Unraid, TrueNAS
 In Synology Container Manager, Unraid or TrueNAS, create a Compose project (or stack) from the file above and start it.

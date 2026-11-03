@@ -1,16 +1,45 @@
 <?xml version='1.0' encoding='utf-8'?>
 <rss xmlns:sparkle="https://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+
+  
   <channel>
+
+    
     <item>
-      <title>Takeout Photo 1.0.1</title>
-      <pubDate>Sun, 01 Nov 2026 23:07:57 GMT</pubDate>
-      <description><![CDATA[<p>Windows automatic updates, a licence-locked app without an active licence, one Settings page and Proton sign-in in Docker.</p>
-<p>- <strong>Windows auto-update (WinSparkle)</strong> — the Windows app now updates itself like the Mac app: it checks https://takepho.com/appcast-windows.xml daily (toggle in Settings → Updates, plus a "Check for updates now" button) and installs the update when the app quits. Updates are verified with the <strong>same EdDSA (Ed25519) key as the macOS Sparkle feed</strong> (<code>sparkle:edSignature</code> over the installer bytes), which keeps them tamper-proof while the exe is not Authenticode-signed. WinSparkle 0.9.4 is vendored at build time (pinned release, SHA-256-verified download, never committed — <code>desktop/fetch_winsparkle.sh</code>) and bundled next to <code>TakeoutPhoto.exe</code> as <code>WinSparkle.dll</code>; <code>desktop/updater.py</code> drives it via ctypes. On update the installer runs <code>/SILENT</code>, the app quits itself so the files can be replaced, and the installer relaunches the updated app (<code>desktop/installer.iss</code>: <code>CloseApplications=yes</code>, <code>RestartApplications=no</code>, relaunch also after <code>/SILENT</code>). <strong>Windows 1.0.0 users: install 1.0.1 manually once from the releases page — from then on the app updates itself</strong> - <strong>Update dialog shows release notes as HTML</strong> — the <code>&lt;description&gt;</code> of appcast items (both <code>appcast.xml</code> and <code>appcast-windows.xml</code>) is now rendered from the release-notes Markdown to simple HTML (headings, lists, bold, code, links, in a CDATA section) instead of showing raw Markdown - <strong>Licence required for everything</strong> — without an active licence the app is locked: every app is grayed out (Photos stays explorable while the sample data is loaded), imports are disabled and the server runs no background work (no auto-import, no activity or Proton sync). Sign in under Settings → Account to unlock - <strong>One Settings page</strong> — the gear icon in the top bar opens Settings with Account, Apps (the enable/disable toggles, moved from the Takeout page), Updates and Logs &amp; support; each app's own settings are linked from there (<code>/settings/&lt;app&gt;</code>) - <strong>Proton sign-in in Docker</strong> — the Docker image now keeps the proton-drive session in a file under <code>/data</code> (the container has no system keyring), fixing "libsecret not available" when signing in to Proton; the Sync card also shows the CLI version again - <strong>Settings store race</strong> — fixed a race in the settings store (<code>app_settings</code>): two writers saving the same key at the same time (e.g. a background sync thread and an API request) could fail with a SQLite <code>UNIQUE constraint failed</code> error — saving a setting is now a proper upsert</p>]]></description>
-      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.0.1/TakeoutPhoto-1.0.1-macos-arm64.zip" length="287602656" type="application/octet-stream" sparkle:version="1000001000017" sparkle:shortVersionString="1.0.1" sparkle:minimumSystemVersion="12.0" sparkle:edSignature="3K3ItcepTLuxFD221UPMSOjoD4CBjFvRgODU+yYcKgZrJp8sSrIy9q/HtjrVFueP6stoImbRm3KkZH7hv8J2Dw=="/>
+      <title>Takeout Photo 1.1.1</title>
+      <pubDate>Mon, 02 Nov 2026 21:06:59 GMT</pubDate>
+      <description><![CDATA[<p>Restarts and updates now resume running work automatically; iOS Safari opens the sign-in / checkout / billing portal tab again; the top bar fits every app tab.</p>
+<p>- <strong>Shutdown = "interrupted", never "cancelled"</strong> — on SIGTERM (Docker stop / container recreate) or closing the desktop window, every running job (a Takeout import, a processing step like trip detection / geocoding / curation / grouping / CLIP embedding, the Maps timeline import, activities sync / match / places, Proton sync / index / revert / CLI installs, a "Start over" reset) stops gracefully at its next checkpoint and is recorded as <strong>"interrupted"</strong> (new status on ingestion jobs and pipeline runs, with <code>resumed_by</code> / <code>resume_count</code> columns; existing databases migrate on boot). A cancel you trigger in the UI still ends as "cancelled" and is never auto-resumed. - <strong>Automatic resume on the next start</strong> — without clicking anything: an interrupted import continues over its not-yet-ingested archives (same person and options, one job at a time; already imported items are skipped and the post-import steps re-run), interrupted processing runs re-run with their saved params, an interrupted activities auto-sync runs right away, an interrupted "Start over" reset finishes before any import starts, and an interrupted Proton sync resumes via its <code>sync_wanted</code> intent as before. Licence-gated and delayed by <code>RESUME_DELAY_S</code> (default 15 s) so startup is never blocked. - <strong>Crash-loop guard</strong> — after 3 consecutive resumes that made no progress the work is left "interrupted" with a clear error instead of looping; any progress resets the counter. - <strong>"Resume import" button</strong> — the Ingestion card offers it for a finished (interrupted / failed / cancelled) import that still has non-ingested archives (<code>POST /api/ingest/status/{job_id}/resume</code>; 404 unknown job, 409 while another job runs, 400 when nothing is left); an explicit click resets the crash-loop counter. Interrupted jobs and runs show amber "interrupted" with "resumes automatically", not as errors. - <strong>Docker</strong> — all compose files set <code>stop_grace_period: 60s</code> and the image starts uvicorn with <code>--timeout-graceful-shutdown 5</code>, so the graceful stop (≈25 s budget) always finishes before SIGKILL; <code>GET /api/status</code> now also answers <code>active: true/false</code> while any work runs. See <code>docs/self-hosting.md</code>. - <strong>iOS Safari: sign-in / checkout / billing portal open again</strong> — the tab was opened with <code>window.open()</code> after awaiting the backend, outside the tap gesture, so iOS Safari silently blocked it while the UI showed "Continue in your browser…". The Account section now opens a placeholder tab synchronously in the tap gesture and navigates it once the backend returns the URL; if the popup is still blocked, a tappable "Open sign-in page" / "Open checkout" / "Open billing portal" link is shown instead. The desktop app path (backend opens the system browser) is unchanged - <strong>Top bar labels only the active space</strong> — the space switcher shows just the active space's name (the other spaces are icons with a tooltip), so every app tab fits even with all four spaces present; measured with no overflow on #/, #/activities and #/sync from 640 px up</p>]]></description>
+      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.1.1/TakeoutPhoto-1.1.1-macos-arm64.zip" length="287801112" type="application/octet-stream" sparkle:version="1001001000026" sparkle:shortVersionString="1.1.1" sparkle:minimumSystemVersion="12.0" sparkle:edSignature="8FM8JGrnbTc9GS4agRTNr0CQ6pLtpBrZRaCeDCWVSa+jpIqj/Y16l2d/PCuRFpunmZnW/LMKOqWQEEQnYsnKBQ=="/>
     </item>
     <item>
+
+      
+      <title>Takeout Photo 1.0.1</title>
+
+      
+      <pubDate>Sun, 01 Nov 2026 23:07:57 GMT</pubDate>
+
+      
+      <description>&lt;p&gt;Windows automatic updates, a licence-locked app without an active licence, one Settings page and Proton sign-in in Docker.&lt;/p&gt;
+&lt;p&gt;- &lt;strong&gt;Windows auto-update (WinSparkle)&lt;/strong&gt; — the Windows app now updates itself like the Mac app: it checks https://takepho.com/appcast-windows.xml daily (toggle in Settings → Updates, plus a "Check for updates now" button) and installs the update when the app quits. Updates are verified with the &lt;strong&gt;same EdDSA (Ed25519) key as the macOS Sparkle feed&lt;/strong&gt; (&lt;code&gt;sparkle:edSignature&lt;/code&gt; over the installer bytes), which keeps them tamper-proof while the exe is not Authenticode-signed. WinSparkle 0.9.4 is vendored at build time (pinned release, SHA-256-verified download, never committed — &lt;code&gt;desktop/fetch_winsparkle.sh&lt;/code&gt;) and bundled next to &lt;code&gt;TakeoutPhoto.exe&lt;/code&gt; as &lt;code&gt;WinSparkle.dll&lt;/code&gt;; &lt;code&gt;desktop/updater.py&lt;/code&gt; drives it via ctypes. On update the installer runs &lt;code&gt;/SILENT&lt;/code&gt;, the app quits itself so the files can be replaced, and the installer relaunches the updated app (&lt;code&gt;desktop/installer.iss&lt;/code&gt;: &lt;code&gt;CloseApplications=yes&lt;/code&gt;, &lt;code&gt;RestartApplications=no&lt;/code&gt;, relaunch also after &lt;code&gt;/SILENT&lt;/code&gt;). &lt;strong&gt;Windows 1.0.0 users: install 1.0.1 manually once from the releases page — from then on the app updates itself&lt;/strong&gt; - &lt;strong&gt;Update dialog shows release notes as HTML&lt;/strong&gt; — the &lt;code&gt;&amp;lt;description&amp;gt;&lt;/code&gt; of appcast items (both &lt;code&gt;appcast.xml&lt;/code&gt; and &lt;code&gt;appcast-windows.xml&lt;/code&gt;) is now rendered from the release-notes Markdown to simple HTML (headings, lists, bold, code, links, in a CDATA section) instead of showing raw Markdown - &lt;strong&gt;Licence required for everything&lt;/strong&gt; — without an active licence the app is locked: every app is grayed out (Photos stays explorable while the sample data is loaded), imports are disabled and the server runs no background work (no auto-import, no activity or Proton sync). Sign in under Settings → Account to unlock - &lt;strong&gt;One Settings page&lt;/strong&gt; — the gear icon in the top bar opens Settings with Account, Apps (the enable/disable toggles, moved from the Takeout page), Updates and Logs &amp;amp; support; each app's own settings are linked from there (&lt;code&gt;/settings/&amp;lt;app&amp;gt;&lt;/code&gt;) - &lt;strong&gt;Proton sign-in in Docker&lt;/strong&gt; — the Docker image now keeps the proton-drive session in a file under &lt;code&gt;/data&lt;/code&gt; (the container has no system keyring), fixing "libsecret not available" when signing in to Proton; the Sync card also shows the CLI version again - &lt;strong&gt;Settings store race&lt;/strong&gt; — fixed a race in the settings store (&lt;code&gt;app_settings&lt;/code&gt;): two writers saving the same key at the same time (e.g. a background sync thread and an API request) could fail with a SQLite &lt;code&gt;UNIQUE constraint failed&lt;/code&gt; error — saving a setting is now a proper upsert&lt;/p&gt;</description>
+
+      
+      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.0.1/TakeoutPhoto-1.0.1-macos-arm64.zip" length="287602656" type="application/octet-stream" sparkle:version="1000001000017" sparkle:shortVersionString="1.0.1" sparkle:minimumSystemVersion="12.0" sparkle:edSignature="3K3ItcepTLuxFD221UPMSOjoD4CBjFvRgODU+yYcKgZrJp8sSrIy9q/HtjrVFueP6stoImbRm3KkZH7hv8J2Dw=="/>
+
+    
+    </item>
+
+    
+    <item>
+
+      
       <title>Takeout Photo 1.0.0</title>
+
+      
       <pubDate>Sun, 01 Nov 2026 21:06:34 GMT</pubDate>
+
+      
       <description>Takeout Photo 1.0.0
 
 First cross-platform release: Takeout Photo now runs on **Windows** as well as macOS, and the Docker images carry release tags.
@@ -32,11 +61,23 @@ First cross-platform release: Takeout Photo now runs on **Windows** as well as m
 - Open-source license notices in every build ("Open-source licenses" in the top navigation)
 - Try it without installing: https://takepho.com/demo
 </description>
+
+      
       <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.0.0/TakeoutPhoto-1.0.0-macos-arm64.zip" length="287320950" type="application/octet-stream" sparkle:version="1000000000007" sparkle:shortVersionString="1.0.0" sparkle:minimumSystemVersion="12.0" sparkle:edSignature="7Dw1pigJ3vxXf94CsYGtcrG9zbN2OrMZfIHCqsCA8DEAvaiqft+IEvMQ0Zl5R1lSpS6IQlM74RM70lH4AfX3CA=="/>
+
+    
     </item>
+
+    
     <item>
+
+      
       <title>Takeout Photo 0.1.0</title>
+
+      
       <pubDate>Sun, 01 Nov 2026 08:38:48 GMT</pubDate>
+
+      
       <description>Takeout Photo 0.1.0
 
 First release of Takeout Photo for Mac (Apple silicon, macOS 12 or later).
@@ -48,12 +89,28 @@ First release of Takeout Photo for Mac (Apple silicon, macOS 12 or later).
   One account covers 2 Macs.
 - Signed with Developer ID and notarized by Apple; updates itself (Check for Updates…).
 </description>
+
+      
       <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v0.1.0/TakeoutPhoto-0.1.0-macos-arm64.zip" length="289474714" type="application/octet-stream" sparkle:version="1000000069" sparkle:shortVersionString="0.1.0" sparkle:minimumSystemVersion="12.0" sparkle:edSignature="HvtxY+GsiNwYZovcy4fGxRclCNNK6IItHbyybBut9ug+ATR7e4QbRfuqkjH73EcLX/WmIdwAIs3Ty0q5RR/qDA=="/>
+
+    
     </item>
+
+    
     <title>Takeout Photo Updates</title>
+
+    
     <link>https://takepho.com</link>
+
+    
     <description>Automatic updates for the Takeout Photo macOS app.</description>
+
+    
     <language>en</language>
+
+  
   </channel>
+
+
 </rss>
 
