@@ -27,7 +27,7 @@ On your computer, not in the cloud:
 - Reads .zip/.tgz archives in place, without unpacking them
 - Real dates, GPS and descriptions from the JSON sidecars
 - Handles libraries of hundreds of GB; newer exports merge in
-- Interrupted work resumes automatically: if the app is closed, the computer restarts or the app updates mid-import or mid-processing, it picks up where it left off on the next start — already imported items are skipped, and an import that stopped has a "Resume import" button
+- Interrupted work resumes automatically: if the app is closed, the computer restarts or the app updates mid-import or mid-processing, it picks up where it left off on the next start — already imported items are skipped, an import that stopped has a "Resume import" button, and every import shows its steps as a checklist with the current step live
 - Your photos are never uploaded
 
 ### 3. Explore in Takeout Photo
@@ -255,10 +255,11 @@ In a Google Photos Takeout, the photo files themselves often carry the export da
 ## Two ways to organise the import
 
 - **"As in the Takeout"**: your Google Photos albums become Proton albums, and everything not in an album goes to the Photos timeline. 
-- **"Trip albums"**: one Proton album per detected trip, containing that trip's photos and videos.  Before anything is uploaded, the app writes the capture date, GPS location, description, favourite flag and people from the Takeout JSON sidecars into the files, losslessly. Everything is uploaded in full original quality.
+- **"Trip albums"**: one Proton album per detected trip, containing that trip's photos and videos, named "{Type} {place} – {Month YYYY}" — for example "Holiday Alcúdia, Spain – May 2025". A trip you renamed keeps its custom name, and albums created by an earlier sync are renamed on the next sync.  Before anything is uploaded, the app writes the capture date, GPS location, description, favourite flag and people from the Takeout JSON sidecars into the files, losslessly. Everything is uploaded in full original quality.
 
 ## How the upload works
 Uploads go through Proton's official open-source [Proton Drive CLI](https://github.com/ProtonDriveApps/sdk/tree/main/cli), which runs on Linux, macOS and Windows. The app installs it for you with checksum verification, and you sign in to Proton in your browser. Re-runs are safe: files that are already in Proton are skipped, and nothing in your Proton account is ever deleted.
+If a sync is interrupted — the app is closed, or the computer or server restarts mid-sync or mid-revert — it resumes automatically on the next start. The sync card lists the failures of the current sync ("Failures in this sync"), with the failures of earlier syncs one click away.
 
 ## Windows alternative: the import folder
 On Windows you can instead use an import folder for the Proton Drive Windows app: Photos → Import → "Import a folder". Note that with this route a photo that belongs to several albums lands in only one album. The Proton Drive Mac app has no Photos import, so on macOS the sync uses the CLI.
@@ -275,7 +276,7 @@ Other people's Takeouts (for example your partner's) are never synced to your Pr
 
 ## Frequently asked questions
 **Does it upload in original quality?** Yes: the Google Photos part of your Takeout is moved to Proton Photos in full original quality, not a compressed copy.
-**Do my Google Photos albums survive the move?** Yes. With the "as in the Takeout" layout, Google Photos albums become Proton albums and the rest goes to the Photos timeline. Alternatively, the "trip albums" layout creates one album per detected trip.
+**Do my Google Photos albums survive the move?** Yes. With the "as in the Takeout" layout, Google Photos albums become Proton albums and the rest goes to the Photos timeline. Alternatively, the "trip albums" layout creates one album per detected trip, named "{Type} {place} – {Month YYYY}" — for example "Holiday Alcúdia, Spain – May 2025".
 **What happens to dates, GPS and descriptions?** Before upload, the capture date, GPS location, description, favourite flag and people from the Takeout JSON sidecars are written losslessly into the files, so Proton Photos shows the correct dates and places.
 **Is it safe to run the sync again?** Yes. Re-runs skip what is already in Proton, and nothing in your Proton account is ever deleted.
 **Do I need the Proton Drive desktop app?** Not necessarily: the app uploads with Proton's official open-source Proton Drive CLI on Linux, macOS and Windows. On Windows there is also the import-folder route via the Proton Drive app; the Proton Drive Mac app has no Photos import, so macOS uses the CLI.
@@ -326,7 +327,7 @@ volumes:
   timeline-models: {}
 ```
 
-Then `docker compose up -d` and open `http://<nas-address>:8080` in your browser. The example uses `:latest`, which always points at the newest release; every release also has a pinned tag, e.g. `ghcr.io/ecyshor/takepho:1.1.1` and `ghcr.io/ecyshor/takepho-cuda:1.1.1`.
+Then `docker compose up -d` and open `http://<nas-address>:8080` in your browser. The example uses `:latest`, which always points at the newest release; every release also has a pinned tag, e.g. `ghcr.io/ecyshor/takepho:1.2.0` and `ghcr.io/ecyshor/takepho-cuda:1.2.0`.
 
 ## Folders
 - `/data`: the library database, thumbnails and indexes. Back this up.

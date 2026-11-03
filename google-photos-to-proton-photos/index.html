@@ -105,7 +105,7 @@
           "name": "Do my Google Photos albums survive the move?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. With the \"as in the Takeout\" layout, Google Photos albums become Proton albums and the rest goes to the Photos timeline. Alternatively, the \"trip albums\" layout creates one album per detected trip."
+            "text": "Yes. With the \"as in the Takeout\" layout, Google Photos albums become Proton albums and the rest goes to the Photos timeline. Alternatively, the \"trip albums\" layout creates one album per detected trip, named \"{Type} {place} – {Month YYYY}\" — for example \"Holiday Alcúdia, Spain – May 2025\"."
           }
         },
         {
@@ -182,7 +182,7 @@
           <h2>Two ways to organise the import</h2>
           <ul>
             <li><strong>"As in the Takeout"</strong>: your Google Photos albums become Proton albums, and everything not in an album goes to the Photos timeline.</li>
-            <li><strong>"Trip albums"</strong>: one Proton album per detected trip, containing that trip's photos and videos.</li>
+            <li><strong>"Trip albums"</strong>: one Proton album per detected trip, containing that trip's photos and videos, named "{Type} {place} – {Month YYYY}" — for example "Holiday Alcúdia, Spain – May 2025". A trip you renamed keeps its custom name, and albums created by an earlier sync are renamed on the next sync.</li>
           </ul>
           <p>Before anything is uploaded, the app writes the capture date, GPS location, description, favourite flag and people from the Takeout JSON sidecars into the files, losslessly. Everything is uploaded in full original quality.</p>
         </section>
@@ -190,6 +190,7 @@
         <section class="section">
           <h2>How the upload works</h2>
           <p>Uploads go through Proton's official open-source <a href="https://github.com/ProtonDriveApps/sdk/tree/main/cli">Proton Drive CLI</a>, which runs on Linux, macOS and Windows. The app installs it for you with checksum verification, and you sign in to Proton in your browser. Re-runs are safe: files that are already in Proton are skipped, and nothing in your Proton account is ever deleted.</p>
+          <p>If a sync is interrupted — the app is closed, or the computer or server restarts mid-sync or mid-revert — it resumes automatically on the next start. The sync card lists the failures of the current sync ("Failures in this sync"), with the failures of earlier syncs one click away.</p>
         </section>
 
         <section class="section">
@@ -223,7 +224,7 @@
           </details>
           <details class="faq-item">
             <summary>Do my Google Photos albums survive the move?</summary>
-            <p class="faq-answer">Yes. With the "as in the Takeout" layout, Google Photos albums become Proton albums and the rest goes to the Photos timeline. Alternatively, the "trip albums" layout creates one album per detected trip.</p>
+            <p class="faq-answer">Yes. With the "as in the Takeout" layout, Google Photos albums become Proton albums and the rest goes to the Photos timeline. Alternatively, the "trip albums" layout creates one album per detected trip, named "{Type} {place} – {Month YYYY}" — for example "Holiday Alcúdia, Spain – May 2025".</p>
           </details>
           <details class="faq-item">
             <summary>What happens to dates, GPS and descriptions?</summary>
