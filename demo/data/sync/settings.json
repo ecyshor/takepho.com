@@ -1,1 +1,1 @@
-{"backend":"cli","mode":"trips","trip_types":["holiday","day_trip"],"keep_takeout_albums":true,"edited":"both","auto_sync":false,"import_folder":null}
+{"backend":"cli","mode":"trips","trip_types":["holiday","day_trip"],"keep_takeout_albums":true,"edited":"both","auto_sync":false,"import_folder":null,"apple":{"edited":"original","auto_sync":false,"merge_albums":true,"merge_favorites":true,"fill_location":false,"archived_as_hidden":false}}
