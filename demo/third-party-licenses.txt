@@ -21513,6 +21513,16 @@ URL:     https://docs.nvidia.com/cuda/eula/
 Shipped only in the takepho-cuda Docker image (CUDA torch build, TORCH_VARIANT=cu132); the notices file is generated from the CPU .venv, so the nvidia-* wheels are not otherwise listed. They are redistributable under the CUDA EULA linked above.
 
 No license text file is shipped inside this package distribution; the license is NVIDIA Software License Agreement (CUDA EULA) — redistributable components. See the URL above for the full license text.
+
+--------------------------------------------------------------------------------
+Name:    GeoNames cities database (cities1000 + countryInfo + admin1CodesASCII dumps)
+Version: daily dump from download.geonames.org (dump date in the data file header); rebuilt deterministically with scripts/build_geonames.py
+License: CC BY 4.0
+URL:     https://www.geonames.org/ (data: https://download.geonames.org/export/dump/)
+--------------------------------------------------------------------------------
+Bundled as apps/photos/backend/photos/data/geonames-cities.tsv.gz and geonames-countries.tsv and used by the default offline `geonames` reverse-geocoding provider, so place names need no network. CC BY 4.0 requires attribution: "Place names: GeoNames (https://www.geonames.org/), CC BY 4.0".
+
+No license text file is shipped inside this package distribution; the license is CC BY 4.0. See the URL above for the full license text.
 --------------------------------------------------------------------------------
 Name:    Map data
 Version: live tiles / live geocoding
@@ -21520,8 +21530,10 @@ License: see note
 URL:     https://openfreemap.org
 --------------------------------------------------------------------------------
 Map data: © OpenStreetMap contributors, ODbL (https://www.openstreetmap.org/copyright);
-map tiles by OpenFreeMap (https://openfreemap.org); geocoding by Nominatim
-(https://nominatim.org), both used under the OpenStreetMap data policy.
+map tiles by OpenFreeMap (https://openfreemap.org). Reverse geocoding (place names) is
+offline by default, from the bundled GeoNames database (CC BY 4.0, https://www.geonames.org/);
+the opt-in online `nominatim` provider (https://nominatim.org) uses OpenStreetMap data
+under the OpenStreetMap data policy.
 
 ================================================================================
 APPENDIX — full license texts
