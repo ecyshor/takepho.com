@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#F6F7FB" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#12152A" media="(prefers-color-scheme: dark)">
-  <meta name="description" content="Run Takeout Photo on a NAS or home server with Docker Compose: the same app and the same three apps as the desktop version, in your browser on your network. Image: ghcr.io/ecyshor/takepho (amd64 and arm64).">
+  <meta name="description" content="Takeout Photo runs on your own server with Docker Compose. One container serves the web UI and the API. Your photos stay on your machine: the app indexes the Takeout archives in place and never copies the originals.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <title>Run Takeout Photo on a NAS with Docker Compose</title>
   <link rel="canonical" href="https://takepho.com/self-host/">
@@ -83,96 +83,504 @@
           <p class="subtitle">The Docker image is public at <code>ghcr.io/ecyshor/takepho</code> and runs on x86 (amd64) and 64-bit ARM (arm64) servers. It gives you the same app, and the same three apps, running on your NAS or home server, open in a browser on your network. Your scheduled Takeout exports can land in a folder on the NAS.</p>
         </section>
 
-        <section class="section">
-          <h2>What you get</h2>
-          <p>The same app as the desktop version: the Photos timeline, Activities (your photos on your Strava, Komoot and Garmin Connect activities) and Proton Photos sync, served from your NAS and opened in a browser at <code>http://&lt;nas-address&gt;:8080</code>. Everything is processed on the NAS; your photos are never uploaded to our servers.</p>
-        </section>
-
-        <section class="section">
-          <h2>Plans and account</h2>
-          <p>The same <a href="/#pricing">plans and prices as the desktop app</a>: Lite is free for your 5 most recent holidays (photo timeline only, no account needed), and Lifetime/Yearly unlock the whole library and all the apps. For a paid plan, sign in from Settings → Account in the browser and choose a plan; the NAS counts as one of your account's 2 devices and needs internet at least once a month to refresh the licence.</p>
-        </section>
-
-        <section class="section">
-          <h2>Requirements</h2>
+        <!-- self-hosting:begin -->
+        <nav class="section toc" aria-label="On this page">
+          <p><strong>On this page</strong></p>
           <ul>
-            <li>Docker Engine with Compose v2.24 or later (Synology Container Manager, Unraid, TrueNAS, or any Linux box).</li>
-            <li>An x86-64 (amd64) or 64-bit ARM (arm64) CPU, for example an ARM Synology or a Raspberry Pi 4/5 with a 64-bit OS. The NVIDIA GPU image is x86-64 only.</li>
-            <li>4 GB RAM free for the container; 8 GB recommended for big libraries.</li>
-            <li>Disk for the data folder (thumbnails and indexes, plus about 600 MB for the AI model on first use).</li>
-            <li>Optional: an NVIDIA GPU (driver 580 or later, NVIDIA Container Toolkit) with the image <code>ghcr.io/ecyshor/takepho-cuda:latest</code>.</li>
+            <li><a href="#what-you-get">What you get</a></li>
+            <li><a href="#requirements">Requirements</a></li>
+            <li><a href="#quick-start">Quick start</a></li>
+            <li><a href="#the-compose-file">The compose file</a></li>
+            <li><a href="#volumes-and-where-the-takeout-folder-goes">Volumes and where the Takeout folder goes</a></li>
+            <li><a href="#configuration">Configuration</a></li>
+            <li><a href="#nvidia-gpu">NVIDIA GPU</a></li>
+            <li><a href="#access-and-security">Access and security</a></li>
+            <li><a href="#google-sign-in-and-strava-at-naslocal8080">Google sign-in and Strava at http://nas.local:8080</a></li>
+            <li><a href="#updating">Updating</a></li>
+            <li><a href="#backups">Backups</a></li>
+            <li><a href="#synology-unraid-truenas">Synology, Unraid, TrueNAS</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#plans-and-licensing">Plans and licensing</a></li>
+          </ul>
+        </nav>
+
+        <p>Takeout Photo runs on your own server with Docker Compose. One container serves
+        the web UI and the API. Your photos stay on your machine: the app indexes the
+        Takeout archives in place and never copies the originals.</p>
+
+        <section class="section">
+          <h2 id="what-you-get">What you get</h2>
+          <ul>
+          <li>The <strong>photos app</strong>: timeline, trips, map, AI curation of the best photos per
+          trip (CLIP aesthetic scoring, runs locally on CPU or GPU).</li>
+          <li>The <strong>activities app</strong>: Strava, Komoot and Garmin Connect import, routes on a
+          map, photo matching, stats.</li>
+          <li>The <strong>sync app</strong>: backs your Google Photos up to Proton Photos.</li>
+          <li>All local: your photos never leave the server. A plan is required to import
+          your own Takeout (sign in at Settings → Account, see &quot;Plans and licensing&quot;
+          below); the sample data is free. Turn apps on
+          or off with the <code>APPS</code> variable (<code>photos,activities,sync</code> by default).</li>
           </ul>
         </section>
 
         <section class="section">
-          <h2>Quick start</h2>
-          <p>Save this as <code>docker-compose.yml</code> on the NAS:</p>
-          <pre><code>services:
-  app:
-    image: ghcr.io/ecyshor/takepho:latest
-    restart: unless-stopped
-    ports:
-      - "${TIMELINE_PORT:-8080}:8000"
-    volumes:
-      - ${TIMELINE_DATA:-timeline-data}:/data
-      - ${TIMELINE_MODELS:-timeline-models}:/app/models/clip
-      - ${TAKEOUT_DIR:-./takeout}:/takeout:ro
-    environment:
-      # Require a Google sign-in (recommended, see Security below)
-      AUTH_ENABLED: "true"
-      AUTH_ALLOWED_EMAILS: "you@gmail.com"
-volumes:
-  timeline-data: {}
-  timeline-models: {}
-</code></pre>
-          <p>Then start it and open the app:</p>
-          <pre><code>docker compose up -d
-# open http://&lt;nas-address&gt;:8080 in your browser</code></pre>
-          <p>The examples above use <code>:latest</code>, which always points at the newest release. Every release also ships a pinned tag — for example <code>ghcr.io/ecyshor/takepho:1.2.0</code> (and <code>ghcr.io/ecyshor/takepho-cuda:1.2.0</code> for the NVIDIA GPU image) — use a pinned tag in <code>image:</code> if you prefer to stay on a known version.</p>
-        </section>
-
-        <section class="section">
-          <h2>Folders</h2>
+          <h2 id="requirements">Requirements</h2>
           <ul>
-            <li><code>/data</code>: the library database, thumbnails and indexes. Back this up.</li>
-            <li><code>/app/models/clip</code>: the downloaded AI model. It can be re-downloaded, no backup needed.</li>
-            <li><code>/takeout</code>: your Takeout archives, mounted read-only. On Synology, point <code>TAKEOUT_DIR</code> at for example <code>/volume1/takeout</code>.</li>
+          <li>
+          <p><strong>Docker Engine + Compose v2.24+</strong> on the server: Docker Desktop, or the
+          Docker package of your NAS / home-server OS (Synology Container Manager,
+          Unraid, TrueNAS SCALE, Portainer, ...).</p>
+          </li>
+          <li>
+          <p><strong>CPU architecture</strong>: the published CPU image (<code>ghcr.io/ecyshor/takepho</code>) is
+          multi-arch, <code>linux/amd64</code> + <code>linux/arm64</code>, so Docker
+          pulls the native build on x86 servers and on ARM machines such as Synology
+          DS-series models with ARM CPUs and Raspberry Pi 4/5 with a 64-bit OS. The
+          CUDA image (<code>ghcr.io/ecyshor/takepho-cuda</code>) is <code>linux/amd64</code> only.</p>
+          </li>
+          <li>
+          <p><strong>RAM</strong>: plan for at least 4 GB of free memory for the container (both
+          amd64 and arm64), 8 GB if you have a large library and run AI curation on
+          the CPU. Ingestion uses <code>cpu_count - 2</code> parallel workers by default
+          (<code>INGEST_WORKERS</code>).</p>
+          </li>
+          <li>
+          <p><strong>Disk</strong>, in two parts:</p>
+          <ul>
+          <li>The <strong>Takeout folder</strong> stays where it is and is mounted read-only. Its size
+          is your Google Photos library including videos.</li>
+          <li>The <strong>data dir</strong> (<code>/data</code>) holds the databases, thumbnails and previews,
+          gzip indexes, uploads and Drive downloads. From a real 34,000-photo /
+          249 GB library: about 400 KB per photo in a trip (400 px + 1600 px
+          previews) and 35 KB per other photo, about 1.5 MB of index per GB of <code>.tgz</code>
+          archives, about 5 KB of database per photo, plus each Drive archive's size
+          (plus 2 GB free) in <code>/data/downloads</code> while it is ingested.</li>
+          <li>The <strong>models volume</strong> holds the CLIP weights: the aesthetic head ships in
+          the image, the ViT-B/32 weights (about 578 MB) download on the first AI
+          curation run.</li>
+          </ul>
+          </li>
           </ul>
         </section>
 
         <section class="section">
-          <h2>Security</h2>
-          <p><strong>Turn on sign-in.</strong> Without it, anyone who can reach the port can open your whole library and the Google and Proton accounts you connected. Sign-in is off by default, so on a NAS turn it on even if the NAS is only on your home network. The quick-start file above already does this.</p>
-          <p>To turn it on, add these two lines under <code>environment:</code> in <code>docker-compose.yml</code>, then run <code>docker compose up -d</code> again:</p>
-          <pre><code>    environment:
-      AUTH_ENABLED: "true"
-      AUTH_ALLOWED_EMAILS: "you@gmail.com,partner@gmail.com"</code></pre>
+          <h2 id="quick-start">Quick start</h2>
+          <p>Make a folder on the server, download the two files this guide ships, and start:</p>
+          <pre><code>mkdir ~/takepho &amp;&amp; cd ~/takepho
+          curl -fsSLO https://takepho.com/self-host/compose.yaml
+          curl -fsSLO https://takepho.com/self-host/backend.env.example
+          cp backend.env.example backend.env    # optional: adjust settings, see &quot;Configuration&quot;
+          docker compose pull
+          docker compose up -d</code></pre>
+          <p><code>compose.yaml</code> (the full file is shown below) pulls the public image
+          <code>ghcr.io/ecyshor/takepho:latest</code> from GHCR (amd64 + arm64) and starts one
+          container; <code>backend.env.example</code> is the commented example for <code>backend.env</code>
+          (the file is optional). Compose variables such as <code>TIMELINE_PORT</code> go in a
+          <code>.env</code> next to the compose file.</p>
+          <p>Then open <code>http://&lt;nas-host&gt;:8080</code> (default host port
+          8080, change it with <code>TIMELINE_PORT</code> in that <code>.env</code>).
+          <code>http://&lt;nas-host&gt;:8080/health</code> answers <code>{&quot;status&quot;: &quot;healthy&quot;}</code>; the API docs
+          are at <code>/docs</code>.</p>
+          <p>First import: without a plan you get Lite (free tier) — the photos timeline,
+          read-only and limited to your 5 most recent holidays, plus a manual import of a
+          local folder on the Takeout page (a newer export can be imported the same way,
+          which rebuilds the library; you can also cancel/resume your own manual import
+          jobs; everything else is refused with HTTP 402; the sample data is free). To
+          unlock the full library, sign in and buy a plan first
+          (Settings → Account, see &quot;Plans and licensing&quot; below). Then, on the Takeout page, in the <strong>Takeout
+          source</strong> card pick a local folder (<code>/takeout</code>, the mounted Takeout dir), a
+          Google Drive link, or a Google account, then press &quot;Import now&quot;. The &quot;How to
+          get your Takeout&quot; guide on that page walks through creating the export. Turn
+          on &quot;Watch for new exports&quot; to import scheduled exports automatically (needs
+          the yearly plan).</p>
+        </section>
+
+        <section class="section">
+          <h2 id="the-compose-file">The compose file</h2>
+          <p>The reference setup is <code>compose.yaml</code>, published with this guide at
+          <code>https://takepho.com/self-host/compose.yaml</code> and shown in full below — a
+          pull-only example (no <code>build:</code>). One service, <code>app</code>, from the image
+          <code>ghcr.io/ecyshor/takepho:latest</code> (the image serves the backend + built UI in a
+          single container: FastAPI serves the UI from <code>/</code> and the API under <code>/api</code>).
+          Save the download as <code>compose.yaml</code> in your folder and start it (see Quick
+          start):</p>
+          <pre><code># Takeout Photo - self-hosting on a NAS / home server (single container, pull-only)
+          #
+          # The published CPU image ghcr.io/ecyshor/takepho:latest is multi-arch
+          # (linux/amd64 + linux/arm64), so it pulls natively on x86 and on ARM (64-bit)
+          # servers: Synology DS-series with ARM CPUs, Raspberry Pi 4/5 with a 64-bit OS.
+          # The CUDA image at the bottom is linux/amd64 only.
+          #
+          # Run: docker compose pull &amp;&amp; docker compose up -d
+          #   (from the app repository root, under this file's name:
+          #    docker compose -f compose.nas.yaml pull &amp;&amp; docker compose -f compose.nas.yaml up -d)
+          # Open: http://&lt;nas-host&gt;:8080   (health: http://&lt;nas-host&gt;:8080/health, API docs: /docs)
+          #
+          # Configuration: set TIMELINE_DATA, TIMELINE_MODELS, TAKEOUT_DIR, TIMELINE_PORT
+          # in the shell or in a .env file next to the compose file.
+          # A host path like ./data or /volume1/takeout makes it a bind mount.
+          # Never share a data dir with a running dev backend.
+          # Security: Google sign-in is ON in this file (AUTH_ENABLED, default true here;
+          # the app itself defaults to off). Put the accounts allowed to sign in in
+          # backend.env, e.g. AUTH_ALLOWED_EMAILS=you@gmail.com - without it the
+          # first account to sign in claims the instance. Even with sign-in, keep it on
+          # the LAN or a VPN / HTTPS reverse proxy; never expose the port to the internet.
+          # See the self-hosting guide for the full documentation.
+          # NVIDIA GPU: use image ghcr.io/ecyshor/takepho-cuda:latest plus a GPU
+          # reservation (see the guide's &quot;NVIDIA GPU&quot; section), or build with
+          # --build-arg TORCH_VARIANT=cu132.
+
+          services:
+            app:
+              image: ghcr.io/ecyshor/takepho:latest
+              restart: unless-stopped
+              # Grace period for SIGTERM: the app stops running work gracefully (persisted as
+              # &quot;interrupted&quot; and resumed automatically on the next start) within ~25 s — see
+              # the guide's &quot;Updating&quot; section — before Docker escalates to SIGKILL
+              stop_grace_period: 60s
+              ports:
+                - &quot;${TIMELINE_PORT:-8080}:8000&quot;
+              volumes:
+                - ${TIMELINE_DATA:-timeline-data}:/data
+                - ${TIMELINE_MODELS:-timeline-models}:/app/models/clip
+                - ${TAKEOUT_DIR:-~/Documents/takeout}:/takeout:ro
+              environment:
+                APPS: ${APPS:-photos,activities,sync}
+                GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+                AUTH_ENABLED: ${AUTH_ENABLED:-true}
+              env_file:
+                # both optional; when both exist, backend.env (next to the compose file) wins:
+                # later env_file entries override earlier ones (docker/backend.env keeps
+                # working for setups that run from the app repository)
+                - { path: docker/backend.env, required: false }
+                - { path: backend.env, required: false }
+
+          volumes:
+            timeline-data: {}
+            timeline-models: {}</code></pre>
+          <p>Both <code>env_file</code> entries are optional (<code>backend.env</code> next to the compose file,
+          plus one other path); when both files exist, <code>backend.env</code> wins — later
+          <code>env_file</code> entries override earlier ones.</p>
+          <p>The container listens on port <strong>8000</strong> (<code>EXPOSE 8000</code>, uvicorn on
+          <code>0.0.0.0:8000</code>) and the compose file maps it to <code>${TIMELINE_PORT:-8080}</code> on the
+          host. The image has a healthcheck: it curls <code>http://localhost:8000/health</code>
+          every 30 s (30 s start period, 3 retries).</p>
+        </section>
+
+        <section class="section">
+          <h2 id="volumes-and-where-the-takeout-folder-goes">Volumes and where the Takeout folder goes</h2>
+          <table class="price-table">
+          <thead>
+          <tr>
+          <th>Container path</th>
+          <th>Volume / variable</th>
+          <th>Contents</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td><code>/data</code></td>
+          <td><code>${TIMELINE_DATA:-timeline-data}</code></td>
+          <td>Databases (<code>common.db</code> + one per app), thumbnails and previews, gzip indexes, uploads, Drive downloads (<code>DRIVE_DOWNLOAD_DIR=/data/downloads</code>)</td>
+          </tr>
+          <tr>
+          <td><code>/app/models/clip</code></td>
+          <td><code>${TIMELINE_MODELS:-timeline-models}</code></td>
+          <td>CLIP model weights</td>
+          </tr>
+          <tr>
+          <td><code>/takeout</code></td>
+          <td><code>${TAKEOUT_DIR:-~/Documents/takeout}</code>, mounted read-only (<code>:ro</code>)</td>
+          <td>Your Takeout exports (<code>TAKEOUT_SOURCE_DIR</code>)</td>
+          </tr>
+          </tbody>
+          </table>
+          <p>These paths are fixed by the image (<code>DATA_DIR=/data</code>,
+          <code>TAKEOUT_SOURCE_DIR=/takeout</code>, <code>DRIVE_DOWNLOAD_DIR=/data/downloads</code>,
+          <code>FRONTEND_DIST=/app/frontend</code>); do not override them in <code>backend.env</code>.
+          The image also fixes the Proton settings (<code>PROTON_DRIVE_CREDENTIALS_STORE=unsafe_file</code>
+          — the Proton session is kept as a 0600 <code>auth-session.json</code> under <code>/data</code>, so it
+          survives container restarts; <code>PROTON_DRIVE_CACHE_DIR=/data/apps/sync/proton-drive-cli</code>;
+          <code>PROTON_HELPER=/usr/local/bin/takepho-proton</code>, the bundled Proton Drive SDK helper
+          binary); do not override those either.
+          In the UI, use <code>/takeout</code> as the local-folder source.</p>
+          <p>A host path such as <code>TIMELINE_DATA=./docker-data</code> or
+          <code>TAKEOUT_DIR=/volume1/takeout</code> turns the volume into a bind mount. Never point
+          <code>/data</code> at a data dir a running dev backend is using.</p>
+          <p><strong>Scheduled exports</strong>: ask Google to deliver new exports into the host folder
+          you mount at <code>/takeout</code> (for example the NAS share <code>/volume1/takeout</code>), then
+          turn on &quot;Watch for new exports&quot; on the Takeout page. The watcher picks up new
+          archives in <code>/takeout</code> on its own.</p>
+        </section>
+
+        <section class="section">
+          <h2 id="configuration">Configuration</h2>
+          <p>All backend settings go in <code>backend.env</code> next to the compose file — download
+          <code>backend.env.example</code> from this page
+          (<code>https://takepho.com/self-host/backend.env.example</code>) and copy it to
+          <code>backend.env</code> to start; the file is optional — plus the compose variables
+          (<code>TIMELINE_PORT</code>, <code>TAKEOUT_DIR</code>, <code>TIMELINE_DATA</code>, <code>TIMELINE_MODELS</code>, <code>APPS</code>,
+          <code>GOOGLE_API_KEY</code>) in a <code>.env</code> next to the compose file. The <code>backend.env</code> options:</p>
+          <table class="price-table">
+          <thead>
+          <tr>
+          <th>Variable</th>
+          <th>Default</th>
+          <th>Purpose</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td><code>INGEST_WORKERS</code></td>
+          <td><code>cpu_count - 2</code></td>
+          <td>Parallel ingestion workers</td>
+          </tr>
+          <tr>
+          <td><code>TRIP_TIME_GAP_HOURS</code></td>
+          <td><code>36</code></td>
+          <td>Photo gap that splits trip segments</td>
+          </tr>
+          <tr>
+          <td><code>HOME_RADIUS_KM</code></td>
+          <td><code>50</code></td>
+          <td>Home detection radius</td>
+          </tr>
+          <tr>
+          <td><code>DAY_TRIP_MAX_KM</code></td>
+          <td><code>300</code></td>
+          <td>Max distance from home for a day trip</td>
+          </tr>
+          <tr>
+          <td><code>CURATION_TARGET_COUNT</code></td>
+          <td><code>6</code></td>
+          <td>Target curated photos per trip (2-10)</td>
+          </tr>
+          <tr>
+          <td><code>RESUME_DELAY_S</code></td>
+          <td><code>15</code></td>
+          <td>Seconds after startup before interrupted work (imports, processing steps) is resumed automatically</td>
+          </tr>
+          <tr>
+          <td><code>GEOCODING_USER_AGENT</code></td>
+          <td><code>takeout-photo</code></td>
+          <td>Reverse geocoding user agent (only used with the online <code>nominatim</code> provider)</td>
+          </tr>
+          <tr>
+          <td><code>GEOCODING_PROVIDER</code></td>
+          <td><code>geonames</code></td>
+          <td>Reverse geocoding: the bundled offline GeoNames data by default (no network calls, never rate-limited); <code>nominatim</code> for online, finer names (~1 req/s)</td>
+          </tr>
+          <tr>
+          <td><code>STRAVA_CLIENT_ID</code> / <code>STRAVA_CLIENT_SECRET</code></td>
+          <td>unset</td>
+          <td>Your Strava API application (see below); can also be pasted on the Strava card in Settings</td>
+          </tr>
+          </tbody>
+          </table>
+          <p><code>GOOGLE_API_KEY</code> (compose variable or <code>backend.env</code>) is optional; it is
+          only used for public &quot;anyone with the link&quot; Google Drive shares and can also
+          be pasted in the UI.</p>
+        </section>
+
+        <section class="section">
+          <h2 id="nvidia-gpu">NVIDIA GPU</h2>
+          <p>The default image runs AI analysis (CLIP) on the CPU, in <code>linux/amd64</code> and
+          <code>linux/arm64</code> builds. For an NVIDIA GPU the host needs the NVIDIA driver
+          (&gt;= 580 for CUDA 13) and the NVIDIA Container Toolkit. Two options:</p>
           <ul>
-            <li><code>AUTH_ENABLED</code> makes the app ask for a Google sign-in before it opens.</li>
-            <li><code>AUTH_ALLOWED_EMAILS</code> lists the Google accounts that may sign in. You can separate several with commas or allow a whole domain with <code>@example.com</code>. The first account to sign in becomes the owner. If you leave this empty, whoever signs in first claims the instance, so always set it.</li>
-            <li>Optional: <code>AUTH_SESSION_DAYS</code> sets how long a sign-in lasts (default 30 days).</li>
+          <li>
+          <p>Prebuilt CUDA image (<code>linux/amd64</code> only): set
+          <code>image: ghcr.io/ecyshor/takepho-cuda:latest</code> in
+          <code>compose.yaml</code> and reserve the GPU:</p>
+          <pre><code>    deploy:
+                resources:
+                  reservations:
+                    devices:
+                      - driver: nvidia
+                        count: all
+                        capabilities: [gpu]</code></pre>
+          </li>
           </ul>
-          <p>Sign-in works with no Google Cloud setup. It goes through the Takeout Photo sign-in relay, which sends you straight back to a home-network address (a <code>192.168.x.x</code> IP, a <code>.local</code> name or a Tailscale address). For any other address, it first asks you to confirm.</p>
-          <p>Even with sign-in on, don't forward the port to the internet. To reach the app from outside your home, use a VPN (Tailscale, WireGuard) or an HTTPS reverse proxy.</p>
+          <p>The app picks the device itself (<code>CLIP_DEVICE=auto</code>: CUDA, then Apple MPS, then
+          CPU; Settings shows where it runs). The CUDA image is much larger (about 8.3 GB
+          on disk, a 3 GB download, vs about 2.1 GB / 0.5 GB for the CPU <code>app</code> image).</p>
         </section>
 
         <section class="section">
-          <h2>Updating and backups</h2>
-          <p>Update with:</p>
-          <pre><code>docker compose pull &amp;&amp; docker compose up -d</code></pre>
-          <p>Stopping or updating the container mid-import is safe (e.g. <code>docker compose pull &amp;&amp; docker compose up -d</code>) &mdash; the import and processing pick up where they left off when the container starts again.</p>
-          <p>For backups, copy the data volume (<code>timeline-data</code>).</p>
+          <h2 id="access-and-security">Access and security</h2>
+          <p><strong>Turn on Google sign-in for a NAS install (recommended).</strong> The app's own
+          default is no login: anyone who can reach the port can open the app and call the
+          API, including full-resolution photos and the connected Google / Proton
+          accounts. The compose file therefore sets <code>AUTH_ENABLED=true</code> (override with
+          <code>AUTH_ENABLED=false</code> in the shell or <code>.env</code>). To choose who may sign in, put
+          this in <code>backend.env</code>:</p>
+          <pre><code>AUTH_ENABLED=true
+          AUTH_ALLOWED_EMAILS=you@gmail.com,partner@gmail.com</code></pre>
+          <p>then <code>docker compose up -d</code> again.</p>
+          <ul>
+          <li><code>AUTH_ALLOWED_EMAILS</code> (comma-separated emails or <code>@domain.com</code>) restricts who
+          may sign in; the first to sign in becomes the owner. <strong>Always set it</strong>: when
+          empty, whoever signs in first claims the instance.</li>
+          <li>A middleware requires a valid sign-in session for <code>/api/...</code>, <code>/docs</code> and
+          <code>/redoc</code> (401 &quot;Sign-in required&quot; otherwise); <code>AUTH_SESSION_DAYS</code> (default 30)
+          sets the session length. Works over plain <code>http://</code> on the LAN (the cookie is
+          only <code>Secure</code> on HTTPS).</li>
+          <li>Sign-in is Google-only and needs no Google Cloud setup: it uses the OAuth
+          relay at <code>https://oauth.takepho.com</code> by default (straight back for LAN /
+          Tailscale addresses, a confirm page for others), or your own &quot;Web
+          application&quot; client via <code>AUTH_GOOGLE_CLIENT_ID</code> /
+          <code>AUTH_GOOGLE_CLIENT_SECRET</code> (its redirect URI must be
+          <code>&lt;origin&gt;/api/google/auth/callback</code>).</li>
+          </ul>
+          <p>Even with sign-in on, never expose the port directly to the internet. To reach
+          it from outside, use a VPN (Tailscale, WireGuard) or an HTTPS reverse proxy
+          (optionally with its own authentication, e.g. Caddy, nginx, Traefik plus
+          Authelia or Pocket ID).</p>
+          <p>When running behind a reverse proxy, keep the <code>Host</code> header intact
+          (<code>proxy_set_header Host $host</code>): the app builds OAuth callback URLs from the
+          address the browser uses.</p>
         </section>
 
         <section class="section">
-          <h2>Synology, Unraid, TrueNAS</h2>
-          <p>In Synology Container Manager, Unraid or TrueNAS, create a Compose project (or stack) from the file above and start it.</p>
+          <h2 id="google-sign-in-and-strava-at-naslocal8080">Google sign-in and Strava at <code>http://nas.local:8080</code></h2>
+          <p><strong>Google Drive (private archives)</strong>: the OAuth redirect URI is built from the
+          address you open the app at, for example
+          <code>http://nas.local:8080/api/google/auth/callback</code>.</p>
+          <ul>
+          <li>The <strong>built-in client</strong> (shipped in the image) is a Google &quot;Desktop app&quot;
+          client, and Google only allows loopback redirects for those. From a browser
+          on another device the flow therefore goes through the OAuth relay at
+          <code>https://oauth.takepho.com</code> (<code>GOOGLE_RELAY_URL</code>; the relay sends the browser
+          straight back for loopback addresses, private / Tailscale IPs and
+          <code>.local</code> / <code>.lan</code> / <code>.home.arpa</code> / <code>.internal</code> names, and shows a
+          &quot;Continue to ...?&quot; page for anything else). From a browser on the NAS itself,
+          open <code>http://localhost:8080</code> and the built-in flow works directly. Set
+          <code>GOOGLE_RELAY_URL=&quot;&quot;</code> to turn the relay off.</li>
+          <li><strong>Your own client</strong>: a &quot;Desktop app&quot; client (<code>GOOGLE_OAUTH_CLIENT_ID</code> /
+          <code>_SECRET</code>, or pasted on the card) has the same loopback limit, so use it from
+          a browser on the NAS (localhost, for example through an SSH tunnel) or via
+          the relay. A &quot;Web application&quot; client can register
+          <code>http://nas.local:8080/api/google/auth/callback</code> as a redirect URI and works
+          from any browser.</li>
+          <li><strong>Public Drive links</strong> (&quot;anyone with the link&quot;) need no sign-in at all.</li>
+          </ul>
+          <p><strong>Strava</strong>: the callback is
+          <code>&lt;origin&gt;/api/activities/providers/strava/auth/callback</code>. Strava only checks
+          the callback <strong>domain</strong>, so in your Strava API application
+          (strava.com/settings/api) set the Authorization Callback Domain to the host
+          name you open the app at, without scheme or port: <code>nas.local</code>, or the LAN IP
+          such as <code>192.168.1.10</code>. Any port works. Put the Client ID and Secret in
+          <code>backend.env</code> (<code>STRAVA_CLIENT_ID</code> / <code>STRAVA_CLIENT_SECRET</code>) or paste
+          them on the Strava card in Settings. Komoot and Garmin Connect use email and
+          password on their Settings cards; they need no redirect URIs.</p>
         </section>
 
         <section class="section">
-          <h2>Help</h2>
-          <p>If something does not work, <a href="https://github.com/ecyshor/takepho.com/issues/new">open a support issue</a> with where the app runs, the version, what happened and the steps to reproduce.</p>
+          <h2 id="updating">Updating</h2>
+          <pre><code>docker compose pull
+          docker compose up -d</code></pre>
+          <p>Your data lives in the volumes and survives <code>down</code> and recreate. Only
+          <code>docker compose down -v</code> deletes the data volumes.</p>
+          <h3 id="restarts-and-updates-resume-running-work-automatically">Restarts and updates resume running work automatically</h3>
+          <p>Every background job (a Takeout import, a processing step like trip detection
+          or AI curation, an activities sync, a Proton sync, a &quot;Start over&quot; reset, …)
+          survives a restart or an update:</p>
+          <ul>
+          <li>On shutdown (Docker sends SIGTERM when it recreates or stops the container)
+          the app stops its running work gracefully at the next checkpoint — within
+          about 25 s — and records it as <strong>&quot;interrupted&quot;</strong> (never as &quot;cancelled&quot;; a
+          cancel you trigger in the UI is never resumed automatically).</li>
+          <li>On the next start the app <strong>automatically resumes</strong> the interrupted work,
+          without anyone clicking anything: the import continues over the archives
+          that are not imported yet (already imported items are skipped), the
+          processing steps re-run, an interrupted activities auto-sync runs right
+          away, and an interrupted &quot;Start over&quot; reset finishes before any import
+          starts. A crash-loop guard stops auto-resuming after 3 consecutive resumes
+          that made no progress and shows an error instead (any progress resets it);
+          the import can then be resumed manually with the &quot;Resume import&quot; button on
+          the Ingestion card.</li>
+          </ul>
+          <p>The compose files set <code>stop_grace_period: 60s</code> so Docker gives the container
+          enough time for this graceful stop (the image starts uvicorn with
+          <code>--timeout-graceful-shutdown 5</code>), and only then sends SIGKILL. Data lives in
+          the volumes, so <code>docker compose up -d</code> after a pull, a <code>down</code>/<code>up</code>, or a
+          container crash all continue where the work stopped.</p>
         </section>
+
+        <section class="section">
+          <h2 id="backups">Backups</h2>
+          <p>Back up the data dir (<code>/data</code>, the <code>TIMELINE_DATA</code> volume or bind path): it
+          holds the databases, thumbnails, previews, settings and Drive downloads. The
+          models volume can be re-downloaded, it only holds the about 578 MB CLIP
+          weights. The Takeout archives are not in <code>/data</code>; they stay in your
+          <code>TAKEOUT_DIR</code>, so back that up too (or keep the Drive share active). Without
+          reachable archives, full-resolution originals cannot be served and missing
+          thumbnails cannot be re-rendered.</p>
+        </section>
+
+        <section class="section">
+          <h2 id="synology-unraid-truenas">Synology, Unraid, TrueNAS</h2>
+          <p>Any Docker Compose v2 host works the same way; the downloaded <code>compose.yaml</code> is
+          the source of truth.</p>
+          <ul>
+          <li><strong>Synology (Container Manager, DSM 7.2+)</strong>: in Projects, choose Create, then
+          paste the contents of <code>compose.yaml</code> (or upload the file), put
+          <code>TIMELINE_PORT</code>, <code>TAKEOUT_DIR</code>, <code>TIMELINE_DATA</code>, <code>TIMELINE_MODELS</code> in a <code>.env</code>
+          next to the project, pick the NAS folder for <code>TAKEOUT_DIR</code>, then start the
+          project.</li>
+          <li><strong>Unraid</strong>: install the Compose Manager plugin, then in Docker, Compose
+          Manager, choose New Stack, paste <code>compose.yaml</code>, set the same variables
+          in the stack's <code>.env</code>, start the stack.</li>
+          <li><strong>TrueNAS SCALE</strong>: in Apps, choose Custom App (&quot;Install via YAML&quot;), paste
+          <code>compose.yaml</code>, set the variables and host paths, deploy.</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2 id="troubleshooting">Troubleshooting</h2>
+          <ul>
+          <li><strong>Container unhealthy or restarting</strong>: <code>docker compose ps</code> shows the health status (the image healthcheck curls
+          <code>http://localhost:8000/health</code> every 30 s); <code>docker compose logs -f app</code> shows the log. From the NAS itself:
+          <code>curl http://localhost:8080/health</code>.</li>
+          <li><strong>Empty archive list</strong>: check the mount with <code>docker compose exec app ls /takeout</code>, and make sure the UI's folder field
+          says <code>/takeout</code>.</li>
+          <li><strong>Permissions on bind mounts</strong>: the container runs as root (the image sets no
+          <code>USER</code>), so files it creates in a bind-mounted <code>/data</code> are owned by root on
+          the host. Prefer the named volumes (the default), or <code>chown -R 0:0</code> the host
+          dir. The <code>/takeout</code> mount is read-only, the app never writes there.</li>
+          <li><strong>Port already in use</strong>: change <code>TIMELINE_PORT</code> in <code>.env</code>.</li>
+          <li><strong>Slow import on a big library</strong>: lower <code>INGEST_WORKERS</code>; progress and cancel
+          are on the Takeout page.</li>
+          <li><strong>Stale UI after an update</strong>: hard-refresh the browser.</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2 id="plans-and-licensing">Plans and licensing</h2>
+          <p>A plan is required, exactly like the desktop app. Open <code>http://&lt;nas-host&gt;:8080</code>
+          in any browser, go to <strong>Settings → Account</strong>, sign in with Google or Apple and
+          buy a plan: the one-time <strong>lifetime licence</strong> (manual imports) or the <strong>yearly
+          plan</strong> (automatic processing; includes the lifetime licence). Same plans and
+          prices as the desktop app, tax-inclusive. The sign-in works from any browser:
+          the app hands the sign-in off through the account service (account.takepho.com)
+          and polls it until the session arrives, so no loopback address on the NAS is
+          needed. The NAS counts as one of the account's <strong>2 computers</strong>; if the limit is
+          reached, remove another device in Settings → Account.</p>
+          <p>Importing your own Takeout then works; without a valid plan only Lite
+          works (photos timeline limited to the 5 most recent holidays + the manual
+          local-folder import), everything else is refused with HTTP 402. The built-in
+          sample data (&quot;Try with sample data&quot;) stays free, as does everything already
+          imported (a lapsed licence caps reads the same way immediately). The app verifies a signed entitlement locally and
+          refreshes it from the account service about every 7 days, so the server needs
+          internet access at least once a month; offline it keeps working for up to
+          30 days on the cached entitlement.</p>
+          <p>The optional in-app login (<code>AUTH_ENABLED</code>) is off by default in Docker.</p>
+          <p>Nothing leaves your server unless you configure it: Google (Drive access),
+          the account service for the licence sign-in/refresh above, Strava / Komoot /
+          Garmin, the reverse geocoder for place names, and Hugging Face for the CLIP
+          weights on the first curation run. There is no telemetry.</p>
+        </section>
+        <!-- self-hosting:end -->
       </article>
     </div>
   </main>
