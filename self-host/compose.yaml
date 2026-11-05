@@ -1,0 +1,54 @@
+# Takeout Photo - self-hosting on a NAS / home server (single container, pull-only)
+#
+# The published CPU image ghcr.io/ecyshor/takepho:latest is multi-arch
+# (linux/amd64 + linux/arm64), so it pulls natively on x86 and on ARM (64-bit)
+# servers: Synology DS-series with ARM CPUs, Raspberry Pi 4/5 with a 64-bit OS.
+# The CUDA image at the bottom is linux/amd64 only.
+#
+# Run: docker compose pull && docker compose up -d
+#   (from the app repository root, under this file's name:
+#    docker compose -f compose.nas.yaml pull && docker compose -f compose.nas.yaml up -d)
+# Open: http://<nas-host>:8080   (health: http://<nas-host>:8080/health, API docs: /docs)
+#
+# Configuration: set TIMELINE_DATA, TIMELINE_MODELS, TAKEOUT_DIR, TIMELINE_PORT
+# in the shell or in a .env file next to the compose file.
+# A host path like ./data or /volume1/takeout makes it a bind mount.
+# Never share a data dir with a running dev backend.
+# Security: Google sign-in is ON in this file (AUTH_ENABLED, default true here;
+# the app itself defaults to off). Put the accounts allowed to sign in in
+# backend.env, e.g. AUTH_ALLOWED_EMAILS=you@gmail.com - without it the
+# first account to sign in claims the instance. Even with sign-in, keep it on
+# the LAN or a VPN / HTTPS reverse proxy; never expose the port to the internet.
+# See the self-hosting guide for the full documentation.
+# NVIDIA GPU: use image ghcr.io/ecyshor/takepho-cuda:latest plus a GPU
+# reservation (see the guide's "NVIDIA GPU" section), or build with
+# --build-arg TORCH_VARIANT=cu132.
+
+services:
+  app:
+    image: ghcr.io/ecyshor/takepho:latest
+    restart: unless-stopped
+    # Grace period for SIGTERM: the app stops running work gracefully (persisted as
+    # "interrupted" and resumed automatically on the next start) within ~25 s — see
+    # the guide's "Updating" section — before Docker escalates to SIGKILL
+    stop_grace_period: 60s
+    ports:
+      - "${TIMELINE_PORT:-8080}:8000"
+    volumes:
+      - ${TIMELINE_DATA:-timeline-data}:/data
+      - ${TIMELINE_MODELS:-timeline-models}:/app/models/clip
+      - ${TAKEOUT_DIR:-~/Documents/takeout}:/takeout:ro
+    environment:
+      APPS: ${APPS:-photos,activities,sync}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+      AUTH_ENABLED: ${AUTH_ENABLED:-true}
+    env_file:
+      # both optional; when both exist, backend.env (next to the compose file) wins:
+      # later env_file entries override earlier ones (docker/backend.env keeps
+      # working for setups that run from the app repository)
+      - { path: docker/backend.env, required: false }
+      - { path: backend.env, required: false }
+
+volumes:
+  timeline-data: {}
+  timeline-models: {}
