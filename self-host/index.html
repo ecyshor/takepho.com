@@ -302,7 +302,8 @@
           — the Proton session is kept as a 0600 <code>auth-session.json</code> under <code>/data</code>, so it
           survives container restarts; <code>PROTON_DRIVE_CACHE_DIR=/data/apps/sync/proton-drive-cli</code>;
           <code>PROTON_HELPER=/usr/local/bin/takepho-proton</code>, the bundled Proton Drive SDK helper
-          binary); do not override those either.
+          binary) and the bundled, version-pinned ExifTool
+          (<code>EXIFTOOL_BUNDLED_DIR=/opt/exiftool</code>); do not override those either.
           In the UI, use <code>/takeout</code> as the local-folder source.</p>
           <p>A host path such as <code>TIMELINE_DATA=./docker-data</code> or
           <code>TAKEOUT_DIR=/volume1/takeout</code> turns the volume into a bind mount. Never point
