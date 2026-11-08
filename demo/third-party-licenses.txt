@@ -21455,14 +21455,24 @@ Downloaded at first use into the models directory; scores photo aesthetics.
 No license text file is shipped inside this package distribution; the license is MIT. See the URL above for the full license text.
 
 --------------------------------------------------------------------------------
-Name:    ExifTool (perl module libimage-exiftool-perl)
-Version: as packaged by the Docker image
-License: Artistic-1.0-Perl OR GPL-1.0-or-later
+Name:    ExifTool by Phil Harvey
+Version: 13.60 (pinned; SHA-256-verified by scripts/fetch_exiftool.py against EXIFTOOL_PINNED_SHA256 in apps/sync/backend/sync/services/exiftool.py)
+License: Artistic-1.0-Perl OR GPL-1.0-or-later ("the same terms as Perl itself")
 URL:     https://exiftool.org
 --------------------------------------------------------------------------------
-Installed via apt in the Docker images only (not part of the Python .venv) and always executed as a separate process, never linked into the application.
+Bundled in EVERY build — the Docker images at /opt/exiftool (EXIFTOOL_BUNDLED_DIR=/opt/exiftool) and the macOS / Windows desktop apps (sys._MEIPASS/exiftool) — and installable in-app for source checkouts / Linux without a bundle (POST /api/sync/exiftool/install). Always executed as a separate process, never linked into the application. The staged upload bytes depend on this exact version (byte-stability contract, apps/sync/PLAN.md), so it is pinned and never taken from the distro package (the Docker images no longer apt-install libimage-exiftool-perl).
 
-No license text file is shipped inside this package distribution; the license is Artistic-1.0-Perl OR GPL-1.0-or-later. See the URL above for the full license text.
+No license text file is shipped inside this package distribution; the license is Artistic-1.0-Perl OR GPL-1.0-or-later ("the same terms as Perl itself"). See the URL above for the full license text.
+
+--------------------------------------------------------------------------------
+Name:    Strawberry Perl (bundled inside the Windows ExifTool zip exiftool_files/)
+Version: as shipped in exiftool-13.60_64.zip
+License: Artistic-1.0-Perl OR GPL-1.0-or-later (same terms as Perl itself)
+URL:     https://strawberryperl.com
+--------------------------------------------------------------------------------
+The Windows ExifTool distribution (exiftool.exe + exiftool_files/, bundled only in the Windows desktop app) embeds Strawberry Perl so exiftool.exe runs standalone on Windows. Always executed as a separate process, never linked into the application.
+
+No license text file is shipped inside this package distribution; the license is Artistic-1.0-Perl OR GPL-1.0-or-later (same terms as Perl itself). See the URL above for the full license text.
 
 --------------------------------------------------------------------------------
 Name:    Sparkle (Sparkle.framework)
