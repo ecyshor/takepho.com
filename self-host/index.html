@@ -437,9 +437,13 @@
           it from outside, use a VPN (Tailscale, WireGuard) or an HTTPS reverse proxy
           (optionally with its own authentication, e.g. Caddy, nginx, Traefik plus
           Authelia or Pocket ID).</p>
-          <p>When running behind a reverse proxy, keep the <code>Host</code> header intact
-          (<code>proxy_set_header Host $host</code>): the app builds OAuth callback URLs from the
-          address the browser uses.</p>
+          <p>When running behind a reverse proxy, keep the <code>Host</code> header intact and pass the
+          original scheme through (<code>proxy_set_header Host $host; proxy_set_header X-Forwarded-Proto $scheme;</code>): the image runs uvicorn with <code>--proxy-headers</code>
+          (trusting <code>FORWARDED_ALLOW_IPS</code>, default loopback + private ranges), so the app
+          builds OAuth callback URLs from the address the browser uses. If the proxy cannot
+          pass the original scheme/host at all, set <code>PUBLIC_URL</code> to the browser-facing origin
+          (e.g. <code>PUBLIC_URL=https://photos.example.com</code> in <code>backend.env</code>) — OAuth
+          redirect and <code>return_to</code> URLs are then built from it.</p>
         </section>
 
         <section class="section">
