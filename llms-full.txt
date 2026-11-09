@@ -43,10 +43,11 @@ Takeout Photo comes with three built-in apps, with more on the way. Each one ope
 ### Photos timeline
 Your holidays and day trips, found automatically, so you can relive your memories trip by trip — each with its places, route map and best photos.
 
-- Holidays and day trips detected automatically from your photo locations and Location History, plus home and moves
+- Holidays and day trips detected automatically from your photo locations, plus home and moves
+- Better trip detection with your Google Maps Timeline (Location History): add it and each trip starts and ends when you really left and came home, not just at your first and last photo
 - Real capture dates, GPS and descriptions from the JSON sidecars
 - Towns and countries named from the GPS coordinates
-- Routes drawn on a map from open street data, using Location History when your export has it
+- Routes drawn on a map from open street data, using your Location History when you add it
 - Your Strava, Komoot or Garmin activities appear in each trip's day-by-day view, for the full picture of the holiday
 - On-device AI curation groups near-duplicates and picks the best shots per trip
 - Libraries of hundreds of GB, read in place from the archives
@@ -164,7 +165,11 @@ You never have to unpack the archives. Download the [app](https://github.com/ecy
 If you schedule regular Takeout exports, new archives are picked up and merged automatically with the yearly plan (incrementally, without duplicating photos you already have). With the Lifetime plan you re-import a newer export manually, and your edits (hidden photos, trip names and notes, homes, people) are kept. With Lite (free) you can also import a newer export manually later — it stays limited to your 5 most recent holidays.
 
 ## Trips, places and maps
-The Photos app detects where you live and when you moved, plus day trips and holidays, so you can browse your life by trip instead of by raw date. When your export includes Google Location History (Timeline), trips are detected from it and real routes are drawn on the map (flights shown as arcs) using open street data.
+The Photos app detects where you live and when you moved, plus day trips and holidays, so you can browse your life by trip instead of by raw date.
+
+**Improve trip detection with your Google Maps Timeline (Location History).** Photos only show where you were when you pressed the shutter; your Timeline knows where you went in between. Add it and trips are detected from your actual movements, so each one starts and ends when you really left and came home. Photos without GPS get a location from it, and real routes are drawn on the map (flights shown as arcs) using open street data. The file stays on your computer.
+
+Google now keeps Timeline on your phone instead of in new Takeouts, so export it once: on Android, Settings → Location → Location services → Timeline → Export Timeline data; on iPhone, Google Maps → your profile picture → Settings → Personal content → Export Timeline data. Copy the .json file to your computer and import it under Location history in the Photos app's Settings.
 AI curation runs on your own machine: it groups near-duplicates and picks the best shots for each trip. You can also add other people's Takeouts (for example your partner's) so their photos attach to the trips you shared.
 
 ## How to export Google Photos with Google Takeout
