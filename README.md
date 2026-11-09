@@ -61,7 +61,7 @@ When adding a page (outside `demo/`), also:
 
 ## Analytics
 
-Every page loads the [analiza.dev](https://analiza.dev) tracker (`<script defer src="https://cdn.jsdelivr.net/gh/ecyshor/analiza@main/tracker/analiza.min.js" tenant="…">` in `<head>`) with the same tenant as nicu.dev; `takepho.com` must be registered as a domain of that tenant in the analiza admin, otherwise the API rejects the events. It sets no cookies; what it records is described in `privacy.html` → "This website". Add the same tag to any new page.
+Every page loads the [analiza.dev](https://analiza.dev) tracker (`<script defer src="https://cdn.analiza.dev/analiza.js" tenant="…">` in `<head>`) with the same tenant as nicu.dev; `takepho.com` must be registered as a domain of that tenant in the analiza admin, otherwise the API rejects the events. It sets no cookies; what it records is described in `privacy.html` → "This website". Add the same tag to any new page.
 
 ## Preview locally
 
