@@ -5,16 +5,23 @@
 
 > Source: https://takepho.com/
 
-# Your Google Takeout as a photo timeline, activity maps and Proton Photos sync.
-Takeout Photo reads your Google Takeout on your own computer. It has three built-in apps: a photo timeline with your holidays and day trips found automatically, your photos on your Strava, Komoot or Garmin activities, and a move to Proton Photos.
+# Turn your Google Takeout into a timeline of every trip you've taken.
+Takeout Photo finds your holidays and day trips automatically, puts your photos on your Strava, Komoot or Garmin routes, and can move your library to Proton Photos. It runs on your Mac or Windows PC, so your photos are never uploaded.
 
-**Try the demo in your browser** — live demo with sample photos, nothing to download, no account needed: [Open the live demo](https://takepho.com/demo/)
+[Open the live demo](https://takepho.com/demo/) [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe)
 
-[Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) [Self-host on a NAS (Docker)](https://takepho.com/self-host/)
+Demo: sample photos, nothing to install, no account.
 
-Free to download — Lite is free for your 5 most recent holidays. Can't install software? [Windows portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip).
+Free to download · Lite is free for your 5 most recent holidays · Mac: Apple silicon, macOS 12+ · Windows 10/11 · [NAS (Docker)](https://takepho.com/self-host/) · [Windows portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip).
 
-Free to download. The Mac app is signed with an Apple Developer ID and notarized by Apple. The Windows app isn't code-signed yet: on the first launch Windows shows "Windows protected your PC" — click "More info", then "Run anyway". The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases). It also runs on a NAS with Docker (see [self-hosting](https://takepho.com/self-host/)).
+Free to download. The Mac app is signed with an Apple Developer ID and notarized by Apple. The Windows app isn't code-signed yet: on the first launch Windows shows "Windows protected your PC" — click "More info", then "Run anyway". The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases).
+
+- **Runs on your computer.** Your photos are never uploaded.
+- **Free Lite plan.** No account, no licence.
+- **Mac app signed and notarized by Apple.**
+- **Pay once.** Lifetime licence, USD 25 / EUR 20.
+
+The hero shows the Photos timeline app screenshot (the Italy trip of the sample library): [open it in the live demo](https://takepho.com/demo/).
 
 ## From archive to the built-in apps
 
@@ -27,7 +34,7 @@ On your computer, not in the cloud:
 - Reads .zip/.tgz archives in place, without unpacking them
 - Real dates, GPS and descriptions from the JSON sidecars
 - Handles libraries of hundreds of GB; newer exports merge in
-- Interrupted work resumes automatically: if the app is closed, the computer restarts or the app updates mid-import or mid-processing, it picks up where it left off on the next start — already imported items are skipped, an import that stopped has a "Resume import" button, and every import shows its steps as a checklist with the current step live
+- Interrupted imports resume where they left off
 - Your photos are never uploaded
 
 ### 3. Explore in Takeout Photo
@@ -85,54 +92,60 @@ Move the Google Photos part of your Takeout to Proton Photos.
 ## Runs where you keep your photos
 The desktop app runs on your Mac or Windows. On a home server or NAS, run the Docker image with Docker Compose and open it in your browser on your network.
 
-- **Mac**: Apple silicon Mac with macOS 12 (Monterey) or later. Signed with an Apple Developer ID and notarized by Apple. [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg)
-- **Windows**: Windows 10 or 11, 64-bit. [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) (or the [portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip)). Not code-signed yet, so the first launch shows "Windows protected your PC" — click "More info", then "Run anyway". The installed app updates itself automatically (daily check, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases).
+- **Mac**: Apple silicon Mac (M1 or later) with macOS 12 (Monterey) or later. Signed with an Apple Developer ID and notarized by Apple. [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg)
+- **Windows**: Windows 10 or 11, 64-bit. The installer keeps the app up to date automatically; there is also a portable zip. [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) (or the [portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip)). See "Why does Windows show "Windows protected your PC" when I open the app?" in the FAQ for the first-launch warning.
 - **NAS**: a Docker container on your home server or NAS, started with Docker Compose. Open it in the browser on your network. Same plans as the desktop app. [Self-hosting guide](https://takepho.com/self-host/)
 
 ## Pricing
-Free to download and explore: the sample library in the app and the demo work without an account. Lite is free: import your own Takeout manually and browse your 5 most recent holidays in the photo timeline, no account needed. Lifetime and Yearly have no photo limits and unlock everything, including the other apps; updates are free for everyone.
+Start free: the demo and the sample library in the app need no account, and Lite is free for your 5 most recent holidays. Lifetime and Yearly unlock your whole library and all three apps; updates are free for everyone.
 
 ### Lite: free
+- Your 5 most recent holidays in the photo timeline, plus the home periods and day trips in that span (the app shows "5 of N holidays").
+- No account or licence needed.
 - Import your own Takeout manually: a local folder of .tgz/.zip archives, including a newer export later.
-- No automatic imports: when you have a new export, add it to your folder and run Import again.
-- Photo timeline only, read-only (no renaming, curating or hiding trips, no editing homes).
-- Your 5 most recent holidays, plus the home periods and day trips in that span — the app shows "5 of N holidays".
-- No Strava/Komoot/Garmin activity matching, no Proton Photos move.
-- Lifetime or Yearly unlocks the whole library: the rest of the photos are processed in the background, without re-importing.
+- Read-only (no renaming, curating or hiding trips, no editing homes) and no automatic imports.
+- Activity matching (Strava/Komoot/Garmin) and the Proton Photos move are on the paid plans.
+
+[Download free](https://takepho.com/#download)
 
 ### Lifetime: USD 25 one-time
+- All three apps: Photos timeline, Activities (Strava, Komoot, Garmin) and Proton Photos sync.
 - Import your Takeout manually: from a folder on disk, a Google Drive link, or read-only Google sign-in.
 - Unlocks your whole library, no photo limits: the rest of your photos are processed in the background, without re-importing.
 - Importing a newer Takeout export rebuilds the library from it, and your edits (hidden photos, trip names and notes, homes, people) are kept.
 - All app updates included.
 
+[Download the app](https://takepho.com/#download) — Buy in the app: Settings → Account
+
 ### Yearly: USD 25 the first year, then USD 12.50 per year
+then USD 12.50/year: renewals are 50% off, automatically
+
 - Everything in Lifetime.
 - Automatic processing: the folder watcher imports new exports as they land, newer exports import incrementally (no rebuild), and you can add contributors (other people's Takeouts, e.g. a partner's).
 - The first paid year includes the Lifetime licence: if you cancel, you keep it.
-- The first year is billed at the full price; every renewal after that is automatically 50% off (USD 25 → USD 12.50 per year), until you cancel.
+
+[Download the app](https://takepho.com/#download) — Buy in the app: Settings → Account
 
 Lite is free, no account needed. Prices for the paid plans include taxes. The currency is picked from your country at checkout: USD 25 (United States and rest of the world), EUR 20 (Europe), GBP 20 (United Kingdom), CHF 20 (Switzerland and Liechtenstein). These are the first-year prices; yearly renewals after the first year are half price: USD 12.50, EUR 10, GBP 10, CHF 10.
 
 For a paid plan, one account covers **2 devices** (Mac or Windows). Remove one in the app (Settings → Account) to move the plan to another device.
 
-Buy inside the app: open Settings → Account, sign in with Google or Apple, choose a plan and pay. Prices include taxes. Cancel any time from the app's "Manage subscription" button.
+Buy inside the app: open Settings → Account, sign in with Google or Apple, choose a plan and pay. Prices include taxes. Cancel any time from the app's "Manage subscription" button. For a refund, email hello@takepho.com and we will sort it out.
 
 ## Private by design
 Everything is processed on your computer; your photos are never uploaded to our servers. Google access is read-only and limited to the files you pick.
 [Read the full privacy policy](https://takepho.com/privacy.html)
 
-## Updates
-Both apps update themselves. Mac: use "Check for Updates…" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a "Check for updates now" button; EdDSA-verified updates). The portable zip doesn't update itself — download new versions from the [releases page](https://github.com/ecyshor/takepho.com/releases). Updates are free for everyone, no plan needed. [Release notes on GitHub](https://github.com/ecyshor/takepho.com/releases).
-
 ## Frequently asked questions
 **Is it a web app?** No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos never leave your computer.
 **Which computers does it run on?** Mac: Apple silicon (arm64), macOS 12 (Monterey) or later; signed with an Apple Developer ID and notarized by Apple. Windows: Windows 10 or 11, 64-bit.
+**How does the app update?** Both apps update themselves. Mac: use "Check for Updates…" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a "Check for updates now" button); while the exe isn't code-signed, updates are verified with an EdDSA signature. The portable zip doesn't update itself — download new versions from the [releases page](https://github.com/ecyshor/takepho.com/releases). Updates are free for everyone, no plan needed. [Release notes on GitHub](https://github.com/ecyshor/takepho.com/releases).
 **Why does Windows show "Windows protected your PC" when I open the app?** The Windows app isn't code-signed yet, so on the first launch Windows shows that warning. Click "More info", then "Run anyway" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases).
 **Do I need to pay?** No, not for Lite: it is free for your 5 most recent holidays (photo timeline only, no account needed). A paid plan (Lifetime or Yearly) unlocks the full library with no photo limits and the other apps (activity matching, Proton Photos move).
 **What is Lite?** Lite is the free plan: no account or licence needed. Import your own Google Takeout manually (a local folder of .tgz/.zip archives, including a newer export later) and get the photo timeline only, read-only, limited to your 5 most recent holidays plus the home periods and day trips in that span (the app shows "5 of N holidays"). Activity matching (Strava/Komoot/Garmin) and the Proton Photos move stay on the paid plans. Buying Lifetime or Yearly unlocks the whole library: the rest of the photos are processed in the background, without re-importing.
 **Do I need an account?** No, not for Lite (see "What is Lite?"). The app is also free to download and explore (the sample library in the app, or the [web demo](https://takepho.com/demo/)). A paid plan needs an account: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows).
 **Does it work offline?** Yes. The app keeps a signed entitlement on your computer and refreshes it about weekly, so it needs internet at least once a month.
+**What happens if an import is interrupted?** Interrupted work resumes automatically: if the app is closed, the computer restarts or the app updates mid-import or mid-processing, it picks up where it left off on the next start. Already imported items are skipped, an import that stopped has a "Resume import" button, and every import shows its steps as a checklist with the current step live.
 **Does it need my Google password?** No. Sign-in happens on Google's own page, and you can revoke access any time at [myaccount.google.com/permissions](https://myaccount.google.com/permissions).
 **What about the Google Photos API?** Google no longer lets apps read a whole Photos library, so Google Takeout is the way to get all your photos with their metadata. Takeout exports include everything you need.
 **Why are the dates wrong after unzipping a Google Takeout?** The file's own timestamp is often the export date; the real capture date and GPS live in the .json sidecar next to each photo. Takeout Photo reads those sidecars, so dates and places are right. See [browsing a Takeout as a timeline](https://takepho.com/google-photos-takeout/).
@@ -143,6 +156,10 @@ Both apps update themselves. Mac: use "Check for Updates…" in the app menu, or
 **What happens when the yearly plan ends?** You keep the Lifetime licence (the first paid year includes it). Manual imports keep working forever, and importing a newer export still rebuilds your library with your edits kept. The automatic-processing features (folder watcher, incremental imports of newer exports, new contributors) stop while the subscription is inactive; existing contributors stay visible. You can re-subscribe any time.
 **Does the yearly price go up?** No — it goes down. The first year is billed at the full price (e.g. USD 25), and every renewal after that is automatically 50% off (USD 12.50 per year; EUR 20 → EUR 10, GBP 20 → GBP 10, CHF 20 → CHF 10). Nothing for you to do; it renews at half price until you cancel.
 **How do I cancel or get a refund?** Cancel any time from the app's "Manage subscription" button; the plan runs to the end of the paid year. For a refund, email hello@takepho.com and we will sort it out.
+
+## See it with sample photos, then try it on your own Takeout.
+The demo runs in your browser. The app is free to download, and Lite needs no account.
+[Open the live demo](https://takepho.com/demo/) [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe)
 
 ---
 

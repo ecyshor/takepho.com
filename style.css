@@ -103,6 +103,10 @@ main {
 /* Header */
 
 header.container {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: var(--paper);
   padding-top: 14px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--line);
@@ -112,6 +116,12 @@ header.container {
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+section[id],
+[id].hero-actions,
+details[id] {
+  scroll-margin-top: 84px;
 }
 
 .brand {
@@ -284,25 +294,49 @@ a:hover {
   margin-bottom: 14px;
 }
 
-.hero-demo {
-  max-width: 560px;
-  margin: 0 auto 28px;
-  padding: 22px 24px;
-  text-align: center;
-  background-color: var(--surface);
-  border: 1px solid var(--control-line);
-  border-radius: 14px;
-}
-
-.hero-demo-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin: 0 0 6px;
-}
-
-.hero-demo-note {
+.hero-sub {
+  font-size: 0.92rem;
   color: var(--muted);
-  margin: 0;
+  margin: 0 0 14px 0;
+}
+
+.hero-other,
+.hero-mobile-note {
+  display: none;
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin: 0 0 14px 0;
+}
+
+html.os-mac .hero-other,
+html.os-win .hero-other,
+html.os-mobile .hero-mobile-note {
+  display: block;
+}
+
+html.os-mac .hero-other .other-mac,
+html.os-win .hero-other .other-win {
+  display: none;
+}
+
+html.os-mac .hero-actions .dl-win,
+html.os-win .hero-actions .dl-mac,
+html.os-mobile .hero-actions .dl-mac,
+html.os-mobile .hero-actions .dl-win {
+  display: none;
+}
+
+html.os-mobile .hero .hero-note,
+html.os-mobile .hero .dl-note {
+  display: none;
+}
+
+.dl-send[hidden] {
+  display: none;
+}
+
+html.os-mobile .hero-actions .dl-send {
+  display: inline-block;
 }
 
 .hero-note {
@@ -328,6 +362,76 @@ a:hover {
 
 .dl-note p {
   margin: 8px 0 0 0;
+}
+
+/* Split hero: copy left, product screenshot right (desktop) */
+
+.hero-shot {
+  margin: 32px 0 0 0;
+}
+
+.hero-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background-color: var(--surface);
+  box-shadow: 0 18px 44px -18px rgba(10, 12, 30, 0.4);
+}
+
+.hero-shot figcaption {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+@media (min-width: 900px) {
+  .hero-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 40px;
+    align-items: center;
+  }
+  .hero-split h1 {
+    font-size: clamp(2.1rem, 4.2vw, 2.9rem);
+    max-width: none;
+  }
+  .hero-shot {
+    margin: 0;
+  }
+}
+
+/* Trust strip */
+
+.trust {
+  list-style: none;
+  margin: 40px 0 0 0;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px 24px;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.trust li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+}
+
+.trust strong {
+  color: var(--ink);
+}
+
+.trust-check {
+  flex-shrink: 0;
+  margin-top: 5px;
+  color: var(--brand);
 }
 
 /* Buttons */
@@ -369,7 +473,6 @@ a:hover {
 .btn-demo {
   padding: 16px 32px;
   font-size: 1.1rem;
-  margin-top: 14px;
 }
 
 .text-link {
@@ -641,6 +744,8 @@ a:hover {
   border: 1px solid var(--control-line);
   border-radius: 12px;
   background-color: var(--surface);
+  display: flex;
+  flex-direction: column;
 }
 
 .plan-featured {
@@ -665,14 +770,31 @@ a:hover {
   color: var(--muted);
 }
 
+.plan-price-sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: -10px 0 16px 0;
+}
+
 .plan ul {
-  margin: 0;
+  margin: 0 0 20px 0;
   padding-left: 20px;
   color: var(--muted);
 }
 
 .plan li {
   margin-bottom: 8px;
+}
+
+.plan-cta {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.plan-buy-note {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin: 10px 0 0 0;
 }
 
 .price-table {
@@ -741,6 +863,31 @@ a:hover {
   padding: 0 0 16px 0;
   color: var(--muted);
   margin: 0;
+}
+
+/* Closing call to action */
+
+.cta-final {
+  margin: 0 0 72px 0;
+  padding: 48px 32px;
+  text-align: center;
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.cta-final h2 {
+  margin-bottom: 12px;
+}
+
+.cta-final p {
+  color: var(--muted);
+  margin: 0 auto 24px;
+}
+
+.cta-final .hero-actions {
+  justify-content: center;
+  margin-bottom: 0;
 }
 
 /* Legacy hero helpers kept for the guide pages */
@@ -829,6 +976,9 @@ pre code {
   .platforms {
     grid-template-columns: 1fr;
   }
+  .trust {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
@@ -844,8 +994,12 @@ pre code {
     width: 100%;
     padding: 14px 20px;
   }
-  .hero-demo {
-    padding: 18px 20px;
+  .trust {
+    grid-template-columns: 1fr;
+  }
+  .price-table {
+    display: block;
+    overflow-x: auto;
   }
   .nav:has(.nav-demo) a:not(.btn):not(.nav-demo) {
     display: none;
