@@ -22,7 +22,17 @@ Release notes are the GitHub release pages (`https://github.com/ecyshor/takepho.
 ## Site assets
 
 - `fonts/`: self-hosted woff2 files (Bricolage Grotesque 600-800 and Atkinson Hyperlegible Next 400-700, latin subset), fetched once from the Google Fonts CSS2 API and served from `/fonts/` by `style.css`, so no font CDN is contacted at runtime.
-- `img/apps/`: WebP screenshots of the three apps (Photos timeline, Activities, Proton Photos sync), captured from the bundled demo with `scripts/screenshots.py` (run inside `nix develop ./nix`).
+- `img/apps/`: ten WebP screenshots of the demo app (1200x780 viewport at device scale factor 2, i.e. 2400 px wide, dark theme, each under 250 KB), captured from the bundled demo with `scripts/screenshots.py` (run inside `nix develop ./nix`):
+  - `timeline.webp` — the Photos "Rows" timeline: year cards (2025: 3 trips · 465 photos; 2024: 2 trips · 166 photos) with trip cards (Paris, Barcelona, Italy, Lisbon) and cover photos joined by the timeline path.
+  - `map.webp` — the world map with all 5 trip routes and the "In view" list of trips with cover thumbnails (Paris 100 photos, Barcelona 125, Italy 240, Lisbon 150, Bern 16).
+  - `photos.webp` — the Italy trip page (Apr 9–17, 2025, 9 days, 240 photos): title line, the Activities (1) panel with the "Rome evening ride", and Day 1 with its row of photos.
+  - `overview.webp` — the Overview stat tiles (Total Photos 1,006; Holidays 4; Day Trips 1; Countries 6; Flights 10; Km Flown 10,478) and the "Holiday days per year" chart (2024: 7 days, 2025: 20 days).
+  - `strava.webp` — the "Rome evening ride" activity page: route map with photo markers plus the "Best photos" strip (8 photos, 46.8 km, 3:55, 1055 m).
+  - `activities-map.webp` — the Activities map with all 3 routes drawn and the "Activities in view" list (Rome evening ride 46.8 km, Lisbon riverside run 10.1 km, Bern day trip hike 76.2 km).
+  - `activities-stats.webp` — the Activities stats: totals tiles (3 activities, 133.1 km, 12:45 moving, 3069 m elevation, 3/3 with photos, 22 matched photos) and the per-year distance chart (2024: 86.3 km, 2025: 46.8 km).
+  - `sync.webp` — the Proton Photos sync albums table: 6 trip albums (Bern, Lisbon, Italy, Barcelona, Paris, Munich) each with its photo count and an "in Proton" check.
+  - `sync-run.webp` — the Sync page in the signed-in, synced state, scrolled to show all three cards: the Proton connection card with "Signed in to Proton", the What to sync card, and the Sync card with its asset stats (1006 assets, Uploaded 1006).
+  - `takeout.webp` — the Takeout page: the three source options (Local folder, Drive link, Google account) and the Ingestion step checklist, all ticked, "Completed".
 - `favicon.svg`: the Takeout Photo logo: a white takeout box with a photo (sun + mountains) on its front, on a rounded indigo→violet gradient tile. It is the same file as the app's `common/frontend/public/favicon.svg` in the app's private repository. The site uses it as the favicon, the header brand icon, and the hero logo on the home page.
 - `apple-touch-icon.png`: 180×180 px raster version of the logo, used as the Apple touch icon for iOS home-screen bookmarks.
 - `demo/`: the static, read-only demo of the app (takepho.com/demo, linked from the header's "Live demo" nav link and the home page's primary "Open the live demo" button in the hero and the closing CTA, plus the hero screenshot's caption): the app's frontend built in demo mode plus a JSON/image snapshot of its API for the made-up sample library (photos from Wikimedia Commons, credited in the app). Generated, do not edit by hand: rebuild it from the app repo with `scripts/run_python.sh scripts/build_demo.py --out ../takepho.com/demo` (it replaces the folder's contents).
