@@ -115,6 +115,14 @@
         },
         {
           "@type": "Question",
+          "name": "How does the app update?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both apps update themselves. Mac: use \"Check for Updates…\" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a \"Check for updates now\" button); while the exe isn't code-signed, updates are verified with an EdDSA signature. The portable zip doesn't update itself — download new versions from the releases page (https://github.com/ecyshor/takepho.com/releases). Updates are free for everyone, no plan needed. Release notes on GitHub: https://github.com/ecyshor/takepho.com/releases."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Why does Windows show \"Windows protected your PC\" when I open the app?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -151,6 +159,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Yes. The app keeps a signed entitlement on your computer and refreshes it about weekly, so it needs internet at least once a month."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if an import is interrupted?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Interrupted work resumes automatically: if the app is closed, the computer restarts or the app updates mid-import or mid-processing, it picks up where it left off on the next start. Already imported items are skipped, an import that stopped has a \"Resume import\" button, and every import shows its steps as a checklist with the current step live."
           }
         },
         {
@@ -255,25 +271,38 @@
   <main>
     <div class="container">
       <!-- Hero -->
-      <section class="hero">
-        <h1>Your Google Takeout as a photo timeline, activity maps and Proton Photos sync.</h1>
-        <p class="lead">Takeout Photo reads your Google Takeout on your own computer. It has three built-in apps: a photo timeline with your holidays and day trips found automatically, your photos on your Strava, Komoot or Garmin activities, and a move to Proton Photos.</p>
-        <div class="hero-demo">
-          <p class="hero-demo-title">Try the demo in your browser</p>
-          <p class="hero-demo-note">Live demo with sample photos &mdash; nothing to download, no account needed.</p>
-          <a href="/demo/" class="btn btn-demo">Open the live demo</a>
+      <section class="hero hero-split">
+        <div class="hero-copy">
+          <h1>Turn your Google Takeout into a timeline of every trip you&rsquo;ve taken.</h1>
+          <p class="lead">Takeout Photo finds your holidays and day trips automatically, puts your photos on your Strava, Komoot or Garmin routes, and can move your library to Proton Photos. It runs on your Mac or Windows PC, so your photos are never uploaded.</p>
+          <div class="hero-actions" id="download">
+            <a href="/demo/" class="btn btn-demo">Open the live demo</a>
+            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary dl-mac">Download for Mac</a>
+            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary dl-win">Download for Windows</a>
+            <button type="button" class="btn btn-secondary dl-send" hidden>Send the link to my computer</button>
+          </div>
+          <p class="hero-sub">Demo: sample photos, nothing to install, no account.</p>
+          <p class="hero-other">Also for <a class="other-win" href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe">Windows</a> <a class="other-mac" href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Mac</a></p>
+          <p class="hero-mobile-note">Takeout Photo is a desktop app for Mac and Windows. Try the <a href="/demo/">demo</a> here, then install it on your computer.</p>
+          <p class="hero-note">Free to download &middot; Lite is free for your 5 most recent holidays &middot; Mac: Apple silicon, macOS 12+ &middot; Windows 10/11 &middot; <a href="/self-host/">NAS (Docker)</a> &middot; <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">Windows portable zip</a></p>
+          <details class="dl-note">
+            <summary>Windows: first-launch warning, updates and the portable zip</summary>
+            <p>The Windows app isn&rsquo;t code-signed yet, so Windows shows that warning on the first launch &mdash; click &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;. The installed app updates itself automatically: it checks daily (toggle in Settings &rarr; Updates, plus a &ldquo;Check for updates now&rdquo; button) and installs the update when the app quits. The portable zip doesn&rsquo;t update itself &mdash; new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>.</p>
+          </details>
         </div>
-        <div class="hero-actions" id="download">
-          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary">Download for Mac</a>
-          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary">Download for Windows</a>
-          <a href="/self-host/" class="btn btn-secondary">Self-host on a NAS (Docker)</a>
-        </div>
-        <p class="hero-note">Free to download &middot; Lite is free for your 5 most recent holidays &middot; Can&rsquo;t install software? <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">Windows portable zip</a></p>
-        <details class="dl-note">
-          <summary>Windows: first-launch warning, updates and the portable zip</summary>
-          <p>The Windows app isn&rsquo;t code-signed yet, so Windows shows that warning on the first launch &mdash; click &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;. The installed app updates itself automatically: it checks daily (toggle in Settings &rarr; Updates, plus a &ldquo;Check for updates now&rdquo; button) and installs the update when the app quits. The portable zip doesn&rsquo;t update itself &mdash; new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>.</p>
-        </details>
+        <figure class="hero-shot">
+          <a href="/demo/"><img src="/img/apps/photos.webp" alt="Takeout Photo Photos timeline app: the Italy trip of April 9 to 17, 2025 with 240 photos, a route map and curated best shots" width="2400" height="1560" fetchpriority="high"></a>
+          <figcaption>The Italy trip from the sample library. <a href="/demo/">Open it in the live demo</a></figcaption>
+        </figure>
       </section>
+
+      <!-- Trust strip -->
+      <ul class="trust">
+        <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Runs on your computer.</strong> Your photos are never uploaded.</span></li>
+        <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Free Lite plan.</strong> No account, no licence.</span></li>
+        <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Mac app signed and notarized by Apple.</strong></span></li>
+        <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Pay once.</strong> Lifetime licence, USD 25 / EUR 20.</span></li>
+      </ul>
 
       <!-- Flow figure: archive -> processing -> built-in apps -->
       <section class="flow-section" aria-label="From archive to the built-in apps">
@@ -307,7 +336,7 @@
               <li>Reads .zip/.tgz archives in place, without unpacking them</li>
               <li>Real dates, GPS and descriptions from the JSON sidecars</li>
               <li>Handles libraries of hundreds of GB; newer exports merge in</li>
-              <li>Interrupted work resumes automatically: if the app is closed, the computer restarts or the app updates mid-import or mid-processing, it picks up where it left off on the next start &mdash; already imported items are skipped, an import that stopped has a &ldquo;Resume import&rdquo; button, and every import shows its steps as a checklist with the current step live</li>
+              <li>Interrupted imports resume where they left off</li>
               <li>Your photos are never uploaded</li>
             </ul>
           </div>
@@ -419,14 +448,15 @@
         <div class="platforms">
           <div class="platform">
             <h3>Mac</h3>
-            <p>Apple silicon Mac with macOS 12 (Monterey) or later. Signed with an Apple Developer ID and notarized by Apple.</p>
+            <p>Apple silicon Mac (M1 or later) with macOS 12 (Monterey) or later. Signed with an Apple Developer ID and notarized by Apple.</p>
             <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary">Download for Mac</a>
           </div>
           <div class="platform">
             <h3>Windows</h3>
-            <p>Windows 10 or 11, 64-bit. The app isn&rsquo;t code-signed yet, so the first launch shows &ldquo;Windows protected your PC&rdquo; &mdash; click &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;. The installed app updates itself automatically (daily check, Settings &rarr; Updates; installs when the app quits); the portable zip doesn&rsquo;t &mdash; new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>.</p>
+            <p>Windows 10 or 11, 64-bit. The installer keeps the app up to date automatically; there is also a portable zip.</p>
             <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary">Download for Windows</a>
             <p class="platform-note">or <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">download the portable zip</a></p>
+            <p class="platform-note"><a href="#faq-windows-warning">About the first-launch warning</a></p>
           </div>
           <div class="platform">
             <h3>NAS</h3>
@@ -440,38 +470,45 @@
       <section class="section" id="pricing">
         <div class="section-header">
           <h2>Pricing</h2>
-          <p>Free to download and explore: the sample library in the app and the demo work without an account. Lite is free: import your own Takeout manually and browse your 5 most recent holidays in the photo timeline, no account needed. Lifetime and Yearly have no photo limits and unlock everything, including the other apps; updates are free for everyone.</p>
+          <p>Start free: the demo and the sample library in the app need no account, and Lite is free for your 5 most recent holidays. Lifetime and Yearly unlock your whole library and all three apps; updates are free for everyone.</p>
         </div>
         <div class="plans">
           <div class="plan">
             <h3>Lite</h3>
             <p class="plan-price">Free <span class="plan-price-note">no account or licence needed</span></p>
             <ul>
+              <li>Your 5 most recent holidays in the photo timeline, plus the home periods and day trips in that span (the app shows &ldquo;5 of N holidays&rdquo;).</li>
+              <li>No account or licence needed.</li>
               <li>Import your own Takeout manually: a local folder of .tgz/.zip archives, including a newer export later.</li>
-              <li>No automatic imports: when you have a new export, add it to your folder and run Import again.</li>
-              <li>Photo timeline only, read-only (no renaming, curating or hiding trips, no editing homes).</li>
-              <li>Your 5 most recent holidays, plus the home periods and day trips in that span &mdash; the app shows &ldquo;5 of N holidays&rdquo;.</li>
-              <li>No Strava/Komoot/Garmin activity matching, no Proton Photos move.</li>
+              <li>Read-only (no renaming, curating or hiding trips, no editing homes) and no automatic imports.</li>
+              <li>Activity matching (Strava/Komoot/Garmin) and the Proton Photos move are on the paid plans.</li>
             </ul>
+            <a href="#download" class="btn btn-secondary plan-cta">Download free</a>
           </div>
           <div class="plan">
             <h3>Lifetime</h3>
             <p class="plan-price">USD 25 <span class="plan-price-note">one-time</span></p>
             <ul>
+              <li>All three apps: Photos timeline, Activities (Strava, Komoot, Garmin) and Proton Photos sync.</li>
               <li>Import your Takeout manually: from a folder on disk, a Google Drive link, or read-only Google sign-in.</li>
               <li>Unlocks your whole library, no photo limits: the rest of your photos are processed in the background, without re-importing.</li>
               <li>Importing a newer Takeout export rebuilds the library from it, and your edits (hidden photos, trip names and notes, homes, people) are kept.</li>
               <li>All app updates included.</li>
             </ul>
+            <a href="#download" class="btn btn-secondary plan-cta">Download the app</a>
+            <p class="plan-buy-note">Buy in the app: Settings &rarr; Account</p>
           </div>
           <div class="plan plan-featured">
             <h3>Yearly</h3>
-            <p class="plan-price">USD 25 <span class="plan-price-note">first year, then USD 12.50/year (50% off renewals, automatic)</span></p>
+            <p class="plan-price">USD 25 <span class="plan-price-note">first year</span></p>
+            <p class="plan-price-sub">then USD 12.50/year: renewals are 50% off, automatically</p>
             <ul>
               <li>Everything in Lifetime.</li>
               <li>Automatic processing: the folder watcher imports new exports as they land, newer exports import incrementally (no rebuild), and you can add contributors (other people's Takeouts, e.g. a partner's).</li>
               <li>The first paid year includes the Lifetime licence: if you cancel, you keep it.</li>
             </ul>
+            <a href="#download" class="btn plan-cta">Download the app</a>
+            <p class="plan-buy-note">Buy in the app: Settings &rarr; Account</p>
           </div>
         </div>
         <table class="price-table">
@@ -487,7 +524,7 @@
           </tbody>
         </table>
         <p>For a paid plan, one account covers <strong>2 devices</strong> (Mac or Windows). Remove one in the app (Settings → Account) to move the plan to another device.</p>
-        <p>Buy inside the app: open Settings → Account, sign in with Google or Apple, choose a plan and pay. Prices include taxes. Cancel any time from the app's "Manage subscription" button.</p>
+        <p>Buy inside the app: open Settings → Account, sign in with Google or Apple, choose a plan and pay. Prices include taxes. Cancel any time from the app's "Manage subscription" button. For a refund, email <a href="mailto:hello@takepho.com">hello@takepho.com</a> and we will sort it out.</p>
       </section>
 
       <!-- Privacy -->
@@ -496,14 +533,6 @@
           <h2>Private by design</h2>
           <p>Everything is processed on your computer; your photos are never uploaded to our servers. Google access is read-only and limited to the files you pick.</p>
           <p><a href="privacy.html">Read the full privacy policy</a></p>
-        </div>
-      </section>
-
-      <!-- Updates -->
-      <section class="section" id="updates">
-        <div class="section-header">
-          <h2>Updates</h2>
-          <p>Both apps update themselves. Mac: use "Check for Updates…" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a "Check for updates now" button); while the exe isn't code-signed, updates are verified with an EdDSA signature. The portable zip doesn't update itself — download new versions from the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>. Updates are free for everyone, no plan needed. <a href="https://github.com/ecyshor/takepho.com/releases">Release notes on GitHub</a>.</p>
         </div>
       </section>
 
@@ -521,6 +550,10 @@
           <p class="faq-answer">Mac: Apple silicon (arm64), macOS 12 (Monterey) or later; signed with an Apple Developer ID and notarized by Apple. Windows: Windows 10 or 11, 64-bit.</p>
         </details>
         <details class="faq-item">
+          <summary>How does the app update?</summary>
+          <p class="faq-answer">Both apps update themselves. Mac: use "Check for Updates…" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a "Check for updates now" button); while the exe isn't code-signed, updates are verified with an EdDSA signature. The portable zip doesn't update itself — download new versions from the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>. Updates are free for everyone, no plan needed. <a href="https://github.com/ecyshor/takepho.com/releases">Release notes on GitHub</a>.</p>
+        </details>
+        <details class="faq-item" id="faq-windows-warning">
           <summary>Why does Windows show "Windows protected your PC" when I open the app?</summary>
           <p class="faq-answer">The Windows app isn't code-signed yet, so on the first launch Windows shows that warning. Click "More info", then "Run anyway" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>.</p>
         </details>
@@ -539,6 +572,10 @@
         <details class="faq-item">
           <summary>Does it work offline?</summary>
           <p class="faq-answer">Yes. The app keeps a signed entitlement on your computer and refreshes it about weekly, so it needs internet at least once a month.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What happens if an import is interrupted?</summary>
+          <p class="faq-answer">Interrupted work resumes automatically: if the app is closed, the computer restarts or the app updates mid-import or mid-processing, it picks up where it left off on the next start. Already imported items are skipped, an import that stopped has a &ldquo;Resume import&rdquo; button, and every import shows its steps as a checklist with the current step live.</p>
         </details>
         <details class="faq-item">
           <summary>Does it need my Google password?</summary>
@@ -581,6 +618,17 @@
           <p class="faq-answer">Cancel any time from the app's "Manage subscription" button; the plan runs to the end of the paid year. For a refund, email <a href="mailto:hello@takepho.com">hello@takepho.com</a> and we will sort it out.</p>
         </details>
       </section>
+
+      <!-- Closing call to action -->
+      <section class="cta-final">
+        <h2>See it with sample photos, then try it on your own Takeout.</h2>
+        <p>The demo runs in your browser. The app is free to download, and Lite needs no account.</p>
+        <div class="hero-actions">
+          <a href="/demo/" class="btn btn-demo">Open the live demo</a>
+          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary dl-mac">Download for Mac</a>
+          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary dl-win">Download for Windows</a>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -603,5 +651,37 @@
       Google, Google Photos, Google Drive and Google Takeout are trademarks of Google LLC. Strava is a trademark of Strava, Inc. Komoot is a trademark of komoot GmbH. Garmin and Garmin Connect are trademarks of Garmin Ltd. Proton and Proton Photos are trademarks of Proton AG. Takeout Photo is not affiliated with or endorsed by Google, Strava, Komoot, Garmin or Proton.
     </div>
   </footer>
+
+  <script>
+    try {
+      (function () {
+        var ua = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent || '';
+        var mobile = /android|iphone|ipad|ios/i.test(ua + ' ' + navigator.userAgent) ||(/mac/i.test(ua) && navigator.maxTouchPoints > 1);
+        var cls = '';
+        if (mobile) {
+          cls = 'os-mobile';
+        } else if (/mac/i.test(ua)) {
+          cls = 'os-mac';
+        } else if (/win/i.test(ua)) {
+          cls = 'os-win';
+        }
+        if (cls) {
+          document.documentElement.classList.add(cls);
+        }
+        if (cls === 'os-mobile') {
+          document.querySelectorAll('.dl-send').forEach(function (b) { b.hidden = false; });
+        }
+        document.querySelectorAll('.dl-send').forEach(function (b) {
+          b.addEventListener('click', function () {
+            if (navigator.share) {
+              navigator.share({ title: 'Takeout Photo', text: 'Takeout Photo: download for Mac or Windows', url: 'https://takepho.com/#download' }).catch(function () {});
+            } else {
+              location.href = 'mailto:?subject=Takeout%20Photo&body=https%3A%2F%2Ftakepho.com%2F%23download';
+            }
+          });
+        });
+      })();
+    } catch (e) {}
+  </script>
 </body>
 </html>
