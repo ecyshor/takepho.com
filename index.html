@@ -442,26 +442,13 @@
             <ul>
               <li>Every route on one map, coloured by sport, with a heatmap mode</li>
               <li>Filter by sport, year, country, duration or &ldquo;with photos&rdquo;</li>
+              <li>A Stats page totals distance, moving time and elevation per year and per sport</li>
               <li>The link goes both ways: activities appear inside your trips, and each activity links to its trip</li>
             </ul>
           </div>
           <figure class="app-shot feature-shot">
             <a href="/demo/#/activities" data-analiza-click="shot-activities-map"><img src="/img/apps/activities-map.webp" alt="Takeout Photo Activities map zoomed to the Rome evening ride route, with the Activities in view list showing that ride (46.8 km, 8 photos)" width="2400" height="1512" loading="lazy" decoding="async"></a>
             <figcaption>The activities map, here zoomed in on one ride. <a href="/demo/#/activities" data-analiza-click="shot-activities-map">Open the map in the live demo</a></figcaption>
-          </figure>
-        </div>
-
-        <div class="feature">
-          <div class="feature-copy">
-            <h3>Stats per year</h3>
-            <ul>
-              <li>Distance, moving time and elevation per year and per sport</li>
-              <li>How many activities have photos, and how many photos were matched</li>
-            </ul>
-          </div>
-          <figure class="app-shot feature-shot">
-            <a href="/demo/#/activities/stats" data-analiza-click="shot-activities-stats"><img src="/img/apps/activities-stats.webp" alt="Takeout Photo Activities stats: totals tiles (3 activities, 133.1 km, 12:45 moving, 3069 m elevation, 3/3 with photos, 22 matched photos) and the per-year distance chart (2024: 86.3 km, 2025: 46.8 km)" width="2400" height="1560" loading="lazy" decoding="async"></a>
-            <figcaption>Per-year stats for the sample activities. <a href="/demo/#/activities/stats" data-analiza-click="shot-activities-stats">Open in the live demo</a></figcaption>
           </figure>
         </div>
 
@@ -506,16 +493,7 @@
           <div><strong>Only your own photos.</strong> Other people&rsquo;s Takeouts that you added never go to Proton.</div>
         </div>
 
-        <p><span class="coming-tag">Coming soon</span> Proton Photos is the first destination; more are on the way</p>
         <p><a href="/google-photos-to-proton-photos/" data-analiza-click="more-proton">More about moving Google Photos to Proton Photos</a></p>
-
-        <div class="coming-next">
-          <h3>Coming next</h3>
-          <ul>
-            <li>More sync destinations: Proton Photos is the first, others will follow</li>
-            <li>Support for more of your Takeout: Google Drive and Google Docs files, not just the Google Photos part</li>
-          </ul>
-        </div>
       </section>
 
       <!-- Mid-page call to action -->
@@ -526,6 +504,67 @@
           <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary dl-mac" data-analiza-click="mid-download-mac">Download for Mac</a>
           <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary dl-win" data-analiza-click="mid-download-win">Download for Windows</a>
         </div>
+      </section>
+
+      <!-- Pricing -->
+      <section class="section" id="pricing">
+        <div class="section-header">
+          <h2>Pricing</h2>
+          <p>Start free: the demo and the sample library in the app need no account, and Lite is free for your 5 most recent holidays. Lifetime and Yearly unlock your whole library and all three apps; updates are free for everyone.</p>
+        </div>
+        <div class="plans">
+          <div class="plan">
+            <h3>Lite</h3>
+            <p class="plan-price">Free <span class="plan-price-note">no account or licence needed</span></p>
+            <ul>
+              <li>Your 5 most recent holidays in the photo timeline, plus the home periods and day trips in that span (the app shows &ldquo;5 of N holidays&rdquo;).</li>
+              <li>No account or licence needed.</li>
+              <li>Import your own Takeout manually: a local folder of .tgz/.zip archives, including a newer export later.</li>
+              <li>Read-only (no renaming, curating or hiding trips, no editing homes) and no automatic imports.</li>
+              <li>Activity matching (Strava/Komoot/Garmin) and the Proton Photos move are on the paid plans.</li>
+            </ul>
+            <a href="#download" class="btn btn-secondary plan-cta" data-analiza-click="plan-lite-download">Download free</a>
+          </div>
+          <div class="plan">
+            <h3>Lifetime</h3>
+            <p class="plan-price">USD 25 <span class="plan-price-note">one-time</span></p>
+            <ul>
+              <li>All three apps: Photos timeline, Activities (Strava, Komoot, Garmin) and Proton Photos sync.</li>
+              <li>Import your Takeout manually: from a folder on disk, a Google Drive link, or read-only Google sign-in.</li>
+              <li>Unlocks your whole library, no photo limits: the rest of your photos are processed in the background, without re-importing.</li>
+              <li>Importing a newer Takeout export rebuilds the library from it, and your edits (hidden photos, trip names and notes, homes, people) are kept.</li>
+              <li>All app updates included.</li>
+            </ul>
+            <a href="#download" class="btn btn-secondary plan-cta" data-analiza-click="plan-lifetime-download">Download the app</a>
+            <p class="plan-buy-note">Buy in the app: Settings &rarr; Account</p>
+          </div>
+          <div class="plan plan-featured">
+            <h3>Yearly</h3>
+            <p class="plan-price">USD 25 <span class="plan-price-note">first year</span></p>
+            <p class="plan-price-sub">then USD 12.50/year: renewals are 50% off, automatically</p>
+            <ul>
+              <li>Everything in Lifetime.</li>
+              <li>Automatic processing: the folder watcher imports new exports as they land, newer exports import incrementally (no rebuild), and you can add contributors (other people's Takeouts, e.g. a partner's).</li>
+              <li>The first paid year includes the Lifetime licence: if you cancel, you keep it.</li>
+            </ul>
+            <a href="#download" class="btn plan-cta" data-analiza-click="plan-yearly-download">Download the app</a>
+            <p class="plan-buy-note">Buy in the app: Settings &rarr; Account</p>
+          </div>
+        </div>
+        <table class="price-table">
+          <caption>Lite is free, no account needed. Prices for the paid plans include taxes; the currency is picked from your country at checkout. The Yearly plan is billed at the full price for the first year, then every renewal is automatically 50% off.</caption>
+          <thead>
+            <tr><th scope="col">Where you are</th><th scope="col">Lite</th><th scope="col">Lifetime (one-time)</th><th scope="col">Yearly (first year, then half price)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>United States and rest of the world</td><td>Free</td><td>USD 25</td><td>USD 25, then USD 12.50/year</td></tr>
+            <tr><td>Europe</td><td>Free</td><td>EUR 20</td><td>EUR 20, then EUR 10/year</td></tr>
+            <tr><td>United Kingdom</td><td>Free</td><td>GBP 20</td><td>GBP 20, then GBP 10/year</td></tr>
+            <tr><td>Switzerland and Liechtenstein</td><td>Free</td><td>CHF 20</td><td>CHF 20, then CHF 10/year</td></tr>
+          </tbody>
+        </table>
+        <p>For a paid plan, one account covers <strong>2 devices</strong> (Mac or Windows). Remove one in the app (Settings → Account) to move the plan to another device.</p>
+        <p>Buy inside the app: open Settings → Account, sign in with Google or Apple, choose a plan and pay. Prices include taxes. Cancel any time from the app's "Manage subscription" button. For a refund, email <a href="mailto:hello@takepho.com">hello@takepho.com</a> and we will sort it out.</p>
       </section>
 
       <!-- How it works: the archive -> processing -> apps flow -->
@@ -651,67 +690,6 @@
         </div>
       </section>
 
-      <!-- Pricing -->
-      <section class="section" id="pricing">
-        <div class="section-header">
-          <h2>Pricing</h2>
-          <p>Start free: the demo and the sample library in the app need no account, and Lite is free for your 5 most recent holidays. Lifetime and Yearly unlock your whole library and all three apps; updates are free for everyone.</p>
-        </div>
-        <div class="plans">
-          <div class="plan">
-            <h3>Lite</h3>
-            <p class="plan-price">Free <span class="plan-price-note">no account or licence needed</span></p>
-            <ul>
-              <li>Your 5 most recent holidays in the photo timeline, plus the home periods and day trips in that span (the app shows &ldquo;5 of N holidays&rdquo;).</li>
-              <li>No account or licence needed.</li>
-              <li>Import your own Takeout manually: a local folder of .tgz/.zip archives, including a newer export later.</li>
-              <li>Read-only (no renaming, curating or hiding trips, no editing homes) and no automatic imports.</li>
-              <li>Activity matching (Strava/Komoot/Garmin) and the Proton Photos move are on the paid plans.</li>
-            </ul>
-            <a href="#download" class="btn btn-secondary plan-cta" data-analiza-click="plan-lite-download">Download free</a>
-          </div>
-          <div class="plan">
-            <h3>Lifetime</h3>
-            <p class="plan-price">USD 25 <span class="plan-price-note">one-time</span></p>
-            <ul>
-              <li>All three apps: Photos timeline, Activities (Strava, Komoot, Garmin) and Proton Photos sync.</li>
-              <li>Import your Takeout manually: from a folder on disk, a Google Drive link, or read-only Google sign-in.</li>
-              <li>Unlocks your whole library, no photo limits: the rest of your photos are processed in the background, without re-importing.</li>
-              <li>Importing a newer Takeout export rebuilds the library from it, and your edits (hidden photos, trip names and notes, homes, people) are kept.</li>
-              <li>All app updates included.</li>
-            </ul>
-            <a href="#download" class="btn btn-secondary plan-cta" data-analiza-click="plan-lifetime-download">Download the app</a>
-            <p class="plan-buy-note">Buy in the app: Settings &rarr; Account</p>
-          </div>
-          <div class="plan plan-featured">
-            <h3>Yearly</h3>
-            <p class="plan-price">USD 25 <span class="plan-price-note">first year</span></p>
-            <p class="plan-price-sub">then USD 12.50/year: renewals are 50% off, automatically</p>
-            <ul>
-              <li>Everything in Lifetime.</li>
-              <li>Automatic processing: the folder watcher imports new exports as they land, newer exports import incrementally (no rebuild), and you can add contributors (other people's Takeouts, e.g. a partner's).</li>
-              <li>The first paid year includes the Lifetime licence: if you cancel, you keep it.</li>
-            </ul>
-            <a href="#download" class="btn plan-cta" data-analiza-click="plan-yearly-download">Download the app</a>
-            <p class="plan-buy-note">Buy in the app: Settings &rarr; Account</p>
-          </div>
-        </div>
-        <table class="price-table">
-          <caption>Lite is free, no account needed. Prices for the paid plans include taxes; the currency is picked from your country at checkout. The Yearly plan is billed at the full price for the first year, then every renewal is automatically 50% off.</caption>
-          <thead>
-            <tr><th scope="col">Where you are</th><th scope="col">Lite</th><th scope="col">Lifetime (one-time)</th><th scope="col">Yearly (first year, then half price)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>United States and rest of the world</td><td>Free</td><td>USD 25</td><td>USD 25, then USD 12.50/year</td></tr>
-            <tr><td>Europe</td><td>Free</td><td>EUR 20</td><td>EUR 20, then EUR 10/year</td></tr>
-            <tr><td>United Kingdom</td><td>Free</td><td>GBP 20</td><td>GBP 20, then GBP 10/year</td></tr>
-            <tr><td>Switzerland and Liechtenstein</td><td>Free</td><td>CHF 20</td><td>CHF 20, then CHF 10/year</td></tr>
-          </tbody>
-        </table>
-        <p>For a paid plan, one account covers <strong>2 devices</strong> (Mac or Windows). Remove one in the app (Settings → Account) to move the plan to another device.</p>
-        <p>Buy inside the app: open Settings → Account, sign in with Google or Apple, choose a plan and pay. Prices include taxes. Cancel any time from the app's "Manage subscription" button. For a refund, email <a href="mailto:hello@takepho.com">hello@takepho.com</a> and we will sort it out.</p>
-      </section>
-
       <!-- Privacy -->
       <section class="section" id="privacy">
         <div class="section-header">
@@ -724,6 +702,15 @@
           <div><strong>Your accounts stay yours.</strong> Activities and tracks from Strava, Komoot and Garmin are stored only on your computer.</div>
         </div>
         <p><a href="privacy.html">Read the full privacy policy</a></p>
+      </section>
+
+      <!-- Coming next -->
+      <section class="section coming-next">
+        <h2>Coming next</h2>
+        <ul>
+          <li>More sync destinations: Proton Photos is the first, others will follow</li>
+          <li>Support for more of your Takeout: Google Drive and Google Docs files, not just the Google Photos part</li>
+        </ul>
       </section>
 
       <!-- FAQ -->

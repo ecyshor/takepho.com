@@ -23,27 +23,6 @@ Free to download. The Mac app is signed with an Apple Developer ID and notarized
 
 The hero shows the Photos timeline app screenshot (the Rows timeline of the sample library, year cards with trip cards): [open it in the live demo](https://takepho.com/demo/#/timeline).
 
-## From Takeout archive to timeline in three steps
-
-### 1. Request your Takeout
-[takeout.google.com](https://takeout.google.com) delivers your export as one or more archive files: takeout-001.zip, takeout-002.zip, ...
-
-### 2. Takeout Photo processes it
-On your computer, not in the cloud:
-
-- Reads .zip/.tgz archives in place, without unpacking them
-- Real dates, GPS and descriptions from the JSON sidecars
-- Handles libraries of hundreds of GB; newer exports merge in
-- Interrupted imports resume where they left off
-- Your photos are never uploaded to our servers
-
-### 3. Explore in Takeout Photo
-- Photos timeline
-- Activities
-- Proton Photos sync
-
-The built-in apps open for the data your export contains. The Takeout page shows what your export contains (products, archives, photos, videos and metadata files), and every import shows its steps as a checklist and picks up where it left off after a restart.
-
 ## Every trip you've taken, found for you (Photos timeline)
 The Photos timeline reads your Takeout and works out where you lived, when you travelled and what you saw. Browse it as a timeline (rows, or one long scroll by year), on a map, trip by trip or as numbers.
 
@@ -79,26 +58,9 @@ The sync app uploads the Google Photos part of your Takeout to Proton Photos in 
 - A sync never deletes anything in your Proton account; re-runs skip what is already in Proton; Revert sync moves what the app uploaded to the Proton trash
 - Only your own photos: other people's Takeouts never go to Proton
 
-Coming soon: Proton Photos is the first destination; more are on the way, plus support for Google Drive and Google Docs files from your Takeout. [More about moving Google Photos to Proton Photos](https://takepho.com/google-photos-to-proton-photos/)
+[More about moving Google Photos to Proton Photos](https://takepho.com/google-photos-to-proton-photos/)
 
 Every screen above is in the live demo, with sample photos: [Open the live demo](https://takepho.com/demo/#/timeline) [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe)
-
-## Built for big libraries
-Figures from the real library the app is developed against:
-
-- **249 GB** of Takeout archives, about 34,000 photos
-- **0 GB** unpacked: archives are read in place, originals are never copied
-- **13 GB** of thumbnails, previews, index and database for that library
-- **1 min** to re-read the inventory of 233 GB of archives (after the first import)
-
-Browsing needs only the local previews; full-resolution originals are read from the archives on demand, so keep the archives reachable (in your folder or on Drive). When a newer export replaces an old one, remove the app's local copies of the old one with one button to free the space; files in your own folder and on Drive are never deleted. The AI model (about 578 MB) downloads once and runs on your computer, on the GPU when there is one.
-
-## Runs where you keep your photos
-The desktop app runs on your Mac or Windows. On a home server or NAS, run the Docker image with Docker Compose and open it in your browser on your network.
-
-- **Mac**: Apple silicon Mac (M1 or later) with macOS 12 (Monterey) or later. Signed with an Apple Developer ID and notarized by Apple. [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg)
-- **Windows**: Windows 10 or 11, 64-bit. The installer keeps the app up to date automatically; there is also a portable zip. [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) (or the [portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip)). See "Why does Windows show "Windows protected your PC" when I open the app?" in the FAQ for the first-launch warning.
-- **NAS**: a Docker container on your home server or NAS, started with Docker Compose. Open it in the browser on your network. Same plans as the desktop app. [Self-hosting guide](https://takepho.com/self-host/)
 
 ## Pricing
 Start free: the demo and the sample library in the app need no account, and Lite is free for your 5 most recent holidays. Lifetime and Yearly unlock your whole library and all three apps; updates are free for everyone.
@@ -136,12 +98,55 @@ For a paid plan, one account covers **2 devices** (Mac or Windows). Remove one i
 
 Buy inside the app: open Settings → Account, sign in with Google or Apple, choose a plan and pay. Prices include taxes. Cancel any time from the app's "Manage subscription" button. For a refund, email hello@takepho.com and we will sort it out.
 
+## From Takeout archive to timeline in three steps
+
+### 1. Request your Takeout
+[takeout.google.com](https://takeout.google.com) delivers your export as one or more archive files: takeout-001.zip, takeout-002.zip, ...
+
+### 2. Takeout Photo processes it
+On your computer, not in the cloud:
+
+- Reads .zip/.tgz archives in place, without unpacking them
+- Real dates, GPS and descriptions from the JSON sidecars
+- Handles libraries of hundreds of GB; newer exports merge in
+- Interrupted imports resume where they left off
+- Your photos are never uploaded to our servers
+
+### 3. Explore in Takeout Photo
+- Photos timeline
+- Activities
+- Proton Photos sync
+
+The built-in apps open for the data your export contains. The Takeout page shows what your export contains (products, archives, photos, videos and metadata files), and every import shows its steps as a checklist and picks up where it left off after a restart.
+
+
+## Built for big libraries
+Figures from the real library the app is developed against:
+
+- **249 GB** of Takeout archives, about 34,000 photos
+- **0 GB** unpacked: archives are read in place, originals are never copied
+- **13 GB** of thumbnails, previews, index and database for that library
+- **1 min** to re-read the inventory of 233 GB of archives (after the first import)
+
+Browsing needs only the local previews; full-resolution originals are read from the archives on demand, so keep the archives reachable (in your folder or on Drive). When a newer export replaces an old one, remove the app's local copies of the old one with one button to free the space; files in your own folder and on Drive are never deleted. The AI model (about 578 MB) downloads once and runs on your computer, on the GPU when there is one.
+
+## Runs where you keep your photos
+The desktop app runs on your Mac or Windows. On a home server or NAS, run the Docker image with Docker Compose and open it in your browser on your network.
+
+- **Mac**: Apple silicon Mac (M1 or later) with macOS 12 (Monterey) or later. Signed with an Apple Developer ID and notarized by Apple. [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg)
+- **Windows**: Windows 10 or 11, 64-bit. The installer keeps the app up to date automatically; there is also a portable zip. [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe) (or the [portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip)). See "Why does Windows show "Windows protected your PC" when I open the app?" in the FAQ for the first-launch warning.
+- **NAS**: a Docker container on your home server or NAS, started with Docker Compose. Open it in the browser on your network. Same plans as the desktop app. [Self-hosting guide](https://takepho.com/self-host/)
+
 ## Private by design
 - **Processed on your computer.** Your photos are never uploaded to our servers.
 - **Read-only Google access.** Limited to the Takeout files you pick, and you can revoke it any time.
 - **No tracking in the app.** No analytics and no ads.
 - **Your accounts stay yours.** Activities and tracks from Strava, Komoot and Garmin are stored only on your computer.
 [Read the full privacy policy](https://takepho.com/privacy.html)
+
+## Coming next
+- More sync destinations: Proton Photos is the first, others will follow
+- Support for more of your Takeout: Google Drive and Google Docs files, not just the Google Photos part
 
 ## Frequently asked questions
 **Is it a web app?** No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos stay on your computer unless you choose to sync them to Proton Photos.

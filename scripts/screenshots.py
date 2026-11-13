@@ -5,7 +5,7 @@ Modes:
   apps     Serve the repo root locally, open the bundled web demo views and save
            1200x780 dark-theme screenshots (device scale factor 2, i.e. 2400 px
            wide images) as optimized WebP in img/apps/ — timeline.webp, map.webp,
-           overview.webp, strava.webp, activities-map.webp, activities-stats.webp,
+           overview.webp, strava.webp, activities-map.webp,
            sync.webp, takeout.webp, each under ~250 KB, plus photos.webp (the
            Italy trip page). The trip page behind photos.webp is resolved at run
            time (the Italy link on the trips page); activity pages fall back to
@@ -106,10 +106,6 @@ APP_VIEWS = [
       const items = aside ? aside.querySelectorAll('button').length : 0;
       return !!c && c.width > 0 && /Activities in view/.test(document.body.innerText) && items >= 3;
     }""", 8000, "", ""),
-    ("activities-stats", "/demo/#/activities/stats", """() => {
-      const t = document.body.innerText;
-      return /Matched photos/.test(t) && /Per year/.test(t) && /Moving time/.test(t);
-    }""", 2500, "", ""),
     ("sync", "/demo/#/sync/albums", """() => {
       const t = document.body.innerText;
       return /Albums/.test(t) && (t.match(/in Proton/g) || []).length >= 5;
