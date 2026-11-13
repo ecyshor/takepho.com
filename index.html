@@ -308,9 +308,193 @@
         <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Pay once.</strong> Lifetime licence, USD 25 / EUR 20.</span></li>
       </ul>
 
-      <!-- Flow figure: archive -> processing -> built-in apps -->
-      <section class="flow-section" aria-label="From archive to the built-in apps">
-        <h2 class="visually-hidden">From archive to the built-in apps</h2>
+      <!-- Photos timeline tour -->
+      <section class="section tour" id="apps">
+        <div class="section-header">
+          <h2>Every trip you&rsquo;ve taken, found for you</h2>
+          <p>The Photos timeline reads your Takeout and works out where you lived, when you travelled and what you saw. Browse it as a timeline (rows, or one long scroll by year), on a map, trip by trip or as numbers.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-copy">
+            <h3>All your trips on one map</h3>
+            <ul>
+              <li>Holidays, day trips and home periods are told apart automatically, from your photo locations</li>
+              <li>Each trip shows its places joined in the order you visited them, with towns and countries named from the GPS coordinates</li>
+              <li>Switch on Travel to see flights and long journeys</li>
+              <li>Add your Google Maps Timeline (Location History) and trips start and end when you really left and came home; photos without GPS get a location</li>
+            </ul>
+          </div>
+          <figure class="app-shot feature-shot">
+            <a href="/demo/#/" data-analiza-click="shot-map"><img src="/img/apps/map.webp" alt="Takeout Photo world map with all five sample trip routes drawn, and the In view list of trips with cover thumbnails (Paris 100 photos, Barcelona 125, Italy 240, Lisbon 150, Bern 16)" width="2400" height="1518" loading="lazy" decoding="async"></a>
+            <figcaption>The world map with all five sample trips and their routes. <a href="/demo/#/" data-analiza-click="shot-map">Open in the live demo</a></figcaption>
+          </figure>
+        </div>
+
+        <div class="feature flip">
+          <div class="feature-copy">
+            <h3>Each trip, day by day</h3>
+            <ul>
+              <li>A day-by-day page per trip: where you were and what you photographed</li>
+              <li>On-device AI picks the best photos and a cover for each trip, and stacks near-duplicates</li>
+              <li>Your Strava, Komoot or Garmin activities appear on the day they happened</li>
+              <li>Open any photo to see the full-resolution original, read straight from the archive</li>
+            </ul>
+          </div>
+          <figure class="app-shot feature-shot">
+            <a href="/demo/#/trips" data-analiza-click="shot-trip"><img src="/img/apps/photos.webp" alt="Takeout Photo Italy trip page (April 9 to 17, 2025, 9 days, 240 photos): title and stats line, the Activities panel with the Rome evening ride, and Day 1 with its row of photos" width="2400" height="1560" loading="lazy" decoding="async"></a>
+            <figcaption>The Italy trip from the sample library, day by day. <a href="/demo/#/trips" data-analiza-click="shot-trip">Open in the live demo</a></figcaption>
+          </figure>
+        </div>
+
+        <div class="feature">
+          <div class="feature-copy">
+            <h3>Your travels in numbers</h3>
+            <ul>
+              <li>Countries visited, flights taken and kilometres flown</li>
+              <li>Holiday days per year, split by country</li>
+              <li>Holidays by country, and where you lived when</li>
+            </ul>
+          </div>
+          <figure class="app-shot feature-shot">
+            <a href="/demo/#/overview" data-analiza-click="shot-overview"><img src="/img/apps/overview.webp" alt="Takeout Photo Overview: stat tiles (Total Photos 1,006; Holidays 4; Day Trips 1; Countries 6; Flights 10; Km Flown 10,478) and the Holiday days per year chart (2024: 7 days, 2025: 20 days)" width="2400" height="1560" loading="lazy" decoding="async"></a>
+            <figcaption>The overview page of the sample library. <a href="/demo/#/overview" data-analiza-click="shot-overview">Open in the live demo</a></figcaption>
+          </figure>
+        </div>
+
+        <div class="mini-grid">
+          <h3>Make it yours</h3>
+          <div><strong>Rename and annotate.</strong> Rename a trip, add notes, pick its cover, hide trips or photos you do not want to see. (Lifetime and Yearly)</div>
+          <div><strong>Fix your homes.</strong> Set or edit where you lived and re-run trip detection.</div>
+          <div><strong>Add your partner&rsquo;s photos.</strong> With Yearly, add someone else&rsquo;s Takeout: their photos join the trips you shared, marked with their colour.</div>
+          <div><strong>Deleted in Google Photos.</strong> Photos that disappeared from your newest export are listed so you can keep or remove them.</div>
+          <div><strong>Your edits survive.</strong> Import a newer export and trip names, notes, homes and hidden photos are kept.</div>
+          <div><strong>Keyboard and phone.</strong> Alt+1 to 9 switches between apps; the layout adapts to phone and tablet widths.</div>
+        </div>
+
+        <p><a href="/google-photos-takeout/" data-analiza-click="more-timeline">More about browsing a Takeout as a timeline</a></p>
+      </section>
+
+      <!-- Activities tour -->
+      <section class="section tour" id="activities">
+        <div class="section-header">
+          <h2>Your photos on your Strava, Komoot and Garmin routes</h2>
+          <p>The Activities app matches the photos in your Takeout to your activities by capture time and puts each one on the GPS track.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-copy">
+            <h3>Every photo placed along the route</h3>
+            <ul>
+              <li>Each photo sits on the track with its distance and time; photos without GPS are placed by time</li>
+              <li>Best photos, a photo strip and an elevation profile with a marker for every photo</li>
+              <li>Splits and a link back to the activity on Strava</li>
+              <li>Photos you already uploaded to Strava are shown too, with duplicates hidden</li>
+            </ul>
+          </div>
+          <figure class="app-shot feature-shot">
+            <a href="/demo/#/activities/1" data-analiza-click="shot-activity"><img src="/img/apps/strava.webp" alt="Takeout Photo activity page for the Rome evening ride: route map with photo markers and the Best photos strip (8 photos, 46.8 km, 3:55, 1055 m)" width="2400" height="1548" loading="lazy" decoding="async"></a>
+            <figcaption>One sample activity with its photos on the GPS track. <a href="/demo/#/activities/1" data-analiza-click="shot-activity">Open in the live demo</a></figcaption>
+          </figure>
+        </div>
+
+        <div class="feature flip">
+          <div class="feature-copy">
+            <h3>One map of everything you did</h3>
+            <ul>
+              <li>Every route on one map, coloured by sport, with a heatmap mode</li>
+              <li>Filter by sport, year, country, duration or &ldquo;with photos&rdquo;</li>
+              <li>The link goes both ways: activities appear inside your trips, and each activity links to its trip</li>
+            </ul>
+          </div>
+          <figure class="app-shot feature-shot">
+            <a href="/demo/#/activities" data-analiza-click="shot-activities-map"><img src="/img/apps/activities-map.webp" alt="Takeout Photo Activities map zoomed to the Rome evening ride route, with the Activities in view list showing that ride (46.8 km, 8 photos)" width="2400" height="1512" loading="lazy" decoding="async"></a>
+            <figcaption>The activities map, zoomed to one ride. <a href="/demo/#/activities" data-analiza-click="shot-activities-map">Open in the live demo</a></figcaption>
+          </figure>
+        </div>
+
+        <div class="feature">
+          <div class="feature-copy">
+            <h3>Stats per year</h3>
+            <ul>
+              <li>Distance, moving time and elevation per year and per sport</li>
+              <li>How many activities have photos, and how many photos were matched</li>
+            </ul>
+          </div>
+          <figure class="app-shot feature-shot">
+            <a href="/demo/#/activities/stats" data-analiza-click="shot-activities-stats"><img src="/img/apps/activities-stats.webp" alt="Takeout Photo Activities stats: totals tiles (3 activities, 133.1 km, 12:45 moving, 3069 m elevation, 3/3 with photos, 22 matched photos) and the per-year distance chart (2024: 86.3 km, 2025: 46.8 km)" width="2400" height="1560" loading="lazy" decoding="async"></a>
+            <figcaption>Per-year stats for the sample activities. <a href="/demo/#/activities/stats" data-analiza-click="shot-activities-stats">Open in the live demo</a></figcaption>
+          </figure>
+        </div>
+
+        <div class="mini-grid">
+          <h3>Connecting your accounts</h3>
+          <div><strong>Strava.</strong> Official API, through your own free Strava API app; a step-by-step guide is built in.</div>
+          <div><strong>Komoot and Garmin Connect.</strong> Sign in with your own login; activities and tracks stay on your computer.</div>
+          <div><strong>No duplicates.</strong> The same activity recorded on two services is shown once.</div>
+        </div>
+
+        <p><a href="/google-photos-strava/" data-analiza-click="more-activities">More about photos on your Strava activities</a></p>
+      </section>
+
+      <!-- Proton Photos sync tour -->
+      <section class="section tour" id="proton">
+        <div class="section-header">
+          <h2>Move your Google Photos to Proton Photos</h2>
+          <p>The sync app uploads the Google Photos part of your Takeout to Proton Photos in full original quality, with the dates, places and albums intact.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-copy">
+            <h3>Albums that make sense</h3>
+            <ul>
+              <li>Keep the albums as they are in your Takeout, or get one album per detected trip</li>
+              <li>Capture date, GPS, description, favourite and people are written from the sidecars into the files first, without re-encoding the pixels</li>
+              <li>Files without a capture date are flagged, with one-click date suggestions</li>
+              <li>Full original quality uploads through Proton's official Drive CLI</li>
+            </ul>
+          </div>
+          <figure class="app-shot feature-shot">
+            <a href="/demo/#/sync/albums" data-analiza-click="shot-sync-albums"><img src="/img/apps/sync.webp" alt="Takeout Photo Proton Photos sync albums table: six trip albums (Bern, Lisbon, Italy, Barcelona, Paris, Munich) with photo counts and an in Proton check each" width="2400" height="1110" loading="lazy" decoding="async"></a>
+            <figcaption>The sync albums table: one album per trip, each already in Proton. <a href="/demo/#/sync/albums" data-analiza-click="shot-sync-albums">Open in the live demo</a></figcaption>
+          </figure>
+        </div>
+
+        <div class="mini-grid">
+          <h3>A sync you can stop, resume and undo</h3>
+          <div><strong>Pause and resume.</strong> Progress and time remaining are shown; an interrupted sync continues on the next start.</div>
+          <div><strong>Nothing is deleted.</strong> Re-runs skip what is already in Proton, and a sync never deletes anything in your Proton account.</div>
+          <div><strong>Change your mind.</strong> Revert sync moves what the app uploaded to the Proton trash.</div>
+          <div><strong>Only your own photos.</strong> Other people&rsquo;s Takeouts that you added never go to Proton.</div>
+        </div>
+
+        <p><span class="coming-tag">Coming soon</span> Proton Photos is the first destination; more are on the way</p>
+        <p><a href="/google-photos-to-proton-photos/" data-analiza-click="more-proton">More about moving Google Photos to Proton Photos</a></p>
+
+        <div class="coming-next">
+          <h3>Coming next</h3>
+          <ul>
+            <li>More sync destinations: Proton Photos is the first, others will follow</li>
+            <li>Support for more of your Takeout: Google Drive and Google Docs files, not just the Google Photos part</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Mid-page call to action -->
+      <section class="cta-mid" aria-label="Live demo and download">
+        <p>Every screen above is in the live demo, with sample photos.</p>
+        <div class="hero-actions">
+          <a href="/demo/#/timeline" class="btn btn-demo" data-analiza-click="mid-demo">Open the live demo</a>
+          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary dl-mac" data-analiza-click="mid-download-mac">Download for Mac</a>
+          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary dl-win" data-analiza-click="mid-download-win">Download for Windows</a>
+        </div>
+      </section>
+
+      <!-- How it works: the archive -> processing -> apps flow -->
+      <section class="section" id="how">
+        <div class="section-header">
+          <h2>From Takeout archive to timeline in three steps</h2>
+        </div>
         <div class="flow">
           <div class="flow-stage" style="--d:0">
             <h3><span class="flow-num">1</span> Request your Takeout</h3>
@@ -365,82 +549,41 @@
           </div>
         </div>
         <p class="flow-caption">The built-in apps open for the data your export contains.</p>
+
+        <div class="feature">
+          <div class="feature-copy">
+            <h3>Import without unpacking anything</h3>
+            <ul>
+              <li>Point the app at a folder of Takeout archives, a Google Drive link, or sign in with Google and pick the files (read-only). Lite imports from a local folder.</li>
+              <li>Every import shows its steps as a checklist, and picks up where it left off after a restart</li>
+              <li>The Takeout page shows what your export contains: products, archives, photos, videos and metadata files</li>
+              <li>Try it first with the built-in sample library</li>
+            </ul>
+          </div>
+          <figure class="app-shot feature-shot">
+            <a href="/demo/#/takeout" data-analiza-click="shot-takeout"><img src="/img/apps/takeout.webp" alt="Takeout Photo Takeout page: the three import sources (Local folder, Drive link, Google account) and the Ingestion checklist, all ticked, Completed" width="2400" height="1530" loading="lazy" decoding="async"></a>
+            <figcaption>The Takeout page of the sample library, import completed. <a href="/demo/#/takeout" data-analiza-click="shot-takeout">Open in the live demo</a></figcaption>
+          </figure>
+        </div>
       </section>
 
-      <!-- Apps showcase -->
-      <section class="section" id="apps">
+      <!-- Built for big libraries -->
+      <section class="section" id="scale">
         <div class="section-header">
-          <h2>The built-in apps for your export</h2>
-          <p>Takeout Photo comes with three built-in apps, with more on the way. Each one opens for the data your Takeout contains, and everything runs on your computer.</p>
+          <h2>Built for big libraries</h2>
+          <p>Figures from the real library the app is developed against.</p>
         </div>
-
-        <div class="app-panel app-photos">
-          <div>
-            <h3><span class="app-dot"></span> Photos timeline</h3>
-            <p class="app-desc">Your holidays and day trips, found automatically, so you can relive your memories trip by trip &mdash; each with its places, route map and best photos.</p>
-            <ul>
-              <li>Holidays and day trips detected automatically from your photo locations, plus home and moves</li>
-              <li><strong>Better trip detection with your Google Maps Timeline (Location History):</strong> add it and each trip starts and ends when you really left and came home, not just at your first and last photo</li>
-              <li>Real capture dates, GPS and descriptions from the JSON sidecars</li>
-              <li>Towns and countries named from the GPS coordinates</li>
-              <li>Routes drawn on a map from open street data, using your Location History when you add it</li>
-              <li>Your Strava, Komoot or Garmin activities appear in each trip's day-by-day view, for the full picture of the holiday</li>
-              <li>On-device AI curation groups near-duplicates and picks the best shots per trip</li>
-              <li>Libraries of hundreds of GB, read in place from the archives</li>
-            </ul>
-            <p><a href="/google-photos-takeout/">More about browsing a Takeout as a timeline</a></p>
-          </div>
-          <figure class="app-shot">
-            <img src="/img/apps/photos.webp" alt="Takeout Photo Photos timeline app: the Italy trip of April 9 to 17, 2025 with 240 photos, a route map and curated best shots" width="2400" height="1560" loading="lazy">
-          </figure>
+        <div class="stats">
+          <div class="stat"><span class="stat-num">249 GB</span><span class="stat-label">of Takeout archives, about 34,000 photos</span></div>
+          <div class="stat"><span class="stat-num">0 GB</span><span class="stat-label">unpacked: archives are read in place, originals are never copied</span></div>
+          <div class="stat"><span class="stat-num">13 GB</span><span class="stat-label">of thumbnails, previews, index and database for that library</span></div>
+          <div class="stat"><span class="stat-num">1 min</span><span class="stat-label">to re-scan the contents of 233 GB of archives</span></div>
         </div>
-
-        <div class="app-panel app-strava">
-          <div>
-            <h3><span class="app-dot"></span> Activities</h3>
-            <p class="app-desc">See your Google Photos on your Strava, Komoot and Garmin Connect activities.</p>
-            <ul>
-              <li>Syncs activities from Strava (official API, OAuth with your own free API app), Komoot and Garmin Connect (your own login); activities from all three are de-duplicated</li>
-              <li>Matches each photo to an activity by capture time and places it along the GPS track ("km 12.3 · 10:42")</li>
-              <li>A map of all your routes, coloured by sport, with filters for sport, year, country and photos</li>
-              <li>Activity pages with the route, the best photos and a photo strip; stats per year</li>
-              <li>Photos you already uploaded to Strava are shown too, with duplicates hidden</li>
-              <li>The link goes both ways: activities appear inside the trips, and each activity links to its trip</li>
-            </ul>
-            <p><a href="/google-photos-strava/">More about photos on your Strava activities</a></p>
-          </div>
-          <figure class="app-shot">
-            <img src="/img/apps/strava.webp" alt="Takeout Photo Activities app: the Lisbon riverside run with its GPS route on a map and the five matched photos" width="2400" height="1560" loading="lazy">
-          </figure>
-        </div>
-
-        <div class="app-panel app-sync">
-          <div>
-            <h3><span class="app-dot"></span> Proton Photos sync</h3>
-            <p class="app-desc">Move the Google Photos part of your Takeout to Proton Photos.</p>
-            <ul>
-              <li>Full original quality uploads through Proton's official Drive CLI</li>
-              <li>Capture date, GPS, description, favourite and people written from the sidecars into the files first, without re-encoding pixels</li>
-              <li>Albums kept as in the Takeout, or one album per detected trip</li>
-              <li>Re-runs skip what is already in Proton; nothing in your Proton account is ever deleted</li>
-              <li>Files without a capture date are flagged with one-click date suggestions</li>
-              <li>Only your own Takeout is synced; other people's Takeouts never go to Proton</li>
-              <li><span class="coming-tag">Coming soon</span> Proton Photos is the first destination; more are on the way</li>
-            </ul>
-            <p><a href="/google-photos-to-proton-photos/">More about moving Google Photos to Proton Photos</a></p>
-          </div>
-          <figure class="app-shot">
-            <img src="/img/apps/sync.webp" alt="Takeout Photo Proton Photos sync app: the albums tab with the synced Proton albums" width="2400" height="1153" loading="lazy">
-          </figure>
-        </div>
-
-        <div class="coming-next">
-          <h3>Coming next</h3>
-          <ul>
-            <li>More sync destinations: Proton Photos is the first, others will follow</li>
-            <li>Support for more of your Takeout: Google Drive and Google Docs files, not just the Google Photos part</li>
-          </ul>
-        </div>
+        <ul class="scale-list">
+          <li>Browsing needs only the local previews. Full-resolution originals are read from the archives on demand, so keep the archives reachable (in your folder or on Drive).</li>
+          <li>When a newer export replaces an old one, remove the app&rsquo;s local copies of the old one with one button to free the space. Files in your own folder and on Drive are never deleted.</li>
+          <li>The AI model (about 578 MB) downloads once and runs on your computer, on the GPU when there is one.</li>
+        </ul>
       </section>
 
       <!-- Platforms -->

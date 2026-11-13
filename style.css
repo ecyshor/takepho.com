@@ -479,11 +479,7 @@ html.os-mobile .hero-actions .dl-send {
   font-weight: 700;
 }
 
-/* Flow figure: archive -> processing -> apps */
-
-.flow-section {
-  margin-bottom: 80px;
-}
+/* Flow figure: archive -> processing -> apps (inside the #how section) */
 
 .flow {
   list-style: none;
@@ -607,47 +603,31 @@ html.os-mobile .hero-actions .dl-send {
   }
 }
 
-/* Apps showcase */
+/* Tour feature rows (home page showcase): text one side, linked screenshot
+   the other, sides alternating on desktop, text first on mobile */
 
-.app-panel {
+.feature {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
   gap: 20px 44px;
-  padding: 36px 0;
-  border-top: 3px solid var(--hue);
+  margin-top: 48px;
 }
 
-.app-panel:first-of-type {
-  border-top-width: 3px;
+.section-header + .feature {
+  margin-top: 32px;
 }
 
-.app-photos { --hue: var(--app-photos); }
-.app-strava { --hue: var(--app-strava); }
-.app-sync { --hue: var(--app-sync); }
-
-.app-panel h3 {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1.35rem;
-  margin-bottom: 10px;
-}
-
-.app-panel .app-desc {
-  margin-bottom: 14px;
-}
-
-.app-panel ul {
-  margin: 0 0 16px 0;
+.feature-copy ul {
+  margin: 0;
   padding-left: 20px;
   color: var(--muted);
 }
 
-.app-panel li {
+.feature-copy li {
   margin-bottom: 7px;
 }
 
-.app-panel li:last-child {
+.feature-copy li:last-child {
   margin-bottom: 0;
 }
 
@@ -663,6 +643,102 @@ html.os-mobile .hero-actions .dl-send {
   border-radius: 8px;
   border: 1px solid var(--line);
   background-color: var(--surface);
+}
+
+.feature-shot img {
+  box-shadow: 0 18px 44px -18px rgba(10, 12, 30, 0.4);
+}
+
+.feature-shot figcaption {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+@media (min-width: 901px) {
+  .feature.flip {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  }
+  .feature.flip .feature-copy {
+    order: 2;
+  }
+}
+
+/* Compact text grids (mini features, privacy points): top hairline, bold
+   lead-in, muted text */
+
+.mini-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px 32px;
+  margin-top: 48px;
+}
+
+.mini-grid h3 {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.mini-grid > div {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.mini-grid strong {
+  color: var(--ink);
+}
+
+.mini-grid.cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.mini-grid + p {
+  margin-top: 24px;
+}
+
+/* Big-library stat tiles */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px 28px;
+  margin: 0 0 24px 0;
+}
+
+.stat {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+.stat-num {
+  display: block;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--brand);
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.scale-list {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.scale-list li {
+  margin-bottom: 7px;
+}
+
+.scale-list li:last-child {
+  margin-bottom: 0;
 }
 
 .coming-tag {
@@ -890,6 +966,26 @@ html.os-mobile .hero-actions .dl-send {
   margin-bottom: 0;
 }
 
+/* Mid-page call to action: lighter band between hairlines, no card */
+
+.cta-mid {
+  margin: 0 0 72px 0;
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+
+.cta-mid p {
+  color: var(--muted);
+  margin: 0 auto 20px;
+}
+
+.cta-mid .hero-actions {
+  justify-content: center;
+  margin-bottom: 0;
+}
+
 /* Legacy hero helpers kept for the guide pages */
 
 .hero .subtitle {
@@ -969,9 +1065,19 @@ pre code {
   .flow-stage {
     margin-bottom: 0;
   }
-  .app-panel {
+  .feature {
     grid-template-columns: minmax(0, 1fr);
     gap: 20px;
+  }
+  .mini-grid,
+  .mini-grid.cols-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .nav .nav-app {
+    display: none;
   }
   .platforms {
     grid-template-columns: 1fr;
