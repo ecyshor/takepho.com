@@ -25,6 +25,7 @@
   --line: #DADDE8;
   --control-line: #8A90A8;
   --brand: #5664F0;
+  --link: #4E5BEA;
   --violet: #8A5CF5;
   --brand-ink: #FFFFFF;
   --btn-hover: #7448E8;
@@ -45,6 +46,7 @@
     --line: #2C3150;
     --control-line: #5A6396;
     --brand: #8B98FF;
+    --link: var(--brand);
     --violet: #B08CFF;
     --brand-ink: #12152A;
     --btn-hover: #B08CFF;
@@ -143,7 +145,7 @@ details[id] {
 }
 
 .brand:hover {
-  color: var(--brand);
+  color: var(--link);
 }
 
 .nav {
@@ -160,7 +162,7 @@ details[id] {
 }
 
 .nav a:not(.btn):hover {
-  color: var(--brand);
+  color: var(--link);
   text-decoration: underline;
 }
 
@@ -199,7 +201,7 @@ footer {
 }
 
 .footer-links a:hover {
-  color: var(--brand);
+  color: var(--link);
   text-decoration: underline;
 }
 
@@ -240,7 +242,7 @@ article > p, .section p, .section li {
 }
 
 a {
-  color: var(--brand);
+  color: var(--link);
   text-decoration: none;
 }
 

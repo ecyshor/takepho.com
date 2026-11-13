@@ -10,9 +10,9 @@ Takeout Photo finds your holidays and day trips automatically, puts your photos 
 
 [Open the live demo](https://takepho.com/demo/#/timeline) [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe)
 
-Demo: sample photos, nothing to install, no account.
+Demo: sample photos, nothing to install, no account. The app is free to download; Lite is free for your 5 most recent holidays.
 
-Free to download · Lite is free for your 5 most recent holidays · Mac: Apple silicon, macOS 12+ · Windows 10/11 · [NAS (Docker)](https://takepho.com/self-host/) · [Windows portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip).
+Mac: Apple silicon, macOS 12+ · Windows 10/11 · [NAS (Docker)](https://takepho.com/self-host/) · [Windows portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip).
 
 Free to download. The Mac app is signed with an Apple Developer ID and notarized by Apple. The Windows app isn't code-signed yet: on the first launch Windows shows "Windows protected your PC" — click "More info", then "Run anyway". The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the [releases page](https://github.com/ecyshor/takepho.com/releases).
 

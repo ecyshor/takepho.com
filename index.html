@@ -325,10 +325,10 @@
             <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary dl-win" data-analiza-click="hero-download-win">Download for Windows</a>
             <button type="button" class="btn btn-secondary dl-send" data-analiza-click="hero-send-link" hidden>Send the link to my computer</button>
           </div>
-          <p class="hero-sub">Demo: sample photos, nothing to install, no account.</p>
+          <p class="hero-sub">Demo: sample photos, nothing to install, no account. The app is free to download; Lite is free for your 5 most recent holidays.</p>
           <p class="hero-other">Also for <a class="other-win" data-analiza-click="hero-other-win" href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe">Windows</a> <a class="other-mac" data-analiza-click="hero-other-mac" href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Mac</a></p>
           <p class="hero-mobile-note">Takeout Photo is a desktop app for Mac and Windows. Try the <a href="/demo/" data-analiza-click="hero-mobile-demo">demo</a> here, then install it on your computer.</p>
-          <p class="hero-note">Free to download &middot; Lite is free for your 5 most recent holidays &middot; Mac: Apple silicon, macOS 12+ &middot; Windows 10/11 &middot; <a href="/self-host/" data-analiza-click="hero-nas">NAS (Docker)</a> &middot; <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip" data-analiza-click="hero-portable-zip">Windows portable zip</a></p>
+          <p class="hero-note">Mac: Apple silicon, macOS 12+ &middot; Windows 10/11 &middot; <a href="/self-host/" data-analiza-click="hero-nas">NAS (Docker)</a> &middot; <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip" data-analiza-click="hero-portable-zip">Windows portable zip</a></p>
           <details class="dl-note">
             <summary>Windows: first-launch warning, updates and the portable zip</summary>
             <p>The Windows app isn&rsquo;t code-signed yet, so Windows shows that warning on the first launch &mdash; click &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;. The installed app updates itself automatically: it checks daily (toggle in Settings &rarr; Updates, plus a &ldquo;Check for updates now&rdquo; button) and installs the update when the app quits. The portable zip doesn&rsquo;t update itself &mdash; new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>.</p>
@@ -880,6 +880,14 @@
             }
           });
         });
+        function openHashDetails() {
+          var h = location.hash.replace(/^#/, '');
+          if (!h) { return; }
+          var el = document.getElementById(h);
+          if (el && el.tagName === 'DETAILS') { el.open = true; }
+        }
+        window.addEventListener('hashchange', openHashDetails);
+        openHashDetails();
       })();
     } catch (e) {}
   </script>
