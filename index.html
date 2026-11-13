@@ -503,6 +503,7 @@
           <a href="/demo/#/timeline" class="btn btn-demo" data-analiza-click="mid-demo">Open the live demo</a>
           <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary dl-mac" data-analiza-click="mid-download-mac">Download for Mac</a>
           <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary dl-win" data-analiza-click="mid-download-win">Download for Windows</a>
+          <button type="button" class="btn btn-secondary dl-send" data-analiza-click="mid-send-link" hidden>Send the link to my computer</button>
         </div>
       </section>
 
@@ -825,6 +826,7 @@
           <a href="/demo/#/timeline" class="btn btn-demo" data-analiza-click="final-demo">Open the live demo</a>
           <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary dl-mac" data-analiza-click="final-download-mac">Download for Mac</a>
           <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary dl-win" data-analiza-click="final-download-win">Download for Windows</a>
+          <button type="button" class="btn btn-secondary dl-send" data-analiza-click="final-send-link" hidden>Send the link to my computer</button>
         </div>
       </section>
     </div>
@@ -872,9 +874,9 @@
         document.querySelectorAll('.dl-send').forEach(function (b) {
           b.addEventListener('click', function () {
             if (navigator.share) {
-              navigator.share({ title: 'Takeout Photo', text: 'Takeout Photo: download for Mac or Windows', url: 'https://takepho.com/#download' }).catch(function () {});
+              navigator.share({ title: 'Takeout Photo', text: 'Takeout Photo: download for Mac or Windows', url: 'https://takepho.com/?from=phone#download' }).catch(function () {});
             } else {
-              location.href = 'mailto:?subject=Takeout%20Photo&body=https%3A%2F%2Ftakepho.com%2F%23download';
+              location.href = 'mailto:?subject=Takeout%20Photo&body=https%3A%2F%2Ftakepho.com%2F%3Ffrom%3Dphone%23download';
             }
           });
         });
