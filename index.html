@@ -110,10 +110,34 @@
         },
         {
           "@type": "Question",
+          "name": "Is there a phone app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Takeout Photo is a desktop app for Mac and Windows. If you run the Docker image on a NAS or home server, you can open it in the browser of any device on your network, including a phone."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Which computers does it run on?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Mac: Apple silicon (arm64), macOS 12 (Monterey) or later; signed with an Apple Developer ID and notarized by Apple. Windows: Windows 10 or 11, 64-bit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much disk space does it need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The archives themselves, plus a small local library. For a real 249 GB Takeout with about 34,000 photos the app stores about 12.6 GB of thumbnails and previews, a 370 MB index and a 170 MB database. The archives are read in place and never unpacked or copied."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to keep the Takeout archives after importing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, if you want full-resolution originals. Browsing uses local previews, but originals are read from the archives on demand, so keep them in your folder or on Drive."
           }
         },
         {
@@ -146,6 +170,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Lite is the free plan: no account or licence needed. Import your own Google Takeout manually (a local folder of .tgz/.zip archives, including a newer export later) and get the photo timeline only, read-only, limited to your 5 most recent holidays plus the home periods and day trips in that span (the app shows \"5 of N holidays\"). Activity matching (Strava/Komoot/Garmin) and the Proton Photos move stay on the paid plans. Buying Lifetime or Yearly unlocks the whole library: the rest of the photos are processed in the background, without re-importing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I rename or hide trips?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, with Lifetime or Yearly: rename a trip, add notes, pick its cover, hide trips or photos, and set your homes. Lite is read-only. Your edits are kept when you import a newer export."
           }
         },
         {
@@ -186,6 +218,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Google no longer lets apps read a whole Photos library, so Google Takeout is the way to get all your photos with their metadata. Takeout exports include everything you need."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it show videos and HEIC photos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HEIC photos are decoded on your computer and shown like any other photo. The timeline shows photos today; videos in your Takeout are counted in the inventory and uploaded by the Proton Photos sync."
           }
         },
         {
@@ -596,19 +636,19 @@
           <div class="platform">
             <h3>Mac</h3>
             <p>Apple silicon Mac (M1 or later) with macOS 12 (Monterey) or later. Signed with an Apple Developer ID and notarized by Apple.</p>
-            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary">Download for Mac</a>
+            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary" data-analiza-click="platform-download-mac">Download for Mac</a>
           </div>
           <div class="platform">
             <h3>Windows</h3>
             <p>Windows 10 or 11, 64-bit. The installer keeps the app up to date automatically; there is also a portable zip.</p>
-            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary">Download for Windows</a>
-            <p class="platform-note">or <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip">download the portable zip</a></p>
+            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary" data-analiza-click="platform-download-win">Download for Windows</a>
+            <p class="platform-note">or <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip" data-analiza-click="platform-portable-zip">download the portable zip</a></p>
             <p class="platform-note"><a href="#faq-windows-warning">About the first-launch warning</a></p>
           </div>
           <div class="platform">
             <h3>NAS</h3>
             <p>A Docker container on your home server or NAS, started with Docker Compose. Open it in the browser on your network. Same plans as the desktop app.</p>
-            <a href="/self-host/" class="text-link">Self-hosting guide</a>
+            <a href="/self-host/" class="text-link" data-analiza-click="platform-self-host">Self-hosting guide</a>
           </div>
         </div>
       </section>
@@ -630,7 +670,7 @@
               <li>Read-only (no renaming, curating or hiding trips, no editing homes) and no automatic imports.</li>
               <li>Activity matching (Strava/Komoot/Garmin) and the Proton Photos move are on the paid plans.</li>
             </ul>
-            <a href="#download" class="btn btn-secondary plan-cta">Download free</a>
+            <a href="#download" class="btn btn-secondary plan-cta" data-analiza-click="plan-lite-download">Download free</a>
           </div>
           <div class="plan">
             <h3>Lifetime</h3>
@@ -642,7 +682,7 @@
               <li>Importing a newer Takeout export rebuilds the library from it, and your edits (hidden photos, trip names and notes, homes, people) are kept.</li>
               <li>All app updates included.</li>
             </ul>
-            <a href="#download" class="btn btn-secondary plan-cta">Download the app</a>
+            <a href="#download" class="btn btn-secondary plan-cta" data-analiza-click="plan-lifetime-download">Download the app</a>
             <p class="plan-buy-note">Buy in the app: Settings &rarr; Account</p>
           </div>
           <div class="plan plan-featured">
@@ -654,7 +694,7 @@
               <li>Automatic processing: the folder watcher imports new exports as they land, newer exports import incrementally (no rebuild), and you can add contributors (other people's Takeouts, e.g. a partner's).</li>
               <li>The first paid year includes the Lifetime licence: if you cancel, you keep it.</li>
             </ul>
-            <a href="#download" class="btn plan-cta">Download the app</a>
+            <a href="#download" class="btn plan-cta" data-analiza-click="plan-yearly-download">Download the app</a>
             <p class="plan-buy-note">Buy in the app: Settings &rarr; Account</p>
           </div>
         </div>
@@ -678,9 +718,14 @@
       <section class="section" id="privacy">
         <div class="section-header">
           <h2>Private by design</h2>
-          <p>Everything is processed on your computer; your photos are never uploaded to our servers. Google access is read-only and limited to the files you pick.</p>
-          <p><a href="privacy.html">Read the full privacy policy</a></p>
         </div>
+        <div class="mini-grid cols-2">
+          <div><strong>Processed on your computer.</strong> Your photos are never uploaded to our servers.</div>
+          <div><strong>Read-only Google access.</strong> Limited to the Takeout files you pick, and you can revoke it any time.</div>
+          <div><strong>No tracking in the app.</strong> No analytics and no ads.</div>
+          <div><strong>Your accounts stay yours.</strong> Activities and tracks from Strava, Komoot and Garmin are stored only on your computer.</div>
+        </div>
+        <p><a href="privacy.html">Read the full privacy policy</a></p>
       </section>
 
       <!-- FAQ -->
@@ -693,8 +738,20 @@
           <p class="faq-answer">No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos never leave your computer.</p>
         </details>
         <details class="faq-item">
+          <summary>Is there a phone app?</summary>
+          <p class="faq-answer">No. Takeout Photo is a desktop app for Mac and Windows. If you run the Docker image on a NAS or home server, you can open it in the browser of any device on your network, including a phone.</p>
+        </details>
+        <details class="faq-item">
           <summary>Which computers does it run on?</summary>
           <p class="faq-answer">Mac: Apple silicon (arm64), macOS 12 (Monterey) or later; signed with an Apple Developer ID and notarized by Apple. Windows: Windows 10 or 11, 64-bit.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How much disk space does it need?</summary>
+          <p class="faq-answer">The archives themselves, plus a small local library. For a real 249 GB Takeout with about 34,000 photos the app stores about 12.6 GB of thumbnails and previews, a 370 MB index and a 170 MB database. The archives are read in place and never unpacked or copied.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need to keep the Takeout archives after importing?</summary>
+          <p class="faq-answer">Yes, if you want full-resolution originals. Browsing uses local previews, but originals are read from the archives on demand, so keep them in your folder or on Drive.</p>
         </details>
         <details class="faq-item">
           <summary>How does the app update?</summary>
@@ -711,6 +768,10 @@
         <details class="faq-item">
           <summary>What is Lite?</summary>
           <p class="faq-answer">Lite is the free plan: no account or licence needed. Import your own Google Takeout manually (a local folder of .tgz/.zip archives, including a newer export later) and get the photo timeline only, read-only, limited to your 5 most recent holidays plus the home periods and day trips in that span (the app shows &ldquo;5 of N holidays&rdquo;). Activity matching (Strava/Komoot/Garmin) and the Proton Photos move stay on the paid plans. Buying Lifetime or Yearly unlocks the whole library: the rest of the photos are processed in the background, without re-importing.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I rename or hide trips?</summary>
+          <p class="faq-answer">Yes, with Lifetime or Yearly: rename a trip, add notes, pick its cover, hide trips or photos, and set your homes. Lite is read-only. Your edits are kept when you import a newer export.</p>
         </details>
         <details class="faq-item">
           <summary>Do I need an account?</summary>
@@ -731,6 +792,10 @@
         <details class="faq-item">
           <summary>What about the Google Photos API?</summary>
           <p class="faq-answer">Google no longer lets apps read a whole Photos library, so Google Takeout is the way to get all your photos with their metadata. Takeout exports include everything you need.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does it show videos and HEIC photos?</summary>
+          <p class="faq-answer">HEIC photos are decoded on your computer and shown like any other photo. The timeline shows photos today; videos in your Takeout are counted in the inventory and uploaded by the Proton Photos sync.</p>
         </details>
         <details class="faq-item">
           <summary>Why are the dates wrong after unzipping a Google Takeout?</summary>
@@ -771,9 +836,9 @@
         <h2>See it with sample photos, then try it on your own Takeout.</h2>
         <p>The demo runs in your browser. The app is free to download, and Lite needs no account.</p>
         <div class="hero-actions">
-          <a href="/demo/" class="btn btn-demo">Open the live demo</a>
-          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary dl-mac">Download for Mac</a>
-          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary dl-win">Download for Windows</a>
+          <a href="/demo/#/timeline" class="btn btn-demo" data-analiza-click="final-demo">Open the live demo</a>
+          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary dl-mac" data-analiza-click="final-download-mac">Download for Mac</a>
+          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary dl-win" data-analiza-click="final-download-win">Download for Windows</a>
         </div>
       </section>
     </div>
@@ -783,8 +848,8 @@
     <div class="footer-content">
       <div>&copy; 2026 Takeout Photo</div>
       <div class="footer-links">
-        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download for Mac</a>
-        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe">Download for Windows</a>
+        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" data-analiza-click="footer-download-mac">Download for Mac</a>
+        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" data-analiza-click="footer-download-win">Download for Windows</a>
         <a href="/google-photos-takeout/">Takeout viewer</a>
         <a href="/google-photos-strava/">Photos on Strava, Komoot or Garmin</a>
         <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>
