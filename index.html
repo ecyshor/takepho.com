@@ -90,10 +90,10 @@
         "Photos timeline: holidays and day trips detected automatically from photo locations and Location History, each trip with places, a route map, best photos and your activities in its day-by-day view; on-device AI curation",
         "Activities: photos matched to your Strava, Komoot or Garmin Connect activities by capture time and placed along the GPS track; activities also appear inside the trips",
         "Proton Photos sync: full original quality with albums and sidecar metadata written into the files",
-        "Overview with countries visited, flights taken, kilometres flown and holiday days per year",
+        "Overview with countries visited and holiday days per year, plus flights taken and kilometres flown from your Google Maps Timeline",
         "Activities map with heatmap, per-year stats and photos placed along each GPS track",
         "Rename, annotate and hide trips; add another person's Takeout to shared trips (Yearly)",
-        "Runs on macOS, Windows, or as a Docker container on a NAS; photos are never uploaded"
+        "Runs on macOS, Windows, or as a Docker container on a NAS; photos are never uploaded to our servers"
       ]
     },
     {
@@ -105,7 +105,7 @@
           "name": "Is it a web app?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos never leave your computer."
+            "text": "No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos stay on your computer unless you choose to sync them to Proton Photos."
           }
         },
         {
@@ -145,7 +145,7 @@
           "name": "How does the app update?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Both apps update themselves. Mac: use \"Check for Updates…\" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a \"Check for updates now\" button); while the exe isn't code-signed, updates are verified with an EdDSA signature. The portable zip doesn't update itself — download new versions from the releases page (https://github.com/ecyshor/takepho.com/releases). Updates are free for everyone, no plan needed. Release notes on GitHub: https://github.com/ecyshor/takepho.com/releases."
+            "text": "Both apps update themselves. Mac: use \"Check for Updates…\" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a \"Check for updates now\" button); while the exe isn't code-signed, updates are verified with an EdDSA signature. The portable zip doesn't update itself — download new versions from the releases page (https://github.com/ecyshor/takepho.com/releases). Updates are free for everyone, no plan needed. Release notes on GitHub (https://github.com/ecyshor/takepho.com/releases)."
           }
         },
         {
@@ -153,7 +153,7 @@
           "name": "Why does Windows show \"Windows protected your PC\" when I open the app?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The Windows app is not code-signed yet, so on the first launch Windows shows that warning. Click \"More info\", then \"Run anyway\" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip does not — new versions are on the releases page."
+            "text": "The Windows app is not code-signed yet, so on the first launch Windows shows that warning. Click \"More info\", then \"Run anyway\" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the releases page (https://github.com/ecyshor/takepho.com/releases)."
           }
         },
         {
@@ -185,7 +185,7 @@
           "name": "Do I need an account?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No, not for Lite (see \"What is Lite?\"). The app is also free to download and explore (the sample library in the app, or the web demo at takepho.com/demo/). A paid plan needs an account: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows)."
+            "text": "No, not for Lite (see \"What is Lite?\"). The app is also free to download and explore (the sample library in the app, or the web demo (https://takepho.com/demo/)). A paid plan needs an account: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows)."
           }
         },
         {
@@ -241,7 +241,7 @@
           "name": "Can I see my Google Photos on my Strava, Komoot or Garmin activities?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The Activities app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track (\"km 12.3 · 10:42\"). It works with Strava, Komoot and Garmin Connect. See photos on your Strava activities."
+            "text": "Yes. The Activities app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track (\"km 12.3 · 10:42\"). See photos on your Strava activities (https://takepho.com/google-photos-strava/) — Komoot and Garmin Connect work the same way."
           }
         },
         {
@@ -318,7 +318,7 @@
       <section class="hero hero-split">
         <div class="hero-copy">
           <h1>Turn your Google Takeout into a timeline of every trip you&rsquo;ve taken.</h1>
-          <p class="lead">Takeout Photo finds your holidays and day trips automatically, puts your photos on your Strava, Komoot or Garmin routes, and can move your library to Proton Photos. It runs on your Mac or Windows PC, so your photos are never uploaded.</p>
+          <p class="lead">Takeout Photo finds your holidays and day trips automatically, puts your photos on your Strava, Komoot or Garmin routes, and can move your library to Proton Photos. It runs on your Mac or Windows PC: your photos never go to our servers.</p>
           <div class="hero-actions" id="download">
             <a href="/demo/#/timeline" class="btn btn-demo" data-analiza-click="hero-demo">Open the live demo</a>
             <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary dl-mac" data-analiza-click="hero-download-mac">Download for Mac</a>
@@ -342,7 +342,7 @@
 
       <!-- Trust strip -->
       <ul class="trust">
-        <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Runs on your computer.</strong> Your photos are never uploaded.</span></li>
+        <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Runs on your computer.</strong> Your photos are never uploaded to our servers.</span></li>
         <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Free Lite plan.</strong> No account, no licence.</span></li>
         <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Mac app signed and notarized by Apple.</strong></span></li>
         <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Pay once.</strong> Lifetime licence, USD 25 / EUR 20.</span></li>
@@ -361,8 +361,7 @@
             <ul>
               <li>Holidays, day trips and home periods are told apart automatically, from your photo locations</li>
               <li>Each trip shows its places joined in the order you visited them, with towns and countries named from the GPS coordinates</li>
-              <li>Switch on Travel to see flights and long journeys</li>
-              <li>Add your Google Maps Timeline (Location History) and trips start and end when you really left and came home; photos without GPS get a location</li>
+              <li>Add your Google Maps Timeline (Location History, with Lifetime or Yearly) and trips start and end when you really left and came home; photos without GPS get a location, and Travel shows your flights and long journeys</li>
             </ul>
           </div>
           <figure class="app-shot feature-shot">
@@ -391,8 +390,8 @@
           <div class="feature-copy">
             <h3>Your travels in numbers</h3>
             <ul>
-              <li>Countries visited, flights taken and kilometres flown</li>
-              <li>Holiday days per year, split by country</li>
+              <li>Countries visited and holiday days per year, split by country</li>
+              <li>Flights taken and kilometres flown, once you add your Google Maps Timeline</li>
               <li>Holidays by country, and where you lived when</li>
             </ul>
           </div>
@@ -405,11 +404,10 @@
         <div class="mini-grid">
           <h3>Make it yours</h3>
           <div><strong>Rename and annotate.</strong> Rename a trip, add notes, pick its cover, hide trips or photos you do not want to see. (Lifetime and Yearly)</div>
-          <div><strong>Fix your homes.</strong> Set or edit where you lived and re-run trip detection.</div>
+          <div><strong>Fix your homes.</strong> Set or edit where you lived and re-run trip detection. (Lifetime and Yearly)</div>
           <div><strong>Add your partner&rsquo;s photos.</strong> With Yearly, add someone else&rsquo;s Takeout: their photos join the trips you shared, marked with their colour.</div>
-          <div><strong>Deleted in Google Photos.</strong> Photos that disappeared from your newest export are listed so you can keep or remove them.</div>
+          <div><strong>Deleted in Google Photos.</strong> Photos that disappeared from your newest export are listed so you can keep or remove them. (Lifetime and Yearly)</div>
           <div><strong>Your edits survive.</strong> Import a newer export and trip names, notes, homes and hidden photos are kept.</div>
-          <div><strong>Keyboard and phone.</strong> Alt+1 to 9 switches between apps; the layout adapts to phone and tablet widths.</div>
         </div>
 
         <p><a href="/google-photos-takeout/" data-analiza-click="more-timeline">More about browsing a Takeout as a timeline</a></p>
@@ -565,7 +563,7 @@
               <li>Real dates, GPS and descriptions from the JSON sidecars</li>
               <li>Handles libraries of hundreds of GB; newer exports merge in</li>
               <li>Interrupted imports resume where they left off</li>
-              <li>Your photos are never uploaded</li>
+              <li>Your photos are never uploaded to our servers</li>
             </ul>
           </div>
           <div class="flow-arrow" aria-hidden="true">
@@ -617,7 +615,7 @@
           <div class="stat"><span class="stat-num">249 GB</span><span class="stat-label">of Takeout archives, about 34,000 photos</span></div>
           <div class="stat"><span class="stat-num">0 GB</span><span class="stat-label">unpacked: archives are read in place, originals are never copied</span></div>
           <div class="stat"><span class="stat-num">13 GB</span><span class="stat-label">of thumbnails, previews, index and database for that library</span></div>
-          <div class="stat"><span class="stat-num">1 min</span><span class="stat-label">to re-scan the contents of 233 GB of archives</span></div>
+          <div class="stat"><span class="stat-num">1 min</span><span class="stat-label">to re-read the inventory of 233 GB of archives (after the first import)</span></div>
         </div>
         <ul class="scale-list">
           <li>Browsing needs only the local previews. Full-resolution originals are read from the archives on demand, so keep the archives reachable (in your folder or on Drive).</li>
@@ -735,7 +733,7 @@
         </div>
         <details class="faq-item">
           <summary>Is it a web app?</summary>
-          <p class="faq-answer">No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos never leave your computer.</p>
+          <p class="faq-answer">No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos stay on your computer unless you choose to sync them to Proton Photos.</p>
         </details>
         <details class="faq-item">
           <summary>Is there a phone app?</summary>
