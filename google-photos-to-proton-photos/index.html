@@ -150,11 +150,13 @@
   <header class="container">
     <a href="/" class="brand"><img src="/favicon.svg" alt="" width="32" height="32"> <span>Takeout Photo</span></a>
     <nav class="nav" aria-label="Main">
-      <a href="/#apps">Apps</a>
+      <a href="/#apps" class="nav-app">Timeline</a>
+      <a href="/#activities" class="nav-app">Activities</a>
+      <a href="/#proton" class="nav-app">Proton</a>
       <a href="/#pricing">Pricing</a>
-      <a href="/self-host/">Self-host</a>
       <a href="/#faq">FAQ</a>
-      <a href="/#download" class="btn">Download</a>
+      <a href="/demo/" class="nav-demo" data-analiza-click="nav-demo">Live demo</a>
+      <a href="/#download" class="btn" data-analiza-click="nav-download">Download</a>
     </nav>
   </header>
 
@@ -166,11 +168,11 @@
           <p class="subtitle">Uploading a plain Google Takeout to Proton Photos loses the album structure and often the dates and locations, because that metadata lives in the JSON sidecars next to each photo, not in the files themselves. Takeout Photo's sync app moves the Google Photos part of your Takeout into Proton Photos (Proton Drive) in full original quality (writing the capture date, GPS location, description, favourites and people from the sidecars losslessly into the files first) using Proton's official open-source Drive CLI.</p>
           <span class="status-badge">Desktop app for Mac and Windows</span>
           <div class="hero-actions">
-            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download for Mac</a>
-            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary">Download for Windows</a>
-            <a href="/demo/" class="btn btn-secondary">Try the demo in your browser</a>
+            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn" data-analiza-click="guide-proton-download-mac">Download for Mac</a>
+            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary" data-analiza-click="guide-proton-download-win">Download for Windows</a>
+            <a href="/demo/" class="btn btn-secondary" data-analiza-click="guide-proton-demo">Try the demo in your browser</a>
           </div>
-          <p class="hero-note">Free to download and explore. The photo timeline is free with Lite (your 5 most recent holidays); moving your photos to Proton Photos needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year; <a href="/">pricing</a>).</p>
+          <p class="hero-note">Free to download and explore. The photo timeline is free with Lite (your 5 most recent holidays); moving your photos to Proton Photos needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year; <a href="/#pricing" data-analiza-click="guide-proton-pricing">pricing</a>).</p>
         </section>
 
         <section class="section">
@@ -202,7 +204,7 @@
           <h2>Step by step</h2>
           <ol>
             <li>Export Google Photos with <a href="https://takeout.google.com">Google Takeout</a> (see <a href="/google-photos-takeout/">how to export a Takeout</a>).</li>
-            <li><a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download the app</a> (Mac: Apple silicon, macOS 12 or later; Windows: 10 or 11, 64-bit) and point it at the archives: with Lite (free) a local folder, with a paid plan also a Drive link or sign in with Google and pick the files (read-only). Free to explore the sample library; the Proton Photos move needs a plan (<a href="/">pricing</a>).</li>
+            <li><a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" data-analiza-click="guide-proton-download-mac">Download the app</a> (Mac: Apple silicon, macOS 12 or later; Windows: 10 or 11, 64-bit) and point it at the archives: with Lite (free) a local folder, with a paid plan also a Drive link or sign in with Google and pick the files (read-only). Free to explore the sample library; the Proton Photos move needs a plan (<a href="/#pricing" data-analiza-click="guide-proton-pricing">pricing</a>).</li>
             <li>In the sync app, choose the layout: "as in the Takeout" or "trip albums".</li>
             <li>Let the app install the Proton Drive CLI (checksum-verified) and sign in to Proton in your browser.</li>
             <li>Run the sync. You can re-run it any time; what is already in Proton is skipped and nothing is deleted.</li>
@@ -254,9 +256,9 @@
             <li><a href="/">Takeout Photo home</a>: the photo timeline app.</li>
           </ul>
           <div class="hero-actions">
-            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download for Mac</a>
-            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary">Download for Windows</a>
-            <a href="/demo/" class="btn btn-secondary">Try the demo in your browser</a>
+            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn" data-analiza-click="guide-proton-download-mac">Download for Mac</a>
+            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary" data-analiza-click="guide-proton-download-win">Download for Windows</a>
+            <a href="/demo/" class="btn btn-secondary" data-analiza-click="guide-proton-demo">Try the demo in your browser</a>
           </div>
         </section>
       </article>
@@ -268,8 +270,8 @@
       <div>&copy; 2026 Takeout Photo</div>
       <div class="footer-links">
         <a href="/">Home</a>
-        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download for Mac</a>
-        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe">Download for Windows</a>
+        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" data-analiza-click="footer-download-mac">Download for Mac</a>
+        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" data-analiza-click="footer-download-win">Download for Windows</a>
         <a href="/google-photos-takeout/">Takeout viewer</a>
         <a href="/google-photos-strava/">Photos on Strava, Komoot or Garmin</a>
         <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>

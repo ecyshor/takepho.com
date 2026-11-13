@@ -155,11 +155,13 @@
   <header class="container">
     <a href="/" class="brand"><img src="/favicon.svg" alt="" width="32" height="32"> <span>Takeout Photo</span></a>
     <nav class="nav" aria-label="Main">
-      <a href="/#apps">Apps</a>
+      <a href="/#apps" class="nav-app">Timeline</a>
+      <a href="/#activities" class="nav-app">Activities</a>
+      <a href="/#proton" class="nav-app">Proton</a>
       <a href="/#pricing">Pricing</a>
-      <a href="/self-host/">Self-host</a>
       <a href="/#faq">FAQ</a>
-      <a href="/#download" class="btn">Download</a>
+      <a href="/demo/" class="nav-demo" data-analiza-click="nav-demo">Live demo</a>
+      <a href="/#download" class="btn" data-analiza-click="nav-download">Download</a>
     </nav>
   </header>
 
@@ -171,11 +173,11 @@
           <p class="subtitle">Your photos live in Google Photos and your routes live in Strava, and nothing connects the two. Takeout Photo's Activities app links them on your own computer: it reads your Google Photos from a Takeout export, syncs your activities from Strava (official API, OAuth), Komoot or Garmin Connect (your own login), and matches each photo to an activity by capture time, placing it along the GPS track.</p>
           <span class="status-badge">Desktop app for Mac and Windows</span>
           <div class="hero-actions">
-            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download for Mac</a>
-            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary">Download for Windows</a>
-            <a href="/demo/" class="btn btn-secondary">Try the demo in your browser</a>
+            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn" data-analiza-click="guide-strava-download-mac">Download for Mac</a>
+            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary" data-analiza-click="guide-strava-download-win">Download for Windows</a>
+            <a href="/demo/" class="btn btn-secondary" data-analiza-click="guide-strava-demo">Try the demo in your browser</a>
           </div>
-          <p class="hero-note">Free to download and explore. The photo timeline is free with Lite (your 5 most recent holidays); matching photos to your Strava, Komoot or Garmin activities needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year; <a href="/">pricing</a>).</p>
+          <p class="hero-note">Free to download and explore. The photo timeline is free with Lite (your 5 most recent holidays); matching photos to your Strava, Komoot or Garmin activities needs a plan (USD 25 one-time, or yearly at USD 25 the first year then USD 12.50/year; <a href="/#pricing" data-analiza-click="guide-strava-pricing">pricing</a>).</p>
         </section>
 
         <section class="section">
@@ -211,7 +213,7 @@
           <h2>How to connect your activity accounts</h2>
           <ol>
             <li>Export your Google Photos with <a href="https://takeout.google.com">Google Takeout</a> (see <a href="/google-photos-takeout/">how to export and browse a Takeout</a>).</li>
-            <li><a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download the app</a> (Mac: Apple silicon, macOS 12 or later; Windows: 10 or 11, 64-bit) and point it at the archives; free to explore the sample library. Lite (free) imports your own Takeout for the photo timeline; activity matching needs a plan (<a href="/">pricing</a>).</li>
+            <li><a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" data-analiza-click="guide-strava-download-mac">Download the app</a> (Mac: Apple silicon, macOS 12 or later; Windows: 10 or 11, 64-bit) and point it at the archives; free to explore the sample library. Lite (free) imports your own Takeout for the photo timeline; activity matching needs a plan (<a href="/#pricing" data-analiza-click="guide-strava-pricing">pricing</a>).</li>
             <li>Connect a provider in the Activities app:
               <ul>
                 <li><strong>Strava:</strong> create your own free Strava API application (a step-by-step guide is built into the app) and authorize Takeout Photo to read your activities via OAuth.</li>
@@ -268,9 +270,9 @@
             <li><a href="/">Takeout Photo home</a>: the photo timeline app.</li>
           </ul>
           <div class="hero-actions">
-            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn">Download for Mac</a>
-            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary">Download for Windows</a>
-            <a href="/demo/" class="btn btn-secondary">Try the demo in your browser</a>
+            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn" data-analiza-click="guide-strava-download-mac">Download for Mac</a>
+            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary" data-analiza-click="guide-strava-download-win">Download for Windows</a>
+            <a href="/demo/" class="btn btn-secondary" data-analiza-click="guide-strava-demo">Try the demo in your browser</a>
           </div>
         </section>
       </article>
@@ -282,8 +284,8 @@
       <div>&copy; 2026 Takeout Photo</div>
       <div class="footer-links">
         <a href="/">Home</a>
-        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Download for Mac</a>
-        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe">Download for Windows</a>
+        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" data-analiza-click="footer-download-mac">Download for Mac</a>
+        <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" data-analiza-click="footer-download-win">Download for Windows</a>
         <a href="/google-photos-takeout/">Takeout viewer</a>
         <a href="/google-photos-strava/">Photos on Strava, Komoot or Garmin</a>
         <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>
