@@ -74,7 +74,7 @@ Start free: the demo and the sample library in the app need no account, and Lite
 
 [Download free](https://takepho.com/#download)
 
-### Lifetime: USD 25 one-time
+### Lifetime: USD 25 / EUR 20 one-time, no subscription
 - All three apps: Photos timeline, Activities (Strava, Komoot, Garmin) and Proton Photos sync.
 - Import your Takeout manually: from a folder on disk, a Google Drive link, or read-only Google sign-in.
 - Unlocks your whole library, no photo limits: the rest of your photos are processed in the background, without re-importing.
@@ -83,14 +83,16 @@ Start free: the demo and the sample library in the app need no account, and Lite
 
 [Download the app](https://takepho.com/#download) — Buy in the app: Settings → Account
 
-### Yearly: USD 25 the first year, then USD 12.50 per year
+### Yearly: USD 25 / EUR 20 the first year, then USD 12.50 per year
 then USD 12.50/year: renewals are 50% off, automatically
 
-- Everything in Lifetime.
+- Everything in Lifetime, and you keep Lifetime if you cancel.
 - Automatic processing: the folder watcher imports new exports as they land, newer exports import incrementally (no rebuild), and you can add contributors (other people's Takeouts, e.g. a partner's).
 - The first paid year includes the Lifetime licence: if you cancel, you keep it.
 
 [Download the app](https://takepho.com/#download) — Buy in the app: Settings → Account
+
+Not sure? Lifetime is enough unless you want newer exports imported automatically or a partner's photos in your trips.
 
 Lite is free, no account needed. Prices for the paid plans include taxes. The currency is picked from your country at checkout: USD 25 (United States and rest of the world), EUR 20 (Europe), GBP 20 (United Kingdom), CHF 20 (Switzerland and Liechtenstein). These are the first-year prices; yearly renewals after the first year are half price: USD 12.50, EUR 10, GBP 10, CHF 10.
 
