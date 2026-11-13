@@ -5,28 +5,26 @@ Modes:
   apps     Serve the repo root locally, open the bundled web demo views and save
            1200x780 dark-theme screenshots (device scale factor 2, i.e. 2400 px
            wide images) as optimized WebP in img/apps/ — timeline.webp, map.webp,
-           photos.webp, overview.webp, strava.webp, activities-map.webp,
-           activities-stats.webp, sync.webp, sync-run.webp, takeout.webp, each
-           under ~250 KB. The trip page behind photos.webp is resolved at run
+           overview.webp, strava.webp, activities-map.webp, activities-stats.webp,
+           sync.webp, takeout.webp, each under ~250 KB, plus photos.webp (the
+           Italy trip page). The trip page behind photos.webp is resolved at run
            time (the Italy link on the trips page); activity pages fall back to
            the first entry of the activities list if the sample id is missing.
            Optional view names re-capture only those images (e.g.
-           `apps photos sync-run activities-map`), leaving the rest untouched.
+           `apps photos activities-map`), leaving the rest untouched.
            Per-view framing: photos.webp is captured from the very top of the
            trip page (scrollY = 0) so the sticky header cannot clip the title
            or stats line (fallback: scroll so the "Activities (n)" card sits
-           24 CSS px under the header); sync-run.webp is captured from the top
-           in a taller 1200x1000 viewport with the exiftool version warning box
-           removed from the DOM (asserted gone before capture); activities-map.webp
-           is captured after zooming the MapLibre map to the "Rome evening ride"
-           route and waiting for all tiles, with the route pixels verified by
-           pixel analysis before saving.
+           24 CSS px under the header); activities-map.webp is captured after
+           zooming the MapLibre map to the "Rome evening ride" route and waiting
+           for all tiles, with the route pixels verified by pixel analysis
+           before saving.
   landing  Capture the home page at the given widths, light and dark, into an
            output directory (verification only; not committed).
 
 Usage (from the repo root, inside `nix develop ./nix`):
   python3 scripts/screenshots.py apps
-  python3 scripts/screenshots.py apps photos sync-run activities-map
+  python3 scripts/screenshots.py apps photos activities-map
   python3 scripts/screenshots.py landing --out /tmp/vibe-landing-shots
 """
 
@@ -115,16 +113,6 @@ APP_VIEWS = [
     ("sync", "/demo/#/sync/albums", """() => {
       const t = document.body.innerText;
       return /Albums/.test(t) && (t.match(/in Proton/g) || []).length >= 5;
-    }""", 2000, "", ""),
-    # sync-run.webp: captured from the top of the page (scrollY = 0) in a taller
-    # 1200x1000 viewport (VIEW_HEIGHTS), showing the page title, the Proton
-    # connection card with "Signed in to Proton" and the What to sync card; the
-    # Sync card starts below 1000 px, so it stays out of frame. The exiftool
-    # version warning box is removed from the DOM just before capture
-    # (VIEW_POST_JS) and asserted gone.
-    ("sync-run", "/demo/#/sync", """() => {
-      const t = document.body.innerText;
-      return /Proton connection/.test(t) && /What to sync/.test(t) && /Signed in to Proton/.test(t);
     }""", 2000, "", ""),
     ("takeout", "/demo/#/takeout", """() => {
       const t = document.body.innerText;
@@ -251,45 +239,6 @@ PHOTOS_FALLBACK_SCROLL = """() => {
   return Math.max(0, Math.round(top - navH - 24));
 }"""
 
-# sync-run.webp: the "exiftool … is not the pinned …" warning box must not be in
-# the image. Remove the whole warning box — the amber-bordered element that
-# contains the "exiftool" text, not just the text — plus any other small text
-# block that still renders "exiftool". Afterwards no visible element may contain
-# "exiftool" (asserted before capture).
-REMOVE_EXIFTOOL_WARNING = """() => {
-  const hits = [...document.querySelectorAll('*')].filter(e => {
-    if (!/exiftool/i.test(e.textContent || '')) return false;
-    return ![...e.querySelectorAll('*')].some(d => /exiftool/i.test(d.textContent || ''));
-  });
-  const removed = [];
-  for (const e of hits) {
-    // the whole warning box: the element itself or nearest ancestor with an amber class
-    let box = null, n = e;
-    for (let k = 0; k < 4 && n; k++) {
-      if (/amber/.test(String(n.className || ''))) { box = n; break; }
-      n = n.parentElement;
-    }
-    if (!box) {
-      const p = e.closest('p');
-      if (p && (p.textContent || '').trim().length < 400) box = p;
-    }
-    if (box) { removed.push(box.tagName + '.' + String(box.className).slice(0, 60)); box.remove(); }
-    else e.style.visibility = 'hidden';
-  }
-  return removed;
-}"""
-COUNT_VISIBLE_EXIFTOOL = """() => [...document.querySelectorAll('*')].filter(e => {
-  const b = e.getBoundingClientRect();
-  if (!(b.width > 0 && b.height > 0)) return false;
-  let n = e;
-  while (n && n !== document.documentElement) {
-    const cs = getComputedStyle(n);
-    if (cs.visibility === 'hidden' || cs.display === 'none') return false;
-    n = n.parentElement;
-  }
-  return /exiftool/i.test(e.textContent || '');
-}).length"""
-
 # activities-map.webp: the initial fitBounds spans all three routes (Rome,
 # Lisbon, Bern), leaving them a few pixels long on the western-Europe view.
 # Zoom the MapLibre map to the "Rome evening ride" route instead: find the map
@@ -353,14 +302,6 @@ MAP_CANVAS_RECT = """() => {
   const b = c.getBoundingClientRect();
   return {left: b.left, top: b.top + scrollY, w: b.width, h: b.height};
 }"""
-
-# Per-view capture tweaks: viewport height and JS evaluated after the demo
-# chrome is hidden and the final scroll position is set, just before capture.
-VIEW_HEIGHTS = {"sync-run": 1000}
-VIEW_POST_JS = {
-    "sync-run": [REMOVE_EXIFTOOL_WARNING],
-    "activities-map": [ZOOM_ACTIVITIES_MAP],
-}
 
 # Route line colours of the activities map (by category), for the pixel check.
 ROUTE_COLORS = {
@@ -646,24 +587,15 @@ def capture_apps(out_dir: Path, views=None) -> None:
             for name, route, wait_js, settle_ms, scroll_js, score_js in APP_VIEWS:
                 if name not in wanted:
                     continue
-                view_h = VIEW_HEIGHTS.get(name, VIEW_H)
-                if view_h != VIEW_H:
-                    page.set_viewport_size({"width": VIEW_W, "height": view_h})
-                print(f"capturing {name}: {route} (viewport {VIEW_W}x{view_h})")
+                print(f"capturing {name}: {route}")
                 if name == "strava":
                     open_activity(page, base, wait_js, settle_ms)
                 else:
                     open_view(page, base, route, wait_js, settle_ms,
                               scroll_js or None, score_js or None, name)
-                for js in VIEW_POST_JS.get(name, []):
-                    r = page.evaluate(js)
-                    print(f"  {name} post-js: {r}")
-                if name == "sync-run":
-                    remaining = page.evaluate(COUNT_VISIBLE_EXIFTOOL)
-                    if remaining:
-                        raise RuntimeError(
-                            f"{remaining} visible element(s) still contain 'exiftool' on #/sync")
-                    print("  sync-run: no visible element contains 'exiftool'")
+                if name == "activities-map":
+                    r = page.evaluate(ZOOM_ACTIVITIES_MAP)
+                    print(f"  activities-map post-js: {r}")
                 print(f"  {name}: scrollY={page.evaluate('scrollY')}")
                 if name == "activities-map":
                     # tiles done (map went idle in the post-js); verify by pixel
@@ -686,8 +618,6 @@ def capture_apps(out_dir: Path, views=None) -> None:
                     save_webp(page, out_dir / f"{name}.webp", png=png)
                 else:
                     save_webp(page, out_dir / f"{name}.webp")
-                if view_h != VIEW_H:
-                    page.set_viewport_size({"width": VIEW_W, "height": VIEW_H})
             if "photos" in wanted:
                 print("capturing photos: Italy trip page")
                 capture_photos(page, base, out_dir)
@@ -754,7 +684,7 @@ def main() -> None:
     ap.add_argument("mode", choices=["apps", "landing"])
     ap.add_argument("views", nargs="*",
                     help="apps mode only: capture only these view names "
-                         "(default: all ten, e.g. 'apps photos sync-run activities-map')")
+                         "(default: all nine, e.g. 'apps photos activities-map')")
     ap.add_argument("--out", default=None, help="output dir (landing mode)")
     args = ap.parse_args()
     if args.mode == "apps":
