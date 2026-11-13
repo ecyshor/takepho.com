@@ -10,11 +10,23 @@ Modes:
            under ~250 KB. The trip page behind photos.webp is resolved at run
            time (the Italy link on the trips page); activity pages fall back to
            the first entry of the activities list if the sample id is missing.
+           Optional view names re-capture only those images (e.g.
+           `apps photos sync-run activities-map`), leaving the rest untouched.
+           Per-view framing: photos.webp is captured from the very top of the
+           trip page (scrollY = 0) so the sticky header cannot clip the title
+           or stats line (fallback: scroll so the "Activities (n)" card sits
+           24 CSS px under the header); sync-run.webp is captured from the top
+           in a taller 1200x1000 viewport with the exiftool version warning box
+           removed from the DOM (asserted gone before capture); activities-map.webp
+           is captured after zooming the MapLibre map to the "Rome evening ride"
+           route and waiting for all tiles, with the route pixels verified by
+           pixel analysis before saving.
   landing  Capture the home page at the given widths, light and dark, into an
            output directory (verification only; not committed).
 
 Usage (from the repo root, inside `nix develop ./nix`):
   python3 scripts/screenshots.py apps
+  python3 scripts/screenshots.py apps photos sync-run activities-map
   python3 scripts/screenshots.py landing --out /tmp/vibe-landing-shots
 """
 
@@ -104,41 +116,16 @@ APP_VIEWS = [
       const t = document.body.innerText;
       return /Albums/.test(t) && (t.match(/in Proton/g) || []).length >= 5;
     }""", 2000, "", ""),
-    # sync-run.webp: the three stacked cards do not fit in one viewport, so try
-    # a scroll position that shows all three card headers plus the signed-in
-    # line and as many sync stats as possible.
+    # sync-run.webp: captured from the top of the page (scrollY = 0) in a taller
+    # 1200x1000 viewport (VIEW_HEIGHTS), showing the page title, the Proton
+    # connection card with "Signed in to Proton" and the What to sync card; the
+    # Sync card starts below 1000 px, so it stays out of frame. The exiftool
+    # version warning box is removed from the DOM just before capture
+    # (VIEW_POST_JS) and asserted gone.
     ("sync-run", "/demo/#/sync", """() => {
       const t = document.body.innerText;
       return /Proton connection/.test(t) && /What to sync/.test(t) && /Signed in to Proton/.test(t);
-    }""", 2000, """() => {
-      const vh = innerHeight, sy = scrollY;
-      const heads = [...document.querySelectorAll('h2')]
-        .filter(h => ['Proton connection', 'What to sync', 'Sync'].includes((h.textContent || '').trim()));
-      const signed = [...document.querySelectorAll('*')]
-        .filter(e => /Signed in to Proton/.test(e.textContent || ''))
-        .pop();
-      const cands = [{name: 'top', y: 0}];
-      const syncHead = heads.find(h => (h.textContent || '').trim() === 'Sync');
-      if (syncHead) {
-        let y = Math.round(syncHead.getBoundingClientRect().bottom + sy - vh + 16);
-        if (signed) y = Math.min(y, Math.round(signed.getBoundingClientRect().top + sy));
-        cands.push({name: 'all-cards', y: Math.max(0, y)});
-      }
-      return cands;
-    }""", """() => {
-      const vh = innerHeight;
-      const vis = e => { const b = e.getBoundingClientRect(); return b.bottom > 0 && b.top < vh; };
-      const heads = [...document.querySelectorAll('h2')]
-        .filter(h => ['Proton connection', 'What to sync', 'Sync'].includes((h.textContent || '').trim()));
-      const headsVis = heads.filter(vis).length;
-      const signed = [...document.querySelectorAll('*')]
-        .some(e => /Signed in to Proton/.test(e.textContent || '') && vis(e));
-      const statsVis = ['Uploaded', 'Pending', 'Last sync'].filter(n =>
-        [...document.querySelectorAll('*')].some(e => e.children.length === 0
-          && (e.textContent || '').includes(n) && vis(e))).length;
-      return {headsVis, signedIn: signed, statsVis,
-              score: headsVis * 5 + (signed ? 5 : 0) + statsVis};
-    }"""),
+    }""", 2000, "", ""),
     ("takeout", "/demo/#/takeout", """() => {
       const t = document.body.innerText;
       return /Local folder/.test(t) && /Drive link/.test(t) && /Google account/.test(t)
@@ -222,53 +209,165 @@ STRAVA_SCORE = """() => {
           score: mapFrac * 30 + (bp && vis(bp) ? 4 : 0) + full + 0.1 * partial + (h1 && vis(h1) ? 2 : 0)};
 }"""
 
-# photos.webp: the Italy trip page — prefer the trip title plus the Activities
-# panel and a day with a full row of photos; fall back to a day header with
-# 4+ photos in view.
-PHOTOS_CANDIDATES = """() => {
-  const vh = innerHeight, sy = scrollY;
-  const h1 = document.querySelector('h1');
-  const h1y = h1 ? h1.getBoundingClientRect().top + sy : 0;
-  const days = [...document.querySelectorAll('h3')]
-    .filter(h => /^Day \\d/.test((h.textContent || '').trim()));
-  const cands = [{name: 'top', y: 0}];
-  if (days.length) {
-    const d0y = days[0].getBoundingClientRect().top + sy;
-    const row = [...document.images].filter(i => {
-      const b = i.getBoundingClientRect();
-      return b.width > 100 && b.top + sy > d0y && b.top + sy < d0y + 600;
-    });
-    if (row.length) {
-      const bottom = Math.max(...row.map(i => i.getBoundingClientRect().bottom + sy));
-      // scroll just enough to fit the first photo row at the bottom of the
-      // viewport, keeping the trip title visible when possible
-      cands.push({name: 'title+day1', y: Math.max(0, Math.min(Math.round(bottom - vh + 16), Math.round(h1y)))});
-    }
-    for (const d of days.slice(0, 4)) {
-      const y = d.getBoundingClientRect().top + sy;
-      cands.push({name: 'day-' + (d.textContent || '').trim().slice(0, 24), y: Math.max(0, Math.round(y - 90))});
-    }
-  }
-  return cands;
-}"""
-PHOTOS_SCORE = """() => {
+# photos.webp: captured from the very top of the trip page (scrollY = 0), so the
+# sticky app header cannot cut the trip title or the stats line and the shot
+# shows the title, the stats line, the Activities panel and the start of
+# "Day by day" with the first photo row. If the top of the page is occupied by
+# something else (e.g. a big map) so that no photos are visible at scrollY = 0,
+# fall back to scrolling so that the top edge of the "Activities (n)" card sits
+# about 24 CSS px under the sticky header (no text line may be cut by it).
+PHOTOS_TOP_OK = """() => {
   const vh = innerHeight;
-  const vis = e => { const b = e.getBoundingClientRect(); return b.bottom > 0 && b.top < vh; };
+  const nav = document.querySelector('nav.sticky') || document.querySelector('nav');
+  const navBottom = nav ? nav.getBoundingClientRect().bottom : 0;
   const h1 = document.querySelector('h1');
-  const acts = [...document.querySelectorAll('h2')].find(h => /Activities/.test(h.textContent || ''));
-  const day = [...document.querySelectorAll('h3')].find(h => /^Day \\d/.test((h.textContent || '').trim()) && vis(h));
-  const full = [...document.images].filter(i => {
-    const b = i.getBoundingClientRect();
-    return b.width > 100 && b.top >= 0 && b.bottom <= vh && i.complete && i.naturalWidth > 0;
-  }).length;
-  const partial = [...document.images].filter(i => {
+  const hb = h1 ? h1.getBoundingClientRect() : null;
+  const vis = e => { const b = e.getBoundingClientRect(); return b.bottom > 0 && b.top < vh; };
+  const belowNav = e => { const b = e.getBoundingClientRect(); return b.top >= navBottom && b.bottom <= vh; };
+  const photos = [...document.images].filter(i => {
     const b = i.getBoundingClientRect();
     return b.width > 100 && b.bottom > 0 && b.top < vh && i.complete && i.naturalWidth > 0;
   }).length;
-  return {h1: !!(h1 && vis(h1)), acts: !!(acts && vis(acts)), day: !!day, full, partial,
-          score: (h1 && vis(h1) ? 10 : 0) + (acts && vis(acts) ? 6 : 0) + (day ? 4 : 0)
-               + full + 0.25 * partial};
+  const acts = [...document.querySelectorAll('h2')]
+    .some(h => /Activities \\(\\d+\\)/.test((h.textContent || '').trim()) && vis(h) && belowNav(h));
+  const day = [...document.querySelectorAll('h3')]
+    .some(h => /^Day \\d/.test((h.textContent || '').trim()) && vis(h) && belowNav(h));
+  const bigCanvas = [...document.querySelectorAll('canvas')].some(c => {
+    const b = c.getBoundingClientRect();
+    return b.width > innerWidth * 0.5 && b.height > vh * 0.5;
+  });
+  const ok = !!(h1 && hb && belowNav(h1) && photos >= 1 && acts && day && !bigCanvas);
+  return {ok, h1Top: hb ? Math.round(hb.top) : null, navBottom: Math.round(navBottom),
+          photos, acts, day, bigCanvas};
 }"""
+PHOTOS_FALLBACK_SCROLL = """() => {
+  const nav = document.querySelector('nav.sticky') || document.querySelector('nav');
+  const navH = nav ? nav.getBoundingClientRect().height : 0;
+  const acts = [...document.querySelectorAll('h2')]
+    .find(h => /Activities \\(\\d+\\)/.test((h.textContent || '').trim()));
+  if (!acts) return 0;
+  const card = acts.closest('div.card') || acts.parentElement;
+  const top = card.getBoundingClientRect().top + scrollY;
+  return Math.max(0, Math.round(top - navH - 24));
+}"""
+
+# sync-run.webp: the "exiftool … is not the pinned …" warning box must not be in
+# the image. Remove the whole warning box — the amber-bordered element that
+# contains the "exiftool" text, not just the text — plus any other small text
+# block that still renders "exiftool". Afterwards no visible element may contain
+# "exiftool" (asserted before capture).
+REMOVE_EXIFTOOL_WARNING = """() => {
+  const hits = [...document.querySelectorAll('*')].filter(e => {
+    if (!/exiftool/i.test(e.textContent || '')) return false;
+    return ![...e.querySelectorAll('*')].some(d => /exiftool/i.test(d.textContent || ''));
+  });
+  const removed = [];
+  for (const e of hits) {
+    // the whole warning box: the element itself or nearest ancestor with an amber class
+    let box = null, n = e;
+    for (let k = 0; k < 4 && n; k++) {
+      if (/amber/.test(String(n.className || ''))) { box = n; break; }
+      n = n.parentElement;
+    }
+    if (!box) {
+      const p = e.closest('p');
+      if (p && (p.textContent || '').trim().length < 400) box = p;
+    }
+    if (box) { removed.push(box.tagName + '.' + String(box.className).slice(0, 60)); box.remove(); }
+    else e.style.visibility = 'hidden';
+  }
+  return removed;
+}"""
+COUNT_VISIBLE_EXIFTOOL = """() => [...document.querySelectorAll('*')].filter(e => {
+  const b = e.getBoundingClientRect();
+  if (!(b.width > 0 && b.height > 0)) return false;
+  let n = e;
+  while (n && n !== document.documentElement) {
+    const cs = getComputedStyle(n);
+    if (cs.visibility === 'hidden' || cs.display === 'none') return false;
+    n = n.parentElement;
+  }
+  return /exiftool/i.test(e.textContent || '');
+}).length"""
+
+# activities-map.webp: the initial fitBounds spans all three routes (Rome,
+# Lisbon, Bern), leaving them a few pixels long on the western-Europe view.
+# Zoom the MapLibre map to the "Rome evening ride" route instead: find the map
+# instance through the React fiber of the map container, fit the route's bounds
+# and wait until the map is idle (all tiles drawn) before capturing.
+FIND_MAPLIBRE_MAP = """() => {
+  function findMap(root) {
+    const seen = new Set(); const stack = [root];
+    while (stack.length) {
+      const f = stack.pop();
+      if (!f || seen.has(f)) continue; seen.add(f);
+      let h = f.memoizedState;
+      while (h) {
+        const m = h.memoizedState;
+        if (m && typeof m === 'object' && typeof m.current === 'object' && m.current
+            && typeof m.current.getSource === 'function' && typeof m.current.fitBounds === 'function')
+          return m.current;
+        h = h.next;
+      }
+      if (f.child) stack.push(f.child);
+      if (f.sibling) stack.push(f.sibling);
+      if (f.return) stack.push(f.return);
+    }
+    return null;
+  }
+  const canvas = document.querySelector('canvas.maplibregl-canvas');
+  const cont = canvas ? (canvas.closest('.maplibregl-map') || canvas.parentElement) : null;
+  if (!cont) return null;
+  for (const k of Object.keys(cont)) {
+    if (k.startsWith('__reactFiber')) {
+      const m = findMap(cont[k]);
+      if (m) return m;
+    }
+  }
+  return null;
+}"""
+ZOOM_ACTIVITIES_MAP = """async () => {
+  const map = (%s)();
+  if (!map) return {error: 'MapLibre map instance not found'};
+  const src = map.getSource('activity-routes');
+  const feats = (src && src._data && src._data.features) || [];
+  const f = feats.find(x => /Rome evening ride/i.test((x.properties || {}).name || '')) || feats[0];
+  if (!f) return {error: 'no activity routes loaded'};
+  const coords = f.geometry.coordinates;
+  let minLng = Infinity, maxLng = -Infinity, minLat = Infinity, maxLat = -Infinity;
+  for (const c of coords) {
+    minLng = Math.min(minLng, c[0]); maxLng = Math.max(maxLng, c[0]);
+    minLat = Math.min(minLat, c[1]); maxLat = Math.max(maxLat, c[1]);
+  }
+  const bounds = [[minLng, minLat], [maxLng, maxLat]];
+  map.fitBounds(bounds, {padding: 48, maxZoom: 15, duration: 0});
+  await new Promise(res => {
+    const t = setTimeout(res, 20000);
+    map.once('idle', () => { clearTimeout(t); res(); });
+  });
+  return {name: f.properties.name, category: f.properties.category, bounds,
+          zoom: +map.getZoom().toFixed(2), center: map.getCenter()};
+}""" % FIND_MAPLIBRE_MAP
+MAP_CANVAS_RECT = """() => {
+  const c = document.querySelector('canvas.maplibregl-canvas');
+  const b = c.getBoundingClientRect();
+  return {left: b.left, top: b.top + scrollY, w: b.width, h: b.height};
+}"""
+
+# Per-view capture tweaks: viewport height and JS evaluated after the demo
+# chrome is hidden and the final scroll position is set, just before capture.
+VIEW_HEIGHTS = {"sync-run": 1000}
+VIEW_POST_JS = {
+    "sync-run": [REMOVE_EXIFTOOL_WARNING],
+    "activities-map": [ZOOM_ACTIVITIES_MAP],
+}
+
+# Route line colours of the activities map (by category), for the pixel check.
+ROUTE_COLORS = {
+    "ride-blue": (0x3B, 0x82, 0xF6),
+    "run-orange": (0xF9, 0x73, 0x16),
+    "hike-green": (0x22, 0xC5, 0x5E),
+}
 
 
 def free_port() -> int:
@@ -296,12 +395,15 @@ def serve_root(port: int) -> subprocess.Popen:
     raise RuntimeError("local server did not start")
 
 
-def save_webp(page, path: Path, quality: int = 82) -> None:
+def save_webp(page, path: Path, quality: int = 82, png: bytes = None) -> None:
     """Screenshot the page to WebP, cropping the uniform empty margin at the
     bottom and re-encoding with Pillow if over MAX_BYTES. Only the bottom is
     cropped (sampled from the bottom-right corner) so the image keeps the full
-    2400 px width; on a dark app page the side margins are content, not empty."""
-    png = page.screenshot(type="png")
+    2400 px width; on a dark app page the side margins are content, not empty.
+    A pre-taken PNG screenshot can be passed via `png` (used when the pixels
+    must be analysed before saving)."""
+    if png is None:
+        png = page.screenshot(type="png")
     try:
         from PIL import Image, ImageChops
     except ImportError:
@@ -429,9 +531,11 @@ def open_activity(page, base: str, wait_js: str, settle_ms: int) -> None:
 def capture_photos(page, base: str, out_dir: Path) -> None:
     """Capture the Italy trip page (link resolved at run time from /trips).
 
-    Several scroll candidates are tried and scored; the best one (trip title
-    plus the Activities panel and a day with a full row of photos, or failing
-    that a day header with 4+ photos in view) is saved as photos.webp."""
+    Captured from the very top of the page (scrollY = 0) so the sticky header
+    cannot clip the trip title or stats line. If the top is occupied by
+    something else (e.g. a big map) so that no photos are visible at scrollY =
+    0, falls back to scrolling so the "Activities (n)" card top sits 24 CSS px
+    under the sticky header. Saved as photos.webp."""
     page.goto(base + "/demo/#/trips", wait_until="domcontentloaded", timeout=60000)
     page.wait_for_function(
         """() => document.querySelectorAll('a[href*="#/trips/"]').length >= 3""",
@@ -460,16 +564,73 @@ def capture_photos(page, base: str, out_dir: Path) -> None:
         pass
     page.evaluate(HIDE_DEMO_CHROME)
     page.wait_for_timeout(1200)
+    page.evaluate("window.scrollTo(0, 0)")
+    page.wait_for_timeout(500)
     wait_viewport_images(page, timeout=15000)
-    pick_best_scroll(page, PHOTOS_CANDIDATES, PHOTOS_SCORE, "photos")
+    top = page.evaluate(PHOTOS_TOP_OK)
+    print(f"  photos: scrollY=0 check: {top}")
+    if top["ok"]:
+        scroll_y = 0
+    else:
+        scroll_y = page.evaluate(PHOTOS_FALLBACK_SCROLL)
+        print(f"  photos: top of page not usable, scrolling to y={scroll_y} "
+              "(Activities card 24 px under the sticky header)")
+        page.evaluate(f"window.scrollTo(0, {scroll_y})")
+        page.wait_for_timeout(700)
+        wait_viewport_images(page, timeout=15000)
+    print(f"  photos: scrollY={page.evaluate('scrollY')} (requested {scroll_y})")
     save_webp(page, out_dir / "photos.webp")
 
 
-def capture_apps(out_dir: Path) -> None:
+def route_pixel_stats(png: bytes, rect: dict, dsf: int = DSF) -> dict:
+    """Pixel analysis of a device-scale screenshot: for each route colour, the
+    bounding box (CSS px, relative to the top-left of the map canvas) of the
+    pixels whose hue matches it, plus the horizontal span of those pixels."""
+    import colorsys
+
+    from PIL import Image
+    img = Image.open(io.BytesIO(png)).convert("RGB")
+    x0, y0 = max(0, int(rect["left"] * dsf)), max(0, int(rect["top"] * dsf))
+    x1 = min(img.width, int((rect["left"] + rect["w"]) * dsf))
+    y1 = min(img.height, int((rect["top"] + rect["h"]) * dsf))
+    px = img.load()
+    stats = {}
+    for name, (r, g, b) in ROUTE_COLORS.items():
+        th, _, _ = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+        xs, ys = [], []
+        for y in range(y0, y1, 2):
+            for x in range(x0, x1, 2):
+                p = px[x, y]
+                h, s, v = colorsys.rgb_to_hsv(p[0] / 255, p[1] / 255, p[2] / 255)
+                dh = abs(h - th)
+                dh = min(dh, 1 - dh)
+                if dh < 0.06 and s > 0.35 and v > 0.25:
+                    xs.append(x)
+                    ys.append(y)
+        if xs:
+            stats[name] = {
+                "pixels_sampled": len(xs),
+                "bbox_css": [round(min(xs) / dsf - rect["left"], 1),
+                             round(min(ys) / dsf - rect["top"], 1),
+                             round(max(xs) / dsf - rect["left"], 1),
+                             round(max(ys) / dsf - rect["top"], 1)],
+                "span_w_css": round((max(xs) - min(xs)) / dsf, 1),
+            }
+        else:
+            stats[name] = {"pixels_sampled": 0, "span_w_css": 0}
+    return stats
+
+
+def capture_apps(out_dir: Path, views=None) -> None:
     port = free_port()
     server = serve_root(port)
     base = f"http://127.0.0.1:{port}"
     out_dir.mkdir(parents=True, exist_ok=True)
+    all_names = [name for name, *_ in APP_VIEWS] + ["photos"]
+    wanted = list(views) if views else all_names
+    unknown = [v for v in wanted if v not in all_names]
+    if unknown:
+        raise SystemExit(f"unknown view(s) {unknown}; known views: {all_names}")
     try:
         with sync_playwright() as p:
             browser = launch_browser(p)
@@ -483,15 +644,53 @@ def capture_apps(out_dir: Path) -> None:
             page.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
             page.on("pageerror", lambda e: errors.append(str(e)))
             for name, route, wait_js, settle_ms, scroll_js, score_js in APP_VIEWS:
-                print(f"capturing {name}: {route}")
+                if name not in wanted:
+                    continue
+                view_h = VIEW_HEIGHTS.get(name, VIEW_H)
+                if view_h != VIEW_H:
+                    page.set_viewport_size({"width": VIEW_W, "height": view_h})
+                print(f"capturing {name}: {route} (viewport {VIEW_W}x{view_h})")
                 if name == "strava":
                     open_activity(page, base, wait_js, settle_ms)
                 else:
                     open_view(page, base, route, wait_js, settle_ms,
                               scroll_js or None, score_js or None, name)
-                save_webp(page, out_dir / f"{name}.webp")
-            print("capturing photos: Italy trip page")
-            capture_photos(page, base, out_dir)
+                for js in VIEW_POST_JS.get(name, []):
+                    r = page.evaluate(js)
+                    print(f"  {name} post-js: {r}")
+                if name == "sync-run":
+                    remaining = page.evaluate(COUNT_VISIBLE_EXIFTOOL)
+                    if remaining:
+                        raise RuntimeError(
+                            f"{remaining} visible element(s) still contain 'exiftool' on #/sync")
+                    print("  sync-run: no visible element contains 'exiftool'")
+                print(f"  {name}: scrollY={page.evaluate('scrollY')}")
+                if name == "activities-map":
+                    # tiles done (map went idle in the post-js); verify by pixel
+                    # analysis that a route is clearly drawn before saving
+                    page.wait_for_timeout(800)
+                    try:
+                        page.wait_for_load_state("networkidle", timeout=10000)
+                    except Exception:
+                        pass
+                    png = page.screenshot(type="png")
+                    rect = page.evaluate(MAP_CANVAS_RECT)
+                    stats = route_pixel_stats(png, rect)
+                    print(f"  activities-map: map {rect['w']:.0f}x{rect['h']:.0f} CSS px, "
+                          f"route pixels (bbox in CSS px, rel. to map): {stats}")
+                    best = max(s["span_w_css"] for s in stats.values())
+                    if best < rect["w"] / 3:
+                        raise RuntimeError(
+                            f"no route spans a third of the map width (best span "
+                            f"{best} CSS px < {rect['w'] / 3:.0f}); not saving")
+                    save_webp(page, out_dir / f"{name}.webp", png=png)
+                else:
+                    save_webp(page, out_dir / f"{name}.webp")
+                if view_h != VIEW_H:
+                    page.set_viewport_size({"width": VIEW_W, "height": VIEW_H})
+            if "photos" in wanted:
+                print("capturing photos: Italy trip page")
+                capture_photos(page, base, out_dir)
             if errors:
                 print("console errors:", *errors[:10], sep="\n  ")
             browser.close()
@@ -553,10 +752,13 @@ def capture_landing(out_dir: Path) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("mode", choices=["apps", "landing"])
+    ap.add_argument("views", nargs="*",
+                    help="apps mode only: capture only these view names "
+                         "(default: all ten, e.g. 'apps photos sync-run activities-map')")
     ap.add_argument("--out", default=None, help="output dir (landing mode)")
     args = ap.parse_args()
     if args.mode == "apps":
-        capture_apps(ROOT / "img" / "apps")
+        capture_apps(ROOT / "img" / "apps", views=args.views or None)
     else:
         capture_landing(Path(args.out or "/tmp/vibe-landing-shots"))
 
