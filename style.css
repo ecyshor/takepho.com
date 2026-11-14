@@ -829,6 +829,8 @@ html.os-mobile .hero-actions .dl-send {
 }
 
 .plan-price-note {
+  display: block;
+  line-height: 1.4;
   font-size: 0.9rem;
   font-weight: 400;
   font-family: 'Atkinson Hyperlegible Next', sans-serif;

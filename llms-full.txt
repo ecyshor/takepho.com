@@ -86,7 +86,7 @@ Start free: the demo and the sample library in the app need no account, and Lite
 ### Yearly: USD 25 / EUR 20 the first year, then USD 12.50 per year
 then USD 12.50/year: renewals are 50% off, automatically
 
-- Everything in Lifetime, and you keep Lifetime if you cancel.
+- Everything in Lifetime.
 - Automatic processing: the folder watcher imports new exports as they land, newer exports import incrementally (no rebuild), and you can add contributors (other people's Takeouts, e.g. a partner's).
 - The first paid year includes the Lifetime licence: if you cancel, you keep it.
 
