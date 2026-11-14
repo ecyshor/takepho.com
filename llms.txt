@@ -12,7 +12,7 @@
 ## Self-hosting on a NAS
 
 - Run the same app — with its built-in Photos timeline, Activities and Proton Photos sync — on your NAS or home server with Docker Compose, in your browser on your network: [Run Takeout Photo on a NAS with Docker Compose](https://takepho.com/self-host/).
-- Image: `ghcr.io/ecyshor/takepho:latest` (amd64 and arm64); optional CUDA image `ghcr.io/ecyshor/takepho-cuda:latest` for an NVIDIA GPU. `:latest` always points at the newest release; every release also has a pinned tag, e.g. `ghcr.io/ecyshor/takepho:1.3.0` and `ghcr.io/ecyshor/takepho-cuda:1.3.0`. Requires Docker Engine with Compose v2.24+, an x86-64 or 64-bit ARM CPU and 4 GB RAM free for the container (8 GB recommended for big libraries).
+- Image: `ghcr.io/ecyshor/takepho:latest` (amd64 and arm64); optional CUDA image `ghcr.io/ecyshor/takepho-cuda:latest` for an NVIDIA GPU. `:latest` always points at the newest release; every release also has a pinned tag, e.g. `ghcr.io/ecyshor/takepho:1.3.1` and `ghcr.io/ecyshor/takepho-cuda:1.3.1`. Requires Docker Engine with Compose v2.24+, an x86-64 or 64-bit ARM CPU and 4 GB RAM free for the container (8 GB recommended for big libraries).
 - Same plans and prices as the desktop app, including free Lite (see Pricing); for a paid plan the NAS counts as one of your account's 2 devices, and it needs internet at least once a month to refresh the licence.
 - Security: the published compose file turns on Google sign-in (AUTH_ENABLED=true; restrict accounts with AUTH_ALLOWED_EMAILS). Even so, keep it on your home network or behind a VPN, and never forward the port to the internet.
 
