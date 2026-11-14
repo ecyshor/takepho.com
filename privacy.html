@@ -36,8 +36,8 @@
       <a href="/#apps" class="nav-app">Timeline</a>
       <a href="/#activities" class="nav-app">Activities</a>
       <a href="/#proton" class="nav-app">Proton</a>
-      <a href="/#pricing">Pricing</a>
-      <a href="/#faq">FAQ</a>
+      <a href="/#pricing" data-analiza-click="nav-pricing">Pricing</a>
+      <a href="/#faq" data-analiza-click="nav-faq">FAQ</a>
       <a href="/demo/" class="nav-demo" data-analiza-click="nav-demo">Live demo</a>
       <a href="/#download" class="btn" data-analiza-click="nav-download">Download</a>
     </nav>
@@ -71,7 +71,7 @@
 
         <section class="section">
           <h2>Account and purchases (account.takepho.com)</h2>
-          <p>To buy a plan, you sign in to the account service at <strong>account.takepho.com</strong> with <strong>Google or Apple</strong> (from the app: Settings → Account). The app then works offline on a signed entitlement and refreshes it about once a week. Your photos never leave your computer; the account service never receives them.</p>
+          <p>To buy a plan, you sign in to the account service at <strong>account.takepho.com</strong> with <strong>Google or Apple</strong> (from the app: Settings → Account). The app then works offline on a signed entitlement and refreshes it about once a week. Your photos never go to our servers; the account service never receives them.</p>
           <p>The account service stores only:</p>
           <ul>
             <li><strong>Your sign-in identity</strong>: the provider (Google or Apple), the account id, and the email address as given by Google or Apple (Apple may give us a private relay address instead of your real one).</li>
@@ -111,7 +111,7 @@
           <h2>This website</h2>
           <p>This is a static website hosted on GitHub Pages. We set no cookies and use no advertising or cross-site trackers.</p>
           <p>To count visits we use <a href="https://analiza.dev">analiza.dev</a>, a simple analytics service run by the developer. For each page view it records the page address, the referring page, your browser, operating system and device type (from the user agent) and your country (looked up from your IP address). To count unique visitors without cookies it stores a one-way hash of your IP address, user agent and browser language together with the current month, so the same visitor gets a new hash every month; your IP address itself is not stored. The data is used only for aggregate visit statistics and is not shared or sold.</p>
-          <p>The same service also counts clicks: on download buttons, demo links and outbound links it records which button or link was clicked and on which page. Like the page views, this is counted without cookies and without identifying you, and it is used only in aggregate to see which buttons and pages are used. Nothing changes inside the app: the desktop app has no analytics at all. The live demo at /demo/ uses the same counting.</p>
+          <p>The same service also counts clicks: it records which button or link was clicked (downloads, demo, pricing and guide links, outbound and email links) and on which page, and when the page is closed or hidden. Like the page views, this is counted without cookies and without identifying you, and it is used only in aggregate to see which buttons and pages are used. Nothing changes inside the app: the desktop app has no analytics at all. The live demo at /demo/ uses the same counting.</p>
           <p>GitHub may log IP addresses for security; see the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub General Privacy Statement</a>.</p>
         </section>
 
@@ -140,10 +140,10 @@
         <a href="/">Home</a>
         <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" data-analiza-click="footer-download-mac">Download for Mac</a>
         <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" data-analiza-click="footer-download-win">Download for Windows</a>
-        <a href="/google-photos-takeout/">Takeout viewer</a>
-        <a href="/google-photos-strava/">Photos on Strava, Komoot or Garmin</a>
-        <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>
-        <a href="/self-host/">Self-host</a>
+        <a href="/google-photos-takeout/" data-analiza-click="footer-guide-takeout">Takeout viewer</a>
+        <a href="/google-photos-strava/" data-analiza-click="footer-guide-strava">Photos on Strava, Komoot or Garmin</a>
+        <a href="/google-photos-to-proton-photos/" data-analiza-click="footer-guide-proton">Move to Proton Photos</a>
+        <a href="/self-host/" data-analiza-click="footer-self-host">Self-host</a>
         <a href="/privacy.html">Privacy</a>
         <a href="/terms.html">Terms</a>
         <a href="mailto:hello@takepho.com">hello@takepho.com</a>

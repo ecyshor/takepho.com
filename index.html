@@ -90,10 +90,10 @@
         "Photos timeline: holidays and day trips detected automatically from photo locations and Location History, each trip with places, a route map, best photos and your activities in its day-by-day view; on-device AI curation",
         "Activities: photos matched to your Strava, Komoot or Garmin Connect activities by capture time and placed along the GPS track; activities also appear inside the trips",
         "Proton Photos sync: full original quality with albums and sidecar metadata written into the files",
-        "Overview with countries visited, flights taken, kilometres flown and holiday days per year",
+        "Overview with countries visited and holiday days per year, plus flights taken and kilometres flown from your Google Maps Timeline",
         "Activities map with heatmap, per-year stats and photos placed along each GPS track",
         "Rename, annotate and hide trips; add another person's Takeout to shared trips (Yearly)",
-        "Runs on macOS, Windows, or as a Docker container on a NAS; photos are never uploaded"
+        "Runs on macOS, Windows, or as a Docker container on a NAS; photos are never uploaded to our servers"
       ]
     },
     {
@@ -105,7 +105,7 @@
           "name": "Is it a web app?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos never leave your computer."
+            "text": "No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos stay on your computer unless you choose to sync them to Proton Photos."
           }
         },
         {
@@ -145,7 +145,7 @@
           "name": "How does the app update?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Both apps update themselves. Mac: use \"Check for Updates…\" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a \"Check for updates now\" button); while the exe isn't code-signed, updates are verified with an EdDSA signature. The portable zip doesn't update itself — download new versions from the releases page (https://github.com/ecyshor/takepho.com/releases). Updates are free for everyone, no plan needed. Release notes on GitHub: https://github.com/ecyshor/takepho.com/releases."
+            "text": "Both apps update themselves. Mac: use \"Check for Updates…\" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a \"Check for updates now\" button); while the exe isn't code-signed, updates are verified with an EdDSA signature. The portable zip doesn't update itself — download new versions from the releases page (https://github.com/ecyshor/takepho.com/releases). Updates are free for everyone, no plan needed. Release notes on GitHub (https://github.com/ecyshor/takepho.com/releases)."
           }
         },
         {
@@ -153,7 +153,7 @@
           "name": "Why does Windows show \"Windows protected your PC\" when I open the app?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The Windows app is not code-signed yet, so on the first launch Windows shows that warning. Click \"More info\", then \"Run anyway\" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip does not — new versions are on the releases page."
+            "text": "The Windows app is not code-signed yet, so on the first launch Windows shows that warning. Click \"More info\", then \"Run anyway\" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the releases page (https://github.com/ecyshor/takepho.com/releases)."
           }
         },
         {
@@ -185,7 +185,7 @@
           "name": "Do I need an account?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No, not for Lite (see \"What is Lite?\"). The app is also free to download and explore (the sample library in the app, or the web demo at takepho.com/demo/). A paid plan needs an account: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows)."
+            "text": "No, not for Lite (see \"What is Lite?\"). The app is also free to download and explore (the sample library in the app, or the web demo (https://takepho.com/demo/)). A paid plan needs an account: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows)."
           }
         },
         {
@@ -241,7 +241,7 @@
           "name": "Can I see my Google Photos on my Strava, Komoot or Garmin activities?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The Activities app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track (\"km 12.3 · 10:42\"). It works with Strava, Komoot and Garmin Connect. See photos on your Strava activities."
+            "text": "Yes. The Activities app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track (\"km 12.3 · 10:42\"). See photos on your Strava activities (https://takepho.com/google-photos-strava/) — Komoot and Garmin Connect work the same way."
           }
         },
         {
@@ -305,8 +305,8 @@
       <a href="#apps" class="nav-app">Timeline</a>
       <a href="#activities" class="nav-app">Activities</a>
       <a href="#proton" class="nav-app">Proton</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
+      <a href="#pricing" data-analiza-click="nav-pricing">Pricing</a>
+      <a href="#faq" data-analiza-click="nav-faq">FAQ</a>
       <a href="/demo/" class="nav-demo" data-analiza-click="nav-demo">Live demo</a>
       <a href="#download" class="btn" data-analiza-click="nav-download">Download</a>
     </nav>
@@ -318,17 +318,17 @@
       <section class="hero hero-split">
         <div class="hero-copy">
           <h1>Turn your Google Takeout into a timeline of every trip you&rsquo;ve taken.</h1>
-          <p class="lead">Takeout Photo finds your holidays and day trips automatically, puts your photos on your Strava, Komoot or Garmin routes, and can move your library to Proton Photos. It runs on your Mac or Windows PC, so your photos are never uploaded.</p>
+          <p class="lead">Takeout Photo finds your holidays and day trips automatically, puts your photos on your Strava, Komoot or Garmin routes, and can move your library to Proton Photos. It runs on your Mac or Windows PC: your photos never go to our servers.</p>
           <div class="hero-actions" id="download">
             <a href="/demo/#/timeline" class="btn btn-demo" data-analiza-click="hero-demo">Open the live demo</a>
             <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary dl-mac" data-analiza-click="hero-download-mac">Download for Mac</a>
             <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary dl-win" data-analiza-click="hero-download-win">Download for Windows</a>
             <button type="button" class="btn btn-secondary dl-send" data-analiza-click="hero-send-link" hidden>Send the link to my computer</button>
           </div>
-          <p class="hero-sub">Demo: sample photos, nothing to install, no account.</p>
+          <p class="hero-sub">Demo: sample photos, nothing to install, no account. The app is free to download; Lite is free for your 5 most recent holidays.</p>
           <p class="hero-other">Also for <a class="other-win" data-analiza-click="hero-other-win" href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe">Windows</a> <a class="other-mac" data-analiza-click="hero-other-mac" href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Mac</a></p>
-          <p class="hero-mobile-note">Takeout Photo is a desktop app for Mac and Windows. Try the <a href="/demo/">demo</a> here, then install it on your computer.</p>
-          <p class="hero-note">Free to download &middot; Lite is free for your 5 most recent holidays &middot; Mac: Apple silicon, macOS 12+ &middot; Windows 10/11 &middot; <a href="/self-host/" data-analiza-click="hero-nas">NAS (Docker)</a> &middot; <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip" data-analiza-click="hero-portable-zip">Windows portable zip</a></p>
+          <p class="hero-mobile-note">Takeout Photo is a desktop app for Mac and Windows. Try the <a href="/demo/" data-analiza-click="hero-mobile-demo">demo</a> here, then install it on your computer.</p>
+          <p class="hero-note">Mac: Apple silicon, macOS 12+ &middot; Windows 10/11 &middot; <a href="/self-host/" data-analiza-click="hero-nas">NAS (Docker)</a> &middot; <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip" data-analiza-click="hero-portable-zip">Windows portable zip</a></p>
           <details class="dl-note">
             <summary>Windows: first-launch warning, updates and the portable zip</summary>
             <p>The Windows app isn&rsquo;t code-signed yet, so Windows shows that warning on the first launch &mdash; click &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;. The installed app updates itself automatically: it checks daily (toggle in Settings &rarr; Updates, plus a &ldquo;Check for updates now&rdquo; button) and installs the update when the app quits. The portable zip doesn&rsquo;t update itself &mdash; new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>.</p>
@@ -342,7 +342,7 @@
 
       <!-- Trust strip -->
       <ul class="trust">
-        <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Runs on your computer.</strong> Your photos are never uploaded.</span></li>
+        <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Runs on your computer.</strong> Your photos are never uploaded to our servers.</span></li>
         <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Free Lite plan.</strong> No account, no licence.</span></li>
         <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Mac app signed and notarized by Apple.</strong></span></li>
         <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Pay once.</strong> Lifetime licence, USD 25 / EUR 20.</span></li>
@@ -361,8 +361,7 @@
             <ul>
               <li>Holidays, day trips and home periods are told apart automatically, from your photo locations</li>
               <li>Each trip shows its places joined in the order you visited them, with towns and countries named from the GPS coordinates</li>
-              <li>Switch on Travel to see flights and long journeys</li>
-              <li>Add your Google Maps Timeline (Location History) and trips start and end when you really left and came home; photos without GPS get a location</li>
+              <li>Add your Google Maps Timeline (Location History, with Lifetime or Yearly) and trips start and end when you really left and came home; photos without GPS get a location, and Travel shows your flights and long journeys</li>
             </ul>
           </div>
           <figure class="app-shot feature-shot">
@@ -383,7 +382,7 @@
           </div>
           <figure class="app-shot feature-shot">
             <a href="/demo/#/trips" data-analiza-click="shot-trip"><img src="/img/apps/photos.webp" alt="Takeout Photo Italy trip page (April 9 to 17, 2025, 9 days, 240 photos): title and stats line, the Activities panel with the Rome evening ride, and Day 1 with its row of photos" width="2400" height="1560" loading="lazy" decoding="async"></a>
-            <figcaption>The Italy trip from the sample library, day by day. <a href="/demo/#/trips" data-analiza-click="shot-trip">Open in the live demo</a></figcaption>
+            <figcaption>The Italy trip from the sample library. <a href="/demo/#/trips" data-analiza-click="shot-trip">Open the trips in the live demo</a></figcaption>
           </figure>
         </div>
 
@@ -391,8 +390,8 @@
           <div class="feature-copy">
             <h3>Your travels in numbers</h3>
             <ul>
-              <li>Countries visited, flights taken and kilometres flown</li>
-              <li>Holiday days per year, split by country</li>
+              <li>Countries visited and holiday days per year, split by country</li>
+              <li>Flights taken and kilometres flown, once you add your Google Maps Timeline</li>
               <li>Holidays by country, and where you lived when</li>
             </ul>
           </div>
@@ -405,11 +404,10 @@
         <div class="mini-grid">
           <h3>Make it yours</h3>
           <div><strong>Rename and annotate.</strong> Rename a trip, add notes, pick its cover, hide trips or photos you do not want to see. (Lifetime and Yearly)</div>
-          <div><strong>Fix your homes.</strong> Set or edit where you lived and re-run trip detection.</div>
+          <div><strong>Fix your homes.</strong> Set or edit where you lived and re-run trip detection. (Lifetime and Yearly)</div>
           <div><strong>Add your partner&rsquo;s photos.</strong> With Yearly, add someone else&rsquo;s Takeout: their photos join the trips you shared, marked with their colour.</div>
-          <div><strong>Deleted in Google Photos.</strong> Photos that disappeared from your newest export are listed so you can keep or remove them.</div>
+          <div><strong>Deleted in Google Photos.</strong> Photos that disappeared from your newest export are listed so you can keep or remove them. (Lifetime and Yearly)</div>
           <div><strong>Your edits survive.</strong> Import a newer export and trip names, notes, homes and hidden photos are kept.</div>
-          <div><strong>Keyboard and phone.</strong> Alt+1 to 9 switches between apps; the layout adapts to phone and tablet widths.</div>
         </div>
 
         <p><a href="/google-photos-takeout/" data-analiza-click="more-timeline">More about browsing a Takeout as a timeline</a></p>
@@ -444,26 +442,13 @@
             <ul>
               <li>Every route on one map, coloured by sport, with a heatmap mode</li>
               <li>Filter by sport, year, country, duration or &ldquo;with photos&rdquo;</li>
+              <li>A Stats page totals distance, moving time and elevation per year and per sport</li>
               <li>The link goes both ways: activities appear inside your trips, and each activity links to its trip</li>
             </ul>
           </div>
           <figure class="app-shot feature-shot">
             <a href="/demo/#/activities" data-analiza-click="shot-activities-map"><img src="/img/apps/activities-map.webp" alt="Takeout Photo Activities map zoomed to the Rome evening ride route, with the Activities in view list showing that ride (46.8 km, 8 photos)" width="2400" height="1512" loading="lazy" decoding="async"></a>
-            <figcaption>The activities map, zoomed to one ride. <a href="/demo/#/activities" data-analiza-click="shot-activities-map">Open in the live demo</a></figcaption>
-          </figure>
-        </div>
-
-        <div class="feature">
-          <div class="feature-copy">
-            <h3>Stats per year</h3>
-            <ul>
-              <li>Distance, moving time and elevation per year and per sport</li>
-              <li>How many activities have photos, and how many photos were matched</li>
-            </ul>
-          </div>
-          <figure class="app-shot feature-shot">
-            <a href="/demo/#/activities/stats" data-analiza-click="shot-activities-stats"><img src="/img/apps/activities-stats.webp" alt="Takeout Photo Activities stats: totals tiles (3 activities, 133.1 km, 12:45 moving, 3069 m elevation, 3/3 with photos, 22 matched photos) and the per-year distance chart (2024: 86.3 km, 2025: 46.8 km)" width="2400" height="1560" loading="lazy" decoding="async"></a>
-            <figcaption>Per-year stats for the sample activities. <a href="/demo/#/activities/stats" data-analiza-click="shot-activities-stats">Open in the live demo</a></figcaption>
+            <figcaption>The activities map, here zoomed in on one ride. <a href="/demo/#/activities" data-analiza-click="shot-activities-map">Open the map in the live demo</a></figcaption>
           </figure>
         </div>
 
@@ -508,16 +493,7 @@
           <div><strong>Only your own photos.</strong> Other people&rsquo;s Takeouts that you added never go to Proton.</div>
         </div>
 
-        <p><span class="coming-tag">Coming soon</span> Proton Photos is the first destination; more are on the way</p>
         <p><a href="/google-photos-to-proton-photos/" data-analiza-click="more-proton">More about moving Google Photos to Proton Photos</a></p>
-
-        <div class="coming-next">
-          <h3>Coming next</h3>
-          <ul>
-            <li>More sync destinations: Proton Photos is the first, others will follow</li>
-            <li>Support for more of your Takeout: Google Drive and Google Docs files, not just the Google Photos part</li>
-          </ul>
-        </div>
       </section>
 
       <!-- Mid-page call to action -->
@@ -527,7 +503,70 @@
           <a href="/demo/#/timeline" class="btn btn-demo" data-analiza-click="mid-demo">Open the live demo</a>
           <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary dl-mac" data-analiza-click="mid-download-mac">Download for Mac</a>
           <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary dl-win" data-analiza-click="mid-download-win">Download for Windows</a>
+          <button type="button" class="btn btn-secondary dl-send" data-analiza-click="mid-send-link" hidden>Send the link to my computer</button>
         </div>
+      </section>
+
+      <!-- Pricing -->
+      <section class="section" id="pricing">
+        <div class="section-header">
+          <h2>Pricing</h2>
+          <p>Start free: the demo and the sample library in the app need no account, and Lite is free for your 5 most recent holidays. Lifetime and Yearly unlock your whole library and all three apps; updates are free for everyone.</p>
+        </div>
+        <div class="plans">
+          <div class="plan">
+            <h3>Lite</h3>
+            <p class="plan-price">Free <span class="plan-price-note">no account or licence needed</span></p>
+            <ul>
+              <li>Your 5 most recent holidays in the photo timeline, plus the home periods and day trips in that span (the app shows &ldquo;5 of N holidays&rdquo;).</li>
+              <li>No account or licence needed.</li>
+              <li>Import your own Takeout manually: a local folder of .tgz/.zip archives, including a newer export later.</li>
+              <li>Read-only (no renaming, curating or hiding trips, no editing homes) and no automatic imports.</li>
+              <li>Activity matching (Strava/Komoot/Garmin) and the Proton Photos move are on the paid plans.</li>
+            </ul>
+            <a href="#download" class="btn btn-secondary plan-cta" data-analiza-click="plan-lite-cta">Download free</a>
+          </div>
+          <div class="plan">
+            <h3>Lifetime</h3>
+            <p class="plan-price">USD 25 / EUR 20 <span class="plan-price-note">one-time, no subscription</span></p>
+            <ul>
+              <li>All three apps: Photos timeline, Activities (Strava, Komoot, Garmin) and Proton Photos sync.</li>
+              <li>Import your Takeout manually: from a folder on disk, a Google Drive link, or read-only Google sign-in.</li>
+              <li>Unlocks your whole library, no photo limits: the rest of your photos are processed in the background, without re-importing.</li>
+              <li>Importing a newer Takeout export rebuilds the library from it, and your edits (hidden photos, trip names and notes, homes, people) are kept.</li>
+              <li>All app updates included.</li>
+            </ul>
+            <a href="#download" class="btn btn-secondary plan-cta" data-analiza-click="plan-lifetime-cta">Download the app</a>
+            <p class="plan-buy-note">Buy in the app: Settings &rarr; Account</p>
+          </div>
+          <div class="plan plan-featured">
+            <h3>Yearly</h3>
+            <p class="plan-price">USD 25 / EUR 20 <span class="plan-price-note">first year</span></p>
+            <p class="plan-price-sub">then USD 12.50/year: renewals are 50% off, automatically</p>
+            <ul>
+              <li>Everything in Lifetime.</li>
+              <li>Automatic processing: the folder watcher imports new exports as they land, newer exports import incrementally (no rebuild), and you can add contributors (other people's Takeouts, e.g. a partner's).</li>
+              <li>The first paid year includes the Lifetime licence: if you cancel, you keep it.</li>
+            </ul>
+            <a href="#download" class="btn plan-cta" data-analiza-click="plan-yearly-cta">Download the app</a>
+            <p class="plan-buy-note">Buy in the app: Settings &rarr; Account</p>
+          </div>
+        </div>
+        <p class="plan-help">Not sure? Lifetime is enough unless you want newer exports imported automatically or a partner&rsquo;s photos in your trips.</p>
+        <table class="price-table">
+          <caption>Lite is free, no account needed. Prices for the paid plans include taxes; the currency is picked from your country at checkout. The Yearly plan is billed at the full price for the first year, then every renewal is automatically 50% off.</caption>
+          <thead>
+            <tr><th scope="col">Where you are</th><th scope="col">Lite</th><th scope="col">Lifetime (one-time)</th><th scope="col">Yearly (first year, then half price)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>United States and rest of the world</td><td>Free</td><td>USD 25</td><td>USD 25, then USD 12.50/year</td></tr>
+            <tr><td>Europe</td><td>Free</td><td>EUR 20</td><td>EUR 20, then EUR 10/year</td></tr>
+            <tr><td>United Kingdom</td><td>Free</td><td>GBP 20</td><td>GBP 20, then GBP 10/year</td></tr>
+            <tr><td>Switzerland and Liechtenstein</td><td>Free</td><td>CHF 20</td><td>CHF 20, then CHF 10/year</td></tr>
+          </tbody>
+        </table>
+        <p>For a paid plan, one account covers <strong>2 devices</strong> (Mac or Windows). Remove one in the app (Settings → Account) to move the plan to another device.</p>
+        <p>Buy inside the app: open Settings → Account, sign in with Google or Apple, choose a plan and pay. Prices include taxes. Cancel any time from the app's "Manage subscription" button. For a refund, email <a href="mailto:hello@takepho.com">hello@takepho.com</a> and we will sort it out.</p>
       </section>
 
       <!-- How it works: the archive -> processing -> apps flow -->
@@ -565,7 +604,7 @@
               <li>Real dates, GPS and descriptions from the JSON sidecars</li>
               <li>Handles libraries of hundreds of GB; newer exports merge in</li>
               <li>Interrupted imports resume where they left off</li>
-              <li>Your photos are never uploaded</li>
+              <li>Your photos are never uploaded to our servers</li>
             </ul>
           </div>
           <div class="flow-arrow" aria-hidden="true">
@@ -617,7 +656,7 @@
           <div class="stat"><span class="stat-num">249 GB</span><span class="stat-label">of Takeout archives, about 34,000 photos</span></div>
           <div class="stat"><span class="stat-num">0 GB</span><span class="stat-label">unpacked: archives are read in place, originals are never copied</span></div>
           <div class="stat"><span class="stat-num">13 GB</span><span class="stat-label">of thumbnails, previews, index and database for that library</span></div>
-          <div class="stat"><span class="stat-num">1 min</span><span class="stat-label">to re-scan the contents of 233 GB of archives</span></div>
+          <div class="stat"><span class="stat-num">1 min</span><span class="stat-label">to re-read the inventory of 233 GB of archives (after the first import)</span></div>
         </div>
         <ul class="scale-list">
           <li>Browsing needs only the local previews. Full-resolution originals are read from the archives on demand, so keep the archives reachable (in your folder or on Drive).</li>
@@ -653,67 +692,6 @@
         </div>
       </section>
 
-      <!-- Pricing -->
-      <section class="section" id="pricing">
-        <div class="section-header">
-          <h2>Pricing</h2>
-          <p>Start free: the demo and the sample library in the app need no account, and Lite is free for your 5 most recent holidays. Lifetime and Yearly unlock your whole library and all three apps; updates are free for everyone.</p>
-        </div>
-        <div class="plans">
-          <div class="plan">
-            <h3>Lite</h3>
-            <p class="plan-price">Free <span class="plan-price-note">no account or licence needed</span></p>
-            <ul>
-              <li>Your 5 most recent holidays in the photo timeline, plus the home periods and day trips in that span (the app shows &ldquo;5 of N holidays&rdquo;).</li>
-              <li>No account or licence needed.</li>
-              <li>Import your own Takeout manually: a local folder of .tgz/.zip archives, including a newer export later.</li>
-              <li>Read-only (no renaming, curating or hiding trips, no editing homes) and no automatic imports.</li>
-              <li>Activity matching (Strava/Komoot/Garmin) and the Proton Photos move are on the paid plans.</li>
-            </ul>
-            <a href="#download" class="btn btn-secondary plan-cta" data-analiza-click="plan-lite-download">Download free</a>
-          </div>
-          <div class="plan">
-            <h3>Lifetime</h3>
-            <p class="plan-price">USD 25 <span class="plan-price-note">one-time</span></p>
-            <ul>
-              <li>All three apps: Photos timeline, Activities (Strava, Komoot, Garmin) and Proton Photos sync.</li>
-              <li>Import your Takeout manually: from a folder on disk, a Google Drive link, or read-only Google sign-in.</li>
-              <li>Unlocks your whole library, no photo limits: the rest of your photos are processed in the background, without re-importing.</li>
-              <li>Importing a newer Takeout export rebuilds the library from it, and your edits (hidden photos, trip names and notes, homes, people) are kept.</li>
-              <li>All app updates included.</li>
-            </ul>
-            <a href="#download" class="btn btn-secondary plan-cta" data-analiza-click="plan-lifetime-download">Download the app</a>
-            <p class="plan-buy-note">Buy in the app: Settings &rarr; Account</p>
-          </div>
-          <div class="plan plan-featured">
-            <h3>Yearly</h3>
-            <p class="plan-price">USD 25 <span class="plan-price-note">first year</span></p>
-            <p class="plan-price-sub">then USD 12.50/year: renewals are 50% off, automatically</p>
-            <ul>
-              <li>Everything in Lifetime.</li>
-              <li>Automatic processing: the folder watcher imports new exports as they land, newer exports import incrementally (no rebuild), and you can add contributors (other people's Takeouts, e.g. a partner's).</li>
-              <li>The first paid year includes the Lifetime licence: if you cancel, you keep it.</li>
-            </ul>
-            <a href="#download" class="btn plan-cta" data-analiza-click="plan-yearly-download">Download the app</a>
-            <p class="plan-buy-note">Buy in the app: Settings &rarr; Account</p>
-          </div>
-        </div>
-        <table class="price-table">
-          <caption>Lite is free, no account needed. Prices for the paid plans include taxes; the currency is picked from your country at checkout. The Yearly plan is billed at the full price for the first year, then every renewal is automatically 50% off.</caption>
-          <thead>
-            <tr><th scope="col">Where you are</th><th scope="col">Lite</th><th scope="col">Lifetime (one-time)</th><th scope="col">Yearly (first year, then half price)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>United States and rest of the world</td><td>Free</td><td>USD 25</td><td>USD 25, then USD 12.50/year</td></tr>
-            <tr><td>Europe</td><td>Free</td><td>EUR 20</td><td>EUR 20, then EUR 10/year</td></tr>
-            <tr><td>United Kingdom</td><td>Free</td><td>GBP 20</td><td>GBP 20, then GBP 10/year</td></tr>
-            <tr><td>Switzerland and Liechtenstein</td><td>Free</td><td>CHF 20</td><td>CHF 20, then CHF 10/year</td></tr>
-          </tbody>
-        </table>
-        <p>For a paid plan, one account covers <strong>2 devices</strong> (Mac or Windows). Remove one in the app (Settings → Account) to move the plan to another device.</p>
-        <p>Buy inside the app: open Settings → Account, sign in with Google or Apple, choose a plan and pay. Prices include taxes. Cancel any time from the app's "Manage subscription" button. For a refund, email <a href="mailto:hello@takepho.com">hello@takepho.com</a> and we will sort it out.</p>
-      </section>
-
       <!-- Privacy -->
       <section class="section" id="privacy">
         <div class="section-header">
@@ -725,7 +703,16 @@
           <div><strong>No tracking in the app.</strong> No analytics and no ads.</div>
           <div><strong>Your accounts stay yours.</strong> Activities and tracks from Strava, Komoot and Garmin are stored only on your computer.</div>
         </div>
-        <p><a href="privacy.html">Read the full privacy policy</a></p>
+        <p><a href="privacy.html" data-analiza-click="privacy-policy">Read the full privacy policy</a></p>
+      </section>
+
+      <!-- Coming next -->
+      <section class="section coming-next">
+        <h2>Coming next</h2>
+        <ul>
+          <li>More sync destinations: Proton Photos is the first, others will follow</li>
+          <li>Support for more of your Takeout: Google Drive and Google Docs files, not just the Google Photos part</li>
+        </ul>
       </section>
 
       <!-- FAQ -->
@@ -735,7 +722,7 @@
         </div>
         <details class="faq-item">
           <summary>Is it a web app?</summary>
-          <p class="faq-answer">No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos never leave your computer.</p>
+          <p class="faq-answer">No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos stay on your computer unless you choose to sync them to Proton Photos.</p>
         </details>
         <details class="faq-item">
           <summary>Is there a phone app?</summary>
@@ -775,7 +762,7 @@
         </details>
         <details class="faq-item">
           <summary>Do I need an account?</summary>
-          <p class="faq-answer">No, not for Lite (see &ldquo;What is Lite?&rdquo;). The app is also free to download and explore (the sample library in the app, or the <a href="/demo/">web demo</a>). A paid plan needs an account: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows).</p>
+          <p class="faq-answer">No, not for Lite (see &ldquo;What is Lite?&rdquo;). The app is also free to download and explore (the sample library in the app, or the <a href="/demo/" data-analiza-click="faq-demo">web demo</a>). A paid plan needs an account: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows).</p>
         </details>
         <details class="faq-item">
           <summary>Does it work offline?</summary>
@@ -799,15 +786,15 @@
         </details>
         <details class="faq-item">
           <summary>Why are the dates wrong after unzipping a Google Takeout?</summary>
-          <p class="faq-answer">The file's own timestamp is often the export date; the real capture date and GPS live in the .json sidecar next to each photo. Takeout Photo reads those sidecars, so dates and places are right. See <a href="/google-photos-takeout/">browsing a Takeout as a timeline</a>.</p>
+          <p class="faq-answer">The file's own timestamp is often the export date; the real capture date and GPS live in the .json sidecar next to each photo. Takeout Photo reads those sidecars, so dates and places are right. See <a href="/google-photos-takeout/" data-analiza-click="faq-guide-takeout">browsing a Takeout as a timeline</a>.</p>
         </details>
         <details class="faq-item">
           <summary>Can I see my Google Photos on my Strava, Komoot or Garmin activities?</summary>
-          <p class="faq-answer">Yes. The Activities app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track ("km 12.3 · 10:42"). See <a href="/google-photos-strava/">photos on your Strava activities</a> — Komoot and Garmin Connect work the same way.</p>
+          <p class="faq-answer">Yes. The Activities app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track ("km 12.3 · 10:42"). See <a href="/google-photos-strava/" data-analiza-click="faq-guide-strava">photos on your Strava activities</a> — Komoot and Garmin Connect work the same way.</p>
         </details>
         <details class="faq-item">
           <summary>How do I move my Google Photos to Proton Photos?</summary>
-          <p class="faq-answer">The sync app moves the Google Photos part of your Takeout into Proton Photos in full original quality, keeping albums (or making trip albums) and writing dates, GPS and descriptions from the JSON sidecars into the files first. See <a href="/google-photos-to-proton-photos/">moving Google Photos to Proton Photos</a>.</p>
+          <p class="faq-answer">The sync app moves the Google Photos part of your Takeout into Proton Photos in full original quality, keeping albums (or making trip albums) and writing dates, GPS and descriptions from the JSON sidecars into the files first. See <a href="/google-photos-to-proton-photos/" data-analiza-click="faq-guide-proton">moving Google Photos to Proton Photos</a>.</p>
         </details>
         <details class="faq-item">
           <summary>Does it work with Google Drive or Docs from my Takeout?</summary>
@@ -839,6 +826,7 @@
           <a href="/demo/#/timeline" class="btn btn-demo" data-analiza-click="final-demo">Open the live demo</a>
           <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary dl-mac" data-analiza-click="final-download-mac">Download for Mac</a>
           <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary dl-win" data-analiza-click="final-download-win">Download for Windows</a>
+          <button type="button" class="btn btn-secondary dl-send" data-analiza-click="final-send-link" hidden>Send the link to my computer</button>
         </div>
       </section>
     </div>
@@ -850,10 +838,10 @@
       <div class="footer-links">
         <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" data-analiza-click="footer-download-mac">Download for Mac</a>
         <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" data-analiza-click="footer-download-win">Download for Windows</a>
-        <a href="/google-photos-takeout/">Takeout viewer</a>
-        <a href="/google-photos-strava/">Photos on Strava, Komoot or Garmin</a>
-        <a href="/google-photos-to-proton-photos/">Move to Proton Photos</a>
-        <a href="/self-host/">Self-host</a>
+        <a href="/google-photos-takeout/" data-analiza-click="footer-guide-takeout">Takeout viewer</a>
+        <a href="/google-photos-strava/" data-analiza-click="footer-guide-strava">Photos on Strava, Komoot or Garmin</a>
+        <a href="/google-photos-to-proton-photos/" data-analiza-click="footer-guide-proton">Move to Proton Photos</a>
+        <a href="/self-host/" data-analiza-click="footer-self-host">Self-host</a>
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
         <a href="mailto:hello@takepho.com">hello@takepho.com</a>
@@ -886,12 +874,20 @@
         document.querySelectorAll('.dl-send').forEach(function (b) {
           b.addEventListener('click', function () {
             if (navigator.share) {
-              navigator.share({ title: 'Takeout Photo', text: 'Takeout Photo: download for Mac or Windows', url: 'https://takepho.com/#download' }).catch(function () {});
+              navigator.share({ title: 'Takeout Photo', text: 'Takeout Photo: download for Mac or Windows', url: 'https://takepho.com/?from=phone#download' }).catch(function () {});
             } else {
-              location.href = 'mailto:?subject=Takeout%20Photo&body=https%3A%2F%2Ftakepho.com%2F%23download';
+              location.href = 'mailto:?subject=Takeout%20Photo&body=https%3A%2F%2Ftakepho.com%2F%3Ffrom%3Dphone%23download';
             }
           });
         });
+        function openHashDetails() {
+          var h = location.hash.replace(/^#/, '');
+          if (!h) { return; }
+          var el = document.getElementById(h);
+          if (el && el.tagName === 'DETAILS') { el.open = true; }
+        }
+        window.addEventListener('hashchange', openHashDetails);
+        openHashDetails();
       })();
     } catch (e) {}
   </script>

@@ -25,6 +25,7 @@
   --line: #DADDE8;
   --control-line: #8A90A8;
   --brand: #5664F0;
+  --link: #4E5BEA;
   --violet: #8A5CF5;
   --brand-ink: #FFFFFF;
   --btn-hover: #7448E8;
@@ -45,6 +46,7 @@
     --line: #2C3150;
     --control-line: #5A6396;
     --brand: #8B98FF;
+    --link: var(--brand);
     --violet: #B08CFF;
     --brand-ink: #12152A;
     --btn-hover: #B08CFF;
@@ -143,7 +145,7 @@ details[id] {
 }
 
 .brand:hover {
-  color: var(--brand);
+  color: var(--link);
 }
 
 .nav {
@@ -160,7 +162,7 @@ details[id] {
 }
 
 .nav a:not(.btn):hover {
-  color: var(--brand);
+  color: var(--link);
   text-decoration: underline;
 }
 
@@ -199,7 +201,7 @@ footer {
 }
 
 .footer-links a:hover {
-  color: var(--brand);
+  color: var(--link);
   text-decoration: underline;
 }
 
@@ -240,7 +242,7 @@ article > p, .section p, .section li {
 }
 
 a {
-  color: var(--brand);
+  color: var(--link);
   text-decoration: none;
 }
 
@@ -741,25 +743,12 @@ html.os-mobile .hero-actions .dl-send {
   margin-bottom: 0;
 }
 
-.coming-tag {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--muted);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 1px 9px;
-  margin-right: 8px;
-  vertical-align: 1px;
-  white-space: nowrap;
-}
-
 .coming-next {
   border-top: 1px solid var(--line);
   padding: 24px 0 4px;
 }
 
-.coming-next h3 {
+.coming-next h2 {
   font-size: 1.1rem;
   margin-bottom: 8px;
 }
@@ -812,7 +801,7 @@ html.os-mobile .hero-actions .dl-send {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 .plan {
@@ -840,6 +829,8 @@ html.os-mobile .hero-actions .dl-send {
 }
 
 .plan-price-note {
+  display: block;
+  line-height: 1.4;
   font-size: 0.9rem;
   font-weight: 400;
   font-family: 'Atkinson Hyperlegible Next', sans-serif;
@@ -871,6 +862,13 @@ html.os-mobile .hero-actions .dl-send {
   font-size: 0.88rem;
   color: var(--muted);
   margin: 10px 0 0 0;
+}
+
+.plan-help {
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.95rem;
+  margin: 0 0 32px 0;
 }
 
 .price-table {
