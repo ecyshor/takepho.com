@@ -369,7 +369,7 @@ volumes:
   timeline-models: {}
 ```
 
-Then `docker compose up -d` and open `http://<nas-address>:8080` in your browser. The example uses `:latest`, which always points at the newest release; every release also has a pinned tag, e.g. `ghcr.io/ecyshor/takepho:1.2.0` and `ghcr.io/ecyshor/takepho-cuda:1.2.0`.
+Then `docker compose up -d` and open `http://<nas-address>:8080` in your browser. The example uses `:latest`, which always points at the newest release; every release also has a pinned tag, e.g. `ghcr.io/ecyshor/takepho:1.3.0` and `ghcr.io/ecyshor/takepho-cuda:1.3.0`.
 
 ## Folders
 - `/data`: the library database, thumbnails and indexes. Back this up.
