@@ -1,0 +1,1013 @@
+/* Home page only (index.html), loaded after style.css. The page is one route:
+   photos come in (Takeout + Apple Photos), become trips, become albums, get
+   backed up. The amber dashed route line is the one recurring device; the
+   two destinations keep the colours they have in the app's Sync page
+   (Apple Photos teal, Proton Photos violet). */
+
+:root {
+  --dusk: #211D4E;
+  --dusk-ink: #F4F3FF;
+  --dusk-muted: #BDB9E6;
+  --dusk-line: rgba(244, 243, 255, 0.22);
+  --route: #F2A93B;
+  --route-ink: #2A1B00;
+  --apple: #0B8F85;
+  --proton: #6D4AFF;
+  --print: #FFFFFF;
+  --shadow-print: 0 14px 28px rgba(10, 8, 34, 0.45), 0 2px 6px rgba(10, 8, 34, 0.35);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dusk: #1A1740;
+    --apple: #3ED3B8;
+    --proton: #A58DFF;
+    --print: #F2F1EC;
+  }
+}
+
+body.home header.container {
+  margin-bottom: 0;
+  border-bottom-color: transparent;
+}
+
+/* ---------- Hero ---------- */
+
+.h-hero {
+  background: var(--dusk);
+  color: var(--dusk-ink);
+  padding: 56px 0 40px;
+  overflow: hidden;
+}
+
+.h-hero-head {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 48px;
+  align-items: end;
+}
+
+.h-hero h1 {
+  color: var(--dusk-ink);
+  font-size: clamp(2.5rem, 5.4vw, 4.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  max-width: 14ch;
+  margin: 0;
+}
+
+.h-lead {
+  font-size: 1.1rem;
+  line-height: 1.55;
+  color: var(--dusk-muted);
+  margin: 0 0 24px;
+  max-width: 52ch;
+}
+
+.h-hero .hero-actions {
+  margin-bottom: 14px;
+}
+
+.h-hero .btn.h-btn-light {
+  background: var(--route);
+  border-color: var(--route);
+  color: var(--route-ink);
+}
+
+.h-hero .btn.h-btn-light:hover {
+  background: #FFC062;
+  border-color: #FFC062;
+  color: var(--route-ink);
+}
+
+.h-hero .btn.h-btn-ghost {
+  color: var(--dusk-ink);
+  border-color: var(--dusk-line);
+}
+
+.h-hero .btn.h-btn-ghost:hover {
+  background: rgba(244, 243, 255, 0.08);
+  border-color: var(--dusk-muted);
+  color: var(--dusk-ink);
+}
+
+.h-hero a:not(.btn) {
+  color: var(--dusk-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--route);
+  text-underline-offset: 3px;
+}
+
+.h-hero :focus-visible {
+  outline-color: var(--route);
+}
+
+.h-hero-note,
+.h-hero .hero-mobile-note {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--dusk-muted);
+  margin: 0;
+  max-width: 52ch;
+}
+
+.h-hero .hero-other {
+  display: none;
+}
+
+html.os-mac .h-hero .hero-other,
+html.os-win .h-hero .hero-other {
+  display: inline;
+}
+
+html.os-mac .h-hero .hero-other .other-mac,
+html.os-win .h-hero .hero-other .other-win {
+  display: none;
+}
+
+/* The journey: sources, then the route with its trip stops */
+
+.h-journey {
+  margin-top: 64px;
+}
+
+.h-sources {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  font-size: 0.92rem;
+}
+
+.h-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 10px;
+  border: 1px solid var(--dusk-line);
+  border-radius: 999px;
+  color: var(--dusk-ink);
+}
+
+.h-source-plus {
+  color: var(--route);
+  font-weight: 700;
+}
+
+.h-route {
+  position: relative;
+}
+
+.h-route-track {
+  position: relative;
+}
+
+.h-route-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 96px;
+  overflow: visible;
+}
+
+.h-route-path {
+  fill: none;
+  stroke: var(--route);
+  stroke-width: 2.5;
+  stroke-dasharray: 2 9;
+  stroke-linecap: round;
+}
+
+.h-route-mask {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.h-stops {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  position: relative;
+}
+
+.h-stop {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.h-pin {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--route);
+  box-shadow: 0 0 0 5px var(--dusk);
+  margin-top: calc(var(--pin) - 8px);
+  flex: none;
+}
+
+.h-prints {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  margin-top: 18px;
+}
+
+.h-prints img {
+  position: absolute;
+  left: 7%;
+  top: 6%;
+  width: 86%;
+  height: auto;
+  border: 6px solid var(--print);
+  border-bottom-width: 18px;
+  border-radius: 2px;
+  box-shadow: var(--shadow-print);
+  transform: translateX(var(--x)) rotate(var(--r));
+  background: var(--print);
+}
+
+.h-trip {
+  margin: 8px 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 10px;
+  row-gap: 0;
+  text-align: center;
+  font-size: 0.86rem;
+  color: var(--dusk-muted);
+  line-height: 1.4;
+}
+
+.h-trip strong {
+  flex-basis: 100%;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--dusk-ink);
+}
+
+.h-albums {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  max-width: 220px;
+  font-size: 0.82rem;
+}
+
+.h-albums li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: rgba(244, 243, 255, 0.07);
+  color: var(--dusk-ink);
+}
+
+.h-albums li::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex: none;
+  background: var(--c);
+}
+
+.h-albums li::after {
+  content: "";
+  margin-left: auto;
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid var(--c);
+  border-bottom: 2px solid var(--c);
+  transform: rotate(-45deg) translateY(-2px);
+}
+
+.h-album-apple { --c: #3ED3B8; }
+.h-album-proton { --c: #A58DFF; }
+
+.h-journey-caption {
+  margin: 22px 0 0;
+  font-size: 0.85rem;
+  color: var(--dusk-muted);
+  text-align: right;
+}
+
+/* The one orchestrated moment: the route draws, the prints land on it,
+   then the albums appear under each trip. */
+@media (prefers-reduced-motion: no-preference) {
+  .h-route-mask {
+    stroke-dashoffset: 1;
+    animation: h-draw 1.6s cubic-bezier(.6, .1, .3, 1) 0.2s forwards;
+  }
+  .h-pin {
+    transform: scale(0);
+    animation: h-pop 0.35s ease-out forwards;
+    animation-delay: calc(0.35s + var(--i) * 0.32s);
+  }
+  .h-prints img {
+    opacity: 0;
+    animation: h-land 0.55s cubic-bezier(.2, .8, .25, 1) forwards;
+    animation-delay: calc(0.5s + var(--i) * 0.32s);
+  }
+  .h-prints img:nth-child(2) { animation-delay: calc(0.6s + var(--i) * 0.32s); }
+  .h-prints img:nth-child(3) { animation-delay: calc(0.7s + var(--i) * 0.32s); }
+  .h-albums li {
+    opacity: 0;
+    animation: h-fade 0.4s ease-out forwards;
+    animation-delay: calc(1.9s + var(--i) * 0.12s);
+  }
+  .h-albums li + li {
+    animation-delay: calc(2s + var(--i) * 0.12s);
+  }
+}
+
+@keyframes h-draw { to { stroke-dashoffset: 0; } }
+@keyframes h-pop { to { transform: scale(1); } }
+@keyframes h-land {
+  from { opacity: 0; transform: translate(var(--x), -26px) rotate(calc(var(--r) * 2.2)); }
+  to { opacity: 1; transform: translateX(var(--x)) rotate(var(--r)); }
+}
+@keyframes h-fade { to { opacity: 1; } }
+
+/* ---------- Steps ---------- */
+
+.h-steps {
+  margin-top: 28px;
+  margin-bottom: 88px;
+}
+
+.h-steps ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  position: relative;
+}
+
+.h-steps ol::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: calc(25% - 3px);
+  top: 14px;
+  border-top: 2px dashed var(--route);
+  opacity: 0.7;
+}
+
+.h-steps a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.h-steps a:hover {
+  text-decoration: none;
+  color: var(--link);
+}
+
+.h-step-n {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--route);
+  color: var(--route-ink);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  flex: none;
+  box-shadow: 0 0 0 5px var(--paper);
+}
+
+/* ---------- Chapters: the route continues down the left gutter ---------- */
+
+.h-chapter {
+  position: relative;
+  padding-left: 76px;
+  padding-bottom: 112px;
+}
+
+.h-chapter::before {
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: 52px;
+  bottom: 12px;
+  border-left: 2px dashed var(--route);
+  opacity: 0.55;
+}
+
+.h-chapter#backup::before {
+  bottom: 120px;
+}
+
+.h-anchor {
+  position: absolute;
+  top: 0;
+}
+
+.h-chapter-head {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.h-chapter-head > .h-step-n {
+  position: absolute;
+  left: -76px;
+  top: 2px;
+  width: 44px;
+  height: 44px;
+  font-size: 1.3rem;
+}
+
+.h-chapter h2 {
+  font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  max-width: 22ch;
+  margin: 0 0 14px;
+  text-wrap: balance;
+}
+
+.h-chapter-head p {
+  color: var(--muted);
+  font-size: 1.08rem;
+  max-width: 62ch;
+  margin: 0;
+}
+
+.h-chapter h3 {
+  font-size: 1.2rem;
+}
+
+.h-chapter ul {
+  max-width: none;
+}
+
+.h-chapter li {
+  max-width: 62ch;
+}
+
+.h-more {
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.h-facts {
+  list-style: none;
+  margin: 48px 0 0;
+  padding: 24px 0 0;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  font-size: 0.97rem;
+  color: var(--muted);
+}
+
+.h-facts strong {
+  color: var(--ink);
+}
+
+.h-facts + .h-more {
+  margin-top: 24px;
+}
+
+/* 1. Sources */
+
+.h-sources-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.h-source-col {
+  border-top: 4px solid var(--c);
+  padding-top: 18px;
+}
+
+.h-source-col:first-child { --c: var(--app-photos); }
+.h-source-col:last-child { --c: var(--apple); }
+
+.h-source-col ul,
+.h-dest-col ul {
+  margin: 0;
+  padding-left: 1.1em;
+}
+
+.h-source-col li,
+.h-dest-col li {
+  margin-bottom: 10px;
+}
+
+.h-source-col li::marker,
+.h-dest-col li::marker {
+  color: var(--c);
+}
+
+.h-once {
+  margin: 48px 0 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 36px;
+  align-items: center;
+  padding: 28px 32px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.h-once-pair {
+  display: grid;
+  grid-template-columns: 112px 40px 112px;
+  grid-template-rows: auto auto;
+  column-gap: 12px;
+  row-gap: 10px;
+  align-items: center;
+}
+
+.h-once-print {
+  position: relative;
+  display: block;
+  grid-column: 1;
+}
+
+.h-once-print img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 4px solid var(--print);
+  border-bottom-width: 12px;
+  border-radius: 2px;
+  box-shadow: 0 4px 12px rgba(20, 18, 50, 0.18);
+}
+
+.h-once-print .h-tag {
+  position: absolute;
+  left: 8px;
+  bottom: 16px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: nowrap;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(16, 14, 40, 0.78);
+  color: #fff;
+}
+
+.h-once-join {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  color: var(--route);
+  width: 40px;
+  height: auto;
+}
+
+.h-once-result {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+
+.h-once-result .h-tag {
+  background: var(--route);
+  color: var(--route-ink);
+}
+
+.h-once figcaption {
+  color: var(--muted);
+  max-width: 56ch;
+}
+
+.h-once figcaption strong {
+  display: block;
+  color: var(--ink);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+/* 2. Trips */
+
+.h-shot {
+  margin: 0 0 56px;
+}
+
+.h-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 48px -24px rgba(20, 18, 60, 0.45);
+}
+
+.h-shot figcaption {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+.h-chapter .feature + .feature {
+  margin-top: 56px;
+}
+
+/* 3. Albums */
+
+.h-albums-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 40px;
+  align-items: start;
+}
+
+.h-modes {
+  display: grid;
+  gap: 14px;
+}
+
+.h-mode {
+  position: relative;
+  padding: 18px 20px 18px 52px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.h-mode::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 22px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--control-line);
+}
+
+.h-mode-on {
+  border: 2px solid var(--ink);
+  padding: 17px 19px 17px 51px;
+  background: var(--surface);
+}
+
+.h-mode-on::before {
+  left: 19px;
+  top: 21px;
+  border-color: var(--ink);
+  background: radial-gradient(var(--ink) 0 4px, transparent 5px);
+}
+
+.h-mode h3 {
+  font-size: 1.1rem;
+  margin: 0 0 4px;
+}
+
+.h-mode p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.h-album-list {
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 8px 8px 16px;
+}
+
+.h-album-list table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.h-album-list thead th {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.h-album-list thead th:nth-child(n+2) {
+  text-align: center;
+  width: 16%;
+}
+
+.h-album-list .h-col-apple { color: var(--apple); }
+.h-album-list .h-col-proton { color: var(--proton); }
+
+.h-album-list tbody th {
+  font-weight: 700;
+  text-align: left;
+  padding: 9px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.h-album-list tbody th img {
+  width: 52px;
+  height: 39px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex: none;
+}
+
+.h-album-list tbody td {
+  text-align: center;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.h-album-list tbody tr + tr {
+  border-top: 1px solid var(--line);
+}
+
+.h-yes-apple,
+.h-yes-proton {
+  position: relative;
+}
+
+.h-yes-apple::before,
+.h-yes-proton::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--c);
+  vertical-align: middle;
+}
+
+.h-yes-apple::after,
+.h-yes-proton::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid var(--surface);
+  border-bottom: 2px solid var(--surface);
+  transform: translate(-50%, -70%) rotate(-45deg);
+}
+
+.h-yes-apple { --c: var(--apple); }
+.h-yes-proton { --c: var(--proton); }
+
+
+.h-album-list figcaption {
+  font-size: 0.88rem;
+  color: var(--muted);
+  padding: 12px 12px 0;
+}
+
+/* 4. Backup */
+
+.h-dest {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.h-dest-col {
+  border-top: 4px solid var(--c);
+  padding-top: 18px;
+}
+
+.h-dest-apple { --c: var(--apple); }
+.h-dest-proton { --c: var(--proton); }
+
+.h-dest-col h3 {
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.h-dest-col h3 span {
+  display: block;
+  font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.h-dest-col li {
+  color: var(--muted);
+}
+
+.h-dest-col li strong {
+  color: var(--ink);
+}
+
+/* Credits */
+
+.h-credits {
+  margin: 0 0 40px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.h-credits summary {
+  cursor: pointer;
+}
+
+.h-credits ul {
+  padding-left: 1.1em;
+  columns: 2;
+  column-gap: 32px;
+}
+
+.h-credits li {
+  break-inside: avoid;
+  margin-bottom: 4px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .h-hero-head {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .h-hero h1 {
+    max-width: 16ch;
+  }
+  .h-albums-layout,
+  .h-dest,
+  .h-sources-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .h-facts {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .h-steps ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 18px;
+  }
+  .h-steps ol::before {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .h-hero {
+    padding-top: 32px;
+  }
+  .h-journey {
+    margin-top: 44px;
+  }
+  /* the route scrolls sideways, one trip at a time */
+  .h-route {
+    margin: 0 -16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 0 16px 6px;
+  }
+  .h-route::-webkit-scrollbar {
+    display: none;
+  }
+  .h-route-track {
+    width: calc(4 * 68vw);
+  }
+  .h-stop {
+    scroll-snap-align: center;
+  }
+  .h-journey-caption {
+    text-align: left;
+  }
+  .h-chapter {
+    padding-left: 44px;
+    padding-bottom: 88px;
+  }
+  .h-chapter::before {
+    left: 13px;
+    top: 36px;
+  }
+  .h-chapter-head > .h-step-n {
+    left: -44px;
+    width: 28px;
+    height: 28px;
+    font-size: 0.95rem;
+  }
+  .h-once {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 20px;
+    gap: 20px;
+  }
+  .h-once-pair {
+    grid-template-columns: 96px 32px 96px;
+  }
+  .h-once-print .h-tag {
+    left: 4px;
+    bottom: 14px;
+    font-size: 0.64rem;
+  }
+  .h-album-list thead th:nth-child(2),
+  .h-album-list tbody td:nth-child(2) {
+    display: none;
+  }
+  .h-album-list thead th:nth-child(n+3) {
+    width: 22%;
+  }
+  .h-credits ul {
+    columns: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .h-hero h1 {
+    font-size: 2.3rem;
+  }
+  .h-hero .btn-demo {
+    display: block;
+    width: 100%;
+  }
+  .h-steps ol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .h-album-list tbody th {
+    gap: 8px;
+    font-size: 0.9rem;
+  }
+  .h-album-list tbody th img {
+    width: 40px;
+    height: 30px;
+  }
+}
+
+/* ---------- Shared sections, tuned for this page ---------- */
+
+body.home .section-header h2,
+body.home .coming-next h2 {
+  font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+
+/* The closing band repeats the hero's dusk, so the page ends where it began. */
+body.home .cta-final {
+  background: var(--dusk);
+  border: 0;
+  border-radius: 18px;
+  color: var(--dusk-muted);
+  padding: 56px 24px;
+}
+
+body.home .cta-final h2 {
+  color: var(--dusk-ink);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+body.home .cta-final p {
+  color: var(--dusk-muted);
+}
+
+body.home .cta-final .btn.h-btn-light {
+  background: var(--route);
+  border-color: var(--route);
+  color: var(--route-ink);
+}
+
+body.home .cta-final .btn.h-btn-ghost {
+  color: var(--dusk-ink);
+  border-color: var(--dusk-line);
+}
+
+body.home .cta-final .btn.h-btn-ghost:hover {
+  background: rgba(244, 243, 255, 0.08);
+}
+
+body.home .cta-final :focus-visible {
+  outline-color: var(--route);
+}
