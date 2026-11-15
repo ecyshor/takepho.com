@@ -5,26 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#F6F7FB" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#12152A" media="(prefers-color-scheme: dark)">
-  <meta name="description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos. Free to download; Lite is free for your 5 most recent holidays.">
+  <meta name="description" content="Takeout Photo reads your Google Photos Takeout and, on a Mac, your Apple Photos library, finds every trip you have taken and lets you explore them on a map and day by day. It then builds trip albums in Apple Photos and Proton Photos, backing your Google photos up there. Runs on your Mac or Windows; free Lite plan.">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <title>Takeout Photo: turn your Google Takeout into a photo timeline, activity maps and Proton Photos sync</title>
+  <title>Takeout Photo: your Google and Apple photos sorted into trips, with trip albums in Apple Photos and Proton Photos</title>
   <link rel="canonical" href="https://takepho.com/">
 
-  <meta property="og:title" content="Takeout Photo: turn your Google Takeout into a photo timeline, activity maps and Proton Photos sync">
-  <meta property="og:description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos. Free to download; Lite is free for your 5 most recent holidays.">
+  <meta property="og:title" content="Takeout Photo: your Google and Apple photos sorted into trips, with trip albums in Apple Photos and Proton Photos">
+  <meta property="og:description" content="Takeout Photo reads your Google Photos Takeout and, on a Mac, your Apple Photos library, finds every trip you have taken and lets you explore them on a map and day by day. It then builds trip albums in Apple Photos and Proton Photos, backing your Google photos up there. Runs on your Mac or Windows; free Lite plan.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://takepho.com/">
   <meta property="og:site_name" content="Takeout Photo">
   <meta property="og:image" content="https://takepho.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Takeout Photo: your Google Takeout as a timeline, on your Strava, Komoot or Garmin routes, or moved to Proton Photos">
+  <meta property="og:image:alt" content="Takeout Photo: your Google Takeout and Apple Photos sorted into trips, with trip albums in Apple Photos and Proton Photos">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Takeout Photo: turn your Google Takeout into a photo timeline, activity maps and Proton Photos sync">
-  <meta name="twitter:description" content="Takeout Photo runs on your Mac or Windows and reads your Google Photos Takeout on your own computer: a private photo timeline, your photos on your Strava, Komoot or Garmin activities, or a move to Proton Photos. Free to download; Lite is free for your 5 most recent holidays.">
+  <meta name="twitter:title" content="Takeout Photo: your Google and Apple photos sorted into trips, with trip albums in Apple Photos and Proton Photos">
+  <meta name="twitter:description" content="Takeout Photo reads your Google Photos Takeout and, on a Mac, your Apple Photos library, finds every trip you have taken and lets you explore them on a map and day by day. It then builds trip albums in Apple Photos and Proton Photos, backing your Google photos up there. Runs on your Mac or Windows; free Lite plan.">
   <meta name="twitter:image" content="https://takepho.com/og-image.png">
 
+  <link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/home.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <script defer src="https://cdn.analiza.dev/analiza.js" tenant="0acee168-10d7-474c-9c07-6922e1d99310"></script>
@@ -45,14 +47,14 @@
       "@id": "https://takepho.com/#website",
       "name": "Takeout Photo",
       "url": "https://takepho.com/",
-      "description": "Takeout Photo reads your Google Photos Takeout locally on your Mac or Windows: browse it as a timeline, see your photos on your Strava, Komoot or Garmin routes, or move it to Proton Photos. There is also a Docker image for a NAS."
+      "description": "Takeout Photo reads your Google Photos Takeout and, on a Mac, your Apple Photos library on your own computer: explore every trip on a map and day by day, turn trips into albums in Apple Photos and Proton Photos, and see your photos on your Strava, Komoot or Garmin routes. There is also a Docker image for a NAS."
     },
     {
       "@type": "SoftwareApplication",
       "@id": "https://takepho.com/#app",
       "name": "Takeout Photo",
       "url": "https://takepho.com/",
-      "description": "A desktop app for Mac and Windows, plus a Docker image for a NAS, that reads your Google Takeout on your own computer: a private photo timeline with trips, places and maps, plus built-in apps that put your photos on your Strava, Komoot or Garmin Connect activities and move them to Proton Photos. Everything is processed locally; photos are never uploaded to our servers.",
+      "description": "A desktop app for Mac and Windows, plus a Docker image for a NAS, that reads your Google Takeout and, on a Mac, your Apple Photos library on your own computer. It finds your holidays and day trips, shows them on a map and day by day, and builds trip albums in Apple Photos and Proton Photos while backing your Google photos up there; it also puts your photos on your Strava, Komoot or Garmin Connect activities. Everything is processed locally; photos are never uploaded to our servers.",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "macOS 12+ (Apple silicon), Windows 10/11 (64-bit), Docker (NAS)",
       "downloadUrl": [
@@ -65,7 +67,7 @@
           "name": "Lite (free)",
           "price": "0.00",
           "priceCurrency": "USD",
-          "description": "Free, no account or licence needed: import your own Google Takeout manually from a local folder of .tgz/.zip archives (including a newer export later). Photo timeline only, read-only, limited to your 5 most recent holidays. Lifetime or Yearly unlocks the whole library and the other apps."
+          "description": "Free, no account or licence needed: import your own Google Takeout manually from a local folder of .tgz/.zip archives (including a newer export later) and, on a Mac, your 500 most recent Apple Photos once. Photo timeline only, read-only, limited to your 5 most recent holidays. Lifetime or Yearly unlocks the whole library, the trip albums and backups in Apple Photos and Proton Photos, and the Activities app."
         },
         {
           "@type": "Offer",
@@ -83,15 +85,15 @@
         }
       ],
       "featureList": [
-        "Request a Google Takeout of your Google Photos, then process it on your own computer",
-        "Reads .zip and .tgz archives in place without unpacking, from a folder, a Google Drive link, read-only Google sign-in, or a Proton Drive folder",
+        "Two sources in one library: your Google Photos Takeout and, on a Mac, your Apple Photos library; a photo that is in both appears once",
+        "Reads .zip and .tgz Takeout archives in place without unpacking, from a folder, a Google Drive link, read-only Google sign-in, or a Proton Drive folder",
         "Reads the JSON sidecar files for real capture dates, GPS and descriptions; handles libraries of hundreds of GB",
-        "Newer exports merge in: incrementally on the yearly plan, rebuild with edits kept on Lifetime",
-        "Photos timeline: holidays and day trips detected automatically from photo locations and Location History, each trip with places, a route map, best photos and your activities in its day-by-day view; on-device AI curation",
-        "Activities: photos matched to your Strava, Komoot or Garmin Connect activities by capture time and placed along the GPS track; activities also appear inside the trips",
-        "Proton Photos sync: full original quality with albums and sidecar metadata written into the files",
+        "Holidays and day trips detected automatically from photo locations and Location History, each trip with places, a route map, best photos and a day-by-day view; on-device AI curation",
+        "Trip albums: one album per detected trip, or the albums as in your Takeout, in Apple Photos and Proton Photos",
+        "Apple Photos sync on the Mac: checks your Takeout against your Apple library first, imports only the missing photos, adds Google albums and favourites to the copies already there, and can undo everything",
+        "Proton Photos sync: full original quality with albums and sidecar metadata written into the files; pause, resume and revert",
         "Overview with countries visited and holiday days per year, plus flights taken and kilometres flown from your Google Maps Timeline",
-        "Activities map with heatmap, per-year stats and photos placed along each GPS track",
+        "Activities: photos matched to your Strava, Komoot or Garmin Connect activities and placed along the GPS track; activities also appear inside the trips",
         "Rename, annotate and hide trips; add another person's Takeout to shared trips (Yearly)",
         "Runs on macOS, Windows, or as a Docker container on a NAS; photos are never uploaded to our servers"
       ]
@@ -105,7 +107,7 @@
           "name": "Is it a web app?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos stay on your computer unless you choose to sync them to Proton Photos."
+            "text": "No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos stay on your computer unless you choose to sync them to Proton Photos or Apple Photos."
           }
         },
         {
@@ -113,7 +115,39 @@
           "name": "Is there a phone app?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Takeout Photo is a desktop app for Mac and Windows. If you run the Docker image on a NAS or home server, you can open it in the browser of any device on your network, including a phone."
+            "text": "No. Takeout Photo is a desktop app for Mac and Windows. The trip albums it builds in Apple Photos and Proton Photos are on your phone through those apps. If you run the Docker image on a NAS or home server, you can open it in the browser of any device on your network, including a phone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it import my Apple Photos library?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, in the Mac app. Give it access to your Photos library and your Apple photos join the same timeline as your Takeout, with each photo that is in both shown once. Photos stored in iCloud are shown from their previews, and originals download only if you allow it. Lite imports your 500 most recent Apple photos once; Lifetime imports the whole library and has a “Check for new photos” button; Yearly picks up new photos by itself. The Windows app and the Docker image do not read Apple Photos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I organize my trips into albums in Apple Photos or Proton Photos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, with Lifetime or Yearly. Choose “Trip albums” and every detected holiday or day trip becomes an album, or keep the albums as they are in your Takeout. The same layout is used in Proton Photos and, on the Mac, in Apple Photos. The albums are built from the Google photos in your Takeout."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will copying my Google photos into Apple Photos create duplicates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The app first checks every Google photo against your Apple library and shows a report: what is already there, what it would import, and the few it is not sure about, side by side for you to decide. Only the missing photos are imported; a photo that is already there gets the Google albums and favourite added instead. Nothing is written before you confirm, and “Undo everything this app did in Apple Photos” moves the imported photos to Recently Deleted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I move my Google Photos to Proton Photos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The sync app moves the Google Photos part of your Takeout into Proton Photos in full original quality, keeping albums (or making trip albums) and writing dates, GPS and descriptions from the JSON sidecars into the files first. See moving Google Photos to Proton Photos."
           }
         },
         {
@@ -145,7 +179,7 @@
           "name": "How does the app update?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Both apps update themselves. Mac: use \"Check for Updates…\" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a \"Check for updates now\" button); while the exe isn't code-signed, updates are verified with an EdDSA signature. The portable zip doesn't update itself — download new versions from the releases page (https://github.com/ecyshor/takepho.com/releases). Updates are free for everyone, no plan needed. Release notes on GitHub (https://github.com/ecyshor/takepho.com/releases)."
+            "text": "Both apps update themselves. Mac: use \"Check for Updates…\" in the app menu, or let it check automatically (you can turn automatic checks off in Settings → Updates). Windows: the installed app checks for updates daily and installs them when the app quits (toggle in Settings → Updates, plus a \"Check for updates now\" button); while the exe isn't code-signed, updates are verified with an EdDSA signature. The portable zip doesn't update itself — download new versions from the releases page. Updates are free for everyone, no plan needed. Release notes on GitHub."
           }
         },
         {
@@ -153,7 +187,7 @@
           "name": "Why does Windows show \"Windows protected your PC\" when I open the app?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The Windows app is not code-signed yet, so on the first launch Windows shows that warning. Click \"More info\", then \"Run anyway\" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the releases page (https://github.com/ecyshor/takepho.com/releases)."
+            "text": "The Windows app isn't code-signed yet, so on the first launch Windows shows that warning. Click \"More info\", then \"Run anyway\" — the app is safe to run. The installed app updates itself automatically (checks daily, Settings → Updates; installs when the app quits); the portable zip doesn't — new versions are on the releases page."
           }
         },
         {
@@ -161,7 +195,7 @@
           "name": "Do I need to pay?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No, not for Lite: it is free for your 5 most recent holidays (photo timeline only, no account needed). A paid plan (Lifetime or Yearly) unlocks the full library with no photo limits and the other apps (activity matching, Proton Photos move)."
+            "text": "No, not for Lite: it is free for your 5 most recent holidays (photo timeline only, no account needed). A paid plan (Lifetime or Yearly) unlocks the full library with no photo limits, the trip albums and backups in Apple Photos and Proton Photos, and activity matching."
           }
         },
         {
@@ -169,7 +203,7 @@
           "name": "What is Lite?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Lite is the free plan: no account or licence needed. Import your own Google Takeout manually (a local folder of .tgz/.zip archives, including a newer export later) and get the photo timeline only, read-only, limited to your 5 most recent holidays plus the home periods and day trips in that span (the app shows \"5 of N holidays\"). Activity matching (Strava/Komoot/Garmin) and the Proton Photos move stay on the paid plans. Buying Lifetime or Yearly unlocks the whole library: the rest of the photos are processed in the background, without re-importing."
+            "text": "Lite is the free plan: no account or licence needed. Import your own Google Takeout manually (a local folder of .tgz/.zip archives, including a newer export later) and, on a Mac, your 500 most recent Apple photos once, and get the photo timeline only, read-only, limited to your 5 most recent holidays plus the home periods and day trips in that span (the app shows “5 of N holidays”). Albums and backups in Apple Photos and Proton Photos, and activity matching (Strava/Komoot/Garmin), stay on the paid plans. Buying Lifetime or Yearly unlocks the whole library: the rest of the photos are processed in the background, without re-importing."
           }
         },
         {
@@ -185,7 +219,7 @@
           "name": "Do I need an account?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No, not for Lite (see \"What is Lite?\"). The app is also free to download and explore (the sample library in the app, or the web demo (https://takepho.com/demo/)). A paid plan needs an account: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows)."
+            "text": "No, not for Lite (see “What is Lite?”). The app is also free to download and explore (the sample library in the app, or the web demo). A paid plan needs an account: sign in with Google or Apple from the app (Settings → Account). One account covers 2 devices (Mac or Windows)."
           }
         },
         {
@@ -201,7 +235,7 @@
           "name": "What happens if an import is interrupted?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Interrupted work resumes automatically: if the app is closed, the computer restarts or the app updates mid-import or mid-processing, it picks up where it left off on the next start. Already imported items are skipped, an import that stopped has a \"Resume import\" button, and every import shows its steps as a checklist with the current step live."
+            "text": "Interrupted work resumes automatically: if the app is closed, the computer restarts or the app updates mid-import or mid-processing, it picks up where it left off on the next start. Already imported items are skipped, an import that stopped has a “Resume import” button, and every import shows its steps as a checklist with the current step live."
           }
         },
         {
@@ -225,7 +259,7 @@
           "name": "Does it show videos and HEIC photos?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "HEIC photos are decoded on your computer and shown like any other photo. The timeline shows photos today; videos in your Takeout are counted in the inventory and uploaded by the Proton Photos sync."
+            "text": "HEIC photos are decoded on your computer and shown like any other photo. The timeline shows photos today; videos in your Takeout are counted in the inventory and copied across by the Proton Photos and Apple Photos sync."
           }
         },
         {
@@ -241,15 +275,7 @@
           "name": "Can I see my Google Photos on my Strava, Komoot or Garmin activities?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The Activities app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track (\"km 12.3 · 10:42\"). See photos on your Strava activities (https://takepho.com/google-photos-strava/) — Komoot and Garmin Connect work the same way."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I move my Google Photos to Proton Photos?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The sync app moves the Google Photos part of your Takeout into Proton Photos in full original quality, keeping albums (or making trip albums) and writing dates, GPS and descriptions from the JSON sidecars into the files first. See moving Google Photos to Proton Photos."
+            "text": "Yes. The Activities app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track (\"km 12.3 · 10:42\"). See photos on your Strava activities — Komoot and Garmin Connect work the same way."
           }
         },
         {
@@ -257,7 +283,7 @@
           "name": "Does it work with Google Drive or Docs from my Takeout?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Not yet. Today it uses the Google Photos part of your Takeout, plus Location History where your export has it. Support for Google Drive and Google Docs files is coming, and the sync app will add more destinations beyond Proton Photos."
+            "text": "Not yet. Today it uses the Google Photos part of your Takeout, plus Location History where your export has it. Support for Google Drive and Google Docs files is coming, and the sync app will add more destinations beyond Proton Photos and Apple Photos."
           }
         },
         {
@@ -265,7 +291,7 @@
           "name": "Can I add someone else's Takeout, like my partner's?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. With the yearly plan you can add contributors (other people's Takeouts, e.g. a partner's), so their photos attach to the trips you shared."
+            "text": "Yes. With the yearly plan you can add contributors (other people's Takeouts, e.g. a partner's), so their photos attach to the trips you shared. Their photos are never synced to your Proton Photos or Apple Photos."
           }
         },
         {
@@ -273,7 +299,7 @@
           "name": "What happens when the yearly plan ends?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You keep the Lifetime licence (the first paid year includes it). Manual imports keep working forever, and importing a newer export still rebuilds your library with your edits kept. The automatic-processing features (folder watcher, incremental imports of newer exports, new contributors) stop while the subscription is inactive; existing contributors stay visible. You can re-subscribe any time."
+            "text": "You keep the Lifetime licence (the first paid year includes it). Manual imports keep working forever, and importing a newer export still rebuilds your library with your edits kept. The automatic-processing features (folder watcher, incremental imports of newer exports, automatic Apple Photos updates, new contributors) stop while the subscription is inactive; existing contributors stay visible. You can re-subscribe any time."
           }
         },
         {
@@ -298,13 +324,13 @@
 }
   </script>
 </head>
-<body>
+<body class="home">
   <header class="container">
     <a href="/" class="brand"><img src="/favicon.svg" alt="" width="32" height="32"> <span>Takeout Photo</span></a>
     <nav class="nav" aria-label="Main">
-      <a href="#apps" class="nav-app">Timeline</a>
-      <a href="#activities" class="nav-app">Activities</a>
-      <a href="#proton" class="nav-app">Proton</a>
+      <a href="#trips" class="nav-app" data-analiza-click="nav-trips">Trips</a>
+      <a href="#albums" class="nav-app" data-analiza-click="nav-albums">Albums</a>
+      <a href="#backup" class="nav-app" data-analiza-click="nav-backup">Backup</a>
       <a href="#pricing" data-analiza-click="nav-pricing">Pricing</a>
       <a href="#faq" data-analiza-click="nav-faq">FAQ</a>
       <a href="/demo/" class="nav-demo" data-analiza-click="nav-demo">Live demo</a>
@@ -313,60 +339,186 @@
   </header>
 
   <main>
-    <div class="container">
-      <!-- Hero -->
-      <section class="hero hero-split">
-        <div class="hero-copy">
-          <h1>Turn your Google Takeout into a timeline of every trip you&rsquo;ve taken.</h1>
-          <p class="lead">Takeout Photo finds your holidays and day trips automatically, puts your photos on your Strava, Komoot or Garmin routes, and can move your library to Proton Photos. It runs on your Mac or Windows PC: your photos never go to our servers.</p>
-          <div class="hero-actions" id="download">
-            <a href="/demo/#/timeline" class="btn btn-demo" data-analiza-click="hero-demo">Open the live demo</a>
-            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary dl-mac" data-analiza-click="hero-download-mac">Download for Mac</a>
-            <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary dl-win" data-analiza-click="hero-download-win">Download for Windows</a>
-            <button type="button" class="btn btn-secondary dl-send" data-analiza-click="hero-send-link" hidden>Send the link to my computer</button>
+    <!-- Hero: photos from two sources become trips, trips become albums -->
+    <section class="h-hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="h-hero-head">
+          <h1 id="hero-title">Find every trip in your photos, and keep each one as an album.</h1>
+          <div class="h-hero-side">
+            <p class="h-lead">Takeout Photo reads your Google Photos Takeout and, on a Mac, your Apple Photos library. It finds your holidays and day trips, lets you explore them on a map and day by day, then turns them into albums in Apple Photos and Proton Photos, backing your Google photos up there as it goes. All of it runs on your own computer.</p>
+            <div class="hero-actions" id="download">
+              <a href="/demo/#/timeline" class="btn btn-demo h-btn-light" data-analiza-click="hero-demo">Open the live demo</a>
+              <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary h-btn-ghost dl-mac" data-analiza-click="hero-download-mac">Download for Mac</a>
+              <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary h-btn-ghost dl-win" data-analiza-click="hero-download-win">Download for Windows</a>
+              <button type="button" class="btn btn-secondary h-btn-ghost dl-send" data-analiza-click="hero-send-link" hidden>Send the link to my computer</button>
+            </div>
+            <p class="h-hero-note">The demo uses sample photos and needs no install. The app is free to download, and Lite is free for your 5 most recent holidays. <span class="hero-other">Also for <a class="other-win" data-analiza-click="hero-other-win" href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe">Windows</a><a class="other-mac" data-analiza-click="hero-other-mac" href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Mac</a>, or a <a href="/self-host/" data-analiza-click="hero-nas">NAS with Docker</a>.</span></p>
+            <p class="hero-mobile-note">Takeout Photo is a desktop app for Mac and Windows. Try the <a href="/demo/" data-analiza-click="hero-mobile-demo">demo</a> here, then install it on your computer.</p>
           </div>
-          <p class="hero-sub">Demo: sample photos, nothing to install, no account. The app is free to download; Lite is free for your 5 most recent holidays.</p>
-          <p class="hero-other">Also for <a class="other-win" data-analiza-click="hero-other-win" href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe">Windows</a> <a class="other-mac" data-analiza-click="hero-other-mac" href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg">Mac</a></p>
-          <p class="hero-mobile-note">Takeout Photo is a desktop app for Mac and Windows. Try the <a href="/demo/" data-analiza-click="hero-mobile-demo">demo</a> here, then install it on your computer.</p>
-          <p class="hero-note">Mac: Apple silicon, macOS 12+ &middot; Windows 10/11 &middot; <a href="/self-host/" data-analiza-click="hero-nas">NAS (Docker)</a> &middot; <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip" data-analiza-click="hero-portable-zip">Windows portable zip</a></p>
-          <details class="dl-note">
-            <summary>Windows: first-launch warning, updates and the portable zip</summary>
-            <p>The Windows app isn&rsquo;t code-signed yet, so Windows shows that warning on the first launch &mdash; click &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;. The installed app updates itself automatically: it checks daily (toggle in Settings &rarr; Updates, plus a &ldquo;Check for updates now&rdquo; button) and installs the update when the app quits. The portable zip doesn&rsquo;t update itself &mdash; new versions are on the <a href="https://github.com/ecyshor/takepho.com/releases">releases page</a>.</p>
-          </details>
         </div>
-        <figure class="hero-shot">
-          <a href="/demo/#/timeline" data-analiza-click="hero-shot"><img src="/img/apps/timeline.webp" alt="Takeout Photo Photos app, Rows timeline: year cards for 2025 (3 trips, 465 photos) and 2024 (2 trips, 166 photos) with trip cards for Paris, Barcelona, Italy and Lisbon, cover photos joined by the timeline path" width="2400" height="1560" fetchpriority="high"></a>
-          <figcaption>Five trips from the sample library, in order. <a href="/demo/#/timeline" data-analiza-click="hero-shot">Open it in the live demo</a></figcaption>
+
+        <div class="h-journey" role="img" aria-label="Photos from a Google Takeout and an Apple Photos library sorted into four trips: Lisbon, August 2024, 150 photos; Italy, April 2025, 240 photos; Barcelona, May to June 2025, 125 photos; Paris, July 2025, 100 photos. Each trip is an album in Apple Photos and in Proton Photos.">
+          <div class="h-sources" aria-hidden="true">
+            <span class="h-source"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M2 8h16M7 2.5h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Google Takeout</span>
+            <span class="h-source-plus">+</span>
+            <span class="h-source"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><rect x="2.5" y="3.5" width="15" height="13" rx="3" stroke="currentColor" stroke-width="1.6"/><circle cx="7.5" cy="8" r="1.6" fill="currentColor"/><path d="M3.5 15l4.5-4 3 2.5 3-3 3 3" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Apple Photos library</span>
+          </div>
+
+          <div class="h-route" aria-hidden="true">
+            <div class="h-route-track">
+            <svg class="h-route-line" viewBox="0 0 1000 96" preserveAspectRatio="none">
+              <defs>
+                <mask id="route-reveal" maskUnits="userSpaceOnUse">
+                  <path class="h-route-mask" d="M-20 30 C 60 30, 80 14, 125 14 S 250 74, 375 74 S 520 34, 625 34 S 760 86, 875 86 S 980 60, 1020 60" stroke="#fff" stroke-width="12" fill="none" pathLength="1"/>
+                </mask>
+              </defs>
+              <path d="M-20 30 C 60 30, 80 14, 125 14 S 250 74, 375 74 S 520 34, 625 34 S 760 86, 875 86 S 980 60, 1020 60" mask="url(#route-reveal)" class="h-route-path" vector-effect="non-scaling-stroke"/>
+            </svg>
+
+            <ol class="h-stops">
+              <li class="h-stop" style="--pin:14px; --i:0">
+                <span class="h-pin"></span>
+                <div class="h-prints">
+                  <img src="/img/trips/lisbon-2.webp" alt="" width="560" height="420" style="--r:-7deg; --x:-14px">
+                  <img src="/img/trips/lisbon-5.webp" alt="" width="560" height="420" style="--r:5deg; --x:14px">
+                  <img src="/img/trips/lisbon-4.webp" alt="" width="560" height="420" style="--r:-1deg; --x:0px">
+                </div>
+                <p class="h-trip"><strong>Lisbon</strong> <span>Aug 2–8, 2024</span> <span>150 photos</span></p>
+                <ul class="h-albums">
+                  <li class="h-album-apple">Apple Photos album</li>
+                  <li class="h-album-proton">Proton Photos album</li>
+                </ul>
+              </li>
+              <li class="h-stop" style="--pin:74px; --i:1">
+                <span class="h-pin"></span>
+                <div class="h-prints">
+                  <img src="/img/trips/rome-3.webp" alt="" width="560" height="420" style="--r:6deg; --x:14px">
+                  <img src="/img/trips/florence-1.webp" alt="" width="560" height="420" style="--r:-6deg; --x:-12px">
+                  <img src="/img/trips/rome-4.webp" alt="" width="560" height="420" style="--r:1deg; --x:0px">
+                </div>
+                <p class="h-trip"><strong>Italy</strong> <span>Apr 9–17, 2025</span> <span>240 photos</span></p>
+                <ul class="h-albums">
+                  <li class="h-album-apple">Apple Photos album</li>
+                  <li class="h-album-proton">Proton Photos album</li>
+                </ul>
+              </li>
+              <li class="h-stop" style="--pin:34px; --i:2">
+                <span class="h-pin"></span>
+                <div class="h-prints">
+                  <img src="/img/trips/barcelona-3.webp" alt="" width="560" height="420" style="--r:-5deg; --x:-12px">
+                  <img src="/img/trips/barcelona-2.webp" alt="" width="560" height="420" style="--r:7deg; --x:14px">
+                  <img src="/img/trips/barcelona-4.webp" alt="" width="560" height="420" style="--r:-2deg; --x:0px">
+                </div>
+                <p class="h-trip"><strong>Barcelona</strong> <span>May 29 – Jun 3, 2025</span> <span>125 photos</span></p>
+                <ul class="h-albums">
+                  <li class="h-album-apple">Apple Photos album</li>
+                  <li class="h-album-proton">Proton Photos album</li>
+                </ul>
+              </li>
+              <li class="h-stop" style="--pin:86px; --i:3">
+                <span class="h-pin"></span>
+                <div class="h-prints">
+                  <img src="/img/trips/paris-3.webp" alt="" width="560" height="420" style="--r:6deg; --x:12px">
+                  <img src="/img/trips/paris-1.webp" alt="" width="560" height="420" style="--r:-6deg; --x:-14px">
+                  <img src="/img/trips/paris-2.webp" alt="" width="560" height="420" style="--r:2deg; --x:0px">
+                </div>
+                <p class="h-trip"><strong>Paris</strong> <span>Jul 18–22, 2025</span> <span>100 photos</span></p>
+                <ul class="h-albums">
+                  <li class="h-album-apple">Apple Photos album</li>
+                  <li class="h-album-proton">Proton Photos album</li>
+                </ul>
+              </li>
+            </ol>
+            </div>
+          </div>
+          <p class="h-journey-caption" aria-hidden="true">Four trips from the sample library in the <a href="/demo/#/timeline" data-analiza-click="hero-journey-demo" tabindex="-1">live demo</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The four steps, as a route through the page -->
+    <nav class="h-steps container" aria-label="How it works">
+      <ol>
+        <li><a href="#sources" data-analiza-click="steps-sources"><span class="h-step-n">1</span> Bring in your photos</a></li>
+        <li><a href="#trips" data-analiza-click="steps-trips"><span class="h-step-n">2</span> Explore your trips</a></li>
+        <li><a href="#albums" data-analiza-click="steps-albums"><span class="h-step-n">3</span> Turn trips into albums</a></li>
+        <li><a href="#backup" data-analiza-click="steps-backup"><span class="h-step-n">4</span> Back them up</a></li>
+      </ol>
+    </nav>
+
+    <div class="container">
+      <!-- 1. Sources -->
+      <section class="h-chapter" id="sources">
+        <header class="h-chapter-head">
+          <span class="h-step-n" aria-hidden="true">1</span>
+          <div>
+            <h2>Bring in your Google and Apple photos</h2>
+            <p>Start with your Google Photos Takeout, your Apple Photos library, or both. They become one library, read and processed on your computer.</p>
+          </div>
+        </header>
+
+        <div class="h-sources-grid">
+          <div class="h-source-col">
+            <h3>Google Photos, from a Takeout</h3>
+            <ul>
+              <li>Export your photos at <a href="https://takeout.google.com">takeout.google.com</a> and point the app at the folder of archives, a Google Drive link, a Proton Drive folder, or sign in with Google and pick the files (read-only)</li>
+              <li>Archives are read where they are, never unpacked or copied, even at hundreds of GB</li>
+              <li>Real capture dates, places and descriptions come from the JSON files Google puts next to each photo</li>
+              <li>A newer export merges in, and your trip names, notes and hidden photos are kept</li>
+            </ul>
+          </div>
+          <div class="h-source-col">
+            <h3>Apple Photos, on your Mac</h3>
+            <ul>
+              <li>Give the app access to your Photos library once, and your Apple photos join the same timeline</li>
+              <li>Photos kept in iCloud are shown from their previews; originals download only if you allow it</li>
+              <li>New photos come in with <em>Check for new photos</em> on Lifetime, or by themselves on Yearly</li>
+              <li>Hidden photos stay out unless you include them</li>
+            </ul>
+          </div>
+        </div>
+
+        <figure class="h-once">
+          <div class="h-once-pair" aria-hidden="true">
+            <span class="h-once-print"><img src="/img/trips/bern-3.webp" alt="" width="560" height="420" loading="lazy" decoding="async"><span class="h-tag">Takeout</span></span>
+            <span class="h-once-print"><img src="/img/trips/bern-3.webp" alt="" width="560" height="420" loading="lazy" decoding="async"><span class="h-tag">Apple Photos</span></span>
+            <svg class="h-once-join" width="40" height="64" viewBox="0 0 40 64" fill="none"><path d="M2 6c18 0 18 26 36 26M2 58c18 0 18-26 36-26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span class="h-once-print h-once-result"><img src="/img/trips/bern-3.webp" alt="" width="560" height="420" loading="lazy" decoding="async"><span class="h-tag">Shown once</span></span>
+          </div>
+          <figcaption>
+            <strong>Each moment once.</strong> When the same photo is in your Takeout and in Apple Photos, it shows up once, with your Google albums, description and people added to the Apple copy. Matching works even when dates are off by a time zone or the files differ.
+          </figcaption>
         </figure>
       </section>
 
-      <!-- Trust strip -->
-      <ul class="trust">
-        <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Runs on your computer.</strong> Your photos are never uploaded to our servers.</span></li>
-        <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Free Lite plan.</strong> No account, no licence.</span></li>
-        <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Mac app signed and notarized by Apple.</strong></span></li>
-        <li><svg class="trust-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Pay once.</strong> Lifetime licence, USD 25 / EUR 20.</span></li>
-      </ul>
+      <!-- 2. Explore trips -->
+      <section class="h-chapter" id="trips">
+        <span id="apps" class="h-anchor" aria-hidden="true"></span>
+        <header class="h-chapter-head">
+          <span class="h-step-n" aria-hidden="true">2</span>
+          <div>
+            <h2>Explore your life one trip at a time</h2>
+            <p>The app works out where you lived, when you went away and where you went. Every holiday and day trip gets its own page, its places and its route on the map.</p>
+          </div>
+        </header>
 
-      <!-- Photos timeline tour -->
-      <section class="section tour" id="apps">
-        <div class="section-header">
-          <h2>Every trip you&rsquo;ve taken, found for you</h2>
-          <p>The Photos timeline reads your Takeout and works out where you lived, when you travelled and what you saw. Browse it as a timeline (rows, or one long scroll by year), on a map, trip by trip or as numbers.</p>
-        </div>
+        <figure class="h-shot h-shot-wide">
+          <a href="/demo/#/timeline" data-analiza-click="shot-timeline"><img src="/img/apps/timeline.webp" alt="Takeout Photo timeline: year cards for 2025 (3 trips, 465 photos) and 2024 (2 trips, 166 photos) with trip cards for Paris, Barcelona, Italy and Lisbon, cover photos joined by the timeline path" width="2400" height="1560" loading="lazy" decoding="async"></a>
+          <figcaption>The timeline: years, then trips, each with its cover photo. <a href="/demo/#/timeline" data-analiza-click="shot-timeline">Open it in the live demo</a></figcaption>
+        </figure>
 
         <div class="feature">
           <div class="feature-copy">
             <h3>All your trips on one map</h3>
             <ul>
-              <li>Holidays, day trips and home periods are told apart automatically, from your photo locations</li>
-              <li>Each trip shows its places joined in the order you visited them, with towns and countries named from the GPS coordinates</li>
-              <li>Add your Google Maps Timeline (Location History, with Lifetime or Yearly) and trips start and end when you really left and came home; photos without GPS get a location, and Travel shows your flights and long journeys</li>
+              <li>Holidays, day trips and time at home are told apart from where your photos were taken</li>
+              <li>Each trip&rsquo;s places are joined in the order you visited them, with towns and countries named</li>
+              <li>Add your Google Maps Timeline and trips start and end when you really left and came home; photos without GPS get a place, and your flights show up too</li>
             </ul>
           </div>
           <figure class="app-shot feature-shot">
             <a href="/demo/#/" data-analiza-click="shot-map"><img src="/img/apps/map.webp" alt="Takeout Photo world map with all five sample trip routes drawn, and the In view list of trips with cover thumbnails (Paris 100 photos, Barcelona 125, Italy 240, Lisbon 150, Bern 16)" width="2400" height="1518" loading="lazy" decoding="async"></a>
-            <figcaption>The world map with all five sample trips and their routes. <a href="/demo/#/" data-analiza-click="shot-map">Open in the live demo</a></figcaption>
+            <figcaption>The world map with the sample trips and their routes. <a href="/demo/#/" data-analiza-click="shot-map">Open in the live demo</a></figcaption>
           </figure>
         </div>
 
@@ -374,10 +526,10 @@
           <div class="feature-copy">
             <h3>Each trip, day by day</h3>
             <ul>
-              <li>A day-by-day page per trip: where you were and what you photographed</li>
-              <li>On-device AI picks the best photos and a cover for each trip, and stacks near-duplicates</li>
-              <li>Your Strava, Komoot or Garmin activities appear on the day they happened</li>
-              <li>Open any photo to see the full-resolution original, read straight from the archive</li>
+              <li>Where you were each day and what you photographed</li>
+              <li>On-device AI picks the best photos and a cover, and stacks near-duplicates</li>
+              <li>Open any photo in full resolution, straight from the archive or your Apple library</li>
+              <li>Rename a trip, add notes, pick its cover or hide what you don&rsquo;t want to see (Lifetime and Yearly)</li>
             </ul>
           </div>
           <figure class="app-shot feature-shot">
@@ -386,119 +538,117 @@
           </figure>
         </div>
 
-        <div class="feature">
+        <div class="feature" id="activities">
           <div class="feature-copy">
-            <h3>Your travels in numbers</h3>
+            <h3>Your rides and hikes inside the trip</h3>
             <ul>
-              <li>Countries visited and holiday days per year, split by country</li>
-              <li>Flights taken and kilometres flown, once you add your Google Maps Timeline</li>
-              <li>Holidays by country, and where you lived when</li>
+              <li>Connect Strava, Komoot or Garmin Connect and your photos are placed along each activity&rsquo;s GPS track</li>
+              <li>Activities appear on the day they happened in the trip, and every activity links back to its trip</li>
+              <li>One map of every route, with a heatmap and yearly stats</li>
             </ul>
-          </div>
-          <figure class="app-shot feature-shot">
-            <a href="/demo/#/overview" data-analiza-click="shot-overview"><img src="/img/apps/overview.webp" alt="Takeout Photo Overview: stat tiles (Total Photos 1,006; Holidays 4; Day Trips 1; Countries 6; Flights 10; Km Flown 10,478) and the Holiday days per year chart (2024: 7 days, 2025: 20 days)" width="2400" height="1560" loading="lazy" decoding="async"></a>
-            <figcaption>The overview page of the sample library. <a href="/demo/#/overview" data-analiza-click="shot-overview">Open in the live demo</a></figcaption>
-          </figure>
-        </div>
-
-        <div class="mini-grid">
-          <h3>Make it yours</h3>
-          <div><strong>Rename and annotate.</strong> Rename a trip, add notes, pick its cover, hide trips or photos you do not want to see. (Lifetime and Yearly)</div>
-          <div><strong>Fix your homes.</strong> Set or edit where you lived and re-run trip detection. (Lifetime and Yearly)</div>
-          <div><strong>Add your partner&rsquo;s photos.</strong> With Yearly, add someone else&rsquo;s Takeout: their photos join the trips you shared, marked with their colour.</div>
-          <div><strong>Deleted in Google Photos.</strong> Photos that disappeared from your newest export are listed so you can keep or remove them. (Lifetime and Yearly)</div>
-          <div><strong>Your edits survive.</strong> Import a newer export and trip names, notes, homes and hidden photos are kept.</div>
-        </div>
-
-        <p><a href="/google-photos-takeout/" data-analiza-click="more-timeline">More about browsing a Takeout as a timeline</a></p>
-      </section>
-
-      <!-- Activities tour -->
-      <section class="section tour" id="activities">
-        <div class="section-header">
-          <h2>Your photos on your Strava, Komoot and Garmin routes</h2>
-          <p>The Activities app matches the photos in your Takeout to your activities by capture time and puts each one on the GPS track.</p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-copy">
-            <h3>Every photo placed along the route</h3>
-            <ul>
-              <li>Each photo sits on the track with its distance and time; photos without GPS are placed by time</li>
-              <li>Best photos, a photo strip and an elevation profile with a marker for every photo</li>
-              <li>Splits and a link back to the activity on Strava</li>
-              <li>Photos you already uploaded to Strava are shown too, with duplicates hidden</li>
-            </ul>
+            <p class="h-more"><a href="/google-photos-strava/" data-analiza-click="more-activities">More about photos on your Strava, Komoot and Garmin activities</a></p>
           </div>
           <figure class="app-shot feature-shot">
             <a href="/demo/#/activities/1" data-analiza-click="shot-activity"><img src="/img/apps/strava.webp" alt="Takeout Photo activity page for the Rome evening ride: route map with photo markers and the Best photos strip (8 photos, 46.8 km, 3:55, 1055 m)" width="2400" height="1548" loading="lazy" decoding="async"></a>
-            <figcaption>One sample activity with its photos on the GPS track. <a href="/demo/#/activities/1" data-analiza-click="shot-activity">Open in the live demo</a></figcaption>
+            <figcaption>A ride from the Italy trip with its photos on the route. <a href="/demo/#/activities/1" data-analiza-click="shot-activity">Open in the live demo</a></figcaption>
           </figure>
         </div>
 
-        <div class="feature flip">
-          <div class="feature-copy">
-            <h3>One map of everything you did</h3>
-            <ul>
-              <li>Every route on one map, coloured by sport, with a heatmap mode</li>
-              <li>Filter by sport, year, country, duration or &ldquo;with photos&rdquo;</li>
-              <li>A Stats page totals distance, moving time and elevation per year and per sport</li>
-              <li>The link goes both ways: activities appear inside your trips, and each activity links to its trip</li>
-            </ul>
-          </div>
-          <figure class="app-shot feature-shot">
-            <a href="/demo/#/activities" data-analiza-click="shot-activities-map"><img src="/img/apps/activities-map.webp" alt="Takeout Photo Activities map zoomed to the Rome evening ride route, with the Activities in view list showing that ride (46.8 km, 8 photos)" width="2400" height="1512" loading="lazy" decoding="async"></a>
-            <figcaption>The activities map, here zoomed in on one ride. <a href="/demo/#/activities" data-analiza-click="shot-activities-map">Open the map in the live demo</a></figcaption>
-          </figure>
-        </div>
-
-        <div class="mini-grid">
-          <h3>Connecting your accounts</h3>
-          <div><strong>Strava.</strong> Official API, through your own free Strava API app; a step-by-step guide is built in.</div>
-          <div><strong>Komoot and Garmin Connect.</strong> Sign in with your own login; activities and tracks stay on your computer.</div>
-          <div><strong>No duplicates.</strong> The same activity recorded on two services is shown once.</div>
-        </div>
-
-        <p><a href="/google-photos-strava/" data-analiza-click="more-activities">More about photos on your Strava activities</a></p>
+        <ul class="h-facts">
+          <li><strong>Your travels in numbers.</strong> Countries, holiday days per year, flights and kilometres flown, on the <a href="/demo/#/overview" data-analiza-click="shot-overview">overview page</a>.</li>
+          <li><strong>Fix your homes.</strong> Set where you lived and when you moved, and trips are detected again.</li>
+          <li><strong>Add your partner&rsquo;s photos.</strong> On Yearly, another person&rsquo;s Takeout joins the trips you shared, in their own colour.</li>
+        </ul>
+        <p class="h-more"><a href="/google-photos-takeout/" data-analiza-click="more-timeline">More about browsing a Takeout as a timeline</a></p>
       </section>
 
-      <!-- Proton Photos sync tour -->
-      <section class="section tour" id="proton">
-        <div class="section-header">
-          <h2>Move your Google Photos to Proton Photos</h2>
-          <p>The sync app uploads the Google Photos part of your Takeout to Proton Photos in full original quality, with the dates, places and albums intact.</p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-copy">
-            <h3>Albums that make sense</h3>
-            <ul>
-              <li>Keep the albums as they are in your Takeout, or get one album per detected trip</li>
-              <li>Capture date, GPS, description, favourite and people are written from the sidecars into the files first, without re-encoding the pixels</li>
-              <li>Files without a capture date are flagged, with one-click date suggestions</li>
-              <li>Full original quality uploads through Proton's official Drive CLI</li>
-            </ul>
+      <!-- 3. Albums -->
+      <section class="h-chapter" id="albums">
+        <header class="h-chapter-head">
+          <span class="h-step-n" aria-hidden="true">3</span>
+          <div>
+            <h2>Turn your trips into albums in Apple Photos and Proton Photos</h2>
+            <p>Choose how your Google photos are organized once, and both destinations follow it. Your trips become albums you can open on your phone, in Photos or in Proton.</p>
           </div>
-          <figure class="app-shot feature-shot">
-            <a href="/demo/#/sync/albums" data-analiza-click="shot-sync-albums"><img src="/img/apps/sync.webp" alt="Takeout Photo Proton Photos sync albums table: six trip albums (Bern, Lisbon, Italy, Barcelona, Paris, Munich) with photo counts and an in Proton check each" width="2400" height="1110" loading="lazy" decoding="async"></a>
-            <figcaption>The sync albums table: one album per trip, each already in Proton. <a href="/demo/#/sync/albums" data-analiza-click="shot-sync-albums">Open in the live demo</a></figcaption>
+        </header>
+
+        <div class="h-albums-layout">
+          <div class="h-modes" role="group" aria-label="Album layouts you can choose in the app">
+            <div class="h-mode">
+              <h3>As in your Takeout</h3>
+              <p>Your Google albums stay albums. Everything else goes to the timeline, by date.</p>
+            </div>
+            <div class="h-mode h-mode-on">
+              <h3>Trip albums</h3>
+              <p>One album per detected trip, named like &ldquo;Holiday Lisbon, Portugal &ndash; August 2024&rdquo;. Pick holidays, day trips or both, and keep trip photos in their Google albums too if you like. Photos outside trips still go across, to the timeline and their Google albums.</p>
+            </div>
+          </div>
+
+          <figure class="h-album-list">
+            <table>
+              <caption class="visually-hidden">Trip albums from the sample library and whether each is in Apple Photos and Proton Photos</caption>
+              <thead><tr><th scope="col">Album</th><th scope="col">Photos</th><th scope="col" class="h-col-apple">Apple Photos</th><th scope="col" class="h-col-proton">Proton Photos</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><img src="/img/trips/paris-2.webp" alt="" width="560" height="420" loading="lazy" decoding="async"> Holiday Paris, France – July 2025</th><td>100</td><td class="h-yes-apple"><span class="visually-hidden">Yes</span></td><td class="h-yes-proton"><span class="visually-hidden">Yes</span></td></tr>
+                <tr><th scope="row"><img src="/img/trips/barcelona-2.webp" alt="" width="560" height="420" loading="lazy" decoding="async"> Holiday Barcelona, Spain – May 2025</th><td>125</td><td class="h-yes-apple"><span class="visually-hidden">Yes</span></td><td class="h-yes-proton"><span class="visually-hidden">Yes</span></td></tr>
+                <tr><th scope="row"><img src="/img/trips/florence-4.webp" alt="" width="560" height="420" loading="lazy" decoding="async"> Holiday Italy – April 2025</th><td>240</td><td class="h-yes-apple"><span class="visually-hidden">Yes</span></td><td class="h-yes-proton"><span class="visually-hidden">Yes</span></td></tr>
+                <tr><th scope="row"><img src="/img/trips/lisbon-2.webp" alt="" width="560" height="420" loading="lazy" decoding="async"> Holiday Lisbon, Portugal – August 2024</th><td>150</td><td class="h-yes-apple"><span class="visually-hidden">Yes</span></td><td class="h-yes-proton"><span class="visually-hidden">Yes</span></td></tr>
+                <tr><th scope="row"><img src="/img/trips/bern-2.webp" alt="" width="560" height="420" loading="lazy" decoding="async"> Day trip Bern, Switzerland – February 2024</th><td>16</td><td class="h-yes-apple"><span class="visually-hidden">Yes</span></td><td class="h-yes-proton"><span class="visually-hidden">Yes</span></td></tr>
+              </tbody>
+            </table>
+            <figcaption>Trip albums for the sample library. The Proton Photos side is in the <a href="/demo/#/sync/albums" data-analiza-click="shot-sync-albums">live demo</a>; Apple Photos needs the Mac app.</figcaption>
           </figure>
         </div>
 
-        <div class="mini-grid">
-          <h3>A sync you can stop, resume and undo</h3>
-          <div><strong>Pause and resume.</strong> Progress and time remaining are shown; an interrupted sync continues on the next start.</div>
-          <div><strong>Nothing is deleted.</strong> Re-runs skip what is already in Proton, and a sync never deletes anything in your Proton account.</div>
-          <div><strong>Change your mind.</strong> Revert sync moves what the app uploaded to the Proton trash.</div>
-          <div><strong>Only your own photos.</strong> Other people&rsquo;s Takeouts that you added never go to Proton.</div>
+        <ul class="h-facts">
+          <li><strong>No second copies in Apple Photos.</strong> A Google photo that is already in your Apple library is added to the trip album as it is, instead of being imported again.</li>
+          <li><strong>Favourites carry over.</strong> Photos you starred in Google Photos are favourites in Apple Photos too; Proton gets the favourite flag in the file.</li>
+          <li><strong>Only your own photos.</strong> Another person&rsquo;s Takeout that you added is used for the shared trips, never copied into your Apple or Proton account.</li>
+        </ul>
+      </section>
+
+      <!-- 4. Backup -->
+      <section class="h-chapter" id="backup">
+        <header class="h-chapter-head">
+          <span class="h-step-n" aria-hidden="true">4</span>
+          <div>
+            <h2>Back up your Google photos where you keep the rest</h2>
+            <p>The same run that builds the albums copies your Google photos across in full original quality. You can stop it at any point, and undo it.</p>
+          </div>
+        </header>
+
+        <div class="h-dest">
+          <div class="h-dest-col h-dest-apple">
+            <h3>Apple Photos <span>on your Mac, and iCloud Photos if you use it</span></h3>
+            <ul>
+              <li><strong>A report before anything changes.</strong> The app first checks your Takeout against your Apple library and shows what is already there, what it would import, and the few it is not sure about, side by side for you to decide.</li>
+              <li><strong>Only what is missing is imported.</strong> Live Photos and RAW+JPEG pairs arrive as one photo, videos as videos.</li>
+              <li><strong>Stops before your disk fills.</strong> The import pauses with a clear message when the library&rsquo;s disk runs low.</li>
+              <li><strong>Undo everything.</strong> One button moves what the app imported to Recently Deleted (kept 30 days) and removes the albums and favourites it added.</li>
+            </ul>
+          </div>
+          <div class="h-dest-col h-dest-proton" id="proton">
+            <h3>Proton Photos <span>end-to-end encrypted, in Proton&rsquo;s cloud</span></h3>
+            <ul>
+              <li><strong>Full original quality.</strong> Uploads go through Proton&rsquo;s official Drive CLI.</li>
+              <li><strong>Dates and places inside the files.</strong> Capture date, GPS, description and favourite are written into each file first, without re-encoding the pixels.</li>
+              <li><strong>Nothing is deleted.</strong> Re-runs skip what is already in Proton, and a sync never deletes anything in your account.</li>
+              <li><strong>Revert sync.</strong> Moves what the app uploaded to the Proton trash.</li>
+            </ul>
+            <p class="h-more"><a href="/google-photos-to-proton-photos/" data-analiza-click="more-proton">More about moving Google Photos to Proton Photos</a></p>
+          </div>
         </div>
 
-        <p><a href="/google-photos-to-proton-photos/" data-analiza-click="more-proton">More about moving Google Photos to Proton Photos</a></p>
+        <ul class="h-facts">
+          <li><strong>Pause and resume.</strong> Progress and time left are shown; an interrupted run carries on at the next start.</li>
+          <li><strong>After every new export.</strong> Turn on automatic sync and new Google photos go across after each import.</li>
+          <li><strong>Files without a date</strong> are flagged before they go anywhere, with one-click date suggestions.</li>
+        </ul>
       </section>
 
       <!-- Mid-page call to action -->
       <section class="cta-mid" aria-label="Live demo and download">
-        <p>Every screen above is in the live demo, with sample photos.</p>
+        <p>The timeline, the trips and the Proton Photos albums are all in the live demo, with sample photos.</p>
         <div class="hero-actions">
           <a href="/demo/#/timeline" class="btn btn-demo" data-analiza-click="mid-demo">Open the live demo</a>
           <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary dl-mac" data-analiza-click="mid-download-mac">Download for Mac</a>
@@ -511,7 +661,7 @@
       <section class="section" id="pricing">
         <div class="section-header">
           <h2>Pricing</h2>
-          <p>Start free: the demo and the sample library in the app need no account, and Lite is free for your 5 most recent holidays. Lifetime and Yearly unlock your whole library and all three apps; updates are free for everyone.</p>
+          <p>Start free: the demo and the sample library in the app need no account, and Lite is free for your 5 most recent holidays. Lifetime and Yearly unlock your whole library, the trip albums and backups, and the Activities app. Updates are free for everyone.</p>
         </div>
         <div class="plans">
           <div class="plan">
@@ -519,10 +669,10 @@
             <p class="plan-price">Free <span class="plan-price-note">no account or licence needed</span></p>
             <ul>
               <li>Your 5 most recent holidays in the photo timeline, plus the home periods and day trips in that span (the app shows &ldquo;5 of N holidays&rdquo;).</li>
-              <li>No account or licence needed.</li>
               <li>Import your own Takeout manually: a local folder of .tgz/.zip archives, including a newer export later.</li>
+              <li>On a Mac, one import of your 500 most recent Apple Photos.</li>
               <li>Read-only (no renaming, curating or hiding trips, no editing homes) and no automatic imports.</li>
-              <li>Activity matching (Strava/Komoot/Garmin) and the Proton Photos move are on the paid plans.</li>
+              <li>Albums and backups in Apple Photos and Proton Photos, and activity matching, are on the paid plans.</li>
             </ul>
             <a href="#download" class="btn btn-secondary plan-cta" data-analiza-click="plan-lite-cta">Download free</a>
           </div>
@@ -530,10 +680,11 @@
             <h3>Lifetime</h3>
             <p class="plan-price">USD 25 / EUR 20 <span class="plan-price-note">one-time, no subscription</span></p>
             <ul>
-              <li>All three apps: Photos timeline, Activities (Strava, Komoot, Garmin) and Proton Photos sync.</li>
-              <li>Import your Takeout manually: from a folder on disk, a Google Drive link, read-only Google sign-in, or a Proton Drive folder.</li>
-              <li>Unlocks your whole library, no photo limits: the rest of your photos are processed in the background, without re-importing.</li>
-              <li>Importing a newer Takeout export rebuilds the library from it, and your edits (hidden photos, trip names and notes, homes, people) are kept.</li>
+              <li>Your whole library: every trip, every photo, from your Takeout and your whole Apple Photos library.</li>
+              <li>Trip albums and backups in Proton Photos and, on the Mac, Apple Photos.</li>
+              <li>Activities: your photos on your Strava, Komoot and Garmin Connect routes.</li>
+              <li>Import your Takeout from a folder, a Google Drive link, read-only Google sign-in, or a Proton Drive folder; <em>Check for new photos</em> brings in what is new in Apple Photos.</li>
+              <li>A newer Takeout export rebuilds the library, and your edits (hidden photos, trip names and notes, homes, people) are kept.</li>
               <li>All app updates included.</li>
             </ul>
             <a href="#download" class="btn btn-secondary plan-cta" data-analiza-click="plan-lifetime-cta">Download the app</a>
@@ -545,14 +696,15 @@
             <p class="plan-price-sub">then USD 12.50/year: renewals are 50% off, automatically</p>
             <ul>
               <li>Everything in Lifetime.</li>
-              <li>Automatic processing: the folder watcher imports new exports as they land, newer exports import incrementally (no rebuild), and you can add contributors (other people's Takeouts, e.g. a partner's).</li>
+              <li>Automatic processing: new Takeout exports are imported as they land in your folder, newer exports import incrementally (no rebuild), and new Apple Photos come in by themselves.</li>
+              <li>Add contributors: other people&rsquo;s Takeouts, like a partner&rsquo;s, join the trips you shared.</li>
               <li>The first paid year includes the Lifetime licence: if you cancel, you keep it.</li>
             </ul>
             <a href="#download" class="btn plan-cta" data-analiza-click="plan-yearly-cta">Download the app</a>
             <p class="plan-buy-note">Buy in the app: Settings &rarr; Account</p>
           </div>
         </div>
-        <p class="plan-help">Not sure? Lifetime is enough unless you want newer exports imported automatically or a partner&rsquo;s photos in your trips.</p>
+        <p class="plan-help">Not sure? Lifetime is enough unless you want new photos and exports picked up automatically, or a partner&rsquo;s photos in your trips.</p>
         <table class="price-table">
           <caption>Lite is free, no account needed. Prices for the paid plans include taxes; the currency is picked from your country at checkout. The Yearly plan is billed at the full price for the first year, then every renewal is automatically 50% off.</caption>
           <thead>
@@ -569,112 +721,16 @@
         <p>Buy inside the app: open Settings → Account, sign in with Google or Apple, choose a plan and pay. Prices include taxes. Cancel any time from the app's "Manage subscription" button. For a refund, email <a href="mailto:hello@takepho.com">hello@takepho.com</a> and we will sort it out.</p>
       </section>
 
-      <!-- How it works: the archive -> processing -> apps flow -->
-      <section class="section" id="how">
-        <div class="section-header">
-          <h2>From Takeout archive to timeline in three steps</h2>
-        </div>
-        <div class="flow">
-          <div class="flow-stage" style="--d:0">
-            <h3><span class="flow-num">1</span> Request your Takeout</h3>
-            <svg class="flow-illo" width="120" height="60" viewBox="0 0 120 60" fill="none" aria-hidden="true">
-              <rect x="12" y="38" width="92" height="16" rx="3" stroke="currentColor" stroke-width="2"/>
-              <rect x="19" y="22" width="92" height="16" rx="3" stroke="currentColor" stroke-width="2" style="fill:var(--surface)"/>
-              <rect x="26" y="6" width="92" height="16" rx="3" stroke="currentColor" stroke-width="2" style="fill:var(--surface)"/>
-              <path d="M32 14h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            <p><a href="https://takeout.google.com">takeout.google.com</a> delivers your export as one or more archive files:</p>
-            <p>takeout-001.zip, takeout-002.zip, ...</p>
-          </div>
-          <div class="flow-arrow" aria-hidden="true">
-            <svg width="28" height="16" viewBox="0 0 28 16" fill="none"><path d="M2 8h22m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="flow-stage" style="--d:1">
-            <h3><span class="flow-num">2</span> Takeout Photo processes it</h3>
-            <svg class="flow-illo" width="120" height="60" viewBox="0 0 120 60" fill="none" aria-hidden="true">
-              <path d="M22 24h76v24a4 4 0 0 1-4 4H26a4 4 0 0 1-4-4V24z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              <path d="M22 24l8-12h60l8 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              <rect x="46" y="30" width="28" height="17" rx="2" stroke="currentColor" stroke-width="2"/>
-              <circle cx="53" cy="36" r="2" style="fill:currentColor"/>
-              <path d="M48 45l7-6 5 4 5-5 7 7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-            </svg>
-            <p>On your computer, not in the cloud:</p>
-            <ul>
-              <li>Reads .zip/.tgz archives in place, without unpacking them</li>
-              <li>Real dates, GPS and descriptions from the JSON sidecars</li>
-              <li>Handles libraries of hundreds of GB; newer exports merge in</li>
-              <li>Interrupted imports resume where they left off</li>
-              <li>Your photos are never uploaded to our servers</li>
-            </ul>
-          </div>
-          <div class="flow-arrow" aria-hidden="true">
-            <svg width="28" height="16" viewBox="0 0 28 16" fill="none"><path d="M2 8h22m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="flow-stage" style="--d:2">
-            <h3><span class="flow-num">3</span> Explore in Takeout Photo</h3>
-            <svg class="flow-illo" width="120" height="60" viewBox="0 0 120 60" fill="none" aria-hidden="true">
-              <rect x="6" y="8" width="32" height="44" rx="4" stroke-width="2" style="stroke:var(--app-photos)"/>
-              <circle cx="22" cy="24" r="5" style="fill:var(--app-photos)"/>
-              <rect x="44" y="8" width="32" height="44" rx="4" stroke-width="2" style="stroke:var(--app-strava)"/>
-              <circle cx="60" cy="24" r="5" style="fill:var(--app-strava)"/>
-              <rect x="82" y="8" width="32" height="44" rx="4" stroke-width="2" style="stroke:var(--app-sync)"/>
-              <circle cx="98" cy="24" r="5" style="fill:var(--app-sync)"/>
-            </svg>
-            <ul class="flow-apps">
-              <li><span class="app-dot" style="--hue:var(--app-photos)"></span> Photos timeline</li>
-              <li><span class="app-dot" style="--hue:var(--app-strava)"></span> Activities</li>
-              <li><span class="app-dot" style="--hue:var(--app-sync)"></span> Proton Photos sync</li>
-            </ul>
-          </div>
-        </div>
-        <p class="flow-caption">The built-in apps open for the data your export contains.</p>
-
-        <div class="feature">
-          <div class="feature-copy">
-            <h3>Import without unpacking anything</h3>
-            <ul>
-              <li>Point the app at a folder of Takeout archives, a Google Drive link, a Proton Drive folder, or sign in with Google and pick the files (read-only). Lite imports from a local folder.</li>
-              <li>Every import shows its steps as a checklist, and picks up where it left off after a restart</li>
-              <li>The Takeout page shows what your export contains: products, archives, photos, videos and metadata files</li>
-              <li>Try it first with the built-in sample library</li>
-            </ul>
-          </div>
-          <figure class="app-shot feature-shot">
-            <a href="/demo/#/takeout" data-analiza-click="shot-takeout"><img src="/img/apps/takeout.webp" alt="Takeout Photo Takeout page: the three import sources (Local folder, Drive link, Google account) and the Ingestion checklist, all ticked, Completed" width="2400" height="1530" loading="lazy" decoding="async"></a>
-            <figcaption>The Takeout page of the sample library, import completed. <a href="/demo/#/takeout" data-analiza-click="shot-takeout">Open in the live demo</a></figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <!-- Built for big libraries -->
-      <section class="section" id="scale">
-        <div class="section-header">
-          <h2>Built for big libraries</h2>
-          <p>Figures from the real library the app is developed against.</p>
-        </div>
-        <div class="stats">
-          <div class="stat"><span class="stat-num">249 GB</span><span class="stat-label">of Takeout archives, about 34,000 photos</span></div>
-          <div class="stat"><span class="stat-num">0 GB</span><span class="stat-label">unpacked: archives are read in place, originals are never copied</span></div>
-          <div class="stat"><span class="stat-num">13 GB</span><span class="stat-label">of thumbnails, previews, index and database for that library</span></div>
-          <div class="stat"><span class="stat-num">1 min</span><span class="stat-label">to re-read the inventory of 233 GB of archives (after the first import)</span></div>
-        </div>
-        <ul class="scale-list">
-          <li>Browsing needs only the local previews. Full-resolution originals are read from the archives on demand, so keep the archives reachable (in your folder or on Drive).</li>
-          <li>When a newer export replaces an old one, remove the app&rsquo;s local copies of the old one with one button to free the space. Files in your own folder and on Drive are never deleted.</li>
-          <li>The AI model (about 578 MB) downloads once and runs on your computer, on the GPU when there is one.</li>
-        </ul>
-      </section>
-
-      <!-- Platforms -->
+      <!-- Platforms, privacy and scale -->
       <section class="section" id="platforms">
         <div class="section-header">
-          <h2>Runs where you keep your photos</h2>
-          <p>The desktop app runs on your Mac or Windows. On a home server or NAS, run the Docker image with Docker Compose and open it in your browser on your network.</p>
+          <h2>Runs on your computer, not in our cloud</h2>
+          <p>Your photos are read and processed on your Mac, your Windows PC or your own NAS, and never uploaded to our servers. They only leave your computer when you sync them to Proton Photos or iCloud Photos.</p>
         </div>
         <div class="platforms">
           <div class="platform">
             <h3>Mac</h3>
-            <p>Apple silicon Mac (M1 or later) with macOS 12 (Monterey) or later. Signed with an Apple Developer ID and notarized by Apple.</p>
+            <p>Apple silicon Mac (M1 or later) with macOS 12 (Monterey) or later. Signed with an Apple Developer ID and notarized by Apple. The only version that works with Apple Photos.</p>
             <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary" data-analiza-click="platform-download-mac">Download for Mac</a>
           </div>
           <div class="platform">
@@ -690,18 +746,11 @@
             <a href="/self-host/" class="text-link" data-analiza-click="platform-self-host">Self-hosting guide</a>
           </div>
         </div>
-      </section>
-
-      <!-- Privacy -->
-      <section class="section" id="privacy">
-        <div class="section-header">
-          <h2>Private by design</h2>
-        </div>
-        <div class="mini-grid cols-2">
-          <div><strong>Processed on your computer.</strong> Your photos are never uploaded to our servers.</div>
+        <div class="mini-grid cols-2" id="privacy">
           <div><strong>Read-only Google access.</strong> Limited to the Takeout files you pick, and you can revoke it any time.</div>
+          <div><strong>Your Apple library stays yours.</strong> Nothing is written to Apple Photos until you confirm the first import, and every change can be undone.</div>
           <div><strong>No tracking in the app.</strong> No analytics and no ads.</div>
-          <div><strong>Your accounts stay yours.</strong> Activities and tracks from Strava, Komoot and Garmin are stored only on your computer.</div>
+          <div><strong>Built for big libraries.</strong> A real 249 GB Takeout of about 34,000 photos needs about 13 GB of previews, index and database; the archives are never unpacked.</div>
         </div>
         <p><a href="privacy.html" data-analiza-click="privacy-policy">Read the full privacy policy</a></p>
       </section>
@@ -710,7 +759,7 @@
       <section class="section coming-next">
         <h2>Coming next</h2>
         <ul>
-          <li>More sync destinations: Proton Photos is the first, others will follow</li>
+          <li>More sync destinations beyond Proton Photos and Apple Photos</li>
           <li>Support for more of your Takeout: Google Drive and Google Docs files, not just the Google Photos part</li>
         </ul>
       </section>
@@ -722,11 +771,27 @@
         </div>
         <details class="faq-item">
           <summary>Is it a web app?</summary>
-          <p class="faq-answer">No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos stay on your computer unless you choose to sync them to Proton Photos.</p>
+          <p class="faq-answer">No. It is a desktop app for Mac and Windows, and there is a Docker image you can run on a NAS. Your photos stay on your computer unless you choose to sync them to Proton Photos or Apple Photos.</p>
         </details>
         <details class="faq-item">
           <summary>Is there a phone app?</summary>
-          <p class="faq-answer">No. Takeout Photo is a desktop app for Mac and Windows. If you run the Docker image on a NAS or home server, you can open it in the browser of any device on your network, including a phone.</p>
+          <p class="faq-answer">No. Takeout Photo is a desktop app for Mac and Windows. The trip albums it builds in Apple Photos and Proton Photos are on your phone through those apps. If you run the Docker image on a NAS or home server, you can open it in the browser of any device on your network, including a phone.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can it import my Apple Photos library?</summary>
+          <p class="faq-answer">Yes, in the Mac app. Give it access to your Photos library and your Apple photos join the same timeline as your Takeout, with each photo that is in both shown once. Photos stored in iCloud are shown from their previews, and originals download only if you allow it. Lite imports your 500 most recent Apple photos once; Lifetime imports the whole library and has a &ldquo;Check for new photos&rdquo; button; Yearly picks up new photos by itself. The Windows app and the Docker image do not read Apple Photos.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I organize my trips into albums in Apple Photos or Proton Photos?</summary>
+          <p class="faq-answer">Yes, with Lifetime or Yearly. Choose &ldquo;Trip albums&rdquo; and every detected holiday or day trip becomes an album, or keep the albums as they are in your Takeout. The same layout is used in Proton Photos and, on the Mac, in Apple Photos. The albums are built from the Google photos in your Takeout.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Will copying my Google photos into Apple Photos create duplicates?</summary>
+          <p class="faq-answer">No. The app first checks every Google photo against your Apple library and shows a report: what is already there, what it would import, and the few it is not sure about, side by side for you to decide. Only the missing photos are imported; a photo that is already there gets the Google albums and favourite added instead. Nothing is written before you confirm, and &ldquo;Undo everything this app did in Apple Photos&rdquo; moves the imported photos to Recently Deleted.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I move my Google Photos to Proton Photos?</summary>
+          <p class="faq-answer">The sync app moves the Google Photos part of your Takeout into Proton Photos in full original quality, keeping albums (or making trip albums) and writing dates, GPS and descriptions from the JSON sidecars into the files first. See <a href="/google-photos-to-proton-photos/" data-analiza-click="faq-guide-proton">moving Google Photos to Proton Photos</a>.</p>
         </details>
         <details class="faq-item">
           <summary>Which computers does it run on?</summary>
@@ -750,11 +815,11 @@
         </details>
         <details class="faq-item">
           <summary>Do I need to pay?</summary>
-          <p class="faq-answer">No, not for Lite: it is free for your 5 most recent holidays (photo timeline only, no account needed). A paid plan (Lifetime or Yearly) unlocks the full library with no photo limits and the other apps (activity matching, Proton Photos move).</p>
+          <p class="faq-answer">No, not for Lite: it is free for your 5 most recent holidays (photo timeline only, no account needed). A paid plan (Lifetime or Yearly) unlocks the full library with no photo limits, the trip albums and backups in Apple Photos and Proton Photos, and activity matching.</p>
         </details>
         <details class="faq-item">
           <summary>What is Lite?</summary>
-          <p class="faq-answer">Lite is the free plan: no account or licence needed. Import your own Google Takeout manually (a local folder of .tgz/.zip archives, including a newer export later) and get the photo timeline only, read-only, limited to your 5 most recent holidays plus the home periods and day trips in that span (the app shows &ldquo;5 of N holidays&rdquo;). Activity matching (Strava/Komoot/Garmin) and the Proton Photos move stay on the paid plans. Buying Lifetime or Yearly unlocks the whole library: the rest of the photos are processed in the background, without re-importing.</p>
+          <p class="faq-answer">Lite is the free plan: no account or licence needed. Import your own Google Takeout manually (a local folder of .tgz/.zip archives, including a newer export later) and, on a Mac, your 500 most recent Apple photos once, and get the photo timeline only, read-only, limited to your 5 most recent holidays plus the home periods and day trips in that span (the app shows &ldquo;5 of N holidays&rdquo;). Albums and backups in Apple Photos and Proton Photos, and activity matching (Strava/Komoot/Garmin), stay on the paid plans. Buying Lifetime or Yearly unlocks the whole library: the rest of the photos are processed in the background, without re-importing.</p>
         </details>
         <details class="faq-item">
           <summary>Can I rename or hide trips?</summary>
@@ -782,7 +847,7 @@
         </details>
         <details class="faq-item">
           <summary>Does it show videos and HEIC photos?</summary>
-          <p class="faq-answer">HEIC photos are decoded on your computer and shown like any other photo. The timeline shows photos today; videos in your Takeout are counted in the inventory and uploaded by the Proton Photos sync.</p>
+          <p class="faq-answer">HEIC photos are decoded on your computer and shown like any other photo. The timeline shows photos today; videos in your Takeout are counted in the inventory and copied across by the Proton Photos and Apple Photos sync.</p>
         </details>
         <details class="faq-item">
           <summary>Why are the dates wrong after unzipping a Google Takeout?</summary>
@@ -793,20 +858,16 @@
           <p class="faq-answer">Yes. The Activities app matches your Google Photos from the Takeout to each activity by capture time and places every photo along the GPS track ("km 12.3 · 10:42"). See <a href="/google-photos-strava/" data-analiza-click="faq-guide-strava">photos on your Strava activities</a> — Komoot and Garmin Connect work the same way.</p>
         </details>
         <details class="faq-item">
-          <summary>How do I move my Google Photos to Proton Photos?</summary>
-          <p class="faq-answer">The sync app moves the Google Photos part of your Takeout into Proton Photos in full original quality, keeping albums (or making trip albums) and writing dates, GPS and descriptions from the JSON sidecars into the files first. See <a href="/google-photos-to-proton-photos/" data-analiza-click="faq-guide-proton">moving Google Photos to Proton Photos</a>.</p>
-        </details>
-        <details class="faq-item">
           <summary>Does it work with Google Drive or Docs from my Takeout?</summary>
-          <p class="faq-answer">Not yet. Today it uses the Google Photos part of your Takeout, plus Location History where your export has it. Support for Google Drive and Google Docs files is coming, and the sync app will add more destinations beyond Proton Photos.</p>
+          <p class="faq-answer">Not yet. Today it uses the Google Photos part of your Takeout, plus Location History where your export has it. Support for Google Drive and Google Docs files is coming, and the sync app will add more destinations beyond Proton Photos and Apple Photos.</p>
         </details>
         <details class="faq-item">
           <summary>Can I add someone else's Takeout, like my partner's?</summary>
-          <p class="faq-answer">Yes. With the yearly plan you can add contributors (other people's Takeouts, e.g. a partner's), so their photos attach to the trips you shared.</p>
+          <p class="faq-answer">Yes. With the yearly plan you can add contributors (other people's Takeouts, e.g. a partner's), so their photos attach to the trips you shared. Their photos are never synced to your Proton Photos or Apple Photos.</p>
         </details>
         <details class="faq-item">
           <summary>What happens when the yearly plan ends?</summary>
-          <p class="faq-answer">You keep the Lifetime licence (the first paid year includes it). Manual imports keep working forever, and importing a newer export still rebuilds your library with your edits kept. The automatic-processing features (folder watcher, incremental imports of newer exports, new contributors) stop while the subscription is inactive; existing contributors stay visible. You can re-subscribe any time.</p>
+          <p class="faq-answer">You keep the Lifetime licence (the first paid year includes it). Manual imports keep working forever, and importing a newer export still rebuilds your library with your edits kept. The automatic-processing features (folder watcher, incremental imports of newer exports, automatic Apple Photos updates, new contributors) stop while the subscription is inactive; existing contributors stay visible. You can re-subscribe any time.</p>
         </details>
         <details class="faq-item">
           <summary>Does the yearly price go up?</summary>
@@ -820,15 +881,37 @@
 
       <!-- Closing call to action -->
       <section class="cta-final">
-        <h2>See it with sample photos, then try it on your own Takeout.</h2>
+        <h2>See your trips with sample photos, then try it on your own.</h2>
         <p>The demo runs in your browser. The app is free to download, and Lite needs no account.</p>
         <div class="hero-actions">
-          <a href="/demo/#/timeline" class="btn btn-demo" data-analiza-click="final-demo">Open the live demo</a>
-          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary dl-mac" data-analiza-click="final-download-mac">Download for Mac</a>
-          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary dl-win" data-analiza-click="final-download-win">Download for Windows</a>
-          <button type="button" class="btn btn-secondary dl-send" data-analiza-click="final-send-link" hidden>Send the link to my computer</button>
+          <a href="/demo/#/timeline" class="btn btn-demo h-btn-light" data-analiza-click="final-demo">Open the live demo</a>
+          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg" class="btn btn-secondary h-btn-ghost dl-mac" data-analiza-click="final-download-mac">Download for Mac</a>
+          <a href="https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe" class="btn btn-secondary h-btn-ghost dl-win" data-analiza-click="final-download-win">Download for Windows</a>
+          <button type="button" class="btn btn-secondary h-btn-ghost dl-send" data-analiza-click="final-send-link" hidden>Send the link to my computer</button>
         </div>
       </section>
+
+      <details class="h-credits">
+        <summary>Photo credits</summary>
+        <p>The sample photos on this page are from Wikimedia Commons, cropped, and used under their own licences:</p>
+        <ul>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Arena,_Barcelona_(P1170630-RR).jpg">Arena, Barcelona (P1170630-RR)</a> by Matti Blume, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC BY-SA 4.0</a></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Barcelona_-_Arenas_de_Barcelona_-_oben_001.jpg">Barcelona - Arenas de Barcelona - oben 001</a> by Mummelgrummel, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Barcelona_-_Nacht_-_Placa_Reial_004.jpg">Barcelona - Nacht - Placa Reial 004</a> by Mummelgrummel, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Bernisches_Historisches_Museum.jpg">Bernisches Historisches Museum</a> by August Geyler, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Aare,_Nydeggkirche_%26_Untertorbr%C3%BCcke_in_Bern.jpg">Aare, Nydeggkirche &amp; Untertorbrücke in Bern</a> by JoachimKohler-HB, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Cityscape_of_Florence_in_the_Night.jpg">Cityscape of Florence in the Night</a> by Architas, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:CoA_Fa%C3%A7ade_Palazzo_Vecchio_Florence.jpg">CoA Façade Palazzo Vecchio Florence</a> by Jebulon, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Arco_Triunfal_da_Rua_Augusta,_Plaza_del_Comercio,_Lisboa,_Portugal,_2012-05-12,_DD_02.JPG">Arco Triunfal da Rua Augusta, Plaza del Comercio, Lisboa, Portugal, 2012-05-12, DD 02</a> by Diego Delso, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Old_Arsenal_da_Marinha_and_Doca_da_Caldeirinha,_Cais_do_Sodr%C3%A9,_Lisbon,_Portugal_julesvernex2.jpg">Old Arsenal da Marinha and Doca da Caldeirinha, Cais do Sodré, Lisbon, Portugal julesvernex2</a> by Jules Verne Times Two, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Moored_Bojador,_Vera_Cruz,_and_Atyla,_Doca_de_Alc%C3%A2ntara,_Lisbon,_Portugal_julesvernex2.jpg">Moored Bojador, Vera Cruz, and Atyla, Doca de Alcântara, Lisbon, Portugal julesvernex2</a> by Jules Verne Times Two, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Batofar_Paris_Richard_Bartz.jpg">Batofar Paris Richard Bartz</a> by Richard Bartz, Munich aka Makro Freak, <a href="https://creativecommons.org/licenses/by-sa/2.5">CC BY-SA 2.5</a></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Bir-Hakeim_bridge,_Paris_24_June_2021.jpg">Bir-Hakeim bridge, Paris 24 June 2021</a> by Pierre Blaché from Paris, France, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Bas%C3%ADlica_del_Sagrado_Coraz%C3%B3n,_Par%C3%ADs,_Francia,_2022-10-30,_DD_20.jpg">Basílica del Sagrado Corazón, París, Francia, 2022-10-30, DD 20</a> by Diego Delso, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Bas%C3%ADlica_de_Santa_Mar%C3%ADa_la_Mayor,_Roma,_Italia,_2022-09-16,_DD_01.jpg">Basílica de Santa María la Mayor, Roma, Italia, 2022-09-16, DD 01</a> by Diego Delso, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Bridge_Umberto_I_in_Rome.jpg">Bridge Umberto I in Rome</a> by Livioandronico2013, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+        </ul>
+      </details>
     </div>
   </main>
 
@@ -848,7 +931,7 @@
       </div>
     </div>
     <div class="footer-notice">
-      Google, Google Photos, Google Drive and Google Takeout are trademarks of Google LLC. Strava is a trademark of Strava, Inc. Komoot is a trademark of komoot GmbH. Garmin and Garmin Connect are trademarks of Garmin Ltd. Proton and Proton Photos are trademarks of Proton AG. Takeout Photo is not affiliated with or endorsed by Google, Strava, Komoot, Garmin or Proton.
+      Google, Google Photos, Google Drive and Google Takeout are trademarks of Google LLC. Apple, Apple Photos, iCloud and Mac are trademarks of Apple Inc. Strava is a trademark of Strava, Inc. Komoot is a trademark of komoot GmbH. Garmin and Garmin Connect are trademarks of Garmin Ltd. Proton and Proton Photos are trademarks of Proton AG. Takeout Photo is not affiliated with or endorsed by Google, Apple, Strava, Komoot, Garmin or Proton.
     </div>
   </footer>
 
