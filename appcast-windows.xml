@@ -3,6 +3,8 @@
 
 
 
+
+  
   
   
   
@@ -10,23 +12,49 @@
 
 
 
+
+    
     
     
     
     <item>
-      <title>Takeout Photo 1.3.0</title>
-      <pubDate>Sat, 14 Nov 2026 09:28:57 GMT</pubDate>
-      <description><![CDATA[<p>- <strong>Proton Drive can now be the Takeout source</strong> (decision 2026-11-09) — a new "Proton Drive" tab on the Takeout source card (owner only, one folder): sign in with the same Proton session the Sync app uses, browse My Files and pick the folder with the export archives (.tgz/.tar.gz/.zip). The app lists the archives in it, downloads them in parallel resumable segments (SHA-1-verified against Proton's claimed digest, cancellable), ingests them like any other source, and reads originals straight from Proton Drive on demand when there is no local copy. All access goes through the <code>takepho-proton</code> helper (0.3.0), which gained <code>drive.root</code>/<code>drive.list</code>/<code>drive.node</code>/<code>drive.read_range</code> over the pinned Proton Drive SDK's <code>ProtonDriveClient</code>; archives uploaded by older Proton clients (no claimed block sizes) can't be range-read — re-upload them or use a local folder. - <strong>Drive .zip exports can now be imported without downloading them</strong> (decision 2026-11-09, #82) — with the new "Only fetch new files from .zip exports" toggle on the Takeout source card (Drive link / Google account tabs), a <code>.zip</code> export that is only on Drive is not downloaded at all: its directory is read over HTTP Range and only files not already imported are fetched (one Range request per file). Photos are recognised by a CRC32 + size stored on their database rows (seeded by any import, including <code>.tgz</code>), metadata sidecars by their persisted CRC32 + size, and skipped sidecars are only read if a new photo needs them. One ingest of any export (<code>.tgz</code> or <code>.zip</code>) seeds those CRCs, so the first <code>.zip</code> export after an earlier library without them is still fetched in full — only later exports skip. <code>.tgz</code> exports are always downloaded in full (gzip cannot be read randomly), and the originals of skipped files stay on Drive, so keep those exports there. The Proton sync index likewise no longer re-reads unchanged <code>.zip</code> sidecars. - <strong>The pinned exiftool (13.60) now ships inside every build</strong> (decision 2026-11-05) — the staged upload bytes depend on the exiftool version, so the Docker images no longer apt-install Debian's <code>libimage-exiftool-perl</code> (not 13.60, and drifting on every rebuild): a new <code>exiftool-fetch</code> stage of <code>docker/Dockerfile</code> installs the pinned exiftool at <code>/opt/exiftool</code> (SHA-256-verified at build time, <code>EXIFTOOL_BUNDLED_DIR=/opt/exiftool</code>, <code>perl</code> package for the runtime), and the macOS/Windows desktop apps bundle it next to the executable. Everything fetches it through the new <code>scripts/fetch_exiftool.py</code>, which verifies the download against the digests embedded in the app (<code>EXIFTOOL_PINNED_SHA256</code>) and extracts with the same safe extraction code as the in-app install; CI's "Install pinned exiftool" step uses the same script (no hardcoded version/digest in the workflow). The in-app install (<code>POST /api/sync/exiftool/install</code>) remains as the fallback for source checkouts / Linux without a bundle, and the sync Settings card now shows where the resolved exiftool comes from (bundled / app install / PATH / <code>EXIFTOOL</code>) and warns when its version is not the pinned one — the staged upload bytes would then differ from the pinned version, so a re-sync may duplicate photos in Proton. - <strong>Sync app: fixed the in-app exiftool install (and CI's pinned-exiftool step)</strong> — exiftool.org's <code>checksums.txt</code> only lists the latest release, so once 13.61 shipped it could no longer verify the pinned 13.60 the app installs (the staged upload bytes depend on that version). The pinned version's official SHA-256 digests are now embedded in the app (<code>EXIFTOOL_PINNED_SHA256</code>) and hardcoded in the CI step, with a test keeping them in sync; the now-unused <code>EXIFTOOL_BASE_URL</code> setting was removed (decision 2026-11-05). - <strong>Sync app: the default Proton Photos backend is now the Proton Drive SDK (our own <code>takepho-proton</code> helper), not the Proton Drive CLI</strong> (decision 2026-11-04, #54) — after a full live-verified sync on the real account on 2026-11-03 (5,666 photos uploaded, 0 failed, 267 albums, 33,733 album memberships; including 98 .dng RAW files the CLI silently skipped, 4,127 HEIC, 709 videos, 2,431 Live Photo pairs and 946 burst frames, all with previews and links). The sdk backend uploads through a pool of 5 concurrent requests, renders thumbnails for HEIC/video/RAW, links Live Photo clips and burst frames, and manages albums — and its helper binary now ships bundled in the Docker images and the desktop apps, so no separate tool install is needed. The UI shows "Proton Drive SDK" as the default option and the <strong>Proton Drive CLI as a legacy fallback that will be removed in a future release</strong> (it remains selectable for one release; it is removed together with its installer in the release after next). Existing installs switch automatically on first start unless photos were already uploaded through the CLI (those keep the CLI, since its session and the recorded remote ids live there); choosing a backend explicitly in Settings is always respected. The import-folder backend (Proton Drive for Windows) is unchanged.</p>]]></description>
-      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.3.0/TakeoutPhoto-1.3.0-windows-x64-setup.exe" length="266363853" type="application/octet-stream" sparkle:version="1003000000052" sparkle:shortVersionString="1.3.0" sparkle:minimumSystemVersion="10.0" sparkle:edSignature="w4JzEIvo3/3eZ82ib7UqY3MLlS2PIIHUFhNw2zm1Nh17B/DfgeAAvd0V5I+PkeKryN72njG3TJCMmD6JBefUBA==" sparkle:os="windows" sparkle:installerArguments="/SILENT /SP- /NOCANCEL /SUPPRESSMSGBOXES /NORESTART"/>
+      <title>Takeout Photo 1.3.1</title>
+      <pubDate>Sun, 15 Nov 2026 08:28:34 GMT</pubDate>
+      <description><![CDATA[<p>- <strong>Google Drive sign-in opens in your system browser in the desktop app</strong> — the Google account source no longer runs OAuth inside the embedded window. - <strong>Licence handling polish while on Lite / signed out</strong> — the licence banner link is labelled per state, the app no longer polls licence-gated endpoints while unlicensed, the CLIP model banner no longer hangs on "Downloading…" (a failed auto-start shows an error with Retry), and the licence re-validation loop restarts on sign-in and stops gated services when the licence expires. - <strong>Fresh installs show no source as "Active"</strong> until one is configured (no Active chip, no "currently imported from" notice, no failing preview request). - CI/build only: self-hosted macOS runner support, Node 20 action upgrades, CPU-quota-aware pytest workers.</p>]]></description>
+      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.3.1/TakeoutPhoto-1.3.1-windows-x64-setup.exe" length="266383649" type="application/octet-stream" sparkle:version="1003001000072" sparkle:shortVersionString="1.3.1" sparkle:minimumSystemVersion="10.0" sparkle:edSignature="zc1jIFuRIDPZYupjtK6Q0ajYP2rF6a23hx+y0+W5CgoHeJGNNTqRJHz9xuTPJvJWHy428yUuhVPN61dbhL+bBQ==" sparkle:os="windows" sparkle:installerArguments="/SILENT /SP- /NOCANCEL /SUPPRESSMSGBOXES /NORESTART"/>
     </item>
     <item>
 
       
+      <title>Takeout Photo 1.3.0</title>
+
+      
+      <pubDate>Sat, 14 Nov 2026 09:28:57 GMT</pubDate>
+
+      
+      <description>&lt;p&gt;- &lt;strong&gt;Proton Drive can now be the Takeout source&lt;/strong&gt; (decision 2026-11-09) — a new "Proton Drive" tab on the Takeout source card (owner only, one folder): sign in with the same Proton session the Sync app uses, browse My Files and pick the folder with the export archives (.tgz/.tar.gz/.zip). The app lists the archives in it, downloads them in parallel resumable segments (SHA-1-verified against Proton's claimed digest, cancellable), ingests them like any other source, and reads originals straight from Proton Drive on demand when there is no local copy. All access goes through the &lt;code&gt;takepho-proton&lt;/code&gt; helper (0.3.0), which gained &lt;code&gt;drive.root&lt;/code&gt;/&lt;code&gt;drive.list&lt;/code&gt;/&lt;code&gt;drive.node&lt;/code&gt;/&lt;code&gt;drive.read_range&lt;/code&gt; over the pinned Proton Drive SDK's &lt;code&gt;ProtonDriveClient&lt;/code&gt;; archives uploaded by older Proton clients (no claimed block sizes) can't be range-read — re-upload them or use a local folder. - &lt;strong&gt;Drive .zip exports can now be imported without downloading them&lt;/strong&gt; (decision 2026-11-09, #82) — with the new "Only fetch new files from .zip exports" toggle on the Takeout source card (Drive link / Google account tabs), a &lt;code&gt;.zip&lt;/code&gt; export that is only on Drive is not downloaded at all: its directory is read over HTTP Range and only files not already imported are fetched (one Range request per file). Photos are recognised by a CRC32 + size stored on their database rows (seeded by any import, including &lt;code&gt;.tgz&lt;/code&gt;), metadata sidecars by their persisted CRC32 + size, and skipped sidecars are only read if a new photo needs them. One ingest of any export (&lt;code&gt;.tgz&lt;/code&gt; or &lt;code&gt;.zip&lt;/code&gt;) seeds those CRCs, so the first &lt;code&gt;.zip&lt;/code&gt; export after an earlier library without them is still fetched in full — only later exports skip. &lt;code&gt;.tgz&lt;/code&gt; exports are always downloaded in full (gzip cannot be read randomly), and the originals of skipped files stay on Drive, so keep those exports there. The Proton sync index likewise no longer re-reads unchanged &lt;code&gt;.zip&lt;/code&gt; sidecars. - &lt;strong&gt;The pinned exiftool (13.60) now ships inside every build&lt;/strong&gt; (decision 2026-11-05) — the staged upload bytes depend on the exiftool version, so the Docker images no longer apt-install Debian's &lt;code&gt;libimage-exiftool-perl&lt;/code&gt; (not 13.60, and drifting on every rebuild): a new &lt;code&gt;exiftool-fetch&lt;/code&gt; stage of &lt;code&gt;docker/Dockerfile&lt;/code&gt; installs the pinned exiftool at &lt;code&gt;/opt/exiftool&lt;/code&gt; (SHA-256-verified at build time, &lt;code&gt;EXIFTOOL_BUNDLED_DIR=/opt/exiftool&lt;/code&gt;, &lt;code&gt;perl&lt;/code&gt; package for the runtime), and the macOS/Windows desktop apps bundle it next to the executable. Everything fetches it through the new &lt;code&gt;scripts/fetch_exiftool.py&lt;/code&gt;, which verifies the download against the digests embedded in the app (&lt;code&gt;EXIFTOOL_PINNED_SHA256&lt;/code&gt;) and extracts with the same safe extraction code as the in-app install; CI's "Install pinned exiftool" step uses the same script (no hardcoded version/digest in the workflow). The in-app install (&lt;code&gt;POST /api/sync/exiftool/install&lt;/code&gt;) remains as the fallback for source checkouts / Linux without a bundle, and the sync Settings card now shows where the resolved exiftool comes from (bundled / app install / PATH / &lt;code&gt;EXIFTOOL&lt;/code&gt;) and warns when its version is not the pinned one — the staged upload bytes would then differ from the pinned version, so a re-sync may duplicate photos in Proton. - &lt;strong&gt;Sync app: fixed the in-app exiftool install (and CI's pinned-exiftool step)&lt;/strong&gt; — exiftool.org's &lt;code&gt;checksums.txt&lt;/code&gt; only lists the latest release, so once 13.61 shipped it could no longer verify the pinned 13.60 the app installs (the staged upload bytes depend on that version). The pinned version's official SHA-256 digests are now embedded in the app (&lt;code&gt;EXIFTOOL_PINNED_SHA256&lt;/code&gt;) and hardcoded in the CI step, with a test keeping them in sync; the now-unused &lt;code&gt;EXIFTOOL_BASE_URL&lt;/code&gt; setting was removed (decision 2026-11-05). - &lt;strong&gt;Sync app: the default Proton Photos backend is now the Proton Drive SDK (our own &lt;code&gt;takepho-proton&lt;/code&gt; helper), not the Proton Drive CLI&lt;/strong&gt; (decision 2026-11-04, #54) — after a full live-verified sync on the real account on 2026-11-03 (5,666 photos uploaded, 0 failed, 267 albums, 33,733 album memberships; including 98 .dng RAW files the CLI silently skipped, 4,127 HEIC, 709 videos, 2,431 Live Photo pairs and 946 burst frames, all with previews and links). The sdk backend uploads through a pool of 5 concurrent requests, renders thumbnails for HEIC/video/RAW, links Live Photo clips and burst frames, and manages albums — and its helper binary now ships bundled in the Docker images and the desktop apps, so no separate tool install is needed. The UI shows "Proton Drive SDK" as the default option and the &lt;strong&gt;Proton Drive CLI as a legacy fallback that will be removed in a future release&lt;/strong&gt; (it remains selectable for one release; it is removed together with its installer in the release after next). Existing installs switch automatically on first start unless photos were already uploaded through the CLI (those keep the CLI, since its session and the recorded remote ids live there); choosing a backend explicitly in Settings is always respected. The import-folder backend (Proton Drive for Windows) is unchanged.&lt;/p&gt;</description>
+
+      
+      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.3.0/TakeoutPhoto-1.3.0-windows-x64-setup.exe" length="266363853" type="application/octet-stream" sparkle:version="1003000000052" sparkle:shortVersionString="1.3.0" sparkle:minimumSystemVersion="10.0" sparkle:edSignature="w4JzEIvo3/3eZ82ib7UqY3MLlS2PIIHUFhNw2zm1Nh17B/DfgeAAvd0V5I+PkeKryN72njG3TJCMmD6JBefUBA==" sparkle:os="windows" sparkle:installerArguments="/SILENT /SP- /NOCANCEL /SUPPRESSMSGBOXES /NORESTART"/>
+
+    
+    </item>
+
+    
+    <item>
+
+
+      
+      
       <title>Takeout Photo 1.2.0</title>
 
+
+      
       
       <pubDate>Tue, 03 Nov 2026 18:31:05 GMT</pubDate>
 
+
+      
       
       <description>&lt;p&gt;Lite: a free tier with your 5 most recent holidays; import jobs show their steps and resume interrupted post-processing; sync failures are shown per sync.&lt;/p&gt;
 &lt;p&gt;- &lt;strong&gt;Lite (free tier)&lt;/strong&gt; (decision 2026-11-02) — without a licence the install is no longer fully locked: you get the &lt;strong&gt;photos timeline, read-only, limited to your 5 most recent holidays&lt;/strong&gt;, and a &lt;strong&gt;manual import of a local Takeout folder&lt;/strong&gt; works without a plan (&lt;code&gt;POST /api/ingest/process&lt;/code&gt;) — including refreshing the library with a &lt;strong&gt;newer export&lt;/strong&gt; (a rebuild started from the manual import works unlicensed and resumes automatically if interrupted), and cancelling/resuming your own manual import jobs. Unlicensed imports scan cheaply (bytes, SHA-1, EXIF header and sidecars — no thumbnails rendered at scan); after trip detection over all photos a cutoff (the start of the oldest of the 5 most recent holidays, computed live from the trips table) marks the visible span, and only the visible photos get thumbnails/previews, grouping, CLIP and geocoding. Reads hide locked items (locked trips/photos answer 404; a locked photo's thumbnail/full is never rendered on demand), and a banner on the photos pages says "Lite: showing your 5 most recent holidays of N. Get Lifetime or Yearly…" (&lt;code&gt;GET /api/trips/free-tier&lt;/code&gt;). Everything automatic or network-backed stays paid (watcher, Drive links, configured source, contributors, Google account, Maps Timeline import) and all other writes still answer 402. When a licence is activated, a tracked &lt;code&gt;free_tier_unlock&lt;/code&gt; run renders and processes everything that was locked (same retention state as a licensed import) and clears the marker. A lapsed licence caps an already processed library the same way immediately. The sample demo stays unlimited.&lt;/p&gt;
@@ -35,48 +63,68 @@
 &lt;p&gt;Sync (Google Photos → Proton Photos):&lt;/p&gt;
 &lt;p&gt;- &lt;strong&gt;Trip albums named "{Type} {place} – {Month YYYY}"&lt;/strong&gt; — Proton trip albums were named "YYYY-MM-DD &amp;lt;trip name&amp;gt;"; they are now e.g. "Holiday Alcúdia, Spain – May 2025" (the month holding most of the trip's days). A trip you renamed keeps its custom name, clashing names fall back to the full start date, and existing Proton albums are renamed on the next sync - &lt;strong&gt;Failures shown per sync&lt;/strong&gt; — the sync card now lists "Failures in this sync (N)" (the current pass, including resumes after a pause or a server restart) instead of every failure ever; earlier syncs' failures are one click away (This sync / Earlier syncs / All) and the counter reads "Failed N (+M from earlier syncs)" - &lt;strong&gt;A server restart interrupts and resumes a revert&lt;/strong&gt; — a restart mid-revert is now recorded "interrupted" and resumes on the next start, instead of failing with an empty error and leaving the Proton library half-reverted - &lt;strong&gt;Revert treats "not found" on Proton as already gone&lt;/strong&gt; — items Proton answers NotFound for no longer stay marked "uploaded" after a revert - &lt;strong&gt;Paused notice says what it means&lt;/strong&gt; — the sync card now reads "Paused by you — the sync won't resume automatically until you resume it" instead of implying syncs never resume after a restart - &lt;strong&gt;Resume after a fast restart&lt;/strong&gt; — work interrupted by a crash and restarted quickly afterwards (within the heartbeat window, e.g. a Docker restart policy) now resumes instead of being skipped as still-live; this applies to imports, processing steps, sync and activities alike - &lt;strong&gt;Stable upload metadata&lt;/strong&gt; — the sync now installs a pinned exiftool (13.60) and writes the capture time of a photo without a time zone in the zone of its GPS location (UTC without one) instead of the computer's zone, so the same photo is staged identically on any machine&lt;/p&gt;</description>
 
+
+      
       
       <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.2.0/TakeoutPhoto-1.2.0-windows-x64-setup.exe" length="210355496" type="application/octet-stream" sparkle:version="1002000000030" sparkle:shortVersionString="1.2.0" sparkle:minimumSystemVersion="10.0" sparkle:edSignature="qMaZxcf9Px7rGAOG2zLrdzOXTTqxDc2Ju4x51qWR3vewbQxiBs3/0YMWwu9Q1ezSc4j1dMWsnzn8fOBywJJvCg==" sparkle:os="windows" sparkle:installerArguments="/SILENT /SP- /NOCANCEL /SUPPRESSMSGBOXES /NORESTART"/>
 
+
+    
     
     </item>
 
+
+    
     
     <item>
 
 
+
+      
       
       
       <title>Takeout Photo 1.1.1</title>
 
 
+
+      
       
       
       <pubDate>Mon, 02 Nov 2026 21:07:02 GMT</pubDate>
 
 
+
+      
       
       
       <description>&lt;p&gt;Restarts and updates now resume running work automatically; iOS Safari opens the sign-in / checkout / billing portal tab again; the top bar fits every app tab.&lt;/p&gt;
 &lt;p&gt;- &lt;strong&gt;Shutdown = "interrupted", never "cancelled"&lt;/strong&gt; — on SIGTERM (Docker stop / container recreate) or closing the desktop window, every running job (a Takeout import, a processing step like trip detection / geocoding / curation / grouping / CLIP embedding, the Maps timeline import, activities sync / match / places, Proton sync / index / revert / CLI installs, a "Start over" reset) stops gracefully at its next checkpoint and is recorded as &lt;strong&gt;"interrupted"&lt;/strong&gt; (new status on ingestion jobs and pipeline runs, with &lt;code&gt;resumed_by&lt;/code&gt; / &lt;code&gt;resume_count&lt;/code&gt; columns; existing databases migrate on boot). A cancel you trigger in the UI still ends as "cancelled" and is never auto-resumed. - &lt;strong&gt;Automatic resume on the next start&lt;/strong&gt; — without clicking anything: an interrupted import continues over its not-yet-ingested archives (same person and options, one job at a time; already imported items are skipped and the post-import steps re-run), interrupted processing runs re-run with their saved params, an interrupted activities auto-sync runs right away, an interrupted "Start over" reset finishes before any import starts, and an interrupted Proton sync resumes via its &lt;code&gt;sync_wanted&lt;/code&gt; intent as before. Licence-gated and delayed by &lt;code&gt;RESUME_DELAY_S&lt;/code&gt; (default 15 s) so startup is never blocked. - &lt;strong&gt;Crash-loop guard&lt;/strong&gt; — after 3 consecutive resumes that made no progress the work is left "interrupted" with a clear error instead of looping; any progress resets the counter. - &lt;strong&gt;"Resume import" button&lt;/strong&gt; — the Ingestion card offers it for a finished (interrupted / failed / cancelled) import that still has non-ingested archives (&lt;code&gt;POST /api/ingest/status/{job_id}/resume&lt;/code&gt;; 404 unknown job, 409 while another job runs, 400 when nothing is left); an explicit click resets the crash-loop counter. Interrupted jobs and runs show amber "interrupted" with "resumes automatically", not as errors. - &lt;strong&gt;Docker&lt;/strong&gt; — all compose files set &lt;code&gt;stop_grace_period: 60s&lt;/code&gt; and the image starts uvicorn with &lt;code&gt;--timeout-graceful-shutdown 5&lt;/code&gt;, so the graceful stop (≈25 s budget) always finishes before SIGKILL; &lt;code&gt;GET /api/status&lt;/code&gt; now also answers &lt;code&gt;active: true/false&lt;/code&gt; while any work runs. See &lt;code&gt;docs/self-hosting.md&lt;/code&gt;. - &lt;strong&gt;iOS Safari: sign-in / checkout / billing portal open again&lt;/strong&gt; — the tab was opened with &lt;code&gt;window.open()&lt;/code&gt; after awaiting the backend, outside the tap gesture, so iOS Safari silently blocked it while the UI showed "Continue in your browser…". The Account section now opens a placeholder tab synchronously in the tap gesture and navigates it once the backend returns the URL; if the popup is still blocked, a tappable "Open sign-in page" / "Open checkout" / "Open billing portal" link is shown instead. The desktop app path (backend opens the system browser) is unchanged - &lt;strong&gt;Top bar labels only the active space&lt;/strong&gt; — the space switcher shows just the active space's name (the other spaces are icons with a tooltip), so every app tab fits even with all four spaces present; measured with no overflow on #/, #/activities and #/sync from 640 px up&lt;/p&gt;</description>
 
 
+
+      
       
       
       <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.1.1/TakeoutPhoto-1.1.1-windows-x64-setup.exe" length="207747273" type="application/octet-stream" sparkle:version="1001001000026" sparkle:shortVersionString="1.1.1" sparkle:minimumSystemVersion="10.0" sparkle:edSignature="iEIwLPno6wvU5tBCm55vEYKTo6uBhxqgC1H5qYpeP8TS197fmO++f6p3UqodcbeyIHiVaehVYFqobeqXww61Bg==" sparkle:os="windows" sparkle:installerArguments="/SILENT /SP- /NOCANCEL /SUPPRESSMSGBOXES /NORESTART"/>
 
 
+
+    
     
     
     </item>
 
 
+
+    
     
     
     <item>
 
 
 
+
+      
       
       
       
@@ -84,6 +132,8 @@
 
 
 
+
+      
       
       
       
@@ -91,6 +141,8 @@
 
 
 
+
+      
       
       
       
@@ -99,6 +151,8 @@
 
 
 
+
+      
       
       
       
@@ -106,6 +160,8 @@
 
 
 
+
+    
     
     
     
@@ -113,6 +169,8 @@
 
 
 
+
+    
     
     
     
@@ -120,6 +178,8 @@
 
 
 
+
+    
     
     
     
@@ -127,6 +187,8 @@
 
 
 
+
+    
     
     
     
@@ -134,6 +196,8 @@
 
 
 
+
+    
     
     
     
@@ -141,10 +205,14 @@
 
 
 
+
+  
   
   
   
   </channel>
+
+
 
 
 
