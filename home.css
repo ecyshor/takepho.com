@@ -636,7 +636,7 @@ html.os-win .h-hero .hero-other .other-win {
 
 .h-albums-layout {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
   gap: 40px;
   align-items: start;
 }
@@ -713,7 +713,7 @@ html.os-win .h-hero .hero-other .other-win {
 
 .h-album-list thead th:nth-child(n+2) {
   text-align: center;
-  width: 16%;
+  width: 76px;
 }
 
 .h-album-list .h-col-apple { color: var(--apple); }
@@ -934,7 +934,11 @@ html.os-win .h-hero .hero-other .other-win {
     display: none;
   }
   .h-album-list thead th:nth-child(n+3) {
-    width: 22%;
+    width: 60px;
+    padding-inline: 4px;
+  }
+  .h-album-list .h-col-full {
+    display: none;
   }
   .h-credits ul {
     columns: 1;
@@ -945,9 +949,25 @@ html.os-win .h-hero .hero-other .other-win {
   .h-hero h1 {
     font-size: 2.3rem;
   }
-  .h-hero .btn-demo {
+  /* :where keeps this below the os-* rules in style.css that hide the other platform's download */
+  .h-hero .hero-actions :where(.btn:not([hidden])),
+  .cta-mid .hero-actions :where(.btn:not([hidden])),
+  .cta-final .hero-actions :where(.btn:not([hidden])) {
     display: block;
     width: 100%;
+    text-align: center;
+  }
+  .h-sources {
+    gap: 8px;
+    font-size: 0.84rem;
+  }
+  .h-source {
+    padding: 5px 11px 5px 8px;
+    gap: 6px;
+  }
+  .h-source svg {
+    width: 16px;
+    height: 16px;
   }
   .h-steps ol {
     grid-template-columns: minmax(0, 1fr);
@@ -956,9 +976,16 @@ html.os-win .h-hero .hero-other .other-win {
     gap: 8px;
     font-size: 0.9rem;
   }
+  .h-album-list tbody th {
+    padding: 9px 6px 9px 8px;
+  }
   .h-album-list tbody th img {
-    width: 40px;
-    height: 30px;
+    width: 36px;
+    height: 27px;
+  }
+  .h-album-list thead th:nth-child(n+3) {
+    width: 50px;
+    padding-inline: 2px;
   }
 }
 

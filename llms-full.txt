@@ -6,7 +6,7 @@
 > Source: https://takepho.com/
 
 # Find every trip in your photos, and keep each one as an album.
-Takeout Photo reads your Google Photos Takeout and, on a Mac, your Apple Photos library. It finds your holidays and day trips, lets you explore them on a map and day by day, then turns them into albums in Apple Photos and Proton Photos, backing your Google photos up there as it goes. All of it runs on your own computer.
+Takeout Photo reads your Google Photos Takeout and, on a Mac, your Apple Photos library. It finds your holidays and day trips, shows each one on a map and day by day, and turns it into an album in Apple Photos and Proton Photos, copying your Google photos across. It all runs on your computer.
 [Open the live demo](https://takepho.com/demo/#/timeline) [Download for Mac](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-macos-arm64.dmg) [Download for Windows](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64-setup.exe)
 The demo uses sample photos and needs no install. The app is free to download, and Lite is free for your 5 most recent holidays. Mac: Apple silicon, macOS 12+; Windows 10/11; [NAS with Docker](https://takepho.com/self-host/); [Windows portable zip](https://github.com/ecyshor/takepho.com/releases/latest/download/TakeoutPhoto-windows-x64.zip).
 
@@ -94,6 +94,7 @@ Free no account or licence needed
 - Read-only (no renaming, curating or hiding trips, no editing homes) and no automatic imports.
 - Albums and backups in Apple Photos and Proton Photos, and activity matching, are on the paid plans.
 Download free
+Mac, Windows or a NAS with Docker
 ### Lifetime
 USD 25 / EUR 20 one-time, no subscription
 - Your whole library: every trip, every photo, from your Takeout and your whole Apple Photos library.
