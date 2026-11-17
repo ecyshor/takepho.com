@@ -1,9 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<rss xmlns:sparkle="https://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
 
 
 
 
+
+  
   
   
   
@@ -13,47 +15,85 @@
 
 
 
+
+    
     
     
     
     
     <item>
-      <title>Takeout Photo 1.3.1</title>
-      <pubDate>Sun, 15 Nov 2026 08:28:34 GMT</pubDate>
-      <description><![CDATA[<p>- <strong>Google Drive sign-in opens in your system browser in the desktop app</strong> — the Google account source no longer runs OAuth inside the embedded window. - <strong>Licence handling polish while on Lite / signed out</strong> — the licence banner link is labelled per state, the app no longer polls licence-gated endpoints while unlicensed, the CLIP model banner no longer hangs on "Downloading…" (a failed auto-start shows an error with Retry), and the licence re-validation loop restarts on sign-in and stops gated services when the licence expires. - <strong>Fresh installs show no source as "Active"</strong> until one is configured (no Active chip, no "currently imported from" notice, no failing preview request). - CI/build only: self-hosted macOS runner support, Node 20 action upgrades, CPU-quota-aware pytest workers.</p>]]></description>
-      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.3.1/TakeoutPhoto-1.3.1-windows-x64-setup.exe" length="266383649" type="application/octet-stream" sparkle:version="1003001000072" sparkle:shortVersionString="1.3.1" sparkle:minimumSystemVersion="10.0" sparkle:edSignature="zc1jIFuRIDPZYupjtK6Q0ajYP2rF6a23hx+y0+W5CgoHeJGNNTqRJHz9xuTPJvJWHy428yUuhVPN61dbhL+bBQ==" sparkle:os="windows" sparkle:installerArguments="/SILENT /SP- /NOCANCEL /SUPPRESSMSGBOXES /NORESTART"/>
+      <title>Takeout Photo 1.4.0</title>
+      <pubDate>Tue, 17 Nov 2026 12:49:56 GMT</pubDate>
+      <description><![CDATA[<p>- <strong>Apple Photos as a source (macOS)</strong> — import your Apple Photos library next to (or instead of) Google Takeout: one merged library with cross-source duplicate folding, incremental updates (manual check on Lifetime, automatic watcher on Yearly; Lite imports the 500 most recent), and an "undo everything" revert. - <strong>Sync app redesigned</strong> — Proton Photos and Apple Photos are split on <code>/sync</code>; Proton can sync straight from the Apple Photos source; trip albums are created by default alongside Takeout albums, and the Apple Photos import creates one album per trip. - <strong>Multiple people</strong> — Takeout archives are grouped per person, with a merged library mode, cross-person duplicate folding and a per-person clock offset. - <strong>Trips and maps</strong> — day-by-day counts use real photos, merged day trips are re-typed by their merged duration, flights are inferred for photo-only routes, trip cover photos are no longer hidden by the loading placeholder. - <strong>Geocoding</strong> — choose offline or online place names in Settings; switching re-tags. - <strong>Navigation and UI polish</strong> — two clear rows with labelled app tabs and one Account menu, a shared page edge, a single Lite banner, loading states, mobile filters. - <strong>Safer sign-in</strong> — cross-site writes are refused and open enrolment is warned about. - <strong>Imports</strong> — Drive link import waits out download quota; switching source cancels a running import instead of failing; Windows imports no longer fail at 99%; closing the desktop window during an import no longer deadlocks; CLIP loads offline-first and truncated JPEGs keep their preview. - <strong>Desktop</strong> — macOS two-finger swipe goes back/forward; the Windows update dialog comes to the foreground; Windows automatic updates are offered correctly (WinSparkle appcast fix); the Windows hang and hidden Update section are fixed. - <strong>Reliability</strong> — Google Photos date edits no longer re-upload assets, byte-identical duplicates keep their own sync node, and large lists never exceed SQLite's bind-parameter limit. - <strong>macOS desktop: automatic updates work again</strong> — the updater never started in 1.3.0 and 1.3.1, so "Check for Updates…" did nothing and Settings showed no Updates section; the folder picker in the desktop app works again too. If you run 1.3.0 or 1.3.1, install this version manually once (download it from takepho.com) — later updates arrive automatically.</p>]]></description>
+      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.4.0/TakeoutPhoto-1.4.0-windows-x64-setup.exe" length="267287946" type="application/octet-stream" sparkle:version="2147483647.1.4.0.110" sparkle:shortVersionString="1.4.0" sparkle:minimumSystemVersion="10.0" sparkle:edSignature="PFVwvL3OMvLo/O1u+WzOnWo9QyBIkFk8XpGrvy8X0tJkXNbbRZmhyhQ3NMao7Jg9KCKt3wEFwGZUJ7VxZdYcBg==" sparkle:os="windows" sparkle:installerArguments="/SILENT /SP- /NOCANCEL /SUPPRESSMSGBOXES /NORESTART"/>
     </item>
     <item>
 
+      
+      <title>Takeout Photo 1.3.1</title>
+
+      
+      <pubDate>Sun, 15 Nov 2026 08:28:34 GMT</pubDate>
+
+      
+      <description>&lt;p&gt;- &lt;strong&gt;Google Drive sign-in opens in your system browser in the desktop app&lt;/strong&gt; — the Google account source no longer runs OAuth inside the embedded window. - &lt;strong&gt;Licence handling polish while on Lite / signed out&lt;/strong&gt; — the licence banner link is labelled per state, the app no longer polls licence-gated endpoints while unlicensed, the CLIP model banner no longer hangs on "Downloading…" (a failed auto-start shows an error with Retry), and the licence re-validation loop restarts on sign-in and stops gated services when the licence expires. - &lt;strong&gt;Fresh installs show no source as "Active"&lt;/strong&gt; until one is configured (no Active chip, no "currently imported from" notice, no failing preview request). - CI/build only: self-hosted macOS runner support, Node 20 action upgrades, CPU-quota-aware pytest workers.&lt;/p&gt;</description>
+
+      
+      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.3.1/TakeoutPhoto-1.3.1-windows-x64-setup.exe" length="266383649" type="application/octet-stream" sparkle:version="2147483647.1.3.1.72" sparkle:shortVersionString="1.3.1" sparkle:minimumSystemVersion="10.0" sparkle:edSignature="zc1jIFuRIDPZYupjtK6Q0ajYP2rF6a23hx+y0+W5CgoHeJGNNTqRJHz9xuTPJvJWHy428yUuhVPN61dbhL+bBQ==" sparkle:os="windows" sparkle:installerArguments="/SILENT /SP- /NOCANCEL /SUPPRESSMSGBOXES /NORESTART"/>
+
+    
+    </item>
+
+    
+    <item>
+
+
+      
       
       <title>Takeout Photo 1.3.0</title>
 
+
+      
       
       <pubDate>Sat, 14 Nov 2026 09:28:57 GMT</pubDate>
 
+
+      
       
       <description>&lt;p&gt;- &lt;strong&gt;Proton Drive can now be the Takeout source&lt;/strong&gt; (decision 2026-11-09) — a new "Proton Drive" tab on the Takeout source card (owner only, one folder): sign in with the same Proton session the Sync app uses, browse My Files and pick the folder with the export archives (.tgz/.tar.gz/.zip). The app lists the archives in it, downloads them in parallel resumable segments (SHA-1-verified against Proton's claimed digest, cancellable), ingests them like any other source, and reads originals straight from Proton Drive on demand when there is no local copy. All access goes through the &lt;code&gt;takepho-proton&lt;/code&gt; helper (0.3.0), which gained &lt;code&gt;drive.root&lt;/code&gt;/&lt;code&gt;drive.list&lt;/code&gt;/&lt;code&gt;drive.node&lt;/code&gt;/&lt;code&gt;drive.read_range&lt;/code&gt; over the pinned Proton Drive SDK's &lt;code&gt;ProtonDriveClient&lt;/code&gt;; archives uploaded by older Proton clients (no claimed block sizes) can't be range-read — re-upload them or use a local folder. - &lt;strong&gt;Drive .zip exports can now be imported without downloading them&lt;/strong&gt; (decision 2026-11-09, #82) — with the new "Only fetch new files from .zip exports" toggle on the Takeout source card (Drive link / Google account tabs), a &lt;code&gt;.zip&lt;/code&gt; export that is only on Drive is not downloaded at all: its directory is read over HTTP Range and only files not already imported are fetched (one Range request per file). Photos are recognised by a CRC32 + size stored on their database rows (seeded by any import, including &lt;code&gt;.tgz&lt;/code&gt;), metadata sidecars by their persisted CRC32 + size, and skipped sidecars are only read if a new photo needs them. One ingest of any export (&lt;code&gt;.tgz&lt;/code&gt; or &lt;code&gt;.zip&lt;/code&gt;) seeds those CRCs, so the first &lt;code&gt;.zip&lt;/code&gt; export after an earlier library without them is still fetched in full — only later exports skip. &lt;code&gt;.tgz&lt;/code&gt; exports are always downloaded in full (gzip cannot be read randomly), and the originals of skipped files stay on Drive, so keep those exports there. The Proton sync index likewise no longer re-reads unchanged &lt;code&gt;.zip&lt;/code&gt; sidecars. - &lt;strong&gt;The pinned exiftool (13.60) now ships inside every build&lt;/strong&gt; (decision 2026-11-05) — the staged upload bytes depend on the exiftool version, so the Docker images no longer apt-install Debian's &lt;code&gt;libimage-exiftool-perl&lt;/code&gt; (not 13.60, and drifting on every rebuild): a new &lt;code&gt;exiftool-fetch&lt;/code&gt; stage of &lt;code&gt;docker/Dockerfile&lt;/code&gt; installs the pinned exiftool at &lt;code&gt;/opt/exiftool&lt;/code&gt; (SHA-256-verified at build time, &lt;code&gt;EXIFTOOL_BUNDLED_DIR=/opt/exiftool&lt;/code&gt;, &lt;code&gt;perl&lt;/code&gt; package for the runtime), and the macOS/Windows desktop apps bundle it next to the executable. Everything fetches it through the new &lt;code&gt;scripts/fetch_exiftool.py&lt;/code&gt;, which verifies the download against the digests embedded in the app (&lt;code&gt;EXIFTOOL_PINNED_SHA256&lt;/code&gt;) and extracts with the same safe extraction code as the in-app install; CI's "Install pinned exiftool" step uses the same script (no hardcoded version/digest in the workflow). The in-app install (&lt;code&gt;POST /api/sync/exiftool/install&lt;/code&gt;) remains as the fallback for source checkouts / Linux without a bundle, and the sync Settings card now shows where the resolved exiftool comes from (bundled / app install / PATH / &lt;code&gt;EXIFTOOL&lt;/code&gt;) and warns when its version is not the pinned one — the staged upload bytes would then differ from the pinned version, so a re-sync may duplicate photos in Proton. - &lt;strong&gt;Sync app: fixed the in-app exiftool install (and CI's pinned-exiftool step)&lt;/strong&gt; — exiftool.org's &lt;code&gt;checksums.txt&lt;/code&gt; only lists the latest release, so once 13.61 shipped it could no longer verify the pinned 13.60 the app installs (the staged upload bytes depend on that version). The pinned version's official SHA-256 digests are now embedded in the app (&lt;code&gt;EXIFTOOL_PINNED_SHA256&lt;/code&gt;) and hardcoded in the CI step, with a test keeping them in sync; the now-unused &lt;code&gt;EXIFTOOL_BASE_URL&lt;/code&gt; setting was removed (decision 2026-11-05). - &lt;strong&gt;Sync app: the default Proton Photos backend is now the Proton Drive SDK (our own &lt;code&gt;takepho-proton&lt;/code&gt; helper), not the Proton Drive CLI&lt;/strong&gt; (decision 2026-11-04, #54) — after a full live-verified sync on the real account on 2026-11-03 (5,666 photos uploaded, 0 failed, 267 albums, 33,733 album memberships; including 98 .dng RAW files the CLI silently skipped, 4,127 HEIC, 709 videos, 2,431 Live Photo pairs and 946 burst frames, all with previews and links). The sdk backend uploads through a pool of 5 concurrent requests, renders thumbnails for HEIC/video/RAW, links Live Photo clips and burst frames, and manages albums — and its helper binary now ships bundled in the Docker images and the desktop apps, so no separate tool install is needed. The UI shows "Proton Drive SDK" as the default option and the &lt;strong&gt;Proton Drive CLI as a legacy fallback that will be removed in a future release&lt;/strong&gt; (it remains selectable for one release; it is removed together with its installer in the release after next). Existing installs switch automatically on first start unless photos were already uploaded through the CLI (those keep the CLI, since its session and the recorded remote ids live there); choosing a backend explicitly in Settings is always respected. The import-folder backend (Proton Drive for Windows) is unchanged.&lt;/p&gt;</description>
 
-      
-      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.3.0/TakeoutPhoto-1.3.0-windows-x64-setup.exe" length="266363853" type="application/octet-stream" sparkle:version="1003000000052" sparkle:shortVersionString="1.3.0" sparkle:minimumSystemVersion="10.0" sparkle:edSignature="w4JzEIvo3/3eZ82ib7UqY3MLlS2PIIHUFhNw2zm1Nh17B/DfgeAAvd0V5I+PkeKryN72njG3TJCMmD6JBefUBA==" sparkle:os="windows" sparkle:installerArguments="/SILENT /SP- /NOCANCEL /SUPPRESSMSGBOXES /NORESTART"/>
 
+      
+      
+      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.3.0/TakeoutPhoto-1.3.0-windows-x64-setup.exe" length="266363853" type="application/octet-stream" sparkle:version="2147483647.1.3.0.52" sparkle:shortVersionString="1.3.0" sparkle:minimumSystemVersion="10.0" sparkle:edSignature="w4JzEIvo3/3eZ82ib7UqY3MLlS2PIIHUFhNw2zm1Nh17B/DfgeAAvd0V5I+PkeKryN72njG3TJCMmD6JBefUBA==" sparkle:os="windows" sparkle:installerArguments="/SILENT /SP- /NOCANCEL /SUPPRESSMSGBOXES /NORESTART"/>
+
+
+    
     
     </item>
 
+
+    
     
     <item>
 
 
+
+      
       
       
       <title>Takeout Photo 1.2.0</title>
 
 
+
+      
       
       
       <pubDate>Tue, 03 Nov 2026 18:31:05 GMT</pubDate>
 
 
+
+      
       
       
       <description>&lt;p&gt;Lite: a free tier with your 5 most recent holidays; import jobs show their steps and resume interrupted post-processing; sync failures are shown per sync.&lt;/p&gt;
@@ -64,22 +104,30 @@
 &lt;p&gt;- &lt;strong&gt;Trip albums named "{Type} {place} – {Month YYYY}"&lt;/strong&gt; — Proton trip albums were named "YYYY-MM-DD &amp;lt;trip name&amp;gt;"; they are now e.g. "Holiday Alcúdia, Spain – May 2025" (the month holding most of the trip's days). A trip you renamed keeps its custom name, clashing names fall back to the full start date, and existing Proton albums are renamed on the next sync - &lt;strong&gt;Failures shown per sync&lt;/strong&gt; — the sync card now lists "Failures in this sync (N)" (the current pass, including resumes after a pause or a server restart) instead of every failure ever; earlier syncs' failures are one click away (This sync / Earlier syncs / All) and the counter reads "Failed N (+M from earlier syncs)" - &lt;strong&gt;A server restart interrupts and resumes a revert&lt;/strong&gt; — a restart mid-revert is now recorded "interrupted" and resumes on the next start, instead of failing with an empty error and leaving the Proton library half-reverted - &lt;strong&gt;Revert treats "not found" on Proton as already gone&lt;/strong&gt; — items Proton answers NotFound for no longer stay marked "uploaded" after a revert - &lt;strong&gt;Paused notice says what it means&lt;/strong&gt; — the sync card now reads "Paused by you — the sync won't resume automatically until you resume it" instead of implying syncs never resume after a restart - &lt;strong&gt;Resume after a fast restart&lt;/strong&gt; — work interrupted by a crash and restarted quickly afterwards (within the heartbeat window, e.g. a Docker restart policy) now resumes instead of being skipped as still-live; this applies to imports, processing steps, sync and activities alike - &lt;strong&gt;Stable upload metadata&lt;/strong&gt; — the sync now installs a pinned exiftool (13.60) and writes the capture time of a photo without a time zone in the zone of its GPS location (UTC without one) instead of the computer's zone, so the same photo is staged identically on any machine&lt;/p&gt;</description>
 
 
+
       
       
-      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.2.0/TakeoutPhoto-1.2.0-windows-x64-setup.exe" length="210355496" type="application/octet-stream" sparkle:version="1002000000030" sparkle:shortVersionString="1.2.0" sparkle:minimumSystemVersion="10.0" sparkle:edSignature="qMaZxcf9Px7rGAOG2zLrdzOXTTqxDc2Ju4x51qWR3vewbQxiBs3/0YMWwu9Q1ezSc4j1dMWsnzn8fOBywJJvCg==" sparkle:os="windows" sparkle:installerArguments="/SILENT /SP- /NOCANCEL /SUPPRESSMSGBOXES /NORESTART"/>
+      
+      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.2.0/TakeoutPhoto-1.2.0-windows-x64-setup.exe" length="210355496" type="application/octet-stream" sparkle:version="2147483647.1.2.0.30" sparkle:shortVersionString="1.2.0" sparkle:minimumSystemVersion="10.0" sparkle:edSignature="qMaZxcf9Px7rGAOG2zLrdzOXTTqxDc2Ju4x51qWR3vewbQxiBs3/0YMWwu9Q1ezSc4j1dMWsnzn8fOBywJJvCg==" sparkle:os="windows" sparkle:installerArguments="/SILENT /SP- /NOCANCEL /SUPPRESSMSGBOXES /NORESTART"/>
 
 
+
+    
     
     
     </item>
 
 
+
+    
     
     
     <item>
 
 
 
+
+      
       
       
       
@@ -87,6 +135,8 @@
 
 
 
+
+      
       
       
       
@@ -94,6 +144,8 @@
 
 
 
+
+      
       
       
       
@@ -102,13 +154,17 @@
 
 
 
+
       
       
       
-      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.1.1/TakeoutPhoto-1.1.1-windows-x64-setup.exe" length="207747273" type="application/octet-stream" sparkle:version="1001001000026" sparkle:shortVersionString="1.1.1" sparkle:minimumSystemVersion="10.0" sparkle:edSignature="iEIwLPno6wvU5tBCm55vEYKTo6uBhxqgC1H5qYpeP8TS197fmO++f6p3UqodcbeyIHiVaehVYFqobeqXww61Bg==" sparkle:os="windows" sparkle:installerArguments="/SILENT /SP- /NOCANCEL /SUPPRESSMSGBOXES /NORESTART"/>
+      
+      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.1.1/TakeoutPhoto-1.1.1-windows-x64-setup.exe" length="207747273" type="application/octet-stream" sparkle:version="2147483647.1.1.1.26" sparkle:shortVersionString="1.1.1" sparkle:minimumSystemVersion="10.0" sparkle:edSignature="iEIwLPno6wvU5tBCm55vEYKTo6uBhxqgC1H5qYpeP8TS197fmO++f6p3UqodcbeyIHiVaehVYFqobeqXww61Bg==" sparkle:os="windows" sparkle:installerArguments="/SILENT /SP- /NOCANCEL /SUPPRESSMSGBOXES /NORESTART"/>
 
 
 
+
+    
     
     
     
@@ -116,6 +172,8 @@
 
 
 
+
+    
     
     
     
@@ -124,6 +182,8 @@
 
 
 
+
+      
       
       
       
@@ -133,6 +193,8 @@
 
 
 
+
+      
       
       
       
@@ -142,6 +204,8 @@
 
 
 
+
+      
       
       
       
@@ -152,15 +216,19 @@
 
 
 
+
       
       
       
       
-      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.0.1/TakeoutPhoto-1.0.1-windows-x64-setup.exe" length="207614643" type="application/octet-stream" sparkle:version="1000001000017" sparkle:shortVersionString="1.0.1" sparkle:minimumSystemVersion="10.0" sparkle:edSignature="1vEK7CsiXe3k99FapBH80Eek/rv2fDiYPhHQkDqm/GbOkHapTLPkvD6dX8UgnnMuJ46M/DmbHgZAPnxtTVv7Dw==" sparkle:os="windows" sparkle:installerArguments="/SILENT /SP- /NOCANCEL /SUPPRESSMSGBOXES /NORESTART"/>
+      
+      <enclosure url="https://github.com/ecyshor/takepho.com/releases/download/v1.0.1/TakeoutPhoto-1.0.1-windows-x64-setup.exe" length="207614643" type="application/octet-stream" sparkle:version="2147483647.1.0.1.17" sparkle:shortVersionString="1.0.1" sparkle:minimumSystemVersion="10.0" sparkle:edSignature="1vEK7CsiXe3k99FapBH80Eek/rv2fDiYPhHQkDqm/GbOkHapTLPkvD6dX8UgnnMuJ46M/DmbHgZAPnxtTVv7Dw==" sparkle:os="windows" sparkle:installerArguments="/SILENT /SP- /NOCANCEL /SUPPRESSMSGBOXES /NORESTART"/>
 
 
 
 
+
+    
     
     
     
@@ -170,6 +238,8 @@
 
 
 
+
+    
     
     
     
@@ -179,6 +249,8 @@
 
 
 
+
+    
     
     
     
@@ -188,6 +260,8 @@
 
 
 
+
+    
     
     
     
@@ -197,6 +271,8 @@
 
 
 
+
+    
     
     
     
@@ -206,11 +282,15 @@
 
 
 
+
+  
   
   
   
   
   </channel>
+
+
 
 
 
